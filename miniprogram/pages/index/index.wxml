@@ -1,0 +1,128 @@
+<view class="wrapper">
+
+  <view class="content-wrapper" >
+    <!-- swiper -->
+   
+       <scroll-view scroll-y="true" style="height: {{windowHeight -100}}rpx;">
+
+        <!-- nav -->
+        <view class="nav nav-pills">
+          <view class=''>
+
+ <!-- 商品 -->
+            <view class='nav_pill_body  with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="toGoods">
+              <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+              <text class="nav_text">商品</text>
+              <text class="text-sm">({{goods.goodsAmount}}个)</text>
+            </view>
+
+            <!-- 店铺 -->
+            <view  class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="toStore">
+              <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+              <text class="nav_text">店铺</text>
+              <text class="text-sm">({{store.storeAmount}}家)</text>
+            </view>
+
+           
+
+            <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}'>
+              <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+              <text class="nav_text">历史申请</text>
+              <text class="text-sm">({{father.fatherAmount}}个)</text>
+            </view>
+          </view>
+        </view>
+        <!-- ./nav -->
+
+        <!-- .section -->
+        <view class="section">
+          <!-- box -->
+          <view class="box">
+            <!-- box- -->
+            <view class="box-body">
+
+              <view class="row">
+                <view class="fold">
+                  <view class="apply-total with-padding" bindtap="showPrintNumber" hover-class="hover">
+                    <image class="icon" src="../../images/order.jpg" mode="aspectFit" animation="{{pickAnimation}}"></image>
+                    <text class="text-lg text-weight-500">采购单</text>
+                    <text class="text-sm">({{pick.pickAmount.length}})</text>
+                    <text class="text-lg right text-weight-500" bindtap="addPickFirstStep">+</text>
+                  </view>
+
+                  <view class="fold-content {{showPrintTimes ? 'active' : ''}}">
+                    <view class="fold-item" wx:for="{{pick.pickAmount}}" wx:for-item="item" data-pagenumber="{{item}}" bindtap="toEnterGoodsStock">
+                      <view class="face">
+                        <view>
+                          <text class="small">第</text>{{item}}</view>
+                        <view>
+                          <text class="small">次打印</text>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+
+              </view>
+
+
+
+              <view class="row">
+                <view class="fold">
+                  <view class="apply-total with-padding" bindtap="showPrintNumber" hover-class="hover">
+                    <image class="icon" src="../../images/order.jpg" mode="aspectFit" animation="{{pickAnimation}}"></image>
+                    <text class="text-lg text-weight-500">拣货单</text>
+                    <text class="text-sm">({{pick.pickAmount.length}})</text>
+                    <text class="text-lg right text-weight-500" bindtap="addPickFirstStep">+</text>
+                  </view>
+
+                  <view class="fold-content {{showPrintTimes ? 'active' : ''}}">
+                    <view class="fold-item" wx:for="{{pick.pickAmount}}" wx:for-item="item" data-pagenumber="{{item}}" bindtap="toEnterGoodsStock">
+                      <view class="face">
+                        <view>
+                          <text class="small">第</text>{{item}}</view>
+                        <view>
+                          <text class="small">次打印</text>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+
+              </view>
+
+              <view class="row">
+                <view class="fold">
+                  <view class="apply-total with-padding" bindtap="showStockBill" hover-class="hover">
+                    <image class="icon" src="../../images/order.jpg" mode="aspectFit" animation="{{outAnimation}}"></image>
+                    <text class="text-lg text-weight-500">出货单</text>
+                    <text class="text-sm">({{bill.length}}家)</text>
+                  </view>
+
+                  <view class="fold-content {{showStockBill ? 'active' : ''}}">
+                    <view class="fold-item" wx:for="{{bill}}" bindtap="toOutStockBill" data-storeid="{{item.storeId}}">
+                      <view class="face">
+                        <view class="small">{{item.printLabel}}</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+</scroll-view>
+
+
+
+
+  </view> 
+
+
+
+
+
+
+
+</view>

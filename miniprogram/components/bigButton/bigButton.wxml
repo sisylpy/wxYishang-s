@@ -1,0 +1,6 @@
+<!--components.wxml-->
+ <view class='bigButton' bindtap='toWhere'>
+    <image src="{{imgUrl}}"  class='url'></image>
+    <text class='content'>{{content}}</text>
+  </view>
+  <view class='btnline'></view>

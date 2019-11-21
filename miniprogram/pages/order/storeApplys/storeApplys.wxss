@@ -1,0 +1,22 @@
+/* pages/storeApplys/storeApplys.wxss */
+
+.name {
+  width: 30%;
+  /* background: yellow; */
+}
+
+.number {
+  width: 25%;
+  /* background: green; */
+}
+
+
+.outNumber {
+  width: 25%;
+  /* background: red; */
+}
+
+.outStatus {
+  width: 20%;
+  /* background: gainsboro; */
+}

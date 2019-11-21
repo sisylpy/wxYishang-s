@@ -1,0 +1,44 @@
+<!--pages/order/store/store.wxml-->
+<view class="container">
+
+  <view class='list'>
+    <view class="list-item" wx:for="{{store}}">
+      <view class='face-row' bindtap='storeApplys' id="{{item.storeId}}">
+
+        <!-- 图片 -->
+        <view class="face">
+          <image wx:if='{{item.wxAvatarUrl.length > 0}}' src="{{item.wxAvatarUrl}}" class='url filter'></image>
+          <image wx:else src="../../../images/logo.jpg" class='url'></image>
+        </view>
+
+
+        <!-- content -->
+        <view class="face-content with-tb-padding">
+          <view class="up-content">
+            <text class='up-content-text'>{{item.storeName}}</text>
+          </view>
+          <view class="below-content">
+          <view class="small-margin-right">新申请：<text>{{}}</text>个</view>
+          <view class="small-margin-right">拣货单：<text>{{}}</text>个</view>
+          <view class="small-margin-right">出货单：<text>{{}}</text>个</view>
+
+          </view>
+        </view>
+      </view>
+      <view class='btnline'></view>
+
+    </view>
+
+  </view>
+
+
+
+
+
+
+
+
+
+
+
+</view>

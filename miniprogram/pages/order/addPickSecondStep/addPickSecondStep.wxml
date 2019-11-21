@@ -1,0 +1,24 @@
+
+<view class="container">
+
+<view class="top">
+
+</view>
+<view class="main">
+<view class="row" wx:for='{{fatherGoodsArr}}'>{{item.goodsName}}</view>
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

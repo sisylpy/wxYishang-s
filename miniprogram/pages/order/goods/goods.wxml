@@ -1,0 +1,97 @@
+
+
+<view class="wrapper">
+
+  <!-- fragement -->
+  <view class='fragement'>
+    <!-- fragement -->
+    <view class="fragement_content">
+      <view class='fragement_item'>
+        <text class="suggestword {{itemIndex == 0 ? 'active': ''}}">新申请({{newApplysLength}})</text>
+      </view>
+      <view class='fragement_item'>
+        <text class="suggestword {{itemIndex == 1 ? 'active': ''}}">市场采购({{marketApplysLength}})</text>
+      </view>
+      <view class='fragement_item'>
+        <text class="suggestword {{itemIndex == 1 ? 'active': ''}}">微信采购({{weixinApplysLength}})</text>
+      </view>
+      <view class='fragement_item'>
+        <text class="selfword {{itemIndex == 3 ? 'active': ''}}">准备出货({{couldApplysLength}})</text>
+      </view>
+    </view>
+    <!-- ./fragement_content -->
+  </view>
+  <!-- ./fragement -->
+
+
+  <view class="content-wrapper fix-wrapper">
+    <!-- swiper -->
+    <swiper bindchange="switchTab" style="height: {{windowHeight}}rpx;">
+     
+      <!-- 1, newApplys -->
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height: {{windowHeight}}rpx;">
+          <!-- <template is="newApplys" data='{{newApplys:newApplys}}' /> -->
+<newApplys newApplys="{{newApplys}}" bindgetTodayApplys="getTodayApplys"> </newApplys>
+
+        </scroll-view>
+      </swiper-item>
+      <!-- ./newApplys -->
+
+      <swiper-item>
+        <!-- swiper -->
+
+        点点滴滴
+
+
+
+      </swiper-item>
+
+
+      <swiper-item>
+        <!-- fragement -->
+        <view class='fragement'>
+          <!-- fragement -->
+          <view class="fragement_content">
+
+            <view class='fragement_item'>
+              <text class="{{purItemIndex == 0 ? 'active': ''}}">提店铺下单</text>
+            </view>
+            <view class='fragement_item'>
+              <text class="{{purItemIndex == 1 ? 'active': ''}}">微信订货</text>
+            </view>
+            <view class='fragement_item'>
+              <text class="{{purItemIndex == 2 ? 'active': ''}}">App订货</text>
+            </view>
+
+          </view>
+          <!-- ./fragement_content -->
+        </view>
+        <!-- ./fragement -->
+        <swiper bindchange="switchSubTab" style="height: {{windowHeight -200}}rpx;" class="inner-swiper">
+
+
+          <swiper-item class="aaa">
+            提客户下单
+          </swiper-item>
+          <swiper-item class="aaa">
+            客户送货记录
+          </swiper-item>
+
+        </swiper>
+
+
+      </swiper-item>
+
+
+    </swiper>
+
+  </view>
+
+
+
+
+
+
+
+</view>

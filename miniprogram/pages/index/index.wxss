@@ -1,0 +1,131 @@
+
+
+
+/* frgement_item */
+.content-wrapper{
+  position: relative;
+}
+
+.fix-wrapper{
+  margin-top:100rpx;
+
+}
+
+swiper{
+  /* background: gold; */
+  top: 100rpx;
+  width: 100%;
+
+}
+
+.inner-swiper{
+  /* background: red; */
+  width: 100%;
+  margin-top: 100rpx;
+
+}
+.active{
+  font-size: 38rpx;
+  font-weight: 500;
+  color: #000;
+}
+
+.nav-pills{
+  display: flex;
+  flex-flow: column nowrap;
+  /* background: yellow; */
+}
+
+.nav_pill_body{
+  display: flex;
+  flex-flow: row nowrap;
+  /* background: red; */
+  justify-content: left;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  background: #fff;
+
+}
+
+.nav_pill_body.is-last {
+  border-bottom: none;
+
+}
+
+.nav_text{
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+/* 拣货单部分 */
+.apply-total{
+  display: flex;
+  flex-flow: row nowrap;
+/* justify-content: space-between; */
+  align-items: center;
+ /* background: yellow; */
+
+
+}
+.hover{
+ /* background: rgb(241, 241, 241); */
+}
+.icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+
+
+}
+
+.text-sm{
+  font-size: 28rpx;
+  color: gray;
+}
+.text-lg {
+  /* font-size: 38rpx; */
+  line-height: 60rpx;
+  /* background: red; */
+
+
+}
+.text-weight-500{
+  font-weight: 500
+}
+.right{
+ font-size: 60rpx;
+ float: right;
+ line-height: 60rpx;
+ flex:1;
+ text-align: right;
+ margin-right: 10rpx;
+}
+.fold-content{
+  display: none;
+  }
+.fold-content.active{
+  display: block;
+
+}
+.fold-item{
+  display: flex;
+  flex-flow: column nowrap;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.face{
+  width: 80rpx;
+  height: 80rpx;
+  border: 1px solid #ddd;
+  border-radius: 5rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.small{
+  line-height: 40rpx;
+  font-size: 24rpx;
+}

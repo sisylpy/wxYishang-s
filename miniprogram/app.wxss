@@ -1,0 +1,144 @@
+/**app.wxss**/
+/* .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}  */
+/**app.wxss**/
+.container {
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+
+
+.btnline{
+  height: 1rpx;
+  background: lightgray;
+  width:650rpx;
+  float: right;
+  
+}
+
+
+.line {
+  height: 1px;
+  width: 100%;
+  background: black;
+  /* margin-top: 40rpx; */
+}
+.halfline{
+  height: 1px;
+  width: 100%;
+  background: rgb(121, 121, 121);
+}
+.quaterline {
+  height: 1px;
+  width: 100%;
+  background: rgb(197, 197, 197);
+}
+
+.fiveline{
+   height: 5px;
+  width: 100%;
+  background: rgb(145, 145, 145);
+}
+ /* font-size: 30px;
+  margin-top: 40rpx;
+  height: 140rpx;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease; */
+
+/* public css  */
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: rgb(242, 249, 252);
+}
+
+.section{
+  margin-top: 10rpx;
+  background: #fff;
+  width: 100%;
+}
+
+.with-padding{
+  padding: 20rpx;
+}
+.with-tb-padding{
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.with-lr-padding{
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+
+.small-margin-right{
+  margin-right: 20rpx;
+}
+
+.filter{
+   filter: grayscale(100%); 
+   -webkit-filter: grayscale(100%);
+}
+
+
+
+.box_header{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: center;
+
+  
+}
+.ul{
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+.li {
+  display: flex;
+  flex-flow: row nowrap;
+
+}
+.with-border-bottom{
+  border-bottom: 1px solid lightgray;
+
+}
+
+.with-border-bottom.is-last {
+  border-bottom: none;
+}
+
+
+.fix-main-btn{
+  position: fixed;
+  bottom: 20rpx;
+  width: 90%;
+  left: 5%;
+  background: rgb(138, 137, 137);
+  color: #fff;
+  border-radius: 10rpx;
+  line-height: 100rpx;
+  text-align: center;
+
+
+}
+.fix-main-btn.active{
+background: #000;
+}

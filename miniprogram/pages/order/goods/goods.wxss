@@ -1,0 +1,52 @@
+
+.wrapper{
+  background: #fff;
+}
+.icon{
+  width: 50rpx;
+  height: 50rpx;
+
+}
+
+.fragement {
+  width: 100%;
+  position: fixed;
+  background:#fff;
+  z-index: 999;
+  top:0; 
+}
+
+.fragement_content{
+  height: 100rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 60rpx;
+}
+.fragement_item{
+  color: gray;
+  font-size: 30rpx;
+  font-weight: 400;
+}
+.fragement_item .active{
+  font-size: 32rpx;
+  color: #000;
+}
+
+.content-wrapper{
+  position: relative;
+}
+.fix-wrapper{
+  margin-top:100rpx;
+
+}
+
+swiper{
+  /* background: gold; */
+  top: 100rpx;
+  width: 100%;
+
+}
+
+

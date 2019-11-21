@@ -1,0 +1,36 @@
+<!--pages/storeApplys/storeApplys.wxml-->
+<view class="wrapper">
+
+  <view class="section">
+    <view class="box">
+      <view class="box_header with-padding with-border-bottom">
+        <text class="name">商品</text>
+        <text class="number">申请数量</text>
+        <text class="outNumber">出货数量</text>
+        <text class="outStatus">状态</text>
+      </view>
+      <view class="box_body with-padding">
+      <view class="ul">
+      <view class="li with-padding with-border-bottom {{applyArr.length == 1 || applyArr.length == index+1 ? 'is-last': ''}}" wx:for="{{applyArr}}">
+       <text class="name">{{item.ckGoodsEntity.goodsName}}</text>
+        <text class="number">{{item.applyNumber}}{{item.applyStandardname}}</text>
+
+        <text wx:if="{{item.applyStatus == 0}}" class="outNumber ">0</text>
+        <text wx:else class="outNumber ">{{item.stockRecordEntity.quantity}}{{item.ckGoodsEntity.purStandardName}}</text>
+          
+      <text wx:if="{{item.applyStatus == 0}}" class="outStatus"></text>
+        <text wx:elif="{{item.applyStatus == 1}}" class="outStatus">拣货中</text>
+        <text wx:else class="outStatus">拣货完成</text>
+      </view>
+      </view>
+      
+      
+
+      </view>
+
+    </view>
+
+  </view>
+
+
+</view>
