@@ -1,0 +1,73 @@
+<import src='../../template/car/car.wxml' />
+
+
+<!-- 
+  <swiper class="photoes"
+    indicator-dots="true" autoplay="true"
+  >
+    <swiper-item>
+      <image class="photoes-image" src="../../../../../images/1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image class="photoes-image" src="../../../../../images/2.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image class="photoes-image" src="../../../../../images/3.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image class="photoes-image" src="../../../../../images/4.jpg"></image>
+    </swiper-item>
+  
+  </swiper> -->
+
+<page>
+
+  <view class="try">
+    <view class="search">
+      <navigator url="/pagesCustomer/search/search">
+        <view class="search_content with-padding">
+          <text class="cate_name">{{fatherName}}</text>
+          <icon class="wx_icon" type="search" size="30" color="white"></icon>
+        </view>
+      </navigator>
+    </view>
+    <view class="father">      
+      <view class="one_goods"  wx:for="{{goodsList}}" bindtap="showGoodsPage" wx:for-item="item"  data-id="{{item.disGoodsId}}" data-name="{{item.nxGoodsEntity.nxGoodsName}}" data-index="{{index}}" data-type="{{item.dgGoodsSellType}}">
+      <!-- <view class="select_circle {{}}" style="width:50rpx; height:50rpx;line-height:50rpx;margin-left:{{(windowWidth - 230) / 3}}rpx;">{{item.dgGoodsOrderAmount}}{{item.dgGoodsSellStandardName}}</view> -->
+        <view class="goods_name {{item.isSelected ? 'is-active': ''}}">{{item.nxGoodsEntity.nxGoodsName}}</view>
+        <view class="goods_price">
+          <view class="money">¥</view>
+          <view class="big">{{item.dgGoodsPrice}}</view>
+          <view class="small">.{{item.dgGoodsPriceDecimal}}</view>
+          <view class="starndard">/{{item.nxGoodsEntity.nxGoodsStandardname}}</view>
+        </view>
+        <view class="options  {{item.isSelected ? 'hidden' : ''}}" data-index="{{index}}" data-name="{{item.nxGoodsEntity.nxGoodsName}}" data-id="{{item.nxGoodsEntity.nxGoodsId}}" data-item="{{item}}" data-standard="{{item.nxGoodsEntity.nxGoodsStandardname}}">
+          <view class="place">
+            <text class="place-words">{{item.nxGoodsEntity.nxGoodsDetail}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</page>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<addModal show="{{show}}" applyRemark="{{remarkContent}}" applyGoodsName="{{applyGoodsName}}" bindgetRemark="getRemark" bindconfirm="confirm" bindchangeStandard="changeStandard" applyGoodsId="{{applyGoodsId}}" item="{{item}}" applyStandardName="{{applyStandardName}}"
+/> -->
+
+
+<!-- 
+<carPage show="{{showCar}}" windowHeight="{{windowHeight}}" windowWidth="{{windowWidth}}" bindadd="add" bindreduce="reduce" carArr="{{applyArr}}" />
+
+<template is="car" data='{{applyArr:applyArr, applyNumber:applyNumber}}'></template> -->

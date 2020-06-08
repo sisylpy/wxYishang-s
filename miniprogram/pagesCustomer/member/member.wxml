@@ -1,0 +1,97 @@
+<!--pages/socket/socket.wxml-->
+
+
+<view class='mask' wx:if='{{show}}' style='{{widowHeight}}' catchtouchmove="move">
+<text wx:if='{{discountType == 1}}'>{{showMes.typeOne}}</text>
+<text wx:elif='{{discountType == 2}}'>{{showMes.typeTwo}}</text>
+<text wx:else>{{showMes.typeThree}}</text>
+
+</view>
+<view class="container" style="height: {{windowHeight}}rpx" >
+
+  <!-- card_begin -->
+  <view class="card">
+
+    <!-- -->
+    <view class="card_container" style="height: {{(windowWidth - windowWidth/5) * 0.618 }}rpx">
+
+      <view class="card_left">
+    
+        <!-- 1， logo_begin -->
+        <view class="logo">
+          <view class="super_name">华联超市</view>
+          <view class="area_name">熟食区</view>
+        </view>
+
+        <!--2， member_begin -->
+        <view class="member" bindtap="toMemberInfo">
+          <text>{{member.wxNickName}}</text>
+          <text>></text>
+        </view>
+
+        <!--3， points_begin -->
+        <view class="points">
+        <view class="points_total">
+        <text>累计积分</text>
+          <text>{{member.totalPoints}}</text>
+        </view>
+        <view bindtap="showMyRecords">查看积分详情 ></view>
+        
+        </view>
+      </view>
+    </view>
+  </view>
+
+ 
+
+<!-- part_two -->
+  <view class="discount">
+
+    <view class="discount_explain">日常特权</view>
+
+    <view class="discount_number">九折</view>
+    <view class="sendBtn" data-type="1" bindtap="memberBuying">
+    <text>现在购买</text>
+    </view>
+  </view>
+
+
+<!-- part_two -->
+  <view class="discount">
+
+    <view class="discount_explain">节假日特权</view>
+
+    <view class="discount_number">八五折</view>
+
+    <view wx:if='{{holidayDays > 0}}'>距离节日“国庆节”还有{{holidayDays}}天</view>
+    <view wx:else>节日快乐！</view>
+
+    <view class='sendBtn holidayBtn {{holidayDays == 0 ? "active": ""}}' data-type="2" bindtap= 'memberBuying'>
+    <text>现在购买</text>
+    </view>
+
+  </view>
+
+
+
+<!-- part_two -->
+  <view class="discount">
+
+    <view class="discount_explain">生日特权</view>
+
+    <view class="discount_number">免费礼物</view>
+
+    <view wx:if='{{member.birthday}}'>{{userInfo.birthday}}</view>
+    <view wx:else bindtap="toMemberInfo">请完善您的个人资料 ></view>
+    
+    <view class="sendBtn birthdayBtn" data-type="3" bindtap="memberBuying">
+    <text>立即领取</text>
+    </view>
+
+  </view>
+
+
+
+
+</view>
+

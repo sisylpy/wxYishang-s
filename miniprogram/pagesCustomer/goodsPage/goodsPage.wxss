@@ -1,0 +1,78 @@
+
+
+page{
+  background: #f5f4f49c;
+}
+
+
+.history {
+  background: rgb(239, 240, 240);
+  border-radius: 10rpx;
+  
+}
+
+.third_scroll {
+ 
+  overflow: hidden;
+  /* background: red; */
+  white-space: nowrap;
+ 
+  /* border-top: 1px solid rgba(220, 220, 220, 0.363); */
+}
+
+
+
+/* 订菜模版  */
+.fold{
+  background: #fff;
+}
+
+/* content */
+
+.wholePage{
+  /* padding: 0 80rpx; */
+    background: #fff;
+
+}
+.onePage{
+  /* background: yellow; */
+  margin-bottom: 20rpx;
+  
+}
+.one-img{
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  border: 1px solid rgba(211, 211, 211, 0.568);
+}
+
+.addModel{
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 20rpx;
+  background: rgba(231, 231, 231, 0.795);
+  font-size: 60rpx;
+  line-height: 150rpx;
+  text-align: center;
+}
+
+
+
+.text-weight-500{
+  font-weight: 500
+}
+
+.right{
+  position: absolute;
+  right: 0;
+ width: 100rpx;
+ font-size: 60rpx;
+ line-height: 60rpx;
+ text-align: center;
+ margin-right: 10rpx;
+
+}
+
+
+
+

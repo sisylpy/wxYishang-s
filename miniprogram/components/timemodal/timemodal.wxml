@@ -1,0 +1,16 @@
+<!--components/shareButton/mymodal.wxml-->
+<view class='mask' wx:if='{{show}}' catchtouchmove='ture' >
+  <view class='modal-content'>
+   <view class="flex-column">
+   <view>早上 8:00-10:00</view>
+      <view>中午 10:00-16:00</view>
+
+   <view>下午到晚上 16:00-21:00</view>
+
+   </view>
+
+   
+
+  </view>
+</view>
+

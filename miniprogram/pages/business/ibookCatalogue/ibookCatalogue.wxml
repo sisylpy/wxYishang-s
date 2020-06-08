@@ -1,0 +1,42 @@
+<view class="with-padding">
+
+  <view class="flex-column cata-fixed">
+    <text class="cata-index">{{index}}</text>
+    <view class="line"></view>
+    <view class="cata_fatherName" style="color: {{color}}">{{fatherName}}</view>
+  </view>
+
+  <view>
+    <!-- begin -->
+    <view class="cata-list">
+
+      <scroll-view scroll-y="true" style="height: {{windowHeight}}rpx;">
+
+
+        <view class="whole flex-column">
+          <view class="one" bindtap="clickFather" wx:for="{{goodsList}}" wx:for-item="one" data-id="{{one.nxGoodsId}}" data-fathername="{{one.nxGoodsName}}" data-img="{{one.nxGoodsFile}}"
+          data-color="{{color}}" data-sort="{{one.nxGoodsSort}}"
+          >
+
+            <image class="one-img" src="../{{one.nxGoodsFile}}"></image>
+
+            <view class="cata-words flex-column">
+              <text class="fatherName">{{one.nxGoodsName}}</text>
+              <view class="goodsName">
+                {{one.nxGoodsSubNames}}
+              </view>
+              <view class="showall" style="color: {{color}}">下载商品</view>
+            </view>
+
+
+          </view>
+        </view>
+
+      </scroll-view>
+    </view>
+
+
+    <!-- ./ -->
+  </view>
+
+</view>

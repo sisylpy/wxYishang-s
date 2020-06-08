@@ -1,0 +1,20 @@
+/* pages/business/catalogue/catalogue.wxss */
+
+.father{
+  /* background: #20afb8; */
+  border-bottom: 1px solid #e3e3e3;
+}
+.search-icon{
+  width: 40rpx;
+  height: 40rpx;
+  float: right;
+  margin-right: 20rpx;
+}
+
+.goods{
+  display: none;
+
+}
+.goods.is-active{
+  display: block;
+}

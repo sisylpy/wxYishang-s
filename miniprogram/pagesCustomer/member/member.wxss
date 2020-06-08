@@ -1,0 +1,151 @@
+/* pages/socket/socket.wxss */
+
+page {
+  background: rgb(245, 245, 245);
+}
+
+
+.mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 40rpx;
+  color: #fff;
+  font-size: 44rpx;
+  text-align: center;
+
+}
+.container {
+}
+
+.card {
+  width: 86%;
+  margin-left: 7%;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  /* background: red; */
+}
+
+.card_container {
+  width: 100%;
+  border-radius: 15rpx;
+  border: 1px solid rgb(228, 227, 227);
+  display: flex;
+  flex-flow: row nowrap;
+  background: #fff;
+
+}
+
+
+.card_left {
+  width: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  /* background: yellow; */
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+}
+
+.logo {
+  height: 30%;
+  /* background: paleturquoise; */
+}
+
+.super_name {
+  color: gray;
+  font-size: 30rpx;
+
+}
+
+.area_name {
+  font-size: 40rpx;
+}
+
+/* member */
+
+.member {
+ 
+  height: 30%;
+  /* background: green; */
+  margin: auto 0;
+}
+
+
+.points{
+  font-size: 30rpx;
+  /* background: blue; */
+  padding-bottom: 20rpx;
+
+
+}
+.points_total{
+  /* background: red; */
+
+}
+
+
+
+
+/*  */
+
+.discount{
+
+  width: 90%;
+  margin-left: 5%;
+  background: #fff;
+  border-radius: 10rpx;
+  /* height: 25%; */
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  padding: 40rpx 0;
+  
+}
+
+.discount_explain{
+
+  font-size: 30rpx;
+
+  
+}
+
+.discount_number {
+  font-size: 48rpx;
+  margin: 20rpx 0;
+
+}
+
+.sendBtn{
+  /* height: 30%; */
+  height: 80rpx;
+  width: 80%;
+  border: 1px solid gray;
+  border-radius: 50rpx;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rpx;
+
+  
+}
+
+.birthdayBtn, .holidayBtn{
+   visibility: hidden; 
+}
+.birthdayBtn.active{
+  visibility: visible
+}
+
+.holidayBtn.active{
+  visibility: visible
+
+}

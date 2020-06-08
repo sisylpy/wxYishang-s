@@ -1,0 +1,52 @@
+<template name="catalogue">
+
+  <view class="">
+
+    <scroll-view scroll-y="true" style="height: {{windowHeight}}rpx;">
+
+
+         <view class="whole" >
+     <view class="one" bindtap="clickFather" data-id="{{one.dfgGoodsFatherId}}" data-index="{{oneIndex}}"  wx:for="{{goodsList}}" wx:for-item="one">
+      <image class="one-img" src="{{one.dfgGoodsFatherImg}}"></image> 
+        <view class="goods_name with-padding"> 
+        <view class="cate_name">
+          <text class="cate_explain">种类:</text>
+          <text class="cate_content">{{one.dfgGoodsFatherName}}</text>
+        </view>
+         <view class="cate_name">
+          <text class="cate_explain">数量:</text>
+          <text class="cate_content">{{one.dfgGoodsAmount}}个</text>
+        </view>
+         <!-- <view class="cate_name">
+          <text>称重商品:</text>
+          <text class="margin-right"></text>
+        </view> -->
+
+        
+        </view>
+        
+
+     </view>
+
+   </view>
+
+       
+
+
+
+
+    </scroll-view>
+
+  </view>
+
+  <view class="goodsBtn flex-column-center" style="left:{{windowWidth - 150}}rpx">
+    <!-- <view class="btn">
+      <icon class="search_icon" type="search" size="30"></icon>
+    </view> -->
+    <view class="bigBtn" bindtap="toIbook">
+      <text>+</text>
+    </view>
+  </view>
+
+
+</template>

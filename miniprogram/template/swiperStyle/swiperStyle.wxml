@@ -1,0 +1,51 @@
+<view>
+
+
+  <!-- fragement -->
+  <view class=''>
+    <!-- fragement -->
+    <view class="fragement_customer">
+
+      <view class="fragement_item {{itemIndex == 0 ? 'active': ''}}">
+        <text class="">未拣货</text>
+      </view>
+      <view class="fragement_item {{itemIndex == 1 ? 'active': ''}}">
+        <text class="">拣货中</text>
+      </view>
+      <view class="fragement_item {{itemIndex == 2 ? 'active': ''}}">
+        <text class="">待付款</text>
+      </view>
+     
+
+    </view>
+    <!-- ./fragement_content -->
+  </view>
+  <!-- ./fragement -->
+
+  <swiper bindchange="switchTab" style="height: {{windowHeight - 80}}rpx;">
+
+    <swiper-item>
+      <view class="content-wrapper">
+        <!-- swiper -->
+
+        <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+
+        </scroll-view>
+
+      </view>
+    </swiper-item>
+
+  </swiper>
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

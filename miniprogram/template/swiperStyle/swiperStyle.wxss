@@ -1,0 +1,10 @@
+
+
+
+.fragement_customer{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  padding: 0 60rpx;
+  
+}

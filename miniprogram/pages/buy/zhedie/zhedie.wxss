@@ -1,0 +1,57 @@
+/* pages/zhedie00/zhedie00.wxss */
+
+.list_box{
+  background: #fff;
+
+}
+.list_name_box{
+  display: flex;
+  align-items: center;
+  /* font-size: 34rpx; */
+  /* color: #666; */
+}
+.list_parent_item_name{
+  flex:1;
+}
+.list_item_name{
+  flex: 1;
+  font-size: 40rpx;
+
+
+  
+}
+.icon_down{
+  width: 35rpx;
+  height:35rpx;
+  transition:transform  0.3s;
+}
+/* .list_item_box{
+  height: 0;
+  transition:height  0.3s;
+  overflow: hidden;
+}
+.list_item_box_show{
+  height: 500rpx;
+} */
+.list_item_name_box{
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.other{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  color: #666;
+}
+.icon_down_rotate{
+  transform:rotate(180deg);
+}
+
+
+.other_title{
+  margin-right: 10rpx;
+}
+.other_text{
+  margin-right: 10rpx;
+}

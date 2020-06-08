@@ -1,0 +1,55 @@
+<view class="purBack" style="height:{{windowHeight}}rpx; ">
+
+  <view class="content">
+
+<!-- {{windowHeight - 140}}rpx; -->
+    <scroll-view scroll-y="true" style="height: {{windowHeight-100}}rpx;">
+    <view>{{}}</view>
+
+      <view class="" wx:for="{{applyArr}}" wx:for-item="item">
+        <view class="flex-row-between with-lr-padding goods ">
+          <view class="flex-row index" bindtap="show" data-index="{{index}}">
+            <view class="index-number" wx:if='{{item.status == "1"}}'>{{index + 1}}</view>
+            <view class="index-number done" wx:else>
+              <image class="done-img" src="../../../images/duihao.png"></image>
+            </view>
+            <text>{{item.goodsName}}</text>
+            <view wx:if="{{item.status >= 2 }}">
+              <text wx:if='{{item.planPurchase != "0"}}'>:采购{{item.planPurchase}}</text>
+              <text wx:else>:订货{{item.todayQuantity}}{{item.purStandardName}}</text>
+            </view>
+          </view>
+        </view>
+
+
+
+
+        <view bindtap="finished" hover-class="finish" data-index="{{index}}" class='fold {{item.status === 2 ? "none": ""}}'>
+
+          <view class='orders-part plan-purchase {{item.status >=2 ? "finished" :""}}' wx:if='{{item.planPurchase !== "0"}}'>采购数量:{{item.planPurchase}}</view>
+
+          <view class='orders-title {{item.status >=2 ? "finished" :""}}' wx:if="{{item.ckApplysEntities.length > 0}}">共有{{item.ckApplysEntities.length}}家店订货</view>
+          <view class='orders-title {{item.status >=2 ? "finished" :""}}' wx:else>今天无订货</view>
+          <view class='items flex-row-wrap orders-part {{item.status >=2 ? "finished" :""}}'>
+            <view class='item-content   {{item.status >=2 ? "finished" :""}}' wx:for="{{item.ckApplysEntities}}" wx:for-item="applys">
+              <view>
+                {{applys.storeEntity.outLabel}}:{{applys.applyNumber}}{{item.applyStandardName}}
+              </view>
+            </view>
+          </view>
+
+        </view>
+
+
+
+
+      </view>
+    </scroll-view>
+
+  </view>
+
+
+
+
+
+</view>

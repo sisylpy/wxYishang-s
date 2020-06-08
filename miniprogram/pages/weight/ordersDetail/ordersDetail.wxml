@@ -1,0 +1,68 @@
+<!--pages/storeApplys/storeApplys.wxml-->
+<view class="customerApply" style="height:{{windowHeight}}rpx">
+
+  <view class="section">
+    <view class="flex-row with-padding with-border-bottom">
+      <text class="goods_name">商品</text>
+      <text class="order_number">订货</text>
+      <text class="weight">重量</text>
+    </view>
+    <view class="section_body">
+      <scroll-view scroll-y style="height:{{windowHeight - 280}}rpx">
+        <view class="flex-column with-border-bottom  with-padding" wx:for="{{applyArr}}">
+
+          <view class="flex-row">
+            <text class="goods_name">{{item.nxGoodsEntity.nxGoodsName}}({{item.nxGoodsEntity.nxGoodsStandardname}})</text>
+            <text class="order_number">{{item.nxOsQuantity}}{{item.nxOsStandard}}</text>
+            <view class="weight flex-row">
+              <input class="weightInput margin-l-right" type="digit" hold-keyboard="true" adjust-position="true" cursor="3" cursor-spacing="3" bindblur="getWeightValue"  data-index="{{index}}" value="{{item.nxOsWeight}}"/>
+              <text class="weightStandard">{{item.nxGoodsEntity.nxGoodsStandardname}} </text>
+            </view>
+
+          </view>
+
+          <view class="flex-row-between">
+            <view class="flex-column">
+              <text class="explain-words margin-right">单价: {{item.nxOsPrice}}/{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+              <text class="explain-words">详细: {{item.nxGoodsEntity.nxGoodsDetail}}</text>
+            </view>
+            <view wx:if="{{item.nxOsSubtotal !== null}}">
+              小计: {{item.nxOsSubtotal}}元
+            </view>
+             <view class="explain-words" wx:else> 小计: 暂无</view>
+          </view>
+
+        </view>
+      </scroll-view>
+
+      <view class="flex-column with-padding section_foot">
+        <view class="flex-row-between">
+          <!-- <text>商品: {{applyArr.length}} 个</text> -->
+          <!-- <text>总计: {{item.length}} 元</text> -->
+
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class="bottom_btn show" bindtap="saveWeight">
+    保存
+    <!--   
+    <view class="flex-row btn btn_one" bindtap="toInput" data-id="{{customer.nxOrdersId}}">
+      <image class="icon margin-right" src="../../../images/logo.jpg"></image>
+      <text class="small">录入数据</text>
+    </view>
+ <view class="flex-row btn btn_two">
+      <image class="icon margin-right" src="../../../images/logo.jpg"></image>
+      <text class="small">现金支付</text>
+    </view>
+    
+ <view class="flex-row btn btn_three">
+      <image class="icon margin-right" src="../../../images/logo.jpg"></image>
+      <text class="small">记账</text>
+    </view> -->
+  </view>
+
+
+</view>

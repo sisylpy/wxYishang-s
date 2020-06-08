@@ -1,0 +1,75 @@
+<!--components/shareButton/mymodal.wxml-->
+<view class='mask' wx:if='{{show}}' catchtouchmove='ture'>
+
+  <view class='modal-content'  style="{{window}}">
+
+    <view class="top">
+      青椒
+    </view>
+
+    <view class="body">
+
+      <view class="remark_content with-padding">
+        <text class="explain">商品详细</text>
+        <view class="remark1">
+          <text class="remarkTe=xt"> {{item.nxGoodsEntity.nxGoodsDetail}}</text>
+        </view>
+      </view>
+
+
+      <view class='goods_contents'>
+
+        <view class="price_content with-padding">
+          <text class="explain">今日单价</text>
+          <text>¥ {{item.dgGoodsPrice}}.{{item.dgGoodsPriceDecimal}}/{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+        </view>
+
+        <view class="number_content with-padding">
+          <text class="explain">订货数量</text>
+          <view class="number">
+            <view class="int">
+              <input class='inputint' focus='true' type='digit' value="{{applyNumber}}" bindinput="getApplyNumber" bindfocus="getKeyBoard"></input>
+            </view>
+            <text>{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+
+
+
+
+          </view>
+        </view>
+
+        <view class="standards_content with-padding">
+          <text class="explain">最小起订量</text>
+          <view class="select_content">
+            <text class="standardName is-active">{{item.dgGoodsMinWeight}}{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+
+            <!-- <text class="standardName {{applyStandardName == item.nxGoodsEntity.nxGoodsStandardname ? 'is-active' : ''}}" bindtap="changeStandard" data-name="斤">{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+          <text class="standardName {{applyStandardName == standard.nxStandardName ? 'is-active' : ''}}" bindtap="changeStandard" data-name="{{standard.nxStandardName}}" wx:for="{{item.dgStandardList}}"
+            wx:for-item="standard">{{standard.nxStandardName}}</text>
+             -->
+          </view>
+
+        </view>
+
+        <!-- <view class="remark_content with-padding">
+          <text class="explain">备注:</text>
+          <view  class="remark  {{showInput ? 'is-active' : ''}}" catchtap="remark">
+             <text class="remarkText"> {{remarkContent}}</text>
+          </view>
+        </view> -->
+
+
+      </view>
+
+      <view class='btn-wrapper'>
+        <view class="btn_row">
+          <text class='cancel-btn' bindtap="cancle">取消</text>
+          <text class='confirm-btn' catchtap='confirm'>确定</text>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+</view>
+

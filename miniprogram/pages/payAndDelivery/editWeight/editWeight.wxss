@@ -1,0 +1,30 @@
+
+.key-board {
+  position: fixed;
+  bottom: 0;
+}
+
+.key-row {
+  /* width: 100%; */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.col-4 {
+  height: 140rpx;
+  width: 100%;
+  line-height: 140rpx;
+  text-align: center;
+  background: #fff;
+  margin: 2rpx;
+}
+
+.col-8 {
+  height: 280rpx;
+  width: 100%;
+  line-height: 280rpx;
+  text-align: center;
+  background: #fff;
+  margin: 2rpx;
+}

@@ -1,0 +1,27 @@
+<template name="orderCar">
+  <view class="order_list {{applyArr.length > 0 ? 'is-active' : ''}}">
+    <view class="order_list_content">
+     
+      <view class="car">
+        <!-- <view  class="dot">{{applyNumber}}</view> -->
+        <!-- <image class="gouwuche" src="/images/gouwuche.png"></image> -->
+        <view class="order_content">
+        <text class="weighTime">订单金额25元以上免费送货</text>
+
+          <view class="" wx:for="{{applyArr}}" wx:item="item">
+            <!-- <text class="order_goods">{{item.applyGoodsName}} {{item.applyNumber}}{{item.applyStandardName}}, </text> -->
+          
+          </view>
+        </view>
+      </view>
+
+      <navigator url="/pagesCustomer/weigh/weigh">
+        <view class="order_send">
+          确认发送
+        </view>
+      </navigator>
+    </view>
+
+
+  </view>
+</template>

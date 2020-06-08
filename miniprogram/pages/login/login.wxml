@@ -1,0 +1,38 @@
+<view class='container'>
+
+  <view class='top'>
+    <view class='log'>
+      <image class='log_img' src='../../images/bilogo.png'></image>
+    </view>
+    <view class='word'>登录Class Notes</view>
+
+    <view class='what'>
+
+      <input  class='input {{studentInfo.wxAvatarUrl ? "is-active" : ""}}' type='number' placeholder='手机号码' name='phone'  value='{{phone}}' bindinput='phone' ></input>
+      <image class='user_face {{studentInfo.wxAvatarUrl ? "is-active" : ""}}'
+      src='{{studentInfo.wxAvatarUrl}}'
+      ></image>
+ <view wx:if='{{loginFailure == 1}}' class='tishi  {{loginFailure == 1 ? "is-active" : ""}}'>请老师先帮助您注册。</view>   
+ <view wx:elif='{{loginFailure == 2}}' class='tishi  {{loginFailure == 2 ? "is-active" : ""}}'>请老师添加课堂内容，再登录。</view> 
+  </view>
+  </view>
+
+  
+
+<!-- 登录按钮 -->
+  <view class='btns'>
+  
+    <button class='log_btn stu_btn' bindtap='studentLogin'>Student Login</button>
+  </view>
+
+  <view class='teacher_enter' >
+  <button class='teacher_btn' open-type='getUserInfo'  hover-class='teacherLogin' bindgetuserinfo='getUserInfo' plain='true'>Teacher Login</button>
+  </view>
+
+
+
+
+
+
+
+</view>

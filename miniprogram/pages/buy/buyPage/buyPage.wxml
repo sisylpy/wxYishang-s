@@ -1,0 +1,140 @@
+<!--pages/zhedie00/zhedie00.wxml-->
+
+<view>
+
+
+  <!-- fragement -->
+  <view class=''>
+    <!-- fragement -->
+    <view class="fragement_customer">
+
+      <view class="fragement_item {{itemIndex == 0 ? 'active': ''}}">
+        <text class="">进货计划</text>
+      </view>
+      <view class="fragement_item {{itemIndex == 1 ? 'active': ''}}">
+        <text class="">进货</text>
+      </view>
+      <view class="fragement_item {{itemIndex == 2 ? 'active': ''}}">
+        <text class="">进货中</text>
+      </view>
+
+
+    </view>
+    <!-- ./fragement_content -->
+  </view>
+  <!-- ./fragement -->
+
+  <swiper bindchange="switchTab" style="height: {{windowHeight - 80}}rpx;">
+
+    <swiper-item>
+      <view class="content-wrapper">
+        <!-- swiper -->
+
+        <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+
+          <view class="with-padding">
+
+            <view class='with-tb-padding with-border-bottom {{parentIndex == list.length  - 1 ? "is-last":""}}' wx:for='{{listNew}}' wx:key='this' wx:for-item='parentItem'>
+              <view class='flex-column'>
+                <text class='middle'>{{parentItem.fatherName}}</text>
+                <view class='flex-column with-padding with-border-bottom {{index == parentItem.goodsList.length - 1 ? "is-last":"" }}' wx:for='{{parentItem.goodsList}}' wx:for-item="item" wx:for-index='index' wx:key='this' hover-class="hover" bindtap="planPurchase" data-item="{{item}}">
+                  <view class="flex-row">
+                    <text class="buy-goods normal">{{item.goodsName}}</text>
+                    <text class="buy-words small" wx:if="{{item.purchase !== null}}">进货数量: {{item.purchase}}</text>
+                    <text class="buy-words explain-words" wx:else>进货数量: 0</text>
+                  </view>
+                  <view class="flex-row">
+                    <!-- <text class="margin-l-right explain-words">订货数量:</text> -->
+                    <view class="" wx:for="{{item.subList}}" wx:for-item="sub" wx:for-index="subIndex">
+                      <text class='small  margin-l-right with-tb-padding' wx:if="{{subIndex == item.subList.length -1 }}">{{sub.nxOsQuantity}}{{sub.nxOsStandard}}{{sub.nxOsRemard}}</text>
+                      <text class='small  margin-l-right with-tb-padding' wx:else>{{sub.nxOsQuantity}}{{sub.nxOsStandard}}{{sub.nxOsRemard}},</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+
+      </view>
+    </swiper-item>
+
+    <!-- swiper-item-1 -->
+    <swiper-item>
+
+
+      <view class="btn_group flex-row-around with-padding">
+        <view class="btn_item flex-column-center" hover-class="hover">
+          <image class="icon" src="../../../images/duihao.png"></image>
+          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 4 }}rpx">打印</button>
+        </view>
+
+        <view class="btn_item flex-column-center " hover-class="hover">
+          <image class="icon" src="../../../images/del.png"></image>
+          <button class="shareBtn with-tb-padding" open-type="share" style="width:{{windowWidth/ 4 }}rpx">
+            图片
+          </button>
+        </view>
+        <view class="btn_item flex-column-center" bindtap="toPurchaseBoy" hover-class="hover">
+          <image class="icon" src="../../../images/location.png"></image>
+          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 4 }}rpx">市场采购</button>
+        </view>
+        <view class="btn_item flex-column-center" hover-class="hover">
+          <image class="icon" src="../../../images/location.png"></image>
+          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 4 }}rpx">App订货</button>
+        </view>
+      </view>
+
+
+      <view class="content-wrapper">
+        <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+          <view class='with-tb-padding with-border-bottom {{parentIndex == list.length  - 1 ? "is-last":""}}' wx:for='{{listPlan}}' wx:key='this' wx:for-item='parentItem' wx:for-index="parentIndex">
+
+
+            <view class='flex-column'>
+              <view class='flex-column with-padding with-border-bottom {{index == parentItem.goodsList.length - 1 ? "is-last":"" }}' wx:for='{{parentItem.goodsList}}' wx:for-item="item" wx:for-index='index' wx:key='this' hover-class="hover" bindtap="selectPurchaseGoods"
+                data-index="{{index}}" data-parent_index="{{parentIndex}}">
+                <view class=" flex-row">
+                  <view class="">
+                    <text class="margin-right index {{item.isSelected ? 'hide' : ''}}">{{index + 1}}</text>
+                    <view class="margin-right circle {{item.isSelected ? 'show' : ''}}">v
+                      <!-- <image class="circle-image" src="/images/logo.jpg"></image> -->
+                    </view>
+                  </view>
+                  <view>
+                    <view class="flex-row-between">
+                      <text class="margin-right">{{item.goodsName}}</text>
+                      <text class="margin-l-right">{{item.purchase}}</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+
+      </view>
+      <!-- <view class="bottom_btn  {{purchaseGoodsAmount > 0 ?'show' : ''}}" bindtap="assignUnDeliveryOrder">
+          已选择进货商品{{purchaseGoodsAmount}}个
+        </view> -->
+    </swiper-item>
+
+
+
+  </swiper>
+
+
+
+
+
+
+
+
+
+
+
+
+</view>
+
+
+<planPurchase show="{{showPlan}}" item="{{item}}" bindconfirm="savePlan" />

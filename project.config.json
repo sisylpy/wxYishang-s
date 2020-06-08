@@ -19,11 +19,14 @@
 			"outputPath": ""
 		}
 	},
-	"appid": "wxbc686226ccc443f1",
-	"projectname": "YiShang",
-	"libVersion": "2.9.3",
+	"appid": "wx87baf9dcf935518a",
+	"projectname": "YiShang-s",
+	"libVersion": "2.9.2",
 	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"simulatorPluginLibVersion": {
+		"qywx_simulator_plugin": "1.2.0"
+	},
+	"compileType": "miniprogram",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -48,7 +51,7 @@
 			"current": -1,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",
@@ -56,22 +59,169 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/order/enterOutStock/enterOutStock",
-					"pathName": "pages/order/enterOutStock/enterOutStock",
+					"name": "pagesCustomer/index/index",
+					"pathName": "pagesCustomer/index/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/order/store/store",
-					"pathName": "pages/order/store/store",
+					"name": "pages/payAndDelivery/ordersList/ordersList",
+					"pathName": "pages/payAndDelivery/ordersList/ordersList",
+					"query": "disId=1",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/payAndDelivery/paymentPage/paymentPage",
+					"pathName": "pages/payAndDelivery/paymentPage/paymentPage",
+					"query": "nxOrdersId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pick/weightOrder/weightOrder",
+					"pathName": "pages/pick/weightOrder/weightOrder",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/order/goods/goods",
-					"pathName": "pages/order/goods/goods",
+					"name": "pagesCustomer/sign/sign",
+					"pathName": "pagesCustomer/sign/sign",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/member/member",
+					"pathName": "pagesCustomer/member/member",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/register/register",
+					"pathName": "pagesCustomer/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/oftenOrder/oftenOrder",
+					"pathName": "pagesCustomer/oftenOrder/oftenOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/allOrders/allOrders",
+					"pathName": "pagesCustomer/allOrders/allOrders",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pur/purGoods/purGoods",
+					"pathName": "pages/pur/purGoods/purGoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/prepare/goods/goods",
+					"pathName": "pages/prepare/goods/goods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/payAndDelivery/deliveryBoyOrders/deliveryBoyOrders",
+					"pathName": "pages/payAndDelivery/deliveryBoyOrders/deliveryBoyOrders",
+					"query": "deliveryUserId=1",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "pages/buy/buyPage/buyPage",
+					"pathName": "pages/buy/buyPage/buyPage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/buy/purchaseGoods/purchaseGoods",
+					"pathName": "pages/buy/purchaseGoods/purchaseGoods",
+					"query": "purchaseUserId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/goodsPage/goodsPage",
+					"pathName": "pagesCustomer/goodsPage/goodsPage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "pagesCustomer/goodsPageDetail/goodsPageDetail",
+					"pathName": "pagesCustomer/goodsPageDetail/goodsPageDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/goodsMenu/goodsMenu",
+					"pathName": "pagesCustomer/goodsMenu/goodsMenu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/signTejia/signTejia",
+					"pathName": "pagesCustomer/signTejia/signTejia",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/addTemplateItem/addTemplateItem",
+					"pathName": "pagesCustomer/addTemplateItem/addTemplateItem",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 21,
+					"name": "pagesCustomer/ordersDetailPage/ordersDetailPage",
+					"pathName": "pagesCustomer/ordersDetailPage/ordersDetailPage",
+					"query": "nxOrdersId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/caidiPage/caidiPage",
+					"pathName": "pagesCustomer/caidiPage/caidiPage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesCustomer/userPage/userPage",
+					"pathName": "pagesCustomer/userPage/userPage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/business/ibookCatalogue/ibookCatalogue",
+					"pathName": "pages/business/ibookCatalogue/ibookCatalogue",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/business/newModelPage/newModelPage",
+					"pathName": "pages/business/newModelPage/newModelPage",
+					"query": "",
 					"scene": null
 				}
 			]

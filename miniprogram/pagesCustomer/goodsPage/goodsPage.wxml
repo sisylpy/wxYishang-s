@@ -1,0 +1,165 @@
+<view class="">
+
+
+
+  <!-- nav -->
+  <view class="margin_l_bottom">
+    <!-- 商品 -->
+    <view class=' with-border-bottom with-padding whiteBack' bindtap="toPurchase" hover-class="hover">
+      <image class="icon margin-right " src="../../images/logo.jpg"></image>
+      <text class="">收货地址</text>
+    </view>
+
+    <!-- 店铺 -->
+    <view class='with-padding with-border-bottom whiteBack' bindtap="toWeightOrder" hover-class="hover">
+      <image class="icon margin-right" src="../../images/logo.jpg"></image>
+      <text class="">统计分析</text>
+    </view>
+
+    <view class='with-padding whiteBack' bindtap="toPayAndDeliverOrder" hover-class="hover">
+      <image class="icon margin-right" src="../../images/logo.jpg"></image>
+      <text class="">家庭成员</text>
+    </view>
+
+  </view>
+  <!-- ./nav -->
+
+  <!-- zuijinmaiguo -->
+
+  <scroll-view sroll-x="true">
+
+    <!-- 我喜爱的 -->
+    <view class="fold">
+      <view class="with-padding">
+        <text class="text-lg text-weight-500">最近买过</text>
+      </view>
+
+    </view>
+
+
+    <view class="fold with-padding">
+
+      <scroll-view scroll-x="true" class="third_scroll" >
+      
+      
+      <view class="flex-row">
+      <view class="history flex-column with-padding margin-right">
+          <view class="date middle">4月15日</view>
+          <view class="normal">星期三</view>
+          <view class="small">下午18:00送达</view>
+       </view>
+
+
+<view class="history flex-column with-padding margin-right">
+          <view class="date middle">4月15日</view>
+          <view class="normal">星期三</view>
+          <view class="small">下午18:00送达</view>
+       </view>
+
+       <view class="history flex-column with-padding margin-right">
+          <view class="date middle">4月15日</view>
+          <view class="normal">星期三</view>
+          <view class="small">下午18:00送达</view>
+       </view>
+
+       <view class="history flex-column with-padding margin-right">
+          <view class="date middle">4月15日</view>
+          <view class="normal">星期三</view>
+          <view class="small">下午18:00送达</view>
+       </view>
+
+       <view class="history flex-column with-padding margin-right">
+          <view class="date middle">4月15日</view>
+          <view class="normal">星期三</view>
+          <view class="small">下午18:00送达</view>
+       </view>
+
+       <view class="history flex-column with-padding margin-right">
+          <view class="date middle">4月15日</view>
+          <view class="normal">星期三</view>
+          <view class="small">下午18:00送达</view>
+       </view>
+
+      </view>
+      
+      
+
+
+      
+      </scroll-view>
+
+       
+       
+
+      <!--  -->
+
+    </view>
+    <!-- ./我喜爱的 -->
+  </scroll-view>
+
+
+  <!-- ./zuijinmaiguo -->
+
+  <scroll-view scroll-y="true" style="height: {{windowHeight - 380}}rpx;">
+    <view class="box">
+      <!--  创建的模版 -->
+      <view class="fold flex-row-between">
+        <view class="apply-total with-padding flex-row" bindtap="clickShowWeighUser" hover-class="hover">
+          <!-- <image class="icon margin-right" src="../../images/order.jpg" mode="aspectFit" animation="{{pickAnimation}}"></image> -->
+          <text class="text-lg text-weight-500">订菜模版</text>
+          <!-- <text class="text-sm">({{weighUserArr.length}})</text> -->
+        </view>
+        <view class="text-lg right text-weight-500" bindtap="addPickFirstStep" hover-class="hover">:</view>
+      </view>
+
+      <view class="{{showWeighUser ? 'active' : ''}}">
+        <!--  -->
+        <view class="wholePage flex-column with-padding">
+          <view class="onePage flex-row" bindtap="toMyGoodsDetail" wx:for="{{templateArr}}" wx:for-item="one" data-id="{{one.nxOrderTemplateId}}">
+            <image class="one-img" src="{{url + one.nxOdFilePath}}"></image>
+            <view class="goods_name  with-padding">
+              <view class="cate_name flex-column">
+                <text class="cate_content">{{one.nxOdName}}</text>
+                <text class="explain-words">{{one.nxOdItemAmount}}</text>
+              </view>
+            </view>
+          </view>
+
+
+
+          <navigator url="../newModelPage/newModelPage">
+            <view class="onePage flex-row">
+              <view class="addModel">
+                +
+              </view>
+              <view class="goods_name with-padding">
+                <text class="cate_content">添加模版</text>
+              </view>
+            </view>
+
+          </navigator>
+
+
+
+        </view>
+        <!--  -->
+
+      </view>
+      <!-- ./模版 -->
+
+
+
+    </view>
+
+
+
+
+
+
+
+
+
+
+  </scroll-view>
+
+</view>

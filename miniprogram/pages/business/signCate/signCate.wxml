@@ -1,0 +1,11 @@
+<!--pages/business/signCate/signCate.wxml-->
+<view>
+
+   <view class="whole">
+     <view class="one" wx:for="{{goodsList}}" wx:item="item">
+      <image class="one-img" src="../../../images/1.jpg"></image> 
+      <view> {{item.nxGoodsName}}</view>
+     </view>
+   </view>
+
+</view>

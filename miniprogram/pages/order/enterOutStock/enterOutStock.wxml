@@ -2,35 +2,48 @@
   <view class='main'>
     <!-- main -->
     <view class='content_view'>
+
       <!--  一个商品 -->
-      <view class='colum_1' wx:for="{{goodsArr}}" wx:for-index="index">
+      <view class='colum_1' wx:for="{{goodsArr}}" wx:for-index="index" >
+
+<view wx:for="{{item.nxOrdersSubEntities}}" wx:for-item="goods">
+
+
         <!-- goodsName -->
         <view class='columBack' bindtap='clickGoods' data-goodsindex='{{index}}'>
           <view class='num' style='display:{{item.finished ? "none" : "block"}};'>{{index + 1}}</view>
-          <view class='numSel' style='display:{{item.finished ? "block" : "none"}};'>{{index + 1}}</view>
-          <label class='num_title'>{{item.goodsName}}</label>
-          <label wx:if="{{firstFinished}}" class='num_title'>{{item.totalNumber}} {{item.applyStandardName}}</label>
+          <view class='numSel'>{{index + 1}}</view>
+          <label  class='num_title'>{{goods.nxGoodsEntity.nxGoodsName}} {{goods.nxOsQuantity}}</label>
         </view>
         <!-- ./goodsName -->
 
-        <!-- goods-applys -->
-        <view class='bigBack_content {{item.finished ? "active" : ""}}'>
-          <view wx:for="{{item.applys}}" wx:for-item="apply" wx:for-index="applyIndex" wx:key="" class="whole-line with-padding">
-            <view class="row">{{apply.storeEntity.printLabel}}{{apply.applyNumber}}{{apply.applyStandardname}}</view>
 
- <input class="enterInput"  data-applyid="{{apply.applyId}}" value='{{apply.stockRecordEntity.quantity}}' confirm-hold='true'  data-goodsindex="{{index}}"  data-applyindex="{{applyIndex}}" 
+
+<input class="enterInput"  data-applyid="{{apply.applyId}}" value='{{apply.stockRecordEntity.quantity}}' confirm-hold='true'  data-goodsindex="{{index}}"  data-applyindex="{{applyIndex}}" 
  data-applyamount="{{item.applys.length}}"
            focus='{{apply.onFocus}}'
             confirm-type="{{index == goodsArr.length - 1 && applyIndex == item.applys.length -1 ? 'send' : 'next'}}" 
             bindconfirm="{{index == goodsArr.length - 1 && applyIndex == item.applys.length -1 ? 'claseKeyboard' : 'confirmToNext'}}" 
              bindblur="togetQuantity">
   </input>
+
+
+        <!-- goods-applys -->
+        <view class='bigBack_content {{item.finished ? "active" : ""}}'>
+          <view wx:for="{{goods.applys}}" wx:for-item="apply" wx:for-index="applyIndex" wx:key="" class="whole-line with-padding">
+            <view class="row">{{apply.storeEntity.printLabel}}{{apply.applyNumber}}{{apply.applyStandardname}}</view>
+
+ 
            
             <view class="grow-1">{{item.purStandardName}}</view>
           </view>
         </view>
         <!-- ./1.content -->
       </view>
+
+
+
+</view>
       <!-- ./一个商品 -->
 
 

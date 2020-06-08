@@ -1,0 +1,25 @@
+
+<view class="">
+
+  <view class="flex-column with-padding with-border-bottom  {{index == orderArr.length - 1 ? 'is-last' : '' }} " wx:for="{{orderArr}}" bindtap='customerApplys' id="{{item.nxOrdersId}}">
+    <!-- content -->
+    <view class="">
+      <text class=''>{{item.nxCustomerEntity.nxCommunityEntity.nxCommunityName}}{{item.nxCustomerEntity.nxCustomerName}} {{item.nxCustomerEntity.nxCustomerAddress}}</text>
+    </view>
+    <view class="flex-row-between">
+      <text class="explain-words margin-right">商品:{{item.nxOrdersSubAmount}}个</text>
+      <text class="explain-words">已称重:{{item.nxOrdersSubFinished}}个</text>
+    </view>
+  </view>
+
+
+
+
+
+
+
+
+
+
+
+</view>

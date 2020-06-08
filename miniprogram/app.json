@@ -1,22 +1,86 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/order/goodsTable/goodsTable",
-    "pages/order/store/store",
-    "pages/order/storeApplys/storeApplys",
-    "pages/order/enterOutStock/enterOutStock",
-    "pages/order/outBill/outBill",
-    "pages/order/addPickFirstStep/addPickFirstStep",
-    "pages/order/addPickSecondStep/addPickSecondStep",
-    "pages/order/goods/goods"
+   "pages/index/index",
+        
+   "pagesCustomer/index/index",      
+
+    "pages/pur/purGoods/purGoods",
+    
+    "pages/buy/buyPage/buyPage",     
+    "pages/buy/purchaseGoods/purchaseGoods",     
+    "pages/buy/sharePage/sharePage",
+
+    "pages/pick/weightOrder/weightOrder",
+    "pages/no/addPickFirstStep/addPickFirstStep",
+    "pages/pick/picker/picker",
+
+    "pages/weight/weighingOrders/weighingOrders",
+    "pages/weight/ordersDetail/ordersDetail",
+    "pages/payAndDelivery/ordersList/ordersList",
+    "pages/payAndDelivery/paymentPage/paymentPage",
+    "pages/payAndDelivery/deliveryBoy/deliveryBoy",
+    
+
+        
+    "pages/payAndDelivery/editWeight/editWeight",
+        
+    "pages/business/ibookCatalogue/ibookCatalogue",
+    "pages/business/ibookCover/ibookCover",
+    "pages/business/ibookGoods/ibookGoods",
+    "pages/business/ibookmain/ibookmain",
+    "pages/business/disGoods/disGoods",
+    "pages/business/signCate/signCate",
+    "pages/business/newModelPage/newModelPage",
+    
+
+    "pagesCustomer/newModelPage/newModelPage",
+    
+    "pagesCustomer/rankGoods/rankGoods",
+        
+    "pagesCustomer/goodsPage/goodsPage",
+    "pagesCustomer/goodsPageDetail/goodsPageDetail",    
+    "pagesCustomer/goodsMenu/goodsMenu",
+    "pagesCustomer/order/order",
+    "pagesCustomer/allOrders/allOrders",  
+    "pagesCustomer/ordersDetailPage/ordersDetailPage",        
+    "pagesCustomer/caidiPage/caidiPage",
+    "pagesCustomer/userPage/userPage",
+    "pagesCustomer/zeroGoodsPage/zeroGoodsPage",
+    "pagesCustomer/oneGoodsPage/oneGoodsPage",
+    
+    "pagesCustomer/sign/sign",
+    "pagesCustomer/signTejia/signTejia",
+    "pagesCustomer/addTemplateItem/addTemplateItem",
+        
+        
+    "pagesCustomer/oftenOrder/oftenOrder",
+    "pagesCustomer/weigh/weigh",
+    "pagesCustomer/search/search",
+    "pagesCustomer/register/register",
+    "pagesCustomer/member/member",
+    "pagesCustomer/memberApply/memberApply",
+    "pagesCustomer/customerInfo/customerInfo",
+    "pagesCustomer/memberInfo/memberInfo",
+    "pagesCustomer/wx/wx",
+    "pages/customer/addCustomer/addCustomer",
+    "pages/customer/addCustomer2/addCustomer2",
+    "pages/customer/addCustomer3/addCustomer3",
+    "pages/customer/addCustomer4/addCustomer4",
+    "pages/customer/addCustomer5/addCustomer5",
+    "pages/customer/serviceTime/serviceTime"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "菜递",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于定位效果展示"
+    }
+  }
 }

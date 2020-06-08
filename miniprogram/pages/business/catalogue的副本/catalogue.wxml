@@ -1,0 +1,42 @@
+<view>
+
+  <view class="flex-column">
+    <!-- <text style="font-size:60rpx;color:#20afb8" class="with-lr-padding">{{item.nxGoodsName}}</text> -->
+    <view class="with-padding father" wx:for="{{goodsList}}" wx:for-item="one" wx:for-index="oneIndex">
+      <view class="flex-row-between"  bindtap="clickFather" data-index="{{oneIndex}}">
+        <view>
+          <text style="font-size:30rpx;" class="with-lr-padding">{{one.nxGoodsName}}</text>
+        </view>
+        <view>
+        </view>
+
+      </view>
+      <view class="goods {{showIndex == oneIndex ? 'is-active' : ''}}">
+
+        <view class="with-tb-padding  with-border-bottom" wx:for="{{one.nxGoodsEntityList}}" wx:for-item="fatherGoods">
+          <view class="flex-row-between ">
+            <view>
+              <text>{{fatherGoods.nxGoodsName}}</text>
+            </view>
+            <view bindtap="downSave" data-id="{{fatherGoods.nxGoodsId}}">
+              <image class="icon" src="/images/download.png"></image>
+
+            </view>
+
+
+            
+          </view>
+
+          <view>
+            <text>规格:</text>
+            <text>{{fatherGoods.nxGoodsStandardname}}</text>
+          </view>
+
+        </view>
+
+
+      </view>
+    </view>
+  </view>
+
+</view>

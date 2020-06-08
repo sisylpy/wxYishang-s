@@ -1,0 +1,35 @@
+
+
+<view class="wrapper">
+
+  <view class="whiteBack margin_bottom">
+    <view class="with-padding with-border-bottom   {{applyArr.length -1 == index ? 'is-last':'' }}" wx:for="{{applyArr}}" wx:item="item">
+      <text class="margin-right">{{index + 1}}</text>
+      <text>{{item.applyGoodsName}}  </text>
+      <text>{{item.applyPrice}}/{{item.goodsStandard}}  </text>
+      <text>{{item.applyNumber}}.{{item.applyDecimal}}</text>
+      <text>{{item.applyStandardName}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="orderCar flex-row-between"> 
+ <view class='button_item'>
+ <button  bindtap="gorRunnerLobby">aaaaa</button>
+  <!-- <form class="form_item" bindsubmit='gorRunnerLobby2' report-submit='true' data-type="1">
+   <button class="button" form-type='submit'>
+    <text>抢单大厅</text>
+    <text class='runner_desc'>(兼职也可月入万元)</text>
+   </button>
+  </form> -->
+  <view class='right_arrow' />
+
+  <button bindtap="send">send</button>
+ </view>
+<view>
+
+</view>
+
+
+</view>
+

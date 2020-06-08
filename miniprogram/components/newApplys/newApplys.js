@@ -1,11 +1,5 @@
 // components/newApplys/newApplys.js
-const globalData = getApp().globalData;
-import { changeApplysToMarketPurchase } from '../../lib/apiOrder.js'
-var load = require('../../lib/load.js');
 
-var _animation; // 动画实体
-
-const _ANIMATION_TIME = 300; // 动画播放一次的时长ms
 
 Component({
   /**

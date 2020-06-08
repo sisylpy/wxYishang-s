@@ -1,0 +1,10 @@
+
+<view class="section flex-column-center margin_bottom with-padding">
+
+   <image class="logo" src="../../images/logo.jpg"></image>
+   <view class="flex-column-center with-tb-padding">
+      <text class="smallBlack with-l-margin-bottom">悦榕湾服务点</text>
+       <text class="smallBlack with-l-margin-bottom">地点 15号楼1单元105室</text>
+     <text class="smallBlack">电话 13910825707</text>
+   </view>
+</view>

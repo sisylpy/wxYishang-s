@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+        "carPage": "/components/carPage/carPage"
+  }
+}

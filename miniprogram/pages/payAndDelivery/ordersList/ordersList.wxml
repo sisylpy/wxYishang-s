@@ -1,0 +1,159 @@
+<view class="wrapper">
+
+  <!-- fragement -->
+  <view class='fragement'>
+    <!-- fragement -->
+    <view class="fragement_content">
+      <view class='fragement_item' bindtap="swichNav" data-current="0">
+        <text class="{{itemIndex == 0 ? 'active': ''}}">未付款</text>
+      </view>
+
+      <view class='fragement_item' bindtap="swichNav" data-current="1">
+        <text class="{{itemIndex == 1 ? 'active': ''}}">付款中</text>
+      </view>
+      <view class='fragement_item' bindtap="swichNav" data-current="2">
+        <text class="{{itemIndex == 2 ? 'active': ''}}">未配送</text>
+      </view>
+      <view class='fragement_item' bindtap="swichNav" data-current="2">
+        <text class="{{itemIndex == 3 ? 'active': ''}}">配送中</text>
+      </view>
+
+    </view>
+    <!-- ./fragement_content -->
+  </view>
+  <!-- ./fragement -->
+
+
+
+  <view class="content-wrapper fix-wrapper">
+
+    <swiper bindchange="switchTab" current="{{itemIndex}}" style="height: {{windowHeight - 80}}rpx;">
+
+      <!-- zero -->
+      <swiper-item>
+        <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+
+          <view class='flex-row with-border-bottom with-padding {{index == unPaymentArr.length - 1 ? "is-last" : ""}}  normal' wx:for="{{unPaymentArr}}" wx:for-item="item" hover-class="hover" bindtap="toPaymentPage" data-id="{{item.nxOrdersId}}">
+            <text class="margin-right">{{index + 1}},</text>
+            <view class="flex-column " style="width:{{windowWidth - 100}}rpx;">
+              <text class="">送达时间:{{item.nxOrdersServiceDate}} {{item.nxOrdersServiceTime}}</text>
+
+              <text>{{item.nxOrdersCommunity}} {{item.nxOrdersCommunityBuilding}}</text>
+              <text>订单金额: {{item.nxOrdersAmount}}元</text>
+              <!-- <text class="small">下单时间:{{item.nxOrdersDate}}</text> -->
+
+            </view>
+            <image class="icon icon-to" src="../../../images/logo.jpg"></image>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!-- ./zero -->
+
+      <!-- one -->
+      <swiper-item>
+        <view class="content-wrapper">
+          <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+
+            <view class="with-padding with-border-bottom {{index == isPaymentArr.length - 1 ? 'is-last' : ''}}" wx:for="{{isPaymentArr}}" wx:for-item="item" hover-class="hover" bindtap="choiceisPayingOrder" data-index="{{index}}">
+              <view class="flex-row margin-bottom">
+                <text>{{item.nxOrdersCommunity}}{{item.nxOrdersCommunityBuilding}}{{item.nxOrdersCommunityRoom}}</text>
+              </view>
+              <view class="flex-row-between">
+                <text>下单:{{item.nxOrdersDate}}</text>
+              </view>
+
+              <view class=" flex-column with-tb-padding">
+
+                <view class="face">
+                  <view>
+                    <!-- <image class="url margin-right" src="{{item.nxCustomerUserEntity.cuWxAvatarUrl}}"></image> -->
+                    <text>联系人: {{item.nxCustomerEntity.nxCustomerUserEntity.cuWxNickName}}</text>
+                    <text wx:if="{{item.nxCustomerEntity.nxCustomerUserEntity.cuWxGender == 1}}">先生</text>
+                    <text wx:if="{{item.nxCustomerEntity.nxCustomerUserEntity.cuWxGender == 2}}">女士</text>
+                  </view>
+                  <view class="flex-column">
+                    <text class="margin-l-right">手机: {{item.nxCustomerEntity.nxCustomerPhone}}</text>
+                     <view class="flex-row-between">
+                       <text class="margin-right">通知付款: {{item.nxOrdersPaymentSendTime}}</text>
+                       <text>已通知:45分钟</text>
+                     </view>
+                     <view class="flex-row-between">
+                      <text class="margin-right">送达时间: {{item.nxOrdersServiceDate}}日 {{item.nxOrdersServiceTime}}</text>
+                       <text>距离送达:165分钟</text>
+                     </view>
+                    <text>付款金额: {{item.nxOrdersAmount}}元</text>
+                  </view>
+                </view>
+              </view>
+
+            </view>
+          </scroll-view>
+        </view>
+      </swiper-item>
+
+      <!-- swiper-item-two -->
+      <swiper-item>
+        <view class="content-wrapper">
+          <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+          <view class="with-padding" wx:for="{{unDeliveryArr}}" wx:for-item="item" wx:for-index="routeIndex">
+            <view class="flex-row-between">
+            <text>{{item.route}}</text>
+            <text bindtap="allSelect" data-routeindex="{{routeIndex}}">全选</text>
+            </view>
+            <view class="with-padding with-border-bottom" wx:for="{{item.arr}}" wx:for-item="apply" bindtap="selectDeliveryOrder" data-index="{{index}}" data-routeindex="{{routeIndex}}" >
+
+            <view class="flex-row">
+            
+             <view>
+                  <text class="margin-right index {{apply.isSelected ? 'hide' : ''}}">{{index + 1}}</text>
+                  <view class="margin-right circle {{apply.isSelected ? 'show' : ''}}">v
+                    <!-- <image class="circle-image" src="/images/logo.jpg"></image> -->
+                  </view>
+                </view>
+                <view class="flex-column">
+                 <view>{{apply.nxOrdersCommunity}}{{apply.nxOrdersCommunityBuilding}}{{apply.nxOrdersCommunityRoom}}</view>
+              <view>
+              <text>下单:{{apply.nxOrdersDate}}</text>
+              <text>送达:{{apply.nxOrdersServiceDate}}{{apply.nxOrdersServiceTime}}</text>
+             </view>
+                </view>
+
+            </view>
+
+
+             
+            </view>
+          </view>
+          </scroll-view>
+
+        </view>
+
+         <view class="bottom_btn  {{deliveryOrderAmount > 0 ?'show' : ''}}" bindtap="assignUnDeliveryOrder">
+          配送订单{{deliveryOrderAmount}}个
+        </view>
+      </swiper-item>
+      <!-- ./ swiper-item-two -->
+     <!-- swiper-item-three -->
+      <swiper-item>
+        <view class="content-wrapper">
+          <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+          <view class="flex-row with-padding" wx:for="{{isDeliveryArr}}" wx:for-item="item" hover-class="hover" bindtap="isDeliveryUserOrders" data-id="{{item.disUserId}}">
+           <image class="url" src="{{item.duWxAvatarUrl}}"></image>
+           <view>{{item.duWxNickName}}</view>
+          </view> 
+          </scroll-view>
+
+        </view>
+      </swiper-item>
+      <!-- ./ swiper-item-three -->
+
+
+
+
+
+
+    </swiper>
+
+  </view>
+
+</view>

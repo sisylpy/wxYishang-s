@@ -1,0 +1,65 @@
+<!--pages/ibookmain/ibookmain.wxml-->
+<view>
+  <scroll-view scroll-x class="tab-h" scroll-left="{{scrollLeft}}">
+    <view class="tab-item {{currentTab==index?'active':''}}" data-current="0" bindtap="swichNav" wx:for="{{fatherArr}}">{{item.nxGoodsName}}</view>
+  </scroll-view>
+
+  <view class="content-wrapper fix-wrapper">
+    <swiper class="with-padding" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height: {{windowHeight - 80}}rpx;">
+
+      <swiper-item >
+        <scroll-view scroll-y style="height:{{windowHeight}}rpx">
+          <!-- 一个产品 -->
+          <view class="one" wx:for="{{initGoods}}" wx:for-item="one" bindtap="openGoodsPage" data-id="{{one.id}}">
+
+            <view class="products">
+              <view class="left">
+                <view class="left-first">
+                  <text class="brand" wx:if="{{one.brand.length > 0}}">[{{one.brand}}]</text>
+                  <text class="name">{{one.nxGoodsName}}</text>
+                  <text class="describe">{{}}</text>
+                </view>
+
+                <view class="left-second">
+                  <text>规格：</text>
+                  <text>{{one.nxGoodsStandardname}}</text>
+                </view>
+              </view>
+              <!-- ./left -->
+
+
+              <!-- right -->
+              <view class="right" >
+                <!-- right-first -->
+                <view class="right-first">
+                  <text>单价：</text>
+                  <text wx:if="{{one.updateDate.length > 0}}">{{one.purPrice}}</text>
+                  <text wx:else>暂无</text>
+                </view>
+
+                <!-- right-second -->
+                <view class="right-second">
+                  <text>{{one.updateDate}}</text>
+                </view>
+
+              </view>
+            </view>
+
+            <view class="handlings" wx:if='{{one.ysHandlingEntityList.length > 0 }}'>
+              <image class="handling-img" src='{{url + handling.img}}'  wx:for='{{one.ysHandlingEntityList}}' wx:for-item="handling" ></image>
+              <view class="handling-words">{{one.ysHandlingEntityList.length}}个加工</view>
+
+            </view>
+
+          </view>
+
+        </scroll-view>
+      </swiper-item>
+
+    </swiper>
+
+  </view>
+
+
+
+</view>

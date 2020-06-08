@@ -1,0 +1,80 @@
+<!--pages/memberInfo/memberInfo.wxml-->
+<view class="main">
+
+  <!-- avatarUrl -->
+  <view class="face">
+    <image class="faceImage" src="{{userInfo.nxCustomerUserEntity.nxCuWxAvatarUrl}}" style="width:{{windowWidth/5}}rpx; height:{{windowWidth / 5}}rpx"></image>
+  </view>
+
+  <!-- list -->
+  <view class="list">
+    <view class="list_container">
+
+      <view class="list_item">
+        <text class="title">昵称</text>
+        <view class="Y-axis"></view>
+        <view class="item">{{userInfo.nxCustomerUserEntity.nxCuWxNickName}}</view>
+      </view>
+
+
+      <!-- <view class="list_item">
+        <text class="title">四位数登录代码</text>
+        <view class="Y-axis"></view>
+        <view class="item">1331</view>
+      </view> -->
+
+      <view class="list_item">
+        <text class="title">性别</text>
+        <view class="Y-axis"></view>
+        <view class="item" wx:if="{{userInfo.nxCustomerUserEntity.nxCuWxGender == 1}}">男</view>
+        <view class="item" wx:else>女</view>
+        <image class="icon" src="../../images/bi3.png"></image>
+      </view>
+
+      <view class="list_item" bindtap= '{{birthdayEmpty ? "setMybirthday" : ""}}'>
+        <text class="title">生日</text>
+        <view class="Y-axis"></view>
+        <view class="item" wx:if='{{userInfo.birthday}}'>{{userInfo.birthday}}</view>
+        
+        <image class="icon" wx:if='{{birthdayEmpty}}' src= "../../images/bi3.png"></image>
+      </view>
+
+       <!-- <view class="list_item">
+        <text class="title">历史订单</text>
+        <view class="Y-axis"></view>
+       </view> -->
+
+    </view>
+
+ <view class="margin_l_bottom">
+ 
+
+  </view>
+
+
+
+
+  </view>
+  <!-- .list -->
+
+  <!-- pickerView -->
+  <view class="setPickerView"   wx:if='{{showPicker}}'>
+   <view class="pickerBtns">
+      <view class="cancle">取消</view>
+      <view class="sure" bindtap="setBirthday">确认</view>
+    </view>
+  <picker-view indicator-style="height: 50px;" style="width: 60%; height: 160px;" value="{{birthValue}}" bindchange="value">
+   
+     <picker-view-column >
+      <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+    </picker-view-column>
+   
+  </picker-view>
+   </view>
+
+
+
+</view>

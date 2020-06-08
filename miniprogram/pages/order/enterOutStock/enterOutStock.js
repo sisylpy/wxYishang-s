@@ -1,10 +1,9 @@
 const app = getApp()
 const globalData = app.globalData;
+//
 
-import {
-  getEnterApplyByPageNumber,
-  saveStockRecords
-} from '../../../lib/apiOrder.js'
+import { getOrdersToWeigh } from '../../../lib/apiOrders.js'
+
 
 
 Page({
@@ -15,11 +14,10 @@ Page({
     selectId: -1
   },
 
+// onShow: function(e) {
 
-onShow: function(e) {
-
- this._getApplyByPageNumber();
-},
+//  this._getApplyByPageNumber();
+// },
   onLoad: function (options) {
     var that = this;
     that.setData({
@@ -27,7 +25,7 @@ onShow: function(e) {
       windowHeight: globalData.windowHeight * globalData.rpxR,
       sentenceWidth: globalData.windowWidth * globalData.rpxR - 50,
       // beyondKeyHeight: globalData.beyondKeyHeight,
-      pageNumber: options.pageNumber
+      pickerUserId: options.pickerUserId
     
     })
     that._getApplyByPageNumber();
@@ -47,14 +45,15 @@ onShow: function(e) {
 
   _getApplyByPageNumber: function(e) {
 
+
     var data = {
-      depId: 1,
+      pickerUserId: this.data.pickerUserId,
       status: 1,
-      pageNumber: this.data.pageNumber
     }
-    getEnterApplyByPageNumber(data)
+    getOrdersToWeigh(data)
       .then(res => {
         if (res) {
+          console.log(res.result.data)
           this.setData({
             goodsArr: res.result.data
           })
@@ -184,8 +183,7 @@ onShow: function(e) {
      }
    }
     
-    console.log("zuihou stockARR")
-    console.log(stockRecordArr)
+   
 
     saveStockRecords(stockRecordArr)
     .then(res => {

@@ -1,7 +1,6 @@
 const globalData = getApp().globalData;
 
 
-import { getSortList } from '../../lib/apiOrder.js'
 var load = require('../../lib/load.js');
 
 var _animation; // 动画实体

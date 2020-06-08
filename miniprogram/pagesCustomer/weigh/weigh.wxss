@@ -1,0 +1,75 @@
+/* pagesCustomer/order/order.wxss */
+
+.order{
+  width: 100%;
+  height: 100%;
+  background: rgb(238, 237, 237);
+  border-top: 1px solid lightgray;
+}
+
+.address{
+  /* border-top: 1px solid lightgray; */
+  
+}
+
+.left{
+
+}
+
+
+.select{
+  width: 40rpx;
+  height: 40rpx;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+}
+
+.select.is-active{
+  background: yellow;
+}
+
+.select_icon{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+.userTime{
+  height: 120rpx;
+  width: 48%;
+  margin-right: 2%;
+  padding: 20rpx;
+  background: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+
+.picker{
+  background: red;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  justify-items: center;
+}
+
+.userTime-method{
+  font-size: 36rpx;
+  padding-bottom: 10rpx;
+}
+
+.userTime-time{
+  font-size: 26rpx;
+  color: gray;
+  margin-top: 10rpx;
+}
+
+.orderCar{
+  height: 120rpx;
+  background: rgb(43, 42, 42);
+  color: goldenrod;
+}
+

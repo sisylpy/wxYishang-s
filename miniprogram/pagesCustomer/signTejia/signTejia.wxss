@@ -1,0 +1,92 @@
+
+
+
+.whole{
+  display: flex;
+  flex-flow: column wrap;
+  padding: 2.5%;
+  justify-content: space-between;
+
+}
+
+.one{
+
+  /* width: 48%; */
+    background: #fff;
+  box-shadow: 0 4rpx 2rpx 2rpx rgba(0, 0, 0, 0.1); 
+ border-radius: 10rpx;
+  margin-bottom: 20rpx;
+
+}
+.one-img-wrapper{
+
+  width: 100%;
+  /* height: 400rpx; */
+
+
+}
+
+.one-img{
+   border-top-left-radius: 10rpx;
+   border-top-right-radius: 10rpx;
+
+  width: 100%;
+  height: 400rpx;
+
+}
+
+
+.goods_name{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.cate_name{
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 30rpx;
+  
+  align-items: baseline;
+  justify-content: space-between;
+  /* color: #fff; */
+
+}
+
+.cate_money{
+  font-size: 28rpx;
+  color: gray;
+
+}
+
+.cate_content{
+  /* background: red; */
+  margin-left: 6rpx;
+  font-size: 40rpx;
+
+
+}
+.cate-explain{
+  font-size: 24rpx;
+  background: rgb(255, 174, 0);
+  border-radius: 10rpx;
+  padding: 4rpx 6rpx;
+  color: gray;
+}
+
+.cate_yuan{
+  font-size: 26rpx;
+  color: rgb(85, 85, 85);
+  text-decoration:line-through;
+  /* background: green; */
+}
+.cate-profit{
+  font-size: 28rpx;
+  color: rgb(77, 76, 76);
+}
+.addCar{
+  background: rgb(34, 34, 34);
+  color: rgba(255, 208, 0, 0.829);
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+}

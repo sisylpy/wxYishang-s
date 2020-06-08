@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="flex-column">
+    <view wx:for="{{dayArr}}" wx:item="item" class="with-padding">
+     <text class="with-lr-padding">{{item.dayName}}</text>
+     <text>{{item.fetchStart}} -- </text>
+     <text>{{item.fetchStop}}</text>
+     <text> | </text>
+     <text>{{item.deliverStart}}--</text>
+     <text>{{item.deliverStop}}</text>
+    
+    
+    </view>
+  
+  </view>
+
+
+</view>

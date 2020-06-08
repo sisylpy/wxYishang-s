@@ -1,0 +1,67 @@
+<!--pages/storeApplys/storeApplys.wxml-->
+<view class="customerApply " style="height:{{windowHeight - 138}}rpx">
+
+  <view class="section">
+    <view class="flex-row with-padding with-border-bottom small">
+      <text class="goods_name">商品</text>
+      <text class="order_price">单价</text>
+      <text class="weight">数量</text>
+      <text class="subtotalTitle">小计</text>
+    </view>
+    <view class="section_body small">
+      <scroll-view scroll-y style="height:{{windowHeight - 300}}rpx">
+        <view class="flex-column with-border-bottom  with-padding" wx:for="{{applyArr}}">
+
+          <view class="flex-cloumn">
+
+            <view class="flex-row-between">
+              <view class="flex-column">
+                <text class="">{{item.nxGoodsEntity.nxGoodsDetail}}</text>
+              </view>
+
+            </view>
+            <view class="flex-row">
+              <text class="goods_name">{{item.nxGoodsEntity.nxGoodsName}}({{item.nxGoodsEntity.nxGoodsStandardname}})</text>
+              <text class="order_price"> {{item.nxOsPrice}}/{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+              <text class="weight">{{item.nxOsWeight}}{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+              <text class="subtotal">{{item.nxOsSubtotal}}元</text>
+
+            </view>
+
+            <view class="flex-row-between">
+              <view class="flex-column">
+                <text class="explain-words margin-right">申请:{{item.nxOsQuantity}}{{item.nxOsStandard}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view class="flex-column with-padding section_foot ">
+        <view class="flex-row-between normal">
+          <text>商品: {{applyArr.length}} 个</text>
+          <text>付款金额: {{order.nxOrdersAmount}} 元</text>
+
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+
+
+</view>
+
+
+<view class="bottom_btn show" bindtap="toPaymentInfo" data-id="{{order.nxOrdersId}}">
+
+发送通知付款消息
+ 
+  <!-- <view class="flex-row btn btn_two">
+    <text class="small">二维码</text>
+  </view>
+
+  <view class="flex-row btn btn_three">
+    <text class="small">记账</text>
+  </view> -->
+</view>

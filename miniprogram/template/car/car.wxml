@@ -1,0 +1,30 @@
+<template name="car">
+  <view class="order_list {{applyArr.length > 0 ? 'is-active' : ''}}">
+    <view class="order_list_content">
+     
+      <view class="car">
+       <view class="testtap" bindtap="showCar">
+        <view  class="dot">{{applyNumber}}</view>
+        <image class="gouwuche" src="/images/gouwuche.png"></image>
+       </view>
+       
+        <view class="order_content">
+        <!-- <text class="weighTime">您的前面有0位顾客</text> -->
+
+          <view class="" wx:for="{{applyArr}}" wx:item="item">
+            <!-- <text class="order_goods">{{item.applyGoodsName}} {{item.applyNumber}}{{item.applyStandardName}}, </text> -->
+          
+          </view>
+        </view>
+      </view>
+
+      <!-- <navigator url="/pagesCustomer/order/order"> -->
+        <view class="order_send" bindtap="choiceFinish">
+          选好了  >
+        </view>
+      <!-- </navigator> -->
+    </view>
+
+
+  </view>
+</template>

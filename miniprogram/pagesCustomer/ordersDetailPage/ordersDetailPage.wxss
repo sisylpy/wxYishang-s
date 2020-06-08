@@ -1,0 +1,57 @@
+
+page{
+    background: #f5f5f5;
+
+}
+.sction{
+  margin-bottom: 20rpx;
+}
+.top{
+  margin-top: 20rpx;
+}
+
+
+.status-img{
+  width: 20rpx;
+  height: 20rpx;
+}
+
+
+/*  */
+
+.row-left{
+  flex-basis: 25%;
+/* background: blue; */
+}
+.row-right{
+  flex-basis: 75%;
+  /* background: yellow; */
+
+}
+
+.goods-name{
+  flex-basis: 60%;
+/* background: green; */
+}
+.goods-amount{
+  flex-basis: 20%;
+  /* background: blue; */
+}
+.goods-subTotal{
+  flex-basis: 20%;
+  /* background: yellow; */
+  text-align: right;
+}
+
+.btn{
+  background: rgb(36, 36, 36);
+  color: rgb(255, 196, 0);
+  padding: 15rpx 45rpx;
+  text-align: center;
+  font-size: 32rpx;
+border-radius: 10rpx;
+margin-top: 20rpx;
+margin-bottom: 20rpx;
+
+
+}

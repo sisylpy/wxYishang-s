@@ -1,0 +1,149 @@
+<import src='../../template/car/car.wxml' />
+
+<view class="customerPage">
+
+
+  <view class="card ">
+
+    <!-- -->
+    <view class="card_container " style="height: {{(windowWidth - windowWidth/5) * 0.618 }}rpx">
+
+      <view class="card_left">
+
+        <!-- 1， logo_begin -->
+        <view class="logo flex-row" bindtap="toCaidiPage">
+          <view class=" flex-column">
+            <text class="area_name">CaiDi</text>
+            <text class="smallBlack">悦榕湾服务点</text>
+          </view>
+        </view>
+
+
+        <!--2， member_begin -->
+
+        <view class="member flex-row" bindtap="toUserPage">
+          <text>{{userInfo.nxCustomerUserEntity.nxCuWxNickName}} </text>
+          <text>></text>
+        </view>
+
+        <!--3， points_begin -->
+        <view class="points flex-row">
+          <view class="points_total" bindtap="toAllOrders">
+            <text class="toOrderHistory">订单查询 </text>
+            <text class="toOrderHistory">></text>
+          </view>
+          <!-- <view class="toOrderHistory" bindtap="toOrderHistory"  >我的常购菜品</view> -->
+        </view>
+      </view>
+
+      <view class="card_right">
+        <image class="card_right_img" src="../../images/cd.png"></image>
+      </view>
+    </view>
+  </view>
+
+
+
+
+  <view class="top">
+    <view class="top_content">
+
+      <view class="top_first flex-column" wx:if="{{userTime.dayName}}">
+        <view class="wx_name">{{userTime.method}} | {{userTime.dayName}}{{userTime.dayTime}}</view>
+      </view>
+      <view class="top_first flex-column" wx:else>
+        <view class="wx_name">最早送达 {{multiArray[0][0]}}{{multiArray[1][0]}}{{multiArray[2][0]}}</view>
+      </view>
+      <view class="userTime">
+        <view class="appointment">
+
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{customerChoice}}" value="{{multiIndex}}" range="{{multiArray}}">
+            我要预约
+          </picker>
+        </view>
+        <view class="split"></view>
+
+        <view class="flex-column-center" bindtap="toMyGoodsDetail">
+          <image class="face" src="{{userInfo.nxCustomerUserEntity.nxCuWxAvatarUrl}}"></image>
+          <text class="face_name">我的菜</text>
+        </view>
+      </view>
+    </view>
+
+
+
+    <!-- <view class="btn_group flex-row-around with-padding">
+      <view class="flex-column-center">
+        <image class="icon" src="../../images/duihao.png"></image>
+        <text class="with-tb-padding">家庭成员</text>
+      </view>
+      <view class="flex-column-center">
+        <image class="icon" src="../../images/location.png"></image>
+        <text class="with-tb-padding">常订菜</text>
+      </view>
+      <view class="flex-column-center">
+        <image class="icon" src="../../images/del.png"></image>
+        <text class="with-tb-padding">购物车</text>
+      </view>
+      <view class="flex-column-center">
+        <image class="icon" src="../../images/location.png"></image>
+        <text class="with-tb-padding">代收货</text>
+      </view>
+    </view> -->
+
+
+  </view>
+
+
+  <view>
+
+    <view class="whole">
+      <navigator url="../signTejia/signTejia">
+        <view class="one-tejia" bindtap="toTejia">
+          <image class="one-img" src="../../images/tejia2.jpg"></image>
+          <text class="goods_name"> 今日特价</text>
+        </view>
+      </navigator>
+
+    </view>
+
+
+
+    <view class="whole">
+      <view class="one" wx:for="{{goodsList}}" wx:for-item="one" bindtap="clickFather" data-id="{{one.dfgGoodsFatherId}}" data-fathername="{{one.dfgGoodsFatherName}}">
+        <image class="one-img" src="{{one.dfgGoodsFatherImg}}"></image>
+        <text class="goods_name"> {{one.dfgGoodsFatherName}}</text>
+      </view>
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </view>
+
+
+
+
+
+
+</view>
+
+<view style="{{applyArr.length > 0 ?'height: 130rpx' : ''}}"></view>
+
+
+<timemodal show="{{show}}" applyRemark="{{remarkContent}}" applyGoodsName="{{applyGoodsName}}" bindgetRemark="getRemark" bindconfirm="confirm" bindchangeStandard="changeStandard" applyGoodsId="{{applyGoodsId}}" item="{{item}}" applyStandardName="{{applyStandardName}}"
+/>
+
+<carPage show="{{showCar}}" windowHeight="{{windowHeight}}" windowWidth="{{windowWidth}}" bindadd="add" bindreduce="reduce" bindemptyApplyArr="emptyApplyArr" carArr="{{applyArr}}" />
+
+<template is="car" data='{{applyArr:applyArr, applyNumber:applyNumber}}'></template>

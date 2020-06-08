@@ -1,0 +1,80 @@
+/* pages/ibook/ibook.wxss *//* components/ibook_firL/ibook_firL.wxss */
+
+
+.backgroud {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.swiper-item{
+  display: flex;
+}
+.pageBack {
+  width:100%;
+  display: flex;
+}
+
+.pageColor {
+  width: 88%;
+  float: left;   
+  margin-right: 3%;
+  margin-left: 3%;
+  padding-left: 3%;
+  padding-right: 3%; 
+  
+}
+.firCate_num {
+  color: white;
+  font-size: 50rpx;
+  font-weight: 500;
+  margin-top: 80rpx;
+}
+
+.firCate_name {
+  font-size: 70rpx;
+  font-weight: 600;
+}
+
+
+
+.line {
+  height: 1px;
+  width: 100%;
+  background: black;
+  margin-top: 40rpx;
+}
+
+.tenline {
+  height: 10px;
+  width: 50%;
+  background: black;
+  float: right;
+  margin-bottom: 40rpx;
+
+}
+
+.secPart {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  float: left;
+  /* border: 1px solid red; */
+}
+
+.secCate_name {
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  float: left;
+  margin-left: 335rpx;
+  font-size: 36rpx;
+  /* background: yellow; */
+
+}
+
+.secCate_pageNo {
+  width: 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  float: right;
+}

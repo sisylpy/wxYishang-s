@@ -1,0 +1,133 @@
+
+
+
+.content{
+  /* border-top-left-radius: 45rpx;
+  border-top-right-radius: 45rpx; */
+  background: #fff;
+  color: #000;
+  padding-top: 20rpx;
+  padding-bottom: 90rpx;
+  
+}
+
+.nav{
+  position: fixed;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  border-top: 1px solid gray;
+  padding-top: 10rpx;
+  font-size: 30rpx;
+}
+
+.nav-item{
+ 
+}
+.sm-text{
+  line-height: 60rpx;
+  /* background: yellow; */
+}
+.icon{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.goods{
+  line-height: 90rpx;
+  /* background: yellow; */
+
+
+}
+
+.index{
+  width: 100%;
+}
+.index-number{
+  background: black;
+  border-radius: 50%;
+  width: 50rpx;
+  height: 50rpx;
+  font-size: 30rpx;
+  color: #fff;
+  line-height: 50rpx;
+  text-align: center;
+  margin-right: 10rpx;
+
+}
+.index-number.done{
+   background: rgb(200, 255, 70);
+   color: #000;
+}
+
+
+.index.done {
+  background: green;
+
+}
+
+.done-img{
+ width: 35rpx;
+  height: 35rpx;
+  margin-top: 10rpx;
+
+  }
+
+.item-content{
+  /* color: gray; */
+  font-size: 36rpx;
+  border-radius: 20rpx;
+  /* padding: 10rpx; */
+  margin-right: 20rpx;
+  color: #000;
+}
+
+.item-content.finished{
+  color: #fff;
+}
+.orders-part{
+  margin-left: 70rpx;
+  line-height: 70rpx;
+  font-size: 36rpx;
+  border-bottom: 1px solid lightgray;
+  /* color: gray; */
+  
+}
+.orders-part.finished{
+  background: #000;
+  color: #fff;
+}
+
+.orders-title{
+   margin-left: 70rpx;
+  line-height: 60rpx;
+  /* background: gainsboro; */
+  font-size: 32rpx;
+  color: gray;
+}
+
+.orders-title.finished{
+    background: #000;
+  color: rgb(190, 190, 190);
+}
+
+.plan-purchase{
+  font-size: 44rpx;
+}
+.plan-purchase.finished{
+  background: #000;
+  color: #fff;
+}
+
+.fold{
+
+
+}
+.fold.none{
+  display: none;
+}
+.finish{
+  background: #000;
+  color: #fff;
+}

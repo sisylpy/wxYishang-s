@@ -1,123 +1,198 @@
+<import src='../../template/catalogue/catalogue.wxml' />
+
+
 <view class="wrapper">
 
-  <view class="content-wrapper" >
-    <!-- swiper -->
-   
-       <scroll-view scroll-y="true" style="height: {{windowHeight -100}}rpx;">
+  <!-- fragement -->
+  <view class='fragement'>
+    <!-- fragement -->
+    <view class="fragement_content">
+      <view class="fragement_item {{itemIndex == 0 ? 'active': ''}}">
+        <text class="" >订单</text>
+      </view>
 
-        <!-- nav -->
-        <view class="nav nav-pills">
-          <view class=''>
+      <!-- <view class='fragement_item'>
+        <text class="selfword {{itemIndex == 1 ? 'active': ''}}">进菜</text>
+      </view> -->
+      <view class="fragement_item {{itemIndex == 1 ? 'active': ''}}" bindtap="toStore">
+        <text class=" ">当天售价</text>
+      </view>
+      <view class="fragement_item {{itemIndex == 2 ? 'active': ''}}" bindtap="toStore">
+        <text class="">客户</text>
+      </view>
+    </view>
+    <!-- ./fragement_content -->
+  </view>
+  <!-- ./fragement -->
 
- <!-- 商品 -->
-            <view class='nav_pill_body  with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="toGoods">
-              <!-- <image class="icon" src="../../images/add.jpg"></image> -->
-              <text class="nav_text">商品</text>
-              <text class="text-sm">({{goods.goodsAmount}}个)</text>
+
+
+  <view class="content-wrapper fix-wrapper">
+
+    <swiper bindchange="switchTab" style="height: {{windowHeight - 80}}rpx;">
+
+      <swiper-item>
+        <view class="content-wrapper">
+          <!-- swiper -->
+
+          <scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+
+            <!-- nav -->
+            <view class="nav nav-pills margin_l_bottom">
+                <!-- 商品 -->
+                <view class='nav_pill_body with-border-bottom with-padding' bindtap="toPurchase" hover-class="hover">
+                  <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+                  <text class="nav_text">进货</text>
+                  <text class="text-sm"></text>
+                </view>
+
+                <!-- 店铺 -->
+                <view class='nav_pill_body with-padding with-border-bottom' bindtap="toWeightOrder" hover-class="hover">
+                  <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+                  <text class="nav_text">拣货</text>
+                  <text class="text-sm"></text>
+                </view>
+
+                <view class='nav_pill_body with-padding' bindtap="toPayAndDeliverOrder" hover-class="hover">
+                  <text class="nav_text">付款与配送</text>
+                  <!-- <text class="text-sm">({{father.fatherAmount}}1个)</text> -->
+                </view>
+                
             </view>
+            <!-- ./nav -->
 
-            <!-- 店铺 -->
-            <view  class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="toStore">
-              <!-- <image class="icon" src="../../images/add.jpg"></image> -->
-              <text class="nav_text">店铺</text>
-              <text class="text-sm">({{store.storeAmount}}家)</text>
+            <!-- box -->
+            <view class="box">
+
+              <view class="fold flex-row-between">
+                <view class="apply-total with-padding flex-row" bindtap="clickShowWeighUser" hover-class="hover">
+                  <image class="icon margin-right" src="../../images/order.jpg" mode="aspectFit" animation="{{pickAnimation}}"></image>
+                  <text class="text-lg text-weight-500">拣货员</text>
+                  <!-- <text class="text-sm">({{weighUserArr.length}})</text> -->
+                </view>
+                <!-- <view class="text-lg right text-weight-500" bindtap="addPickFirstStep" hover-class="hover">+</view> -->
+              </view>
+
+              <view class="fold-content {{showWeighUser ? 'active' : ''}}">
+                <view class="fold-item with-border-bottom" wx:for="{{weighUserArr}}" wx:for-item="item" data-id="{{item.disUserId}}" bindtap="toWeighingUser" hover-class="hover">
+                  <image class="userUrl margin-right" src="{{item.duWxAvatarUrl}}"></image>
+                  <view class="flex-column">
+                    <text>{{item.duWxNickName}}</text>
+                    <text class="explain-words">订单: {{item.orderAmount}}个
+                    </text>
+                  </view>
+                </view>
+              </view>
+
+              <view class="fold">
+                <view class="apply-total with-padding flex-row" bindtap="clickShowDeliver" hover-class="hover">
+                  <image class="icon margin-right" src="../../images/order.jpg" mode="aspectFit" animation="{{outAnimation}}"></image>
+                  <text class="text-lg text-weight-500">采购员</text>
+                  <!-- <text class="text-sm">({{bill.length}}家)</text> -->
+                </view>
+              </view>
+
+              <view class="fold-content {{showWeighUser ? 'active' : ''}}">
+                <view class="fold-item with-border-bottom" wx:for="{{purchaseUserArr}}" wx:for-item="item" data-id="{{item.disUserId}}" bindtap="toPurchaseUser" hover-class="hover">
+                  <image class="userUrl margin-right" src="{{item.duWxAvatarUrl}}"></image>
+                  <view class="flex-column">
+                    <text>{{item.duWxNickName}}</text>
+                    <text class="explain-words">订单: {{item.orderAmount}}个
+                    </text>
+                  </view>
+                </view>
+              </view>
+
             </view>
+          </scroll-view>
+        </view>
+      </swiper-item>
 
-           
 
-            <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}'>
-              <!-- <image class="icon" src="../../images/add.jpg"></image> -->
-              <text class="nav_text">历史申请</text>
-              <text class="text-sm">({{father.fatherAmount}}个)</text>
-            </view>
+      <!-- Part-two -->
+      <!-- <swiper-item class="goods-part">
+        <view class="space-around">
+          <view class="search">
+            <input class="search-input" placeholder="输入商品名称" />
+            <image class="search-icon" src="../../images/del.png"></image>
           </view>
         </view>
-        <!-- ./nav -->
+        <swiper bindchange="switchGoods" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style='height: {{windowHeight - 200}}rpx' class="goods-items">
 
-        <!-- .section -->
-        <view class="section">
-          <!-- box -->
-          <view class="box">
-            <!-- box- -->
-            <view class="box-body">
+          <swiper-item class='pageBack' wx:for="{{ibooklist}}">
+            <view class='pageColor' style="background-color:{{item.color}}">
+              <view class='firCate_num'>第{{index + 1}}类</view>
+              <view class='firCate_name'>{{item.goodsName}}</view>
+              <view class='line'></view>
+              <view class='tenline'></view>
+              <view class='secPart' bindtap='toGoodsList' wx:for='{{item.secondCategories}}' wx:for-item="secondCate" wx:key="" data-id="{{secondCate.id}}">
+                <view class='secCate_name'>1.{{index+1}} {{secondCate.goodsName}}</view>
+                <view class='secCate_pageNo'>{{secondCate.productsAmount}}</view>
+              </view>
+            </view>
+          </swiper-item>
 
-              <view class="row">
-                <view class="fold">
-                  <view class="apply-total with-padding" bindtap="showPrintNumber" hover-class="hover">
-                    <image class="icon" src="../../images/order.jpg" mode="aspectFit" animation="{{pickAnimation}}"></image>
-                    <text class="text-lg text-weight-500">采购单</text>
-                    <text class="text-sm">({{pick.pickAmount.length}})</text>
-                    <text class="text-lg right text-weight-500" bindtap="addPickFirstStep">+</text>
-                  </view>
+        </swiper>
 
-                  <view class="fold-content {{showPrintTimes ? 'active' : ''}}">
-                    <view class="fold-item" wx:for="{{pick.pickAmount}}" wx:for-item="item" data-pagenumber="{{item}}" bindtap="toEnterGoodsStock">
-                      <view class="face">
-                        <view>
-                          <text class="small">第</text>{{item}}</view>
-                        <view>
-                          <text class="small">次打印</text>
-                        </view>
-                      </view>
-                    </view>
-                  </view>
+      </swiper-item> -->
+      <!-- ./Part-tow -->
+
+      <!-- Part-three -->
+      <swiper-item>
+        <template is="catalogue" data='{{showIndex:showIndex, goodsList:goodsList, windowWidth:windowWidth,windowHeight:windowHeight}}'></template>
+      </swiper-item>
+
+
+
+      <!-- ./Part-three -->
+
+      <swiper-item>
+
+        <view class="content-wrapper">
+          <!-- swiper -->
+
+          <scroll-view scroll-y="true" style="height: {{windowHeight}}rpx;">
+            <!-- nav -->
+            <view class="nav nav-pills">
+              <view class=''>
+
+
+                <!-- 送货路线 -->
+                <!-- <view class='nav_pill_body  with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="toGoods">
+                  <text class="nav_text">客户</text>
+                </view> -->
+
+                <!-- 客户 -->
+                <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="toCustomer">
+                  <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+                  <text class="nav_text">客户</text>
                 </view>
 
-              </view>
-
-
-
-              <view class="row">
-                <view class="fold">
-                  <view class="apply-total with-padding" bindtap="showPrintNumber" hover-class="hover">
-                    <image class="icon" src="../../images/order.jpg" mode="aspectFit" animation="{{pickAnimation}}"></image>
-                    <text class="text-lg text-weight-500">拣货单</text>
-                    <text class="text-sm">({{pick.pickAmount.length}})</text>
-                    <text class="text-lg right text-weight-500" bindtap="addPickFirstStep">+</text>
-                  </view>
-
-                  <view class="fold-content {{showPrintTimes ? 'active' : ''}}">
-                    <view class="fold-item" wx:for="{{pick.pickAmount}}" wx:for-item="item" data-pagenumber="{{item}}" bindtap="toEnterGoodsStock">
-                      <view class="face">
-                        <view>
-                          <text class="small">第</text>{{item}}</view>
-                        <view>
-                          <text class="small">次打印</text>
-                        </view>
-                      </view>
-                    </view>
-                  </view>
+                <!-- 帐款 -->
+                <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}'>
+                  <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+                  <text class="nav_text">帐款</text>
                 </view>
-
-              </view>
-
-              <view class="row">
-                <view class="fold">
-                  <view class="apply-total with-padding" bindtap="showStockBill" hover-class="hover">
-                    <image class="icon" src="../../images/order.jpg" mode="aspectFit" animation="{{outAnimation}}"></image>
-                    <text class="text-lg text-weight-500">出货单</text>
-                    <text class="text-sm">({{bill.length}}家)</text>
-                  </view>
-
-                  <view class="fold-content {{showStockBill ? 'active' : ''}}">
-                    <view class="fold-item" wx:for="{{bill}}" bindtap="toOutStockBill" data-storeid="{{item.storeId}}">
-                      <view class="face">
-                        <view class="small">{{item.printLabel}}</view>
-                      </view>
-                    </view>
-                  </view>
+                <!-- 设备 -->
+                <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="kanakn">
+                  <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+                  <text class="nav_text">送货路线</text>
+                </view>
+                <!-- 快速订货 -->
+                <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="quick">
+                  <text class="nav_text">服务时间</text>
                 </view>
               </view>
             </view>
-          </view>
+            <!-- ./nav -->
+          </scroll-view>
         </view>
 
-</scroll-view>
+      </swiper-item>
 
 
-
-
-  </view> 
+    </swiper>
+  </view>
 
 
 

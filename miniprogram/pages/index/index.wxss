@@ -1,35 +1,6 @@
 
 
 
-/* frgement_item */
-.content-wrapper{
-  position: relative;
-}
-
-.fix-wrapper{
-  margin-top:100rpx;
-
-}
-
-swiper{
-  /* background: gold; */
-  top: 100rpx;
-  width: 100%;
-
-}
-
-.inner-swiper{
-  /* background: red; */
-  width: 100%;
-  margin-top: 100rpx;
-
-}
-.active{
-  font-size: 38rpx;
-  font-weight: 500;
-  color: #000;
-}
-
 .nav-pills{
   display: flex;
   flex-flow: column nowrap;
@@ -39,44 +10,36 @@ swiper{
 .nav_pill_body{
   display: flex;
   flex-flow: row nowrap;
-  /* background: red; */
   justify-content: left;
   align-items: center;
-  border-bottom: 1px solid lightgray;
   background: #fff;
 
 }
 
-.nav_pill_body.is-last {
-  border-bottom: none;
 
+.hover{
+   background: rgb(241, 241, 241);
+ 
 }
-
 .nav_text{
   height: 60rpx;
   line-height: 60rpx;
 }
 
+.box{
+  background: #fff;
+}
+
+
 /* 拣货单部分 */
+
 .apply-total{
-  display: flex;
-  flex-flow: row nowrap;
-/* justify-content: space-between; */
-  align-items: center;
- /* background: yellow; */
-
+  width: 100%;
 
 }
-.hover{
- /* background: rgb(241, 241, 241); */
-}
-.icon{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 20rpx;
 
 
-}
+
 
 .text-sm{
   font-size: 28rpx;
@@ -86,20 +49,26 @@ swiper{
   /* font-size: 38rpx; */
   line-height: 60rpx;
   /* background: red; */
-
-
 }
+
 .text-weight-500{
   font-weight: 500
 }
+
 .right{
+  position: absolute;
+  right: 0;
+ width: 100rpx;
+ /* background: gold; */
  font-size: 60rpx;
- float: right;
  line-height: 60rpx;
- flex:1;
- text-align: right;
+ /* flex:1; */
+ text-align: center;
  margin-right: 10rpx;
+
 }
+
+
 .fold-content{
   display: none;
   }
@@ -107,25 +76,147 @@ swiper{
   display: block;
 
 }
+
+.userUrl {
+  height: 110rpx;
+  width: 100rpx;
+  border-radius: 20rpx;
+  
+
+  
+}
 .fold-item{
   display: flex;
-  flex-flow: column nowrap;
-  border-bottom: 1px solid #ddd;
+  flex-flow: row nowrap;
   padding: 10px;
+  padding-left: 90rpx;
 }
-.face{
-  width: 80rpx;
-  height: 80rpx;
-  border: 1px solid #ddd;
-  border-radius: 5rpx;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  padding: 6px;
-}
+
 
 .small{
   line-height: 40rpx;
   font-size: 24rpx;
 }
+
+
+/* Goods-part */
+
+.search{
+ display: flex;
+ flex-flow: row nowrap;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid lightgray;
+ border-radius: 10rpx;
+ 
+}
+.search-input{
+  line-height: 70rpx;
+  height: 70rpx;
+  /* background: rgb(248, 248, 174); */
+  
+}
+.search-icon{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+
+
+.goods-items{
+    background: rgb(242, 249, 252);
+padding-top: 20rpx;
+padding-bottom: 20rpx;
+
+}
+.second-fragement{
+  font-size: 32rpx;
+  color: gray;
+}
+.second-fragement.is-active{
+  color: #000;
+}
+.goods-part{
+  background: #fff;
+}
+.backgroud {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.swiper-item{
+  display: flex;
+}
+.pageBack {
+  /* width:100%; */
+  display: flex;
+ 
+
+}
+
+.pageColor {
+  width: 88%;
+  float: left;   
+  margin-right: 3%;
+  margin-left: 3%;
+  padding-left: 3%;
+  padding-right: 3%; 
+ 
+  
+}
+.firCate_num {
+  color: white;
+  font-size: 50rpx;
+  font-weight: 500;
+  margin-top: 80rpx;
+}
+
+.firCate_name {
+  font-size: 70rpx;
+  font-weight: 600;
+}
+
+
+
+.line {
+  height: 1px;
+  width: 100%;
+  background: black;
+  margin-top: 40rpx;
+}
+
+.tenline {
+  height: 10px;
+  width: 50%;
+  background: black;
+  float: right;
+  margin-bottom: 40rpx;
+
+}
+
+.secPart { 
+  float: left;
+}
+
+.secCate_name {
+  width: 210rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  float: left;
+  margin-left: 335rpx;
+}
+
+.secCate_pageNo {
+  width: 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  float: right;
+}
+
+
+
+
+
+@import "/template/ibook/ibook.wxss";
+@import "/template/catalogue/catalogue.wxss";

@@ -1,0 +1,74 @@
+<!--components/shareButton/mymodal.wxml-->
+<view class='mask' wx:if='{{show}}' catchtouchmove='ture'>
+  <view class='modal-content'>
+
+    <view class="top">
+      <view class='goodsTitle'>
+        <text>{{item.nxGoodsName}}</text>
+        <text class='smallclose' bindtap='cancel'>X</text>
+      </view>
+    </view>
+
+    <view class="body">
+
+      <view class='goods_contents'>
+    
+        <view class="number_content with-lr-padding">
+          <text class="explain">单价:</text>
+          <view class="number">
+            <view class="int">
+              <input class='inputint' focus='true' type='text' value="{{price}}" bindinput="getPrice" ></input>
+            </view>
+            <view class="price_standard with-lr-padding">/{{item.nxGoodsStandardname}}</view>
+          </view>
+        </view>
+
+        <!-- <view class="standards_content with-lr-padding">
+          <text class="explain">订货单位:</text>
+          <view class="select_content">
+            <text class="standardName {{applyStandardName == '斤' ? 'is-active' : ''}}" bindtap="changeStandard" data-name="斤">斤</text>
+            <text class="standardName" wx:for="{{item.nxGoodsStandardEntities}}" wx:for-item="standard" data-id="{{standard.nxStandardId}}">{{standard.nxStandardName}}</text>
+           
+
+            <text class="addBtn {{applyStandardName == '颗' ? 'is-active' : ''}}" bindtap="changeStandard" data-name="颗">+</text>
+          </view>
+
+        </view> -->
+
+
+
+      </view>
+
+      <view class='btn-wrapper'>
+        <view class="btn_row">
+          <text class='cancel-btn' bindtap="cancle">取消</text>
+          <text class='confirm-btn' catchtap='confirm'>确定</text>
+        </view>
+
+      </view>
+
+
+
+    </view>
+
+  </view>
+</view>
+
+
+<view class="inputBox {{showInput ? 'is-active' : ''}}" style="bottom:{{bottom}}px">
+  <view class="flex-row">
+    <view class="input_content">
+      <input class="input" focus="{{showInput}}" bindfocus="onbindfocus" bindinput="addRemark" value="{{remarkContent}}" placeholder="添加备注说明..." placeholder-style='color:#9a9a9a;'></input>
+    </view>
+
+    <view class="getRemark " bindtap="getRemark">确定</view>
+  </view>
+
+
+  <!-- <input class="input" 
+        adjust-position="{{false}}" 
+        cursor-spacing="90" type='text'
+        bindfocus='onbindfocus' 
+        placeholder="发表评论..." 
+        placeholder-style='color:#9a9a9a;'/> -->
+</view>

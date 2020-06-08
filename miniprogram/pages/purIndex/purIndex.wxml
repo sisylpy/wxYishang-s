@@ -1,0 +1,40 @@
+<view class="purchase">
+
+  <view class="top">
+    <view class="top-item">
+      <image class="icon " src="../../images/logo.jpg"></image>
+      <text class="top-item-content" style="width:{{windowWidth - 100}}rpx; ">地址管理</text>
+    </view>
+    <view class="top-item">
+      <image class="icon" src="../../images/logo.jpg"></image>
+      <text class="top-item-content" style="width:{{windowWidth - 100}}rpx; ">供货商</text>
+    </view>
+    <view class="top-item">
+      <image class="icon" src="../../images/logo.jpg"></image>
+      <text class="top-item-content none" style="width:{{windowWidth - 90}}rpx; ">送货店铺</text>
+    </view>
+
+  </view>
+
+
+
+  <view class="main">
+  <text class="sm-text">采购任务：</text>
+    <scroll-view scroll-y="true" style="height: {{windowHeight - 380}}rpx;">
+
+      <view class=" ">
+        <view class="fold" hover-class="click" wx:for="{{plan}}" wx:for-item="father" wx:for-index="index"
+        bindtap="toApplys" data-fatherid="{{father.fatherId}}" data-fathername="{{father.fatherName}}"
+        >
+          <view class="fold-main" >{{father.fatherName}}</view>
+
+         
+        </view>
+      </view>
+
+
+    </scroll-view>
+
+  </view>
+
+</view>
