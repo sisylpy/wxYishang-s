@@ -1,0 +1,31 @@
+
+
+.flex-words{
+  flex-basis: 25%;
+  /* background: red; */
+}
+
+
+.flex-input{
+  flex-basis: 65%;
+  /* background: yellow; */
+  border: 1px solid gray;
+  line-height: 80rpx;
+  height: 80rpx;
+}
+.scale{
+    flex-basis: 65%;
+    /* background: yellow; */
+
+}
+.getStandard{
+  flex-basis: 30%;
+  /* background: red; */
+}
+
+.flex-input-scale{
+  border: 1px solid gray;
+  line-height: 80rpx;
+  height: 80rpx;
+  flex-basis: 50%;
+}

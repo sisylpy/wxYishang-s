@@ -41,9 +41,9 @@
                   <view class="flex-row">
                     <text class="buy-goods normal">{{item.goodsName}}</text>
                     <text class="buy-words small" wx:if="{{item.purchase !== null}}">进货数量: {{item.purchase}}</text>
-                    <text class="buy-words explain-words" wx:else>进货数量: 0</text>
+                    <text class="buy-words small" wx:else>进货数量: 0</text>
                   </view>
-                  <view class="flex-row">
+                  <view class="flex-row-wrap">
                     <!-- <text class="margin-l-right explain-words">订货数量:</text> -->
                     <view class="" wx:for="{{item.subList}}" wx:for-item="sub" wx:for-index="subIndex">
                       <text class='small  margin-l-right with-tb-padding' wx:if="{{subIndex == item.subList.length -1 }}">{{sub.nxOsQuantity}}{{sub.nxOsStandard}}{{sub.nxOsRemard}}</text>

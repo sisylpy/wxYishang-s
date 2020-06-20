@@ -5,7 +5,7 @@ import apiUrl from '../../config.js'
 import userTime from '../../lib/userTime.js'
 const globalData = getApp().globalData;
 import {
-  dgCataList
+  cgCataList
 } from '../../lib/apiBusiness.js'
 
 Page({
@@ -67,6 +67,7 @@ Page({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
       distributerId: 1,
+      server: apiUrl.server
     })
 
 
@@ -96,7 +97,7 @@ Page({
   },
 
   _getGoods() {
-    dgCataList(this.data.distributerId).
+    cgCataList(this.data.distributerId).
       then(res => {
         if (res) {
           console.log(res.result.data)

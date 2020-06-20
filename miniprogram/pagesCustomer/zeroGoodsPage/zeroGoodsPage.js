@@ -1,6 +1,6 @@
 
 import apiUrl from '../../config.js'
-import { getDisGoodsDetail } from '../../lib/apiCustomer.js'
+import { getCommunityGoodsDetail } from '../../lib/apiCustomer.js'
 const globalData = getApp().globalData;
 Page({
 
@@ -31,7 +31,7 @@ Page({
     wx.setNavigationBarTitle({
       title: options.name,
     })
-    getDisGoodsDetail(this.data.disGoodsId)
+    getCommunityGoodsDetail(this.data.disGoodsId)
       .then(res => {
         if (res) {
           console.log(res.result.data);

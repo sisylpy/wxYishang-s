@@ -1,0 +1,38 @@
+<view class=''>
+  <image class='class_img' src='{{src}}' bindtap='choiceImg'></image>
+
+</view>
+
+
+
+<view class=''>
+
+  <view class="flex-row explain-words with-padding">
+    <text class='flex-words'>加工名称</text>
+    <input class='flex-input' bindblur='getStandardName' value="{{standardName}}"></input>
+  </view>
+
+  <view class='flex-row explain-words with-padding'>
+    <text class='flex-words'>规格比例</text>
+    <view class="scale flex-row">
+      <text>1</text>
+      <text class="getStandard">{{standardName}}</text>
+      <text class="margin-right">=</text>
+      <input class="flex-input-scale" bindinput="getStandardScale" />
+      <text>{{}}</text>
+
+    </view>
+  </view>
+
+  <view class='flex-row explain-words with-padding'>
+    <text class='flex-words'>误差</text>
+    <input class="flex-input" bindblur="getStandardError" />
+  </view>
+
+
+</view>
+
+
+<view class='fix-main-btn {{canSave ?"is-active" :""}}' bindtap='{{canSave ?"saveHandling" : ""}}'>
+  保存
+</view>

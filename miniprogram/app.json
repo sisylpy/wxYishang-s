@@ -29,8 +29,7 @@
     "pages/business/ibookGoods/ibookGoods",
     "pages/business/ibookmain/ibookmain",
     "pages/business/disGoods/disGoods",
-    "pages/business/signCate/signCate",
-    "pages/business/newModelPage/newModelPage",
+    "pages/business/newStandard/newStandard",
     
 
     "pagesCustomer/newModelPage/newModelPage",
@@ -67,6 +66,7 @@
     "pages/customer/addCustomer3/addCustomer3",
     "pages/customer/addCustomer4/addCustomer4",
     "pages/customer/addCustomer5/addCustomer5",
+    "pages/customer/addCustomer6/addCustomer6",
     "pages/customer/serviceTime/serviceTime"
   ],
   "window": {

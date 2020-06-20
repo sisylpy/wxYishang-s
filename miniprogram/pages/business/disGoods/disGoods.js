@@ -1,6 +1,6 @@
 // pages/business/catalogue/catalogue.js
 import apiUrl from '../../../config.js'
-import { getDistributerGoods, uploadDownGoods } from '../../../lib/apiBusiness.js'
+import { getCommunityGoods, uploadDownGoods } from '../../../lib/apiBusiness.js'
 const globalData = getApp().globalData;
 
 Page({
@@ -60,10 +60,10 @@ Page({
       limit: this.data.limit,
       page: this.data.currentPage,
       fatherId: this.data.fatherId,
-      disId: 1,
+      communityId: 1,
     }
 
-    getDistributerGoods(data).
+    getCommunityGoods(data).
       then(res => {
         if (res) {
           console.log(res.result.page.list)

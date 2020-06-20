@@ -3,17 +3,16 @@
   <view class="orderBackOne" style="height: {{windowHeight  - 100}}rpx; ">
    
     <view class="one_row_one">
-      <image class="one_row_img" style="width:{{windowWidth}}rpx; height: 100%;" src="{{url + goods.dgGoodsFilePath}}"></image>
+      <image class="one_row_img" style="width:{{windowWidth}}rpx; height: 100%;" src="{{url + goods.nxCgGoodsFilePath}}"></image>
       <!-- <text class="">{{goods.nxGoodsEntity.nxGoodsName}}</text> -->
     </view>
-
     <view class="second_row_one flex-row-around">
       <view class="flex-row">
-        <image class="second_row_img" src="{{url + goods.dgGoodsStandardFilePath}}" style="width:{{windowWidth / 2}}rpx; height:{{(windowHeight  - 100) / 4}}rpx;"></image>
+        <image class="second_row_img" src="{{url + goods.nxCgGoodsStandardFilePath}}" style="width:{{windowWidth / 2}}rpx; height:{{(windowHeight  - 100) / 4}}rpx;"></image>
       </view>
       <view class="flex-row" >
         <text class="middle">
-      {{goods.dgGoodsSellStandardScale}}{{goods.nxGoodsEntity.nxGoodsStandardname}}/{{goods.dgGoodsSellStandardName}}</text>
+      {{goods.nxCgGoodsSellStandardScale}}{{goods.nxGoodsEntity.nxGoodsStandardname}}/{{goods.nxCgGoodsSellStandardName}}</text>
       </view>
     </view>
 
@@ -22,7 +21,7 @@
         <view class="flex-row">
           <text class="smallBlack margin-l-right">单价</text>
           <text class="yuan">¥</text>
-          <text class="middle margin-right">{{standardPrice}}/{{goods.dgGoodsSellStandardName}}</text>
+          <text class="middle margin-right">{{standardPrice}}/{{goods.nxCgGoodsSellStandardName}}</text>
         </view>
 
         <view class="split"></view>
@@ -30,7 +29,7 @@
         <view class="flex-row ">
           <text class="option_item options_add" bindtap="reduceOne">-</text>
           <text class="options_number">{{amount}}</text>
-          <text class="">{{goods.dgGoodsSellStandardName}}</text>
+          <text class="">{{goods.nxCgGoodsSellStandardName}}</text>
           <text class="option_item options_reduce" bindtap="addOne">+</text>
         </view>
       </view>

@@ -6,6 +6,21 @@ import apiUrl from '../config.js'
 
 //nxstandard
 
+//
+export const getStandardList = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxstandard/list/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
 
 export const saveStandard = (data) => {
   return new Promise((resolve, reject) => {
@@ -28,7 +43,7 @@ export const saveStandard = (data) => {
 export const downGoods = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/postDgGoods',
+      url: apiUrl.apiUrl + 'nxcommunitygoods/postDgGoods',
       method: 'POST',
       data: data,
       success: (res) => {

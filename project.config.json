@@ -10,6 +10,8 @@
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
@@ -17,15 +19,15 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
-	"appid": "wx87baf9dcf935518a",
+	"appid": "wxbc686226ccc443f1",
 	"projectname": "YiShang-s",
 	"libVersion": "2.9.2",
 	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {
-		"qywx_simulator_plugin": "1.2.0"
-	},
+	"simulatorPluginLibVersion": {},
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {
@@ -215,12 +217,55 @@
 					"id": -1,
 					"name": "pages/business/ibookCatalogue/ibookCatalogue",
 					"pathName": "pages/business/ibookCatalogue/ibookCatalogue",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "pages/business/newStandard/newStandard",
+					"pathName": "pages/business/newStandard/newStandard",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/business/newModelPage/newModelPage",
-					"pathName": "pages/business/newModelPage/newModelPage",
+					"name": "pagesCustomer/customerInfo/customerInfo",
+					"pathName": "pagesCustomer/customerInfo/customerInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/addCustomer2/addCustomer2",
+					"pathName": "pages/customer/addCustomer2/addCustomer2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/addCustomer3/addCustomer3",
+					"pathName": "pages/customer/addCustomer3/addCustomer3",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/addCustomer4/addCustomer4",
+					"pathName": "pages/customer/addCustomer4/addCustomer4",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/addCustomer5/addCustomer5",
+					"pathName": "pages/customer/addCustomer5/addCustomer5",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "pages/customer/addCustomer6/addCustomer6",
+					"pathName": "pages/customer/addCustomer6/addCustomer6",
 					"query": "",
 					"scene": null
 				}

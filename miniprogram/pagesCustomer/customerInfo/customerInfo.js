@@ -82,23 +82,21 @@ Page({
 
   // 绑定input输入 
   bindAddressInput: function (e) {
-    var value = e.detail.value;
+    // var value = e.detail.value;
 
-    var address = "userInfo.customerAddress";
+    // var address = "userInfo.customerAddress";
 
-    this.setData({
-      [address]: value, 
+    // this.setData({
+    //   [address]: value, 
 
-    })
-
-
-
+    // })
 
     var that = this;
+    console.log("heree?")
     // 新建百度地图对象 
-    // var BMap = new bmap.BMapWX({
-    //   ak: 'mxgGUk1oDBQhF0lqDnv2XyCjTgOO6d2E'
-    // });
+    var BMap = new bmap.BMapWX({
+      ak: 'mxgGUk1oDBQhF0lqDnv2XyCjTgOO6d2E'
+    });
     var fail = function (data) {
       console.log(data)
     };
@@ -124,10 +122,8 @@ Page({
       success: success
     });
 
-
-
-
   },
+// ?????
 
 //选择地址
   clickAddress: function(e){

@@ -32,13 +32,13 @@
       </navigator>
     </view>
     <view class="father">      
-      <view class="one_goods"  wx:for="{{goodsList}}" bindtap="showGoodsPage" wx:for-item="item"  data-id="{{item.disGoodsId}}" data-name="{{item.nxGoodsEntity.nxGoodsName}}" data-index="{{index}}" data-type="{{item.dgGoodsSellType}}">
+      <view class="one_goods"  wx:for="{{goodsList}}" bindtap="showGoodsPage" wx:for-item="item"  data-id="{{item.nxCommunityGoodsId}}" data-name="{{item.nxGoodsEntity.nxGoodsName}}" data-index="{{index}}" data-type="{{item.nxCgGoodsSellType}}">
       <!-- <view class="select_circle {{}}" style="width:50rpx; height:50rpx;line-height:50rpx;margin-left:{{(windowWidth - 230) / 3}}rpx;">{{item.dgGoodsOrderAmount}}{{item.dgGoodsSellStandardName}}</view> -->
         <view class="goods_name {{item.isSelected ? 'is-active': ''}}">{{item.nxGoodsEntity.nxGoodsName}}</view>
         <view class="goods_price">
           <view class="money">¥</view>
-          <view class="big">{{item.dgGoodsPrice}}</view>
-          <view class="small">.{{item.dgGoodsPriceDecimal}}</view>
+          <view class="big">{{item.nxCgGoodsPrice}}</view>
+          <view class="small">.{{item.nxCgGoodsPriceDecimal}}</view>
           <view class="starndard">/{{item.nxGoodsEntity.nxGoodsStandardname}}</view>
         </view>
         <view class="options  {{item.isSelected ? 'hidden' : ''}}" data-index="{{index}}" data-name="{{item.nxGoodsEntity.nxGoodsName}}" data-id="{{item.nxGoodsEntity.nxGoodsId}}" data-item="{{item}}" data-standard="{{item.nxGoodsEntity.nxGoodsStandardname}}">

@@ -14,7 +14,6 @@ Page({
     fatherName: "新鲜蔬菜",
     index: "1.6",
     showAll: false,
-    fatherId: 11,
 
   },
 
@@ -26,10 +25,12 @@ Page({
     this.setData({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
-      // fatherId: options.fatherId,
+      fatherId: options.fatherId,
       fatherName: options.fatherName,
       color: options.color,
       index: options.index,
+      url: apiUrl.server,
+
     })
 
     

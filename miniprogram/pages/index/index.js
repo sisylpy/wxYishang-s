@@ -8,7 +8,7 @@ const globalData = getApp().globalData;
 var app = getApp()
 
 import apiUrl from '../../config.js'
-import {indexData, dgCataList } from '../../lib/apiBusiness.js'
+import { indexData, cgCataList } from '../../lib/apiBusiness.js'
 
 Page({
   
@@ -69,14 +69,17 @@ Page({
     this.setData({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
-      distributerId: globalData.distributerId,
+      distributerId: 1,
+      communityId: 1,
+      url: apiUrl.server,
     })
 
   },
 
  _getDgCataData: function(){
+   console.log(this.data.itemIndex)
    
-   dgCataList(this.data.distributerId).
+   cgCataList(this.data.communityId).
      then(res => {
        if (res) {
          console.log(res.result.data)

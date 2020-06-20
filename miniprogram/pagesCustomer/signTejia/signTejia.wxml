@@ -4,6 +4,7 @@
 
 
     <view class="whole">
+    
       <view class="one" bindtap="clickFather" data-id="{{one.dfgGoodsFatherId}}" data-index="{{oneIndex}}" wx:for="{{goodsList}}" wx:for-item="one">
         <view class="one-img-wrapper">
           <image class="one-img" src="{{one.img}}"></image>

@@ -1,6 +1,6 @@
 // pages/business/catalogue/catalogue.js
 import apiUrl from '../../config.js'
-import { getDistributerGoods, getGoodsInfo } from '../../lib/apiBusiness.js'
+import { getDistributerGoods,  } from '../../lib/apiBusiness.js'
 const globalData = getApp().globalData;
 
 Page({
@@ -193,7 +193,7 @@ Page({
     console.log(e.currentTarget.dataset.standard)
     
     var data = {
-      goodsId: e.currentTarget.dataset.id,
+      disGoodsId: e.currentTarget.dataset.id,
       disId: 1,
     }
 

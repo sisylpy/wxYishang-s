@@ -5,7 +5,7 @@ const globalData = getApp().globalData;
 var app = getApp()
 
 import apiUrl from '../../config.js'
-import { indexData, dgCataList } from '../../lib/apiBusiness.js'
+import { indexData, cgCataList } from '../../lib/apiBusiness.js'
 
 Page({
 

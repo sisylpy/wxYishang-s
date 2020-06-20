@@ -1,7 +1,7 @@
 // pagesCustomer/oneGoodsPage/oneGoodsPage.js
 
 import apiUrl from '../../config.js'
-import {getDisGoodsDetail } from '../../lib/apiCustomer.js'
+import { getCommunityGoodsDetail } from '../../lib/apiCustomer.js'
 const globalData = getApp().globalData;
 
 
@@ -23,16 +23,14 @@ Page({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
       digitBoardHeight: globalData.digitBoardHeight * globalData.rpxR,
-      disGoodsId: options.disGoodsId,
+      communityGoodsId: options.communityGoodsId,
       url: apiUrl.server
     })
-    
-    
     wx.setNavigationBarTitle({
       title: options.name,
     })
 
-    getDisGoodsDetail(this.data.disGoodsId)
+    getCommunityGoodsDetail(this.data.communityGoodsId)
       .then(res =>{
         if(res){
           console.log(res.result.data);
@@ -42,8 +40,8 @@ Page({
 
           var goods = this.data.goods;
 
-          var price = Number(goods.dgGoodsPrice + goods.dgGoodsPriceDecimal);
-          var scale = Number(goods.dgGoodsSellStandardScale);
+          var price = Number(goods.nxCgGoodsPrice + goods.nxCgGoodsPriceDecimal);
+          var scale = Number(goods.nxCgGoodsSellStandardScale);
 
           this.setData({
             sub: (price * scale).toFixed(1),
@@ -69,7 +67,7 @@ Page({
 
   addOne: function (e) {
     var amount = Number(this.data.amount) + 1;
-    var scale = Number(this.data.goods.dgGoodsSellStandardScale);
+    var scale = Number(this.data.goods.nxCgGoodsSellStandardScale);
     var sub = (Number(this.data.price) * amount * scale).toFixed(1);
     this.setData({
       amount: amount,
@@ -80,7 +78,7 @@ Page({
   reduceOne: function (e) {
     if (this.data.amount > 1) {
       var amount = this.data.amount - 1;
-      var scale = Number(this.data.goods.dgGoodsSellStandardScale);
+      var scale = Number(this.data.goods.nxCgGoodsSellStandardScale);
       var sub = (this.data.price * amount * scale).toFixed(1);
       this.setData({
         amount: amount,
@@ -92,27 +90,27 @@ Page({
 
   confirm: function (e) {
     var goods = this.data.goods;
-    var price = Number(goods.dgGoodsPrice) + Number(goods.dgGoodsPriceDecimal);
-    var standard = goods.dgGoodsSellStandardName;
+    var price = Number(goods.nxCgGoodsPrice) + Number(goods.dgGoodsPriceDecimal);
+    var standard = goods.nxCgGoodsSellStandardName;
     var weight = 
-      (Number(goods.dgGoodsSellStandardScale) * Number(this.data.amount)).toFixed(1); 
+      (Number(goods.nxCgGoodsSellStandardScale) * Number(this.data.amount)).toFixed(1); 
    console.log("funk")
-    console.log(goods.dgGoodsSellStandardScale);
-    console.log(Number(goods.dgGoodsSellStandardScale));
+    console.log(goods.nxCgGoodsSellStandardScale);
+    console.log(Number(goods.nxCgGoodsSellStandardScale));
     console.log(this.data.amount);
     console.log("made")
 
 
     var apply = {
-      nxOsGoodsId: goods.dgGoodsId,
+      nxOsGoodsId: goods.nxCgGoodsId,
       nxOsQuantity: this.data.amount,
       nxOsStandard: standard,
       nxOsPrice: price,
-      nxOsGoodsFatherId: goods.dgGoodsFatherId,
+      nxOsGoodsFatherId: goods.nxCgGoodsFatherId,
       nxOsDisGoodsId: goods.disGoodsId,
       nxOsSubtotal: this.data.sub,
-      nxOsGoodsSellType: goods.dgGoodsSellType,
-      nxOsGoodsSellStandardScale: goods.dgGoodsSellStandardScale,
+      nxOsGoodsSellType: goods.nxCgGoodsSellType,
+      nxOsGoodsSellStandardScale: goods.nxCgGoodsSellStandardScale,
       nxOsSubWeight: weight,
 
       nxGoodsEntity: {

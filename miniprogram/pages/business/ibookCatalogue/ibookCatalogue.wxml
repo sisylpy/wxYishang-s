@@ -18,7 +18,7 @@
           data-color="{{color}}" data-sort="{{one.nxGoodsSort}}"
           >
 
-            <image class="one-img" src="../{{one.nxGoodsFile}}"></image>
+            <image class="one-img" src="{{url + one.nxGoodsFile}}" wx:if="{{one.nxGoodsFile.length > 0}}"></image>
 
             <view class="cata-words flex-column">
               <text class="fatherName">{{one.nxGoodsName}}</text>

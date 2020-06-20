@@ -25,6 +25,7 @@ Page({
       console.log(data)
     };
     var success = function (data) {
+      console.log(data)
       wxMarkerData = data.wxMarkerData;
       that.setData({
         markers: wxMarkerData

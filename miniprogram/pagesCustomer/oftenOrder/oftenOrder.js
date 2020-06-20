@@ -3,7 +3,7 @@ import apiUrl from '../../config.js'
 import userTime from '../../lib/userTime.js'
 const globalData = getApp().globalData;
 import {
-  dgCataList
+  cgCataList
 } from '../../lib/apiBusiness.js'
 
 Page({

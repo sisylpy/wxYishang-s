@@ -1,6 +1,8 @@
 // pages/business/catalogue/catalogue.js
 import apiUrl from '../../config.js'
-import { getDistributerGoods } from '../../lib/apiBusiness.js'
+import {
+  getCommunityGoods,
+ } from '../../lib/apiBusiness.js'
 const globalData = getApp().globalData;
 
 Page({
@@ -79,10 +81,10 @@ Page({
       limit: this.data.limit,
       page: this.data.currentPage,
       fatherId: this.data.fatherId,
-      disId: 1,
+      communityId: 1,
     }
 
-    getDistributerGoods(data).
+    getCommunityGoods(data).
       then(res => {
         if (res) {
           console.log(res.result.page.list)
@@ -214,15 +216,14 @@ Page({
   
     if (type == 0){
       wx.navigateTo({
-        url: '../zeroGoodsPage/zeroGoodsPage?disGoodsId=' + id + '&name=' + name,
+        url: '../zeroGoodsPage/zeroGoodsPage?communityGoodsId=' + id + '&name=' + name,
       })
     }else if(type == 1){
       wx.navigateTo({
-        url: '../oneGoodsPage/oneGoodsPage?disGoodsId=' + id +'&name='+name,
+        url: '../oneGoodsPage/oneGoodsPage?communityGoodsId=' + id +'&name='+name,
       })
     }
   },
-
  
 
 

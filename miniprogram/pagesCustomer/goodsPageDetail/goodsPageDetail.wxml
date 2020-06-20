@@ -31,10 +31,10 @@
 
       <view class="my-one {{item.isSelected ? 'is-active' : ''}}">
         <view class="my-one-top flex-column">
-          <text>{{item.nxDistributerGoodsEntity.nxGoodsEntity.nxGoodsName}}</text>
-          <text class="otAmount {{item.isEdit ? 'is-active' : ''}}">{{item.nxOtAmount}}{{item.nxDistributerGoodsEntity.nxGoodsEntity.nxGoodsStandardname}}</text>
-          <text class="bbb">单价: {{item.nxDistributerGoodsEntity.dgGoodsPrice}}元/{{item.nxDistributerGoodsEntity.nxGoodsEntity.nxGoodsStandardname}}</text>
-          <text class="bbb">起订量: {{item.nxDistributerGoodsEntity.dgGoodsMinWeight}}{{item.nxDistributerGoodsEntity.nxGoodsEntity.nxGoodsStandardname}}</text>
+          <text>{{item.nxCommunityGoodsEntity.nxGoodsEntity.nxGoodsName}}</text>
+          <text class="otAmount {{item.isEdit ? 'is-active' : ''}}">{{item.nxOtAmount}}{{item.nxCommunityGoodsEntity.nxGoodsEntity.nxGoodsStandardname}}</text>
+          <text class="bbb">单价: {{item.nxDistributerGoodsEntity.dgGoodsPrice}}元/{{item.nxCommunityGoodsEntity.nxGoodsEntity.nxGoodsStandardname}}</text>
+          <text class="bbb">起订量: {{item.nxCommunityGoodsEntity.dgGoodsMinWeight}}{{item.nxCommunityGoodsEntity.nxGoodsEntity.nxGoodsStandardname}}</text>
 
         </view>
         <view class="my-line"></view>

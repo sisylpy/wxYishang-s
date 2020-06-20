@@ -110,9 +110,9 @@
 
 
     <view class="whole">
-      <view class="one" wx:for="{{goodsList}}" wx:for-item="one" bindtap="clickFather" data-id="{{one.dfgGoodsFatherId}}" data-fathername="{{one.dfgGoodsFatherName}}">
-        <image class="one-img" src="{{one.dfgGoodsFatherImg}}"></image>
-        <text class="goods_name"> {{one.dfgGoodsFatherName}}</text>
+      <view class="one" wx:for="{{goodsList}}" wx:for-item="one" bindtap="clickFather" data-id="{{one.nxCfgGoodsFatherId}}" data-fathername="{{one.nxCfgGoodsFatherName}}">
+        <image class="one-img" src="{{server +  one.nxCfgGoodsFatherImg}}"></image>
+        <text class="goods_name"> {{one.nxCfgGoodsFatherName}}</text>
       </view>
     </view>
 

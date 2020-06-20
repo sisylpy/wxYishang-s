@@ -139,7 +139,7 @@
 
       <!-- Part-three -->
       <swiper-item>
-        <template is="catalogue" data='{{showIndex:showIndex, goodsList:goodsList, windowWidth:windowWidth,windowHeight:windowHeight}}'></template>
+        <template is="catalogue" data='{{showIndex:showIndex, goodsList:goodsList, windowWidth:windowWidth,windowHeight:windowHeight, url:url}}'></template>
       </swiper-item>
 
 

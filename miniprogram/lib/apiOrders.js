@@ -24,7 +24,7 @@ export const deleteOrder = (data) => {
 export const getPurchaserGoods = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/getPurchaserGoods',
+      url: apiUrl.apiUrl + 'nxcommunitygoods/getPurchaserGoods',
       method: 'POST',
       data: {
         purchaserUserId: data.purchaserUserId,
@@ -50,7 +50,7 @@ export const getPurchaserGoods = (data) => {
 export const savePlanPurchase = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/savePlanPurchase',
+      url: apiUrl.apiUrl + 'nxcommunitygoods/savePlanPurchase',
       method: 'POST',
       data: {
         disGoodsId: data.disGoodsId,
@@ -278,7 +278,7 @@ export const getOrdersToWeigh = (data) => {
 export const purchaseDisGoods = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/purchaseDisGoods',
+      url: apiUrl.apiUrl + 'nxcommunitygoods/purchaseDisGoods',
       method: 'POST',
       data: {
         "purchaseUserId": data.purchaseUserId,

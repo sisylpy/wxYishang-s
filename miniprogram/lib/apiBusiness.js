@@ -2,11 +2,43 @@ import Promise from './bluebird'
 import apiUrl from '../config.js'
 
 
+
+
+
+
+export const addNewStandard = (filePathList, nxStandardName, nxStandardScale, nxStandardError,
+  nxSGoodsId) => {
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      url: apiUrl.apiUrl + 'nxstandard/save',
+      filePath: filePathList[0],
+      name: 'file',
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      formData: {
+        nxStandardName: nxStandardName,
+        nxStandardScale: nxStandardScale,
+        nxStandardError: nxStandardError,
+        nxSGoodsId: nxSGoodsId,
+
+      },
+      success: function (res) {
+        resolve({ result: res.data })
+      },
+      fail: function (e) {
+        reject(e)
+      },
+
+    })
+  })
+}
+
 //indexData
 export const indexData = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxorders/disGetIndexData/' + data,
+      url: apiUrl.apiUrl + 'nxorders/communityGetIndexData/' + data,
       method: 'GET',
       success: (res) => {
         resolve({ result: res.data })
@@ -24,8 +56,7 @@ export const sendCrl = () => {
   return new Promise((resolve, reject) => {
     wx.request({
       url: apiUrl.apiUrl + 'test/send',
-      method: 'GET',
-      
+      method: 'GET',      
       success: (res) => {
         resolve({ result: res.data })
       },
@@ -59,51 +90,35 @@ export const jscode2session = (data) => {
 
 
 //
-export const getGoodsInfo = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/getGoodInfoByDistribuerId',
-      method: 'POST',
-      data: {
-        "goodsId": data.goodsId,
-        "disId": data.disId,
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },      
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
+// export const getGoodsInfo = (data) => {
+//   return new Promise((resolve, reject) => {
+//     wx.request({
+//       url: apiUrl.apiUrl + 'nxcommunitygoods/getGoodInfoByDistribuerId',
+//       method: 'POST',
+//       data: {
+//         "goodsId": data.goodsId,
+//         "disId": data.disId,
+//       },
+//       header: {
+//         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+//       },      
+//       success: (res) => {
+//         resolve({ result: res.data })
+//       },
+//       fail: (e) => {
+//         reject(e)
+//       }
+//     })
+//   })
+// }
 
-//saveMember
-export const saveMember = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxcustomer/save',
-      method: 'POST',
-      data: data,
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
 
 
 //uploadDownGoods
 export const uploadDownGoods = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/updateDgGoods',
+      url: apiUrl.apiUrl + 'nxcommunitygoods/updateDgGoods',
       method: 'POST',
       data: data,
       success: (res) => {
@@ -120,16 +135,16 @@ export const uploadDownGoods = (data) => {
 
 
 //
-export const getDistributerGoods = (data) => {
+export const getCommunityGoods = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/getDistributerGoods',
+      url: apiUrl.apiUrl + 'nxcommunitygoods/getCommunityGoods',
       method: 'POST',
       data: {
         "fatherId": data.fatherId,
         "limit": data.limit,
         "page": data.page,
-        "disId": data.disId,
+        "communityId": data.communityId,
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
@@ -148,10 +163,10 @@ export const getDistributerGoods = (data) => {
 
 
 //getDgCateList
-export const dgCataList = (data) => {
+export const cgCataList = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributerfathergoods/getDgCateList/' + data,
+      url: apiUrl.apiUrl + 'nxcommunityfathergoods/getCgCateList/' + data,
       method: 'GET',
       success: (res) => {
         resolve({ result: res.data })

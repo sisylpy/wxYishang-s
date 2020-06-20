@@ -3,7 +3,8 @@ import apiUrl from '../../../config.js'
 import { 
   getIbookGoodsByFatherId, 
   downGoods,
-  saveStandard
+  saveStandard,
+  getStandardList
   } from '../../../lib/apiibook.js'
 const globalData = getApp().globalData;
 
@@ -19,23 +20,44 @@ Page({
     limit: 5,
     currentPage: 1,
     isLoading: false,
-    abc: [
-      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+    
 
     show: false,
-    //  item:{
-    //    "nxGoodsName": "西兰花",
-
-    //  },
+   
     applyStandardName: "斤",
     applyArr: [],
     goodsList: [],
-
+    url: apiUrl.server,
+    addStandard: false,
 
 
   },
 
   onShow: function () {
+    var addStandard = this.data.addStandard;
+    var index = this.data.itemIndex;
+
+    if (addStandard){
+      console.log("save success");
+      getStandardList(this.data.nxGoodsId)
+        .then(res =>{
+          if(res){
+            console.log(res.result.data);
+            var standardlist = this.data.goodsList[index].nxGoodsStandardEntities;
+            // console.log(this.data.goodsList[index]);
+            // standardlist.push(res.result.data);
+            // console.log(standardlist);
+            var up = "goodsList[" + index + "].nxGoodsStandardEntities"
+
+            this.setData({
+              [up]: res.result.data
+            })
+          }
+        })
+
+    }else{
+      console.log("no save!")
+    }
    
   },
 
@@ -151,19 +173,20 @@ Page({
   downloadGoods: function (e) {
     console.log(e)
     
-    wx.navigateTo({
-      url: '../newModelPage/newModelPage',
-    })
-    // this.setData({
-    //   show: true,
-    //   item: e.currentTarget.dataset.item,
-    //   itemIndex: e.currentTarget.dataset.index,
+    // wx.navigateTo({
+    //   url: '../newModelPage/newModelPage',
     // })
+    this.setData({
+      show: true,
+      item: e.currentTarget.dataset.item,
+      itemIndex: e.currentTarget.dataset.index,
+    })
   },
 
 
   confirm: function (e) {
 
+ console.log(e);
 
     var price = e.detail.price;
     var decimal = "";
@@ -186,7 +209,10 @@ Page({
       dgGoodsFatherImg: this.data.fatherImg,
       dgGoodsPrice: price,
       dgGoodsPriceDecimal : decimal,
-      dgStandardList: e.detail.standList,
+      dgStandardList: this.data.item.nxGoodsStandardEntities,
+      dgGoodsFatherColor: this.data.color,
+      dgGoodsFilePath: this.data.item.nxGoodsFile,
+
     };
 
     downGoods(dg)
@@ -204,13 +230,16 @@ Page({
   },
 
   addStandard: function(e){
-    console.log(e);
-
     this.setData({
-      showAdd: true,
+      // showAdd: true,
+      nxGoodsId: e.currentTarget.dataset.id,
       item: e.currentTarget.dataset.item,
       itemIndex: e.currentTarget.dataset.index,
 
+    })
+
+    wx.navigateTo({
+      url: '../newStandard/newStandard?id=' + e.currentTarget.dataset.id,
     })
 
 

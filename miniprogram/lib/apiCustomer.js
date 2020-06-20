@@ -4,12 +4,10 @@ import apiUrl from '../config.js'
 
 
 
-//
-
-export const getDisGoodsDetail = (data) => {
+export const getCommunityGoodsDetail = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/cust/getDisGoodsDetail/' + data,
+      url: apiUrl.apiUrl + 'nxcommunitygoods/getCommunityGoodsDetail/' + data,
       method: 'GET',
       success: (res) => {
         resolve({ result: res.data })
@@ -74,10 +72,10 @@ export const saveTemplateItem = (data) => {
 }
 
 
-export const customerUserGetRank = (data) => {
+export const customerUserQueryToJoin = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxcustomerusergoods/customerUserGetRank/' + data,
+      url: apiUrl.apiUrl + 'nxcustomerusergoods/customerUserQueryToJoin/' + data,
       method: 'GET',
       success: (res) => {
         resolve({ result: res.data })
