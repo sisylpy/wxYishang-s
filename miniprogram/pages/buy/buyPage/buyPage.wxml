@@ -72,16 +72,16 @@
         <view class="btn_item flex-column-center " hover-class="hover">
           <image class="icon" src="../../../images/del.png"></image>
           <button class="shareBtn with-tb-padding" open-type="share" style="width:{{windowWidth/ 4 }}rpx">
-            图片
+            复制
           </button>
         </view>
         <view class="btn_item flex-column-center" bindtap="toPurchaseBoy" hover-class="hover">
           <image class="icon" src="../../../images/location.png"></image>
-          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 4 }}rpx">市场采购</button>
+          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 4 }}rpx">采购</button>
         </view>
         <view class="btn_item flex-column-center" hover-class="hover">
           <image class="icon" src="../../../images/location.png"></image>
-          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 4 }}rpx">App订货</button>
+          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 4 }}rpx">微信订货</button>
         </view>
       </view>
 

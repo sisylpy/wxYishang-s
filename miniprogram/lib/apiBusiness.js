@@ -38,7 +38,7 @@ export const addNewStandard = (filePathList, nxStandardName, nxStandardScale, nx
 export const indexData = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxorders/communityGetIndexData/' + data,
+      url: apiUrl.apiUrl + 'nxorders/disGetIndexData/' + data,
       method: 'GET',
       success: (res) => {
         resolve({ result: res.data })
@@ -141,10 +141,9 @@ export const getCommunityGoods = (data) => {
       url: apiUrl.apiUrl + 'nxcommunitygoods/getCommunityGoods',
       method: 'POST',
       data: {
-        "fatherId": data.fatherId,
+        "nxCommunityFatherGoodsId": data.nxCommunityFatherGoodsId,
         "limit": data.limit,
         "page": data.page,
-        "communityId": data.communityId,
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"

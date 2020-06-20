@@ -13,7 +13,7 @@ Page({
   data: {
     selectedStores: 0,
     arr: [],
-    disId: 1,
+    communityId: 1,
     pickUserId: ''
 
 

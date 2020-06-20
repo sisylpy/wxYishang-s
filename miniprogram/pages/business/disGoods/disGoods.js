@@ -59,8 +59,7 @@ Page({
     var data = {
       limit: this.data.limit,
       page: this.data.currentPage,
-      fatherId: this.data.fatherId,
-      communityId: 1,
+      nxCommunityFatherGoodsId: this.data.fatherId,
     }
 
     getCommunityGoods(data).

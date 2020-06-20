@@ -12,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pickOrderAmount: 0,
    
    
   },
@@ -60,12 +60,54 @@ Page({
   customerApplys:function(e) {
     console.log(e);
     var nxOrdersId = e.currentTarget.id;
-    wx.navigateTo({
-      url: '../ordersDetail/ordersDetail?nxOrdersId=' + nxOrdersId,
-    })
+    var index = e.currentTarget.dataset.index;
+      var todayArrSel = "orderArr[" + index + "].isSelected";
+      var isSelected = this.data.orderArr[index].isSelected;
+      var pickOrderAmount = this.data.pickOrderAmount;
+      if (isSelected) {
+        this.setData({
+          [todayArrSel]: false,
+          pickOrderAmount: pickOrderAmount - 1,
+
+        })
+      } else {
+        this.setData({
+          [todayArrSel]: true,
+          pickOrderAmount: pickOrderAmount + 1,
+        })
+      }
+    
+    
+   
   },
 
+  toOrderDetail(){
+    var arr = this.data.orderArr;
+    console.log(this.data.orderArr)
+    console.log(arr.length)
+    var ids = "";
 
+    for(var i = 0; i < this.data.orderArr.length; i++){
+      console.log(i)
+      var sel = arr[i].isSelected;
+      if(sel){
+        var id = arr[i].nxOrdersId;
+        console.log(id)
+        ids = id + "," + ids 
+
+      }
+    }
+     this.setData({
+       ids: ids,
+     })
+
+    console.log(this.data.ids)
+
+ wx.navigateTo({
+      url: '../ordersGoodsCate/ordersGoodsCate?nxOrdersId=' + this.data.ids,
+    })
+
+  },
 
 
 

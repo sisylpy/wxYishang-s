@@ -316,7 +316,15 @@ if(e.detail.current == 1){
     wx.navigateTo({
       url: '/pages/pur/purGoods/purGoods',
     })
+  },
+
+  toRestaurantList(){
+ wx.navigateTo({
+      url: '/pages/restaurant/restaurantList/restaurantList?id=' + this.data.distributerId,
+    })
   }
+
+
 
 
 

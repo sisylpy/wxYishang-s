@@ -1,0 +1,33 @@
+
+<view class="">
+ 
+
+  <view class="whole" >
+     <view class="one" bindtap="clickCate" data-id="{{one.fatherId}}" data-index="{{oneIndex}}"  wx:for="{{cateArr}}" wx:for-item="one">
+      <image class="one-img" src="{{url + one.img}}" wx:if="one.dfgGoodsFatherImg.length > 0"></image> 
+        <view class="goods_name with-padding"> 
+        <view class="cate_name">
+          <text class="cate_explain">种类:</text>
+          <text class="cate_content">{{one.fatherName}}</text>
+        </view>
+         <view class="cate_name">
+          <text class="cate_explain">数量:</text>
+          <text class="cate_content">{{one.total}}个</text>
+        </view>
+        
+         <!-- <view class="cate_name">
+          <text>称重商品:</text>
+          <text class="margin-right"></text>
+        </view> -->
+
+        
+        </view>
+        
+
+     </view>
+
+   </view>
+
+
+
+</view>

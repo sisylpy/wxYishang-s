@@ -15,7 +15,7 @@
         <text class="selfword {{itemIndex == 1 ? 'active': ''}}">进菜</text>
       </view> -->
       <view class="fragement_item {{itemIndex == 1 ? 'active': ''}}" bindtap="toStore">
-        <text class=" ">当天售价</text>
+        <text class=" ">商品</text>
       </view>
       <view class="fragement_item {{itemIndex == 2 ? 'active': ''}}" bindtap="toStore">
         <text class="">客户</text>
@@ -54,7 +54,7 @@
                 </view>
 
                 <view class='nav_pill_body with-padding' bindtap="toPayAndDeliverOrder" hover-class="hover">
-                  <text class="nav_text">付款与配送</text>
+                  <text class="nav_text">开票与配送</text>
                   <!-- <text class="text-sm">({{father.fatherAmount}}1个)</text> -->
                 </view>
                 
@@ -74,10 +74,10 @@
               </view>
 
               <view class="fold-content {{showWeighUser ? 'active' : ''}}">
-                <view class="fold-item with-border-bottom" wx:for="{{weighUserArr}}" wx:for-item="item" data-id="{{item.disUserId}}" bindtap="toWeighingUser" hover-class="hover">
-                  <image class="userUrl margin-right" src="{{item.duWxAvatarUrl}}"></image>
+                <view class="fold-item with-border-bottom" wx:for="{{weighUserArr}}" wx:for-item="item" data-id="{{item.nxDistributerUserId}}" bindtap="toWeighingUser" hover-class="hover">
+                  <!-- <image class="userUrl margin-right" src="{{item.nxDuUserShortName}}"></image> -->
                   <view class="flex-column">
-                    <text>{{item.duWxNickName}}</text>
+                    <text>{{item.nxDuUserShortName}}</text>
                     <text class="explain-words">订单: {{item.orderAmount}}个
                     </text>
                   </view>
@@ -163,7 +163,16 @@
                 </view> -->
 
                 <!-- 客户 -->
-                <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' bindtap="toCustomer">
+                <navigator url="/pages/restaurant/myCode/myCode">
+                
+                <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}' >
+                  <!-- <image class="icon" src="../../images/add.jpg"></image> -->
+                  <text class="nav_text">我的二维码</text>
+                </view>
+                </navigator>
+
+                
+                <view class='nav_pill_body with-padding {{applyArr.length == 1 || applyArr.length == index + 1 ? "is-last" : ""}}'  bindtap="toRestaurantList">
                   <!-- <image class="icon" src="../../images/add.jpg"></image> -->
                   <text class="nav_text">客户</text>
                 </view>

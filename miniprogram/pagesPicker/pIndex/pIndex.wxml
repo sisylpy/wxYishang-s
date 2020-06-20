@@ -1,0 +1,13 @@
+<view >
+
+<navigator url="../pSearchPrinter/pSearchPrinter">
+<button>选择拣货打印机</button>
+</navigator>
+
+
+
+<button bindtap="printPickData" style="margin-top: 50rpx;">打印拣货单</button>
+
+
+</view>
+

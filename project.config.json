@@ -25,7 +25,7 @@
 	},
 	"appid": "wxbc686226ccc443f1",
 	"projectname": "YiShang-s",
-	"libVersion": "2.9.2",
+	"libVersion": "2.11.2",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"compileType": "miniprogram",
@@ -266,6 +266,69 @@
 					"id": 30,
 					"name": "pages/customer/addCustomer6/addCustomer6",
 					"pathName": "pages/customer/addCustomer6/addCustomer6",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 31,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/signe/dingSigne",
+					"pathName": "pages/signe/dingSigne",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/signe1/enterprisetype",
+					"pathName": "pages/signe1/enterprisetype",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/restaurant/myCode/myCode",
+					"pathName": "pages/restaurant/myCode/myCode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "pages/restaurant/stepOne/stepOne",
+					"pathName": "pages/restaurant/stepOne/stepOne",
+					"query": "id=24",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/restaurant/restaurantList/restaurantList",
+					"pathName": "pages/restaurant/restaurantList/restaurantList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesPicker/pIndex/pIndex",
+					"pathName": "pagesPicker/pIndex/pIndex",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pagesPicker/pSearchPrinter/pSearchPrinter",
+					"pathName": "pagesPicker/pSearchPrinter/pSearchPrinter",
 					"query": "",
 					"scene": null
 				}

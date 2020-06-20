@@ -13,11 +13,11 @@
     <view class=''>选择分拣员</view>
     <scroll-view scroll-y class='scrool-view' style='height: {{windowHeight - 100}}rpx'>
       <radio-group class="radio-group" bindchange="radioChange">
-        <label class="radio" wx:for="{{pickUserArr}}" wx:key='{{item.disUserId}}'>
+        <label class="radio" wx:for="{{pickUserArr}}" wx:key='{{item.nxDistributerUserId}}'>
         <view class="flex-row user-row with-border-bottom with-padding" >
-        <radio value="{{item.disUserId}}"  />
-            <image class='userUrl margin-right' src="{{item.duWxAvatarUrl}}"></image>
-            <text class='wxNumber'>{{item.duWxNickName}}</text>
+        <radio value="{{item.nxDistributerUserId}}"  />
+            <!-- <image class='userUrl margin-right' src="{{item.duWxAvatarUrl}}"></image> -->
+            <text class='wxNumber'>{{item.nxDuUserShortName}}</text>
         </view>
           
         </label>

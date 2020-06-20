@@ -1,0 +1,6 @@
+
+
+<view class="flex-column">
+<view>我的二维码</view>
+<canvas class="canvas-code"canvas-id="myQrcode" style="background:#fff;width: 200px;height: 200px;"/>
+</view>

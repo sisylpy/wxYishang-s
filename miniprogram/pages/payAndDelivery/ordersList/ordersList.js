@@ -243,10 +243,8 @@ Page({
         disId: this.data.distributerId,
         orderStatus: 4,
         paymentStatus: -1
-
       }
     }
-
 
     console.log("----widhhejekrjk")
     console.log(data);

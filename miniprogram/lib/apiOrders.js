@@ -6,6 +6,38 @@ import apiUrl from '../config.js'
 
 //
 
+export const getCommGoodsOfSubs = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxorderssub/getCommGoodsOfSubs/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+
+export const getOrderCate = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxorderssub/getOrderCate/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+
 export const deleteOrder = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({

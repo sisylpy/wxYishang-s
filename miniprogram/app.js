@@ -7,8 +7,9 @@ App({
     avatarUrl: null,
     windowWidth: null,
     widowHeight: null,
+    platform: "",
   },
-
+  
   onLaunch: function (ops) {
     console.log("opts")
     // 获取用户信息
@@ -42,7 +43,8 @@ App({
           rpxR = 750 / width,
           screenHeight = res.screenHeight,
           statusBarHeight = res.statusBarHeight,
-          pixelRatio = res.pixelRatio
+          pixelRatio = res.pixelRatio,
+          platform = res.platform
         this.globalData = {
           windowWidth: width,
           windowHeight: height,
@@ -52,6 +54,7 @@ App({
           pixelRatio: pixelRatio,
           rpxR: rpxR,
           purDepId: 4,
+          platform: platform,
         }
       }
     })
@@ -75,6 +78,24 @@ App({
 
 
 
+  },
+
+  getPlatform: function () { //获取客户端平台
+    console.log(this.globalData)
+    console.log("thithitithtiitisissss")
+    return this.globalData["platform"]
+  },
+
+
+  BLEInformation:{
+    platform: "",
+    deviceId: null,
+    writeCharaterId: "",    
+    writeServiceId: "",
+    notifyCharaterId: "",
+    notifyServiceId: "",
+    readCharaterId: "",
+    readServiceId: "",
   }
 
 

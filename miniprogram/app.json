@@ -1,9 +1,19 @@
 {
   "pages": [
-   "pages/index/index",
-        
-   "pagesCustomer/index/index",      
+    "pagesPicker/pIndex/pIndex",
 
+   "pages/index/index",
+   "pages/login/login",
+   "pages/restaurant/myCode/myCode",
+   "pages/restaurant/stepOne/stepOne",
+   "pages/restaurant/stepTwo/stepTwo",
+   "pages/restaurant/restaurantList/restaurantList",
+   "pagesPicker/pSearchPrinter/pSearchPrinter",
+   "pagesPicker/pBindPrinter/pBindPrinter",
+
+
+   
+   "pagesCustomer/index/index",      
     "pages/pur/purGoods/purGoods",
     
     "pages/buy/buyPage/buyPage",     
@@ -16,6 +26,9 @@
 
     "pages/weight/weighingOrders/weighingOrders",
     "pages/weight/ordersDetail/ordersDetail",
+    "pages/weight/ordersGoodsCate/ordersGoodsCate",
+    "pages/weight/commGoodsOfSubOrder/commGoodsOfSubOrder",
+   
     "pages/payAndDelivery/ordersList/ordersList",
     "pages/payAndDelivery/paymentPage/paymentPage",
     "pages/payAndDelivery/deliveryBoy/deliveryBoy",
@@ -47,11 +60,9 @@
     "pagesCustomer/zeroGoodsPage/zeroGoodsPage",
     "pagesCustomer/oneGoodsPage/oneGoodsPage",
     
-    "pagesCustomer/sign/sign",
     "pagesCustomer/signTejia/signTejia",
     "pagesCustomer/addTemplateItem/addTemplateItem",
-        
-        
+  
     "pagesCustomer/oftenOrder/oftenOrder",
     "pagesCustomer/weigh/weigh",
     "pagesCustomer/search/search",

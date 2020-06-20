@@ -33,33 +33,13 @@
             <view class="" wx:for="{{todayArr}}" wx:for-item="item" class="with-border-bottom with-padding {{index == todayArr.length - 1 ? 'is-last' : ''}}" hover-class="hover" hover-class="hover" bindtap="choiceisPayingOrder" data-index="{{index}}" data-what="0"
               data-isSelected="{{item.isSelected}}">
 
-              <view class="flex-row">
-                <view>
-                  <text class="margin-right index {{item.isSelected ? 'hide' : ''}}">{{index + 1}}</text>
-                  <view class="margin-right circle {{item.isSelected ? 'show' : ''}}">v
-                    <!-- <image class="circle-image" src="/images/logo.jpg"></image> -->
-                  </view>
-                </view>
-
-                <view class="flex-column">
-                   <text class="">送达时间: {{item.nxOrdersServiceTime}}</text>
-                  <text class="">{{item.nxOrdersCommunity}} {{item.nxOrdersCommunityBuilding}}</text>
-                </view>
-              </view>
-
-              <view class="index-padding">
-                <view class="margin-right" wx:for="{{item.nxOrdersSubEntities}}" wx:for-item="goods" wx:for-index="goodsIndex">
-                  <text class="normal " wx:if="{{goodsIndex  !== order.nxOrdersSubEntities.length - 1}}">{{goods.nxGoodsEntity.nxGoodsName}} {{goods.nxOsQuantity}}{{goods.nxOsStandard}},</text>
-                  <text class="normal" wx:else>{{goods.nxGoodsEntity.nxGoodsName}} {{goods.nxOsQuantity}}{{goods.nxOsStandard}}</text>
-                </view>
-              </view>
+            
             </view>
           </view>
           <view style="{{todayWeightOrderAmount > 0 ?'height: 120rpx' : ''}}"></view>
         </scroll-view>
-        <view class="bottom_btn  {{todayWeightOrderAmount > 0 ?'show' : ''}}" bindtap="assignUnWeightOrder">
-          打印 今天拣货单{{todayWeightOrderAmount}}个
-        </view>
+       
+       
       </swiper-item>
       <!-- ./zero -->
 

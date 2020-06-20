@@ -1,0 +1,79 @@
+
+  <!-- fragement -->
+  <view class='fragement'>
+    <!-- fragement -->
+    <view class="fragement_content">
+      <view class="fragement_item {{itemIndex == 0 ? 'active': ''}}" bindtap="swichNav" data-current="0">
+        <text class="">非定价</text>
+      </view>
+
+      <view class="fragement_item {{itemIndex == 1 ? 'active': ''}}" bindtap="swichNav" data-current="1">
+        <text class="">定价</text>
+      </view>
+    </view>
+    <!-- ./fragement_content -->
+  </view>
+  <!-- ./fragement -->
+
+
+
+  <view class="content-wrapper fix-wrapper">
+
+    <swiper bindchange="switchTab" current="{{itemIndex}}" style="height: {{windowHeight - 78}}rpx;">
+
+      <!-- zero -->
+      <swiper-item>
+        <view class="noData {{unFixedArr.length > 0 ? 'hide' : ''}}" style="line-height: {{windowHeight - 178}}rpx; width:{{windowWidth}}rpx; ">
+          没有订单
+        </view>
+
+        <scroll-view scroll-y="true" style="height: {{windowHeight -  78}}rpx;">
+          <view class="content">
+
+            <view class="" wx:for="{{unFixedArr}}" wx:for-item="item" class="with-border-bottom with-padding {{index == unFixedArr.length - 1 ? 'is-last' : ''}}" hover-class="hover" hover-class="hover" bindtap="" data-index="{{index}}" >
+
+              <view class="flex-row">
+                <view>
+                {{item.nxDepartmentName}}
+                </view>
+
+              
+              </view>
+
+            
+            </view>
+          </view>
+        </scroll-view>
+      
+      </swiper-item>
+      <!-- ./zero -->
+
+      <!-- one -->
+ <swiper-item>
+        <view class="noData {{fixedArr.length > 0 ? 'hide' : ''}}" style="line-height: {{windowHeight - 178}}rpx; width:{{windowWidth}}rpx; ">
+          没有订单
+        </view>
+
+        <scroll-view scroll-y="true" style="height: {{windowHeight -  78}}rpx;">
+          <view class="content">
+
+            <view class="" wx:for="{{fixedArr}}" wx:for-item="item" class="with-border-bottom with-padding {{index == fixedArr.length - 1 ? 'is-last' : ''}}" hover-class="hover" hover-class="hover" bindtap="" data-index="{{index}}" >
+
+              <view class="flex-row">
+                <view>
+                {{item.nxDepartmentName}}
+                </view>
+
+              
+              </view>
+
+            
+            </view>
+          </view>
+        </scroll-view>
+      
+      </swiper-item>
+    
+    </swiper>
+  </view>
+

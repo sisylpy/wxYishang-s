@@ -9,22 +9,22 @@
     </view>
     <view class="section_body">
       <scroll-view scroll-y style="height:{{windowHeight - 280}}rpx">
-        <view class="flex-column with-border-bottom  with-padding" wx:for="{{applyArr}}">
+        <view class="flex-column with-border-bottom  with-padding" wx:for="{{applyArr}}" wx:for-index="index">
 
           <view class="flex-row">
-            <text class="goods_name">{{item.nxGoodsEntity.nxGoodsName}}({{item.nxGoodsEntity.nxGoodsStandardname}})</text>
+            <text class="goods_name">{{item.nxCommunityGoodsEntity.nxCgGoodsName}}({{item.nxCommunityGoodsEntity.nxCgGoodsStandardname}})</text>
             <text class="order_number">{{item.nxOsQuantity}}{{item.nxOsStandard}}</text>
             <view class="weight flex-row">
-              <input class="weightInput margin-l-right" type="digit" hold-keyboard="true" adjust-position="true" cursor="3" cursor-spacing="3" bindblur="getWeightValue"  data-index="{{index}}" value="{{item.nxOsWeight}}"/>
-              <text class="weightStandard">{{item.nxGoodsEntity.nxGoodsStandardname}} </text>
+              <input class="weightInput margin-l-right" type="text"  focus="{{index == 0 ? 'true' : ''}}" bindblur="getWeightValue"  data-index="{{index}}" value="{{item.nxOsWeight}}"/>
+              <text class="weightStandard">{{item.nxCommunityGoodsEntity.nxCgGoodsStandardname}} </text>
             </view>
 
           </view>
 
           <view class="flex-row-between">
             <view class="flex-column">
-              <text class="explain-words margin-right">单价: {{item.nxOsPrice}}/{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
-              <text class="explain-words">详细: {{item.nxGoodsEntity.nxGoodsDetail}}</text>
+              <text class="explain-words margin-right">单价: {{item.nxOsPrice}}/{{item.nxCommunityGoodsEntity.nxCgGoodsStandardname}}</text>
+              <text class="explain-words">详细: {{item.nxCommunityGoodsEntity.nxCgGoodsDetail}}</text>
             </view>
             <view wx:if="{{item.nxOsSubtotal !== null}}">
               小计: {{item.nxOsSubtotal}}元

@@ -4,17 +4,18 @@
 
     <scroll-view scroll-y="true" style="height: {{windowHeight}}rpx;">
          <view class="whole" >
-     <view class="one" bindtap="clickFather" data-id="{{one.nxCfgGoodsFatherId}}" data-index="{{oneIndex}}"  wx:for="{{goodsList}}" wx:for-item="one">
-      <image class="one-img" src="{{url + one.nxCfgGoodsFatherImg}}" wx:if="one.dfgGoodsFatherImg.length > 0"></image> 
+     <view class="one" bindtap="clickFather" data-id="{{one.nxCommunityFatherGoodsId}}" data-index="{{oneIndex}}"  wx:for="{{goodsList}}" wx:for-item="one">
+      <image class="one-img" src="{{url + one.nxFatherGoodsImg}}" wx:if="one.dfgGoodsFatherImg.length > 0"></image> 
         <view class="goods_name with-padding"> 
         <view class="cate_name">
           <text class="cate_explain">种类:</text>
-          <text class="cate_content">{{one.nxCfgGoodsFatherName}}</text>
+          <text class="cate_content">{{one.nxFatherGoodsName}}</text>
         </view>
          <view class="cate_name">
           <text class="cate_explain">数量:</text>
           <text class="cate_content">{{one.nxCfgGoodsAmount}}个</text>
         </view>
+        
          <!-- <view class="cate_name">
           <text>称重商品:</text>
           <text class="margin-right"></text>

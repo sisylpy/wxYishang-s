@@ -26,6 +26,8 @@ Page({
       nxOrdersId: options.nxOrdersId
     })
 
+    console.log(this.data.nxOrdersId)
+
 
     getOrderDetail(this.data.nxOrdersId)
       .then(res => {

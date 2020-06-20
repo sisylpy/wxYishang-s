@@ -1,4 +1,4 @@
-// pages/order/packingList/packingList.js
+// pagesPicker/pBindPrinter/pBindPrinter.js
 Page({
 
   /**

@@ -372,6 +372,22 @@ swiper{
   align-items: center;
 }
 
+.btn_main {
+  background: rgb(224, 223, 223);
+  color: rgb(100, 99, 99);
+  position: fixed;
+  bottom: 20rpx;
+  line-height: 100rpx;
+  width: 96%;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.btn_main.next{
+  background: #1ba0e5;
+  color: #fff;
+}
+
 
 .small{
   font-size: 34rpx;
@@ -438,6 +454,13 @@ swiper{
   color: gray;
 }
 
+.with-margin-top{
+  margin-top: 20rpx;
+}
+
+.with-margin-bottom{
+  margin-bottom: 20rpx;
+}
 .with-l-margin-top{
   margin-top: 10rpx;
 }

@@ -1,0 +1,8 @@
+
+
+<view wx:for="{{commGoodsArr}}" wx:for-item="item">
+<view>{{item.goodsName}}</view>
+<view wx:for="{{item.orders}}" wx:for-item="one" >
+{{one.nxOsQuantity}} {{one.nxOsStandard}}
+</view>
+</view>
