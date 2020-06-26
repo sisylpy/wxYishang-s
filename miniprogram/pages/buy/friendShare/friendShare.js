@@ -1,8 +1,9 @@
 // pages/storeApplys/storeApplys.js
 
+const app = getApp()
 const globalData = getApp().globalData;
 import {
-  getPurchaseGoodsBatch,
+  getPurchaseGoodsByUUID,
 } from '../../../lib/apiDepOrder'
 
 Page({
@@ -23,12 +24,10 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      batchId: options.batchId,
-      windowWidth: globalData.windowWidth * globalData.rpxR,
-      windowHeight: globalData.windowHeight * globalData.rpxR,
+      uuid: options.uuid
     })
     
-    getPurchaseGoodsBatch(this.data.batchId)
+    getPurchaseGoodsByUUID(this.data.uuid)
       .then(res => {
         if (res) {
           console.log(res);
@@ -50,7 +49,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '李沛谊订货',    
-      path: '/pages/buy/friendShare/friendShare?uuid=' + this.data.uuid,     // 当前页面 path ，必须是以 / 开头的完整路径
+      path: '/pages/buy/sharePage/sharePage?uuid=' + this.data.uuid,     // 当前页面 path ，必须是以 / 开头的完整路径
       imageUrl: '../../../images/logo.jpg',
        success: function (res) {
          console.log(res)

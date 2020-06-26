@@ -14,10 +14,10 @@
 
 .index {
   width: 50rpx;
-  height: 50rpx;
+  /* height: 50rpx; */
   /* background: red; */
   display: block;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .index.hide {
@@ -65,4 +65,91 @@
 }
 .buy-words{
   flex-basis: 40%;
+}
+.jinhuo_words{
+  width: 100rpx;
+}
+.purGoods_wrapper{
+  display: flex;
+  flex-flow: row nowrap;
+  /* align-content: center;
+  align-items: center; */
+  border:1px solid gray;
+}
+
+.cata{
+  /* background: red; */
+  padding-top: 30rpx;
+  /* border: 1px solid red; */
+
+}
+.cata_content{
+  /* background: blue; */
+  padding: 10rpx 50rpx;
+  border: 1rpx solid lightgray;
+  border-radius: 60rpx;
+  background: #fff;
+  font-size: 38rpx;
+
+ 
+
+}
+.x-line{
+  height: 1px;
+  width: 100%;
+  background:lightgray;
+  margin-bottom: -40rpx;
+
+  /* margin-bottom: -40rpx; */
+
+
+}
+
+
+.purGoods{
+ 
+  background: rgb(177, 229, 245);
+  padding: 5rpx 20rpx;
+  margin-right: 50rpx;
+  margin-bottom: 20rpx;
+  border-radius: 30rpx;
+  font-size: 32rpx;
+  border: 2px solid rgb(61, 137, 167);
+  
+}
+.purGoodsAdd{
+  background: rgb(218, 219, 219);
+  padding: 5rpx 30rpx;
+  margin-right: 50rpx;
+  margin-bottom: 20rpx;
+  border-radius: 30rpx;
+  font-size: 32rpx;
+}
+
+
+.list{
+  border: 1px solid rgb(241, 241, 241);
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.gray_back{
+  background: rgb(241, 241, 241);
+
+}
+
+.gray_first{
+  border-top-left-radius: 10rpx;
+}
+
+.gray_last {
+  border-bottom-left-radius: 10rpx;
+
+}
+
+.aaa{
+  /* background: yellow; */
+  /* border: 1px solid red; */
+  /* margin-top: -4rpx; */
 }

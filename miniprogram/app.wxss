@@ -261,11 +261,13 @@ swiper{
   justify-content: flex-start;
   align-items: center;
 }
-.flex-row-wrap{
+
+.flex-row-first{
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
+
   
-}
+} 
 
 .hover{
    background: rgb(241, 241, 241);
@@ -494,4 +496,16 @@ swiper{
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-end;
+}
+
+.point{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #000;
+  margin-right: 30rpx;
+}
+.apply{
+  font-size: 34rpx;
+  color: rgb(39, 39, 39);
 }

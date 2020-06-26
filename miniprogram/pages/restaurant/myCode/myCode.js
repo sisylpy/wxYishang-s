@@ -30,7 +30,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var value = wx.getStorageSync('disInfo');
+    if(value) {
+      this.setData({
+        disInfo: value,
+        disId: value.nxDistributerEntity.nxDistributerId,
+        disName: value.nxDistributerEntity.nxDistributerName
+      })
+    } 
    
 
   // var that = this
@@ -59,8 +66,9 @@ Page({
 
       qrcode = new QRCode('myQrcode', {
         // usingIn: this,
-        text: "http://localhost:8080/nxl_war_exploded/addRestraunt/" + this.socket.id,
-        image: '/images/1.jpg',
+        text: "http://localhost:8080/nxl_war_exploded/addRestraunt?socketId="
+         + this.socket.id + '&disId=' + this.data.disId ,
+        // image: '/images/1.jpg',
         width: qrcodeWidth,
         height: qrcodeHeight,
         colorDark: "black",

@@ -156,7 +156,7 @@ Page({
   onLoad: function(options) {
 
     wx.setNavigationBarTitle({
-        "title": "付款与配送",
+        "title": "开票与配送",
       }),
 
 

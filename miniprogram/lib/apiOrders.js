@@ -78,29 +78,6 @@ export const getPurchaserGoods = (data) => {
 
 
 
-//计划进货数量
-export const savePlanPurchase = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxcommunitygoods/savePlanPurchase',
-      method: 'POST',
-      data: {
-        disGoodsId: data.disGoodsId,
-        plan: data.plan,
-        subList: data.subList
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
  
 
 export const getToPurchaseGoods = (data) => {

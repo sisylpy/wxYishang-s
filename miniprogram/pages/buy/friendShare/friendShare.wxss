@@ -1,8 +1,8 @@
 /* pages/storeApplys/storeApplys.wxss */
 
-.table{
-  border: 1px solid lightgray;
-  
+
+.li{
+  line-height: 80rpx;
 }
 
 .name {

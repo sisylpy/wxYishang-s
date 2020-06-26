@@ -4,6 +4,9 @@ var load = require('../../../lib/load.js');
 import { disGetUserByRole,
   distributionWeighing,
 } from '../../../lib/apiOrders.js'
+const globalData = getApp().globalData;
+var app = getApp()
+import apiUrl from '../../../config.js'
 
 Page({
 
@@ -25,6 +28,11 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+          url: apiUrl.server,
+   this.setData({
+    url: apiUrl.server,
+
+   })
     
     this._getWeighUserData();
 

@@ -19,7 +19,7 @@
           <text class="explain">计划采购:</text>
           <view class="number">
             <view class="int">
-              <input class='inputint' focus='true' type='text' value="{{item.purchase}}" bindinput="getPlan" ></input>
+              <input class='inputint' focus='true' type='text'  bindinput="getPlan" ></input>
             </view>
           </view>
         </view>

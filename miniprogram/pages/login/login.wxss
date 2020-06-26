@@ -2,13 +2,6 @@
   padding: 50rpx 30rpx;
 }
 
-.top{
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-  align-items: center;
-  /* background: red; */
-}
 .log{
   /* background: blue; */
   width: 150rpx;
@@ -38,23 +31,15 @@
 .user_face.is-active{
   display: block;
 }
-.tishi{
-  color: red;
-  /* text-align: center; */
-  font-size: 34rpx;
-  height: 60rpx;
-  line-height: 60rpx;
-  visibility: hidden;
-}
-.tishi.is-active {
-  visibility: visible;
-}
+
+
 .word{
   font-size: 50rpx;
   line-height: 100rpx;
   padding: 30rpx 0 ;
   /* background: blueviolet; */
 }
+
 .what{
   /* background: yellow; */
   width: 100%;
@@ -75,34 +60,11 @@
 .log_btn{
   background: #000;
   color: #fff;
-}
-.btns {
-  background: green;
 
 }
-.stu_btn {
-  display: block;
-}
-.stu_btn.is-active {
-  display: none;
-}
-
-.teacher_enter{
-  margin: 30rpx 0;
-
-}
-.teacher_btn {
-  line-height: 50rpx;
-  font-size: 30rpx;
-  color: rgb(79, 79, 100);
-  text-decoration:underline; 
-  text-align: right; 
-}
-
-
-.teacherLogin{
-  background: gray;
-}
-.teacher_enter button {
+.log_btn button{
+  color: #fff;
   border: none;
 }
+
+

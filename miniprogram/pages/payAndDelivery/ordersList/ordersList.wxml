@@ -5,11 +5,11 @@
     <!-- fragement -->
     <view class="fragement_content">
       <view class='fragement_item' bindtap="swichNav" data-current="0">
-        <text class="{{itemIndex == 0 ? 'active': ''}}">未付款</text>
+        <text class="{{itemIndex == 0 ? 'active': ''}}">未开票</text>
       </view>
 
       <view class='fragement_item' bindtap="swichNav" data-current="1">
-        <text class="{{itemIndex == 1 ? 'active': ''}}">付款中</text>
+        <text class="{{itemIndex == 1 ? 'active': ''}}">完成开票</text>
       </view>
       <view class='fragement_item' bindtap="swichNav" data-current="2">
         <text class="{{itemIndex == 2 ? 'active': ''}}">未配送</text>

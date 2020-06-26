@@ -20,7 +20,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxbc686226ccc443f1",
@@ -330,6 +330,13 @@
 					"name": "pagesPicker/pSearchPrinter/pSearchPrinter",
 					"pathName": "pagesPicker/pSearchPrinter/pSearchPrinter",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "pages/buy/sharePage/sharePage",
+					"pathName": "pages/buy/sharePage/sharePage",
+					"query": "batchId=10",
 					"scene": null
 				}
 			]

@@ -1,20 +1,19 @@
 <!--pages/storeApplys/storeApplys.wxml-->
-<view class="with-padding">
+<view class="wrapper">
 
-  <view class="table" style="height: {{windowHeight - 140}}rpx;">
-    <view class="box flex-column ">
+  <view class="section">
+    <view class="box">
       <view class="box_header with-padding with-border-bottom">
         <text class="name">商品</text>
         <text class="number">订货数量</text>
-        <text class="outNumber">单价</text>
-        <text class="outStatus">数量</text>
-         <text class="outStatus">小计</text>
+        <text class="outNumber">待报价</text>
+        <text class="outStatus">待称重</text>
       </view>
       <view class="box_body with-padding">
-      <view class="flex-column">
-      <view class="with-padding with-border-bottom {{applyArr.length == 1 || applyArr.length == index+1 ? 'is-last': ''}}" wx:for="{{goodsArr.nxDPGEntities}}">
-       <text class="name">{{item.nxGoodsEntity.nxGoodsName}}</text>
-        <text class="number">{{item.nxDpgQuantity}}{{item.nxDpgStandard}}</text>
+      <view class="ul">
+      <view class="li with-padding with-border-bottom {{applyArr.length == 1 || applyArr.length == index+1 ? 'is-last': ''}}" wx:for="{{goodsArr}}">
+       <text class="name">{{item.goodsName}}</text>
+        <text class="number">{{item.stockPurStandard}}{{item.purStandardName}}</text>
 
         <text wx:if="{{item.applyStatus == 0}}" class="outNumber ">0</text>
         <text wx:else class="outNumber ">{{item.stockApplyStandard}}{{item.applyStandardName}}</text>
@@ -34,7 +33,7 @@
   </view>
 
   <view>
-    <button open-type="share">发送给微信好友</button>
+    <button>保存</button>
   </view>
 
 

@@ -16,8 +16,8 @@
         <label class="radio" wx:for="{{pickUserArr}}" wx:key='{{item.nxDistributerUserId}}'>
         <view class="flex-row user-row with-border-bottom with-padding" >
         <radio value="{{item.nxDistributerUserId}}"  />
-            <!-- <image class='userUrl margin-right' src="{{item.duWxAvatarUrl}}"></image> -->
-            <text class='wxNumber'>{{item.nxDuUserShortName}}</text>
+            <image class='userUrl margin-right' src="{{item.nxDiuWxAvartraUrl}}" ></image>
+            <text class='wxNumber'>{{item.nxDiuWxNickName}}</text>
         </view>
           
         </label>

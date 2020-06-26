@@ -8,7 +8,7 @@ const globalData = getApp().globalData;
 var app = getApp()
 
 import apiUrl from '../../config.js'
-import { indexData, cgCataList } from '../../lib/apiBusiness.js'
+import { indexData } from '../../lib/apiBusiness.js'
 
 Page({
   
@@ -51,12 +51,8 @@ Page({
     })
 
   //todo
-    this._getIndexPageData();
+    // this._getIndexPageData();
 
-    if (this.data.itemIndex == 2) {
-      this._getDgCataData();
-
-    } 
     
      },
 
@@ -65,31 +61,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.globalData.distributerId = "1"  
+    var value = wx.getStorageSync('disInfo');
+    if(value) {
+      this.setData({
+        disInfo: value,
+        disId: value.nxDistributerEntity.nxDistributerId,
+        disName: value.nxDistributerEntity.nxDistributerName
+      })
+    } 
+
     this.setData({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
-      distributerId: 1,
-      communityId: 1,
       url: apiUrl.server,
+     
     })
 
   },
 
- _getDgCataData: function(){
-   console.log(this.data.itemIndex)
+//  _getDgCataData: function(){
+//    console.log(this.data.itemIndex)
    
-   cgCataList(this.data.communityId).
-     then(res => {
-       if (res) {
-         console.log(res.result.data)
-         this.setData({
-           goodsList: res.result.data,
-         })
+//    cgCataList(this.data.communityId).
+//      then(res => {
+//        if (res) {
+//          console.log(res.result.data)
+//          this.setData({
+//            goodsList: res.result.data,
+//          })
 
-       }
-     })
- },
+//        }
+//      })
+//  },
 
   
 
@@ -175,11 +178,11 @@ _getIndexPageData: function(){
       itemIndex: e.detail.current
     });
     console.log(this.data.itemIndex);
-    if(this.data.itemIndex == 1){
+    if(this.data.itemIndex == 0){
 
     }
     if (this.data.itemIndex == 1){
-      this._getDgCataData();
+      // this._getDgCataData();
 
     }
     if (this.data.itemIndex == 4) {
