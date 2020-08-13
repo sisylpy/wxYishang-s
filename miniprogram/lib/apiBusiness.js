@@ -34,21 +34,6 @@ export const addNewStandard = (filePathList, nxStandardName, nxStandardScale, nx
   })
 }
 
-//indexData
-export const indexData = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxorders/disGetIndexData/' + data,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
 
 
 // 微信支付提醒

@@ -5,11 +5,20 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-  padding: 0 60rpx;
+  padding: 10rpx 60rpx;
+  background: #49174a;
+  color: #fff;
   
 }
 
+.fragement_item{
+  color: #fff;
+}
+.fragement_item.active{
+  color: #fff;
+  font-weight: 500;
 
+}
 
 
 .index {
@@ -147,9 +156,143 @@
   border-bottom-left-radius: 10rpx;
 
 }
+.btn_group{
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  font-size: 30rpx;
+}
+.btn_item{
+  /* border: 1px solid red; */
+}
 
 .aaa{
   /* background: yellow; */
   /* border: 1px solid red; */
   /* margin-top: -4rpx; */
+  font-size: 38rpx;
+}
+
+.apply_column{
+  border: 1px solid lightgray;
+  border-radius: 10rpx;
+}
+/* ... */
+
+
+page{
+  /* background: #fcf4fc; */
+}
+.time{
+  /* background: lightgreen; */
+  margin-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.time_part{
+  /* background: red; */
+  margin-bottom: 10rpx;
+  padding: 10rpx 10rpx;
+}
+.timeLine{
+  background: palevioletred;
+}
+
+/* 
+.timeLine:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  height: 100px;
+  background: #ddd;
+  left: 31px;
+  margin: 0;
+  border-radius: 2px;
+
+} */
+
+
+.hour{
+  padding: 6rpx 20rpx;
+  color: #fff;
+  background: #49174a;
+  font-size: 36rpx;
+  border-radius: 10rpx;
+
+}
+.time_body{
+  display: flex;
+  flex-flow: row nowrap;
+  margin-left: 20rpx;
+ 
+
+}
+.time_title{
+  margin-bottom: 20rpx;
+}
+
+.type{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: rgb(224, 223, 223);
+  margin-right: 20rpx;
+  /* position: relative; */
+}
+.type_icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 5rpx;
+  margin-left: 5rpx;
+  
+}
+.type_content{
+  overflow-wrap: break-word;
+  font-size: 36rpx;
+}
+.type_content_wrapper{
+  border: 1px solid rgb(238, 238, 238);
+  background: #fff;
+  border-radius: 10rpx;
+  box-shadow: gray;
+
+}
+
+.type_content_top{
+  border-bottom: 1px solid rgb(238, 238, 238);
+  /* position: relative; */
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.type_btn_gourp{
+  /* background: red; */
+  margin-top: 40rpx;
+}
+.type_btn{
+  padding: 10rpx 30rpx;
+  /* background: peru; */
+  /* color: #fff; */
+  margin-right: 40rpx;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  border: 1px solid lightcyan;
+
+}
+.type_words{
+  font-size: 36rpx;
+  color: rgb(8, 77, 204);
+  margin-right: 4rpx;
+}
+.type_time{
+  position: absolute;
+  color: gray;
+  right: 40rpx;
+  font-size: 28rpx;
+}
+.time_icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 4rpx;
 }

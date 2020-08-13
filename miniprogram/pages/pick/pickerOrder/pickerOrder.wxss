@@ -1,0 +1,17 @@
+
+.dep_img{
+  width: 120rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+
+}
+.sel_icon{
+  display: none;
+}
+.sel_icon.is-active{
+  display: block;
+}
+
+.common_icon.is-hide{
+   display: none;
+}

@@ -203,18 +203,11 @@ export const getWeighingOrder = (data) => {
   })
 }
 
-export const getUnWeightOrder = (data) => {
+export const getUnPickerOrder = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxorders/getUnWeightOrder',
-      method: 'POST',
-      data:{
-        disId: data.disId,
-        serviceDate: data.serviceDate
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },
+      url: apiUrl.apiUrl + 'nxdepartmentorders/getUnPickerOrder/' + data,
+      method: 'GET',
       success: (res) => {
         resolve({ result: res.data })
       },
@@ -330,28 +323,6 @@ export const distributionDelivery = (data) => {
 }
 
 
-//拣货分派
-export const distributionWeighing = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxorders/distributionWeighing',
-      method: 'POST',
-      data: {
-        "pickUserId": data.pickUserId,
-        "ordersEntities": data.ordersEntities,
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
 
 
 

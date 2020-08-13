@@ -1,40 +1,100 @@
 <!--pages/storeApplys/storeApplys.wxml-->
-<view class="wrapper">
+<view class="flex-column">
 
-  <view class="section">
-    <view class="box">
-      <view class="box_header with-padding with-border-bottom">
-        <text class="name">商品</text>
-        <text class="number">订货数量</text>
-        <text class="outNumber">待报价</text>
-        <text class="outStatus">待称重</text>
-      </view>
-      <view class="box_body with-padding">
-      <view class="ul">
-      <view class="li with-padding with-border-bottom {{applyArr.length == 1 || applyArr.length == index+1 ? 'is-last': ''}}" wx:for="{{goodsArr}}">
-       <text class="name">{{item.goodsName}}</text>
-        <text class="number">{{item.stockPurStandard}}{{item.purStandardName}}</text>
+	<view class="with-padding">
 
-        <text wx:if="{{item.applyStatus == 0}}" class="outNumber ">0</text>
-        <text wx:else class="outNumber ">{{item.stockApplyStandard}}{{item.applyStandardName}}</text>
-          
-      <text wx:if="{{item.status == 0}}" class="outStatus">库存充足</text>
-        <text wx:elif="{{item.status == 1}}" class="outStatus">库存不足</text>
-        <text wx:else class="outStatus">采购计划</text>
-      </view>
-      </view>
-      
-      
+		<!-- 客户界面 -->
+		<view class="table ">
 
-      </view>
+			<!-- 1，标题 -->
+			<view class="flex-column">
+			 	<view class="flex-column-center with-padding">
+					<image class="icon" src="../../../images/order_icon.png"></image>
+					<view>7月3日订货单</view>
+			 </view>
+			 <image class="faceRight" src="../../../images/logo.jpg"></image>
 
-    </view>
 
-  </view>
+			
+				<view class="flex-row with-lr-padding">
+					<text class="explain_words">订货人:</text>
+					<input class="orderPerson" placeholder="李树国配送"></input>
+				</view>
+			</view>
+			<!-- 。/标题 -->
+			<!-- 					
+ -->
+			<!-- 2， 表格 -->
+			<view class="box flex-column ">
+				<!-- <view class="flex-row box_title" style="text-align:center;">
+					<view class="goods">商品</view>
+					<view class="orderAmount">订货</view>
+					<view class="replyPrice">单价</view>
+				<view class="replyAmount">数量</view>
+				<view class="replySubtotal">小计</view>
+				</view> -->
 
-  <view>
-    <button>保存</button>
-  </view>
+
+				<view class="">
+					<view class="flex-column box_body" style="height: {{windowHeight - 340}}rpx;">
+						<view class="flex-row with-padding with-border-bottom {{applyArr.length == 1 || applyArr.length == index+1 ? 'is-last': ''}}" wx:for="{{goodsArr.nxDPGEntities}}">
+							<text class="index">{{index + 1}}</text>
+							<view class="goodsSend">{{item.nxGoodsEntity.nxGoodsName}}</view>
+							<view class="orderAmountSend">{{item.nxDpgQuantity}}</view>
+						<view class="replyAmountSend">
+							<!-- <input class="replyAmountInput" placeholder="数量"></input> -->
+						</view>
+						<view class="replySubtotalSend"></view>
+	<!-- {{item.nxDpgStandard}} -->
+						<!-- 	 <view class="replyPriceSend ">
+							<input class=" replyPriceInput"></input>
+						</view> -->
+
+						</view>
+
+						<view class="tishi with-padding" style="top:{{windowHeight - 420}}rpx; width:{{windowWidth - 140}}rpx;">
+							<view class="explain"></view>
+						</view>
+
+					</view>
+
+				</view>
+
+
+
+
+				<!--  -->
+
+			</view>
+			
+			<view class="flex-row-around total with-padding">
+				<view class="transfer" style="width: {{windowWidth/3}}rpx;">转发拣货单</view>
+				<view class="fill" style="width: {{windowWidth/3}}rpx;">结账</view>
+			</view>
+			<!-- 。/表格 -->
+
+			<!-- 3.按钮 -->
+			<!-- <view class="flex-row-around with-tb-padding">
+			<text class="style_btn" style="width:{{(windowWidth - 80)/2}}rpx;">现金</text>
+			<text class="style_btn"  style="width:{{(windowWidth -80)/2}}rpx;">记账</text>
+		</view> -->
+			<!-- 。/按钮 -->
+
+
+		</view>
+		<!-- 。/客户界面 -->
+
+
+		<!-- <view class="shareBtn" style="width: {{windowWidth - 40}}rpx;">
+			<button open-type="share">发送给微信好友</button>
+		</view> -->
+
+
+	</view>
+
+
+
+
 
 
 </view>

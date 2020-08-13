@@ -1,0 +1,30 @@
+<view class="" wx:for="{{depArr}}" wx:for-item="item" class="with-border-bottom with-padding {{index == todayArr.length - 1 ? 'is-last' : ''}}" hover-class="hover" hover-class="hover" bindtap="choiceisPayingOrder" data-index="{{index}}" data-isSelected="{{item.isSelected}}">
+
+	<view class="flex-row">
+		<image src="../../../images/duihao.png" class="icon sel_icon {{item.isSelected ? 'is-active' : ''}}"></image>
+		<image src="../../../images/order_icon.png" class="icon common_icon {{item.isSelected ?  'is-hide' : '' }} "></image>
+		<view class="flex-row-default">
+
+			<image class="dep_img margin-right" src="{{item.nxDepartmentFilePath}}"></image>
+			<view>
+				{{item.nxDepartmentName}}
+			</view>
+
+		</view>
+	</view>
+
+
+</view>
+
+<view class="bottom_btn {{selOrderAmount > 0 ? 'show' : ''}} " bindtap="assignUnWeightOrder" >
+
+选择拣货员
+ 
+  <!-- <view class="flex-row btn btn_two">
+    <text class="small">二维码</text>
+  </view>
+
+  <view class="flex-row btn btn_three">
+    <text class="small">记账</text>
+  </view> -->
+</view>

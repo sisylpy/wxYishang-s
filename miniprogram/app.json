@@ -2,39 +2,42 @@
   "pages": [
     "pages/index/index",
 
-    "pagesPicker/pIndex/pIndex",
 
    "pages/login/login",
+   "pages/pSearchPrinter/pSearchPrinter",
+
    "pages/restaurant/myCode/myCode",
    "pages/restaurant/stepOne/stepOne",
    "pages/restaurant/stepTwo/stepTwo",
    "pages/restaurant/restaurantList/restaurantList",
-   "pagesPicker/pSearchPrinter/pSearchPrinter",
-   "pagesPicker/pBindPrinter/pBindPrinter",
+  
 
 
    
    "pagesCustomer/index/index",      
-    "pages/pur/purGoods/purGoods",
     
-    "pages/buy/buyPage/buyPage",     
+    "pages/buy/buyPage/buyPage", 
+    "pages/buy/timeLine/timeLine",         
     "pages/buy/purchaseGoods/purchaseGoods",     
     "pages/buy/sharePage/sharePage",
     "pages/buy/friendShare/friendShare",
     
 
-    "pages/pick/weightOrder/weightOrder",
+    "pages/pick/pickerOrder/pickerOrder",
     "pages/no/addPickFirstStep/addPickFirstStep",
     "pages/pick/picker/picker",
 
-    "pages/weight/weighingOrders/weighingOrders",
+    "pages/weight/pickDepartment/pickDepartment",
     "pages/weight/ordersDetail/ordersDetail",
     "pages/weight/ordersGoodsCate/ordersGoodsCate",
     "pages/weight/commGoodsOfSubOrder/commGoodsOfSubOrder",
    
     "pages/payAndDelivery/ordersList/ordersList",
-    "pages/payAndDelivery/paymentPage/paymentPage",
+    "pages/payAndDelivery/issuePage/issuePage",
+    "pages/payAndDelivery/orderDepartment/orderDepartment",
     "pages/payAndDelivery/deliveryBoy/deliveryBoy",
+    "pages/payAndDelivery/receipt/receipt",
+
     
 
         

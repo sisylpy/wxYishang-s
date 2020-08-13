@@ -15,9 +15,9 @@
       <radio-group class="radio-group" bindchange="radioChange">
         <label class="radio" wx:for="{{purchaseUserArr}}" wx:key='{{item.disUserId}}'>
         <view class="flex-row user-row with-border-bottom with-padding" >
-        <radio value="{{item.disUserId}}"  />
-            <image class='userUrl margin-right' src="{{item.duWxAvatarUrl}}"></image>
-            <text class='wxNumber'>{{item.duWxNickName}}</text>
+        <radio value="{{item.nxDistributerUserId}}"  />
+            <image class='userUrl margin-right' src="{{item.nxDiuWxAvartraUrl}}"></image>
+            <text class='wxNumber'>{{item.nxDiuWxNickName}}</text>
         </view>
           
 
@@ -30,7 +30,7 @@
 
 
 
-    <view class='fix-main-btn {{purchaseUserId > 0 ? "active" : "" }}' bindtap='distributeWeigh'>市场采购</view>
+    <view class='fix-main-btn {{purchaseUserId > 0 ? "active" : "" }}' bindtap='saveBuyTypePurchaseBatch'>市场采购</view>
 
   </view>
 

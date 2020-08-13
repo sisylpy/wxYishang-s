@@ -18,7 +18,11 @@ Component({
     price: {
       type: String,
       value: ""
-    }
+    },
+   applyStandardName: {
+     type: String,
+     value: ""
+   }
    
 
    
@@ -73,6 +77,21 @@ Component({
        
         plan: e.detail.value
       })
+    },
+
+
+    changeStandard: function (e) {
+      var name = e.currentTarget.dataset.name;
+      console.log(e)
+      this.triggerEvent('changeStandard', {
+        applyStandardName: name
+
+      })
+      // this.setData({
+      //   applyStandardName: name
+      // })
+
+
     },
 
     },

@@ -155,11 +155,15 @@
   padding-top: 4rpx;
   padding-bottom: 4rpx;
   /* line-height: 90rpx; */
-  background: #289199;
+  background: #767777;
   margin-right: 40rpx;
   border-radius: 10rpx;
   border: 1px solid rgb(230, 230, 230);
   color: #fff;
+
+}
+.standardName.is-active{
+  background: #289199;
 
 }
 

@@ -1,28 +1,189 @@
 /* pages/storeApplys/storeApplys.wxss */
+page{
+  /* background: rgb(88, 36, 88); */
+  background: rgb(240, 239, 239);
+}
+.box_title{
+  margin-top: 20rpx;
+}
+.table{
+  border: 1px solid lightgray;
+  background: rgba(248, 248, 248);
+  border-radius: 4rpx;
+  margin-bottom: 30rpx;
+  padding: 0 20rpx;
 
+}
+.box{
+  margin-top: 10rpx;
+  background: #fff;
 
-.li{
-  line-height: 80rpx;
 }
 
-.name {
-  width: 30%;
+
+.goods {
+  width: 25%;
   /* background: yellow; */
 }
-
-.number {
-  width: 25%;
+/*  */
+.orderAmount {
+  width: 15%;
   /* background: green; */
 }
 
 
-.outNumber {
-  width: 25%;
+.replyPrice {
+  width: 20%;
   /* background: red; */
 }
 
-.outStatus {
-  width: 20%;
-  font-size: 26rpx;
+.replyAmount {
+  width: 15%;
+  /* background: rgb(199, 183, 183); */
+}
+.replySubtotal {
+  width: 25%;
+  /* flex-grow: 0.3; */
+  /* background: gray; */
+}
+.index{
+  width: 5%;
+}
+.goodsSend{
+  width: 25%;
+  /* background: yellow; */
+
+}
+.orderAmountSend{
+  width: 15%;
+  /* background: green; */
+
+}
+.replyPriceSend{
+  width: 30%;
+  /* background: red; */
+
+}
+.replyAmountSend{
+  width: 30%;
+  text-align: center;
   /* background: gainsboro; */
+
+}
+.replySubtotalSend{
+  width: 20%;
+  /* background: gray; */
+  text-align: center;
+
+}
+
+
+/*  */
+.box_body{
+  /* border: 1px solid lightgray; */
+  /* border-radius: 5rpx; */
+  background: #fff;
+}
+
+.replyPriceInput{
+  border-radius: 10rpx;
+  border: 1px solid lightgray;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.replyAmountInput{
+  border-radius: 10rpx;
+  border: 1px solid lightgray;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.shareBtn{
+  position: fixed;
+  bottom: 20rpx;
+  background: rgb(51,170,120);
+  /* width: 100%; */
+  line-height: 100rpx;
+  font-size: 36rpx;
+  /* height: 120rpx; */
+
+}
+.shareBtn button{
+  background: none;
+  color:#fff;
+ 
+  /* background: red; */
+  /* line-height: 120rpx;
+  padding: 0; */
+
+  /* line-height: 120rpx; */
+}
+
+.style_btn{
+  line-height: 70rpx;
+  background: #49174a;
+  color: #fff;
+  display: block;
+  text-align: center;
+  border-radius: 4rpx;
+
+
+}
+.tishi{
+  position: absolute;
+  /* background: red; */
+  font-size: 28rpx;
+  color: gray;
+}
+.total{
+ /* background: red; */
+ /* margin-top: 10rpx;
+ font-size: 30rpx;
+ color: gray; */
+
+
+}
+.transfer{
+  border: 1px solid rgb(73, 23, 74);
+  background: #fff;
+  padding: 14rpx 0;
+  border-radius: 10rpx;
+  color: rgb(73, 23, 74);
+  /* line-height: 70rpx; */
+  text-align: center;
+}
+.fill{
+  background: rgb(73, 23, 74);
+  padding: 14rpx 0;
+  border-radius: 10rpx;
+  color: #fff;
+  /* line-height: 70rpx; */
+  text-align: center;
+}
+
+.orderPerson{
+  border-bottom: 1px solid lightgray;
+}
+.row_half{
+  width: 50%;
+  /* background: yellow; */
+}
+.explain_words{
+  /* width: 200rpx; */
+}
+.form_title{
+  font-size: 30rpx;
+}
+
+.faceRight{
+  position: absolute;
+  right: 60rpx;
+  top: 60rpx;
+  width: 60rpx;
+  height: 60rpx;
 }

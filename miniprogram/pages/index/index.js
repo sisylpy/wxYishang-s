@@ -1,4 +1,3 @@
-
 var load = require('../../lib/load.js');
 
 var _animation; // 动画实体
@@ -8,10 +7,13 @@ const globalData = getApp().globalData;
 var app = getApp()
 
 import apiUrl from '../../config.js'
-import { indexData } from '../../lib/apiBusiness.js'
+import {
+  disGetTodayOrderCustomer,
+  indexData
+} from '../../lib/apiDepOrder.js'
 
 Page({
-  
+
   /**
    * 页面的初始数
    */
@@ -19,13 +21,14 @@ Page({
     itemIndex: 0,
     purItemIndex: 0,
     showmymodal: false,
-    showWeighUser: true,
-    showDeliver: true,
+    showBuyer: false,
+    showPicker: false,
+    showCustomer: false,
     pickAnimation: '',
     outAnimation: '',
     changeFirst: false,
     secondItemIndex: 0,
-   
+
     indicatorDots: false,
     autoplay: false,
     interval: 2000,
@@ -40,7 +43,7 @@ Page({
 
   },
 
-  
+
 
   onShow: function () {
     _animation = wx.createAnimation({
@@ -50,11 +53,19 @@ Page({
       transformOrigin: '50% 50% 0'
     })
 
-  //todo
+    //todo
+    if (this.data.distributerId) {
+      // this._getIndexPageData();
+    }
     // this._getIndexPageData();
 
-    
-     },
+
+
+
+
+  },
+
+
 
 
   /**
@@ -62,110 +73,114 @@ Page({
    */
   onLoad: function (options) {
     var value = wx.getStorageSync('disInfo');
-    if(value) {
+    if (value) {
       this.setData({
         disInfo: value,
         disId: value.nxDistributerEntity.nxDistributerId,
-        disName: value.nxDistributerEntity.nxDistributerName
+        disName: value.nxDistributerEntity.nxDistributerName,
       })
-    } 
+    }
 
     this.setData({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
       url: apiUrl.server,
-     
+
     })
+    // this._getIndexPageData();
+    this._getTodayCustomer();
 
   },
 
-//  _getDgCataData: function(){
-//    console.log(this.data.itemIndex)
-   
-//    cgCataList(this.data.communityId).
-//      then(res => {
-//        if (res) {
-//          console.log(res.result.data)
-//          this.setData({
-//            goodsList: res.result.data,
-//          })
 
-//        }
-//      })
-//  },
-
-  
-
-
-
-_getIndexPageData: function(){
-
-  //1，获取首页初始化数据
-  
-  load.showLoading("获取数据中")
-  indexData(this.data.distributerId)
-    .then(res => {
-      load.hideLoading();
-      console.log(res.result.data);
-      this.setData({
-        // sorts: res.result.data,
-        // store: res.result.data.store,
-        // goods: res.result.data.goods,
-        weighUserArr: res.result.data.weigh,
-        showWeighUser: true,
-        purchaseUserArr: res.result.data.purchase,
-
-        // bill: res.result.data.bill
-      })
-
-      //初始化图片
-      if (this.data.weighUserArr.length > 0){
-        this.pickStartAnimationInterval(90);
+  _getTodayCustomer(){
+    disGetTodayOrderCustomer(this.data.disId).then(res => {
+      if(res) {
+        console.log(res.result.data);
+        this.setData({
+          customerArr: res.result.data,
+        })
+        if(res.result.data.length > 0){
+          this.setData({
+            showCustomer: true,
+          })
+        }
       }
-      // if(this.data.bill.length > 0) {
-      //   this.outStartAnimationInterval(90);
-      // }
-      //缓存打开店铺和商品
-
-      // wx.setStorageSync("store", this.data.store)
-
     })
-},
 
-//点击拣货单
-  clickShowWeighUser: function() {
-    console.log("hai")
-    if(this.data.showWeighUser) {
-      this.pickStartAnimationInterval(0);
-      this.setData({
-        showWeighUser: false
-      })
-    }else {
-      this.pickStartAnimationInterval(90);
-
-      this.setData({
-        showWeighUser: true
-      })
-    }
-    
   },
+  _getIndexPageData: function () {
 
+    //1，获取首页初始化数据
+
+    load.showLoading("获取数据中")
+    indexData(1)
+      .then(res => {
+        load.hideLoading();
+        console.log(res)
+        if (res.result.data.buyer.length > 0) {
+          this.setData({
+            buyerArr: res.result.data.buyer,
+            showBuyer: true,
+
+          })
+        }
+        if (res.result.data.picker.length > 0) {
+          this.setData({
+            pickerArr: res.result.data.picker,
+            showPicker: true
+
+          })
+        }
+
+
+        //初始化图片
+        if (this.data.buyerArr.length > 0) {
+          this.buyStartAnimationInterval(90);
+        }
+        if (this.data.pickerArr.length > 0) {
+          this.pickStartAnimationInterval(90);
+        }
+
+
+      })
+  },
 
 
   //点击出货单
-  clickShowDeliver: function(e) {
-    if (this.data.showDeliver) {
-      this.outStartAnimationInterval(0);
+  clickShowBuyer: function (e) {
+    if (this.data.showBuyer) {
+      this.buyStartAnimationInterval(0);
       this.setData({
-        showDeliver: false
+        showBuyer: false
       })
     } else {
-      this.outStartAnimationInterval(90);
+      this.buyStartAnimationInterval(90);
       this.setData({
-        showDeliver: true
+        showBuyer: true
       })
     }
   },
+
+  //点击拣货单
+  clickShowPicker: function () {
+    console.log("hai")
+    if (this.data.showPicker) {
+      this.pickStartAnimationInterval(0);
+      this.setData({
+        showPicker: false
+      })
+    } else {
+      this.pickStartAnimationInterval(90);
+
+      this.setData({
+        showPicker: true
+      })
+    }
+
+  },
+
+
 
 
 
@@ -173,15 +188,15 @@ _getIndexPageData: function(){
   // // 滚动切换标签样式
   switchTab: function (e) {
     console.log(e)
-    
+
     this.setData({
       itemIndex: e.detail.current
     });
     console.log(this.data.itemIndex);
-    if(this.data.itemIndex == 0){
+    if (this.data.itemIndex == 0) {
 
     }
-    if (this.data.itemIndex == 1){
+    if (this.data.itemIndex == 1) {
       // this._getDgCataData();
 
     }
@@ -191,6 +206,11 @@ _getIndexPageData: function(){
       // })
     }
 
+  },
+  toIbook() {
+    wx.navigateTo({
+      url: '../business/ibookCover/ibookCover',
+    })
   },
 
 
@@ -211,41 +231,61 @@ _getIndexPageData: function(){
   //     })
   //   }
   // },
-  
+
 
 
 
   /**
    * 打开店铺页面
    */
-  toWeightOrder: function (e) { wx.navigateTo({ url: '../pick/weightOrder/weightOrder', }) },
+  toPickerOrder: function (e) {
+    wx.navigateTo({
+      url: '../pick/pickerOrder/pickerOrder',
+    })
+  },
   /**
-   * 打开商品页面
+   * 打开备货页面
    */
-  toPurchase: function (e) { wx.navigateTo({ url: '../buy/buyPage/buyPage', }) },
-
-
+  toPurchase: function (e) {
+    wx.navigateTo({
+      url: '../buy/buyPage/buyPage',
+    })
+  },
 
   /**
    * 
    */
-  toPayAndDeliverOrder: function (e) { wx.navigateTo({ url: '../payAndDelivery/ordersList/ordersList', }) },
+  toPayAndDeliverOrder: function (e) {
+    wx.navigateTo({
+      url: '../payAndDelivery/orderDepartment/orderDepartment?disId=' + this.data.distributerId,
+    })
+  },
   /**
-   * 打开第N次打印拣货单
+   * 
    */
-  toWeighingUser: function (e) { 
+  toPickerPage: function (e) {
     console.log(e);
-    wx.navigateTo({ url: '../weight/weighingOrders/weighingOrders?pickerUserId=' + e.currentTarget.dataset.id }) },
+    wx.navigateTo({
+      url: '../weight/pickDepartment/pickDepartment?pickerUserId=' + e.currentTarget.dataset.id
+    })
+  },
 
-  toPurchaseUser: function(e){
+  toBuyerPage: function (e) {
     console.log(e);
-    wx.navigateTo({ url: '../buy/purchaseGoods/purchaseGoods?purchaseUserId=' + e.currentTarget.dataset.id })
+    wx.navigateTo({
+      url: '../buy/purchaseGoods/purchaseGoods?purchaseUserId=' + e.currentTarget.dataset.id
+    })
   },
 
   /**
    * 打开出货单
    */
-  toOutStockBill: function (e) { console.log(e); wx.navigateTo({ url: '../order/outBill/outBill?storeId=' + e.currentTarget.dataset.storeid }) },
+  toOutStockBill: function (e) {
+    console.log(e);
+    wx.navigateTo({
+      url: '../order/outBill/outBill?storeId=' + e.currentTarget.dataset.storeid
+    })
+  },
   /**
    * 拣货单-图片旋转
    */
@@ -259,61 +299,19 @@ _getIndexPageData: function(){
   /**
    * 出货单-图片旋转
    */
-  outStartAnimationInterval: function (angle) {
+  buyStartAnimationInterval: function (angle) {
     _animation.rotate(angle).step()
     this.setData({
-      outAnimation: _animation.export()
+      buyAnimation: _animation.export()
     })
   },
 
-// addPickFirstStep: function(e) {
-//   console.log("first")
-//   wx.navigateTo({url:'../order/weight/addPickFirstStep/addPickFirstStep'})},
 
-  toGoodsList: function(e){ 
-
-    console.log(e)
+  setPrinter: function () {
     wx.navigateTo({
-    url: '../goods/ibookmain/ibookmain?id='+e.currentTarget.dataset.id,
-  })},
-
-switchGoods:function(e){
-console.log(e);
-if(e.detail.current == 1){
-  this.setData({
-    changeFirst: true,
-  })
-}
-},
-
-  toIbook:function(e){
-    wx.navigateTo({
-      url: '../business/ibookCover/ibookCover'
+      url: '/pagesPicker/pIndex/pIndex',
     })
   },
-
-  clickFather: function (e) {
-    console.log(e);
-    console.log("why????")
-    var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../business/disGoods/disGoods?fatherId=' + id,
-    })
-
-  },
-  quick: function(){
-    console.log("quick")
-    wx.navigateTo({
-      url: '/pagesCustomer/index/index',
-    })
-  },
-
-// kanakn: function(e){
-//   wx.navigateTo({
-//     url: '/pages/purIndex/purIndex',
-//   })
-// },
-
 
   kanakn: function (e) {
     wx.navigateTo({
@@ -321,9 +319,17 @@ if(e.detail.current == 1){
     })
   },
 
-  toRestaurantList(){
- wx.navigateTo({
+  toRestaurantList() {
+    wx.navigateTo({
       url: '/pages/restaurant/restaurantList/restaurantList?id=' + this.data.distributerId,
+    })
+  },
+
+
+  toChoicePrinter(e) {
+    console.log("totootototo")
+    wx.navigateTo({
+      url: '../pSearchPrinter/pSearchPrinter',
     })
   }
 

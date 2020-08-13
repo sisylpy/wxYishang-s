@@ -2,8 +2,10 @@
 
 var load = require('../../../lib/load.js');
 import { disGetUserByRole,
-  purchaseDisGoods,
+  
 } from '../../../lib/apiOrders.js'
+  
+import { savePurchaseBatchType} from '../../../lib/apiDepOrder'
 
 Page({
 
@@ -23,6 +25,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      batchId: options.batchId
+    })
     
     this._getDeliveryUserData();
 
@@ -57,46 +62,27 @@ Page({
   },
 
 
-distributeWeigh:function(){
+ saveBuyTypePurchaseBatch:function(){
+  var value = wx.getStorageSync('purGoods');
+  console.l
+  if(value){
 
-  var temp = wx.getStorageSync("purchaseGoods");
-  var temparr = [];
-  if (temp) {
-    for (var i = 0; i < temp.length; i++) {
-      for (var j = 0; j < temp[i].goodsList.length; j++) {
-        if (temp[i].goodsList[j].isSelected) {
-          var id = temp[i].goodsList[j].disGoodsId;
-          var arr = temp[i].goodsList[j].subList;
-          console.log(id);
-          var order = {
-            disGoodsId: id,
-            nxOrdersSubEntities: arr
-          }
-          console.log(order)
-          temparr.push(order);
-        }
-      }
-    }
-  }
+    
+    value.nxDpbPurUserId = this.data.purchaseUserId;
 
-console.log(temparr)
-  var userid = this.data.purchaseUserId;
-  
-    var data = {
-      purchaseUserId: userid,
-      disGoodsEntities: JSON.stringify(temparr) 
-    };
-
-  purchaseDisGoods(data)
-    .then(res => {
-      if(res.result.code == 0) {
-        wx.navigateBack({
-          delta: 1
+    savePurchaseBatchType(value).then(res => {
+      if(res) {
+        console.log(res);
+       
+        wx.navigateTo({
+          url: '../sharePage/sharePage?batchId=' + res.result.data,
         })
-
+      
       }
     })
 
+  }
+  
 
 
   

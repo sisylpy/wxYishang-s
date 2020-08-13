@@ -1,0 +1,35 @@
+<view class="">
+
+
+	<view class="flex-column with-padding with-border-bottom  {{index == orderArr.length - 1 ? 'is-last' : '' }} " wx:for="{{depArr}}" wx:for-index="index" bindtap='toOrderDetail' data-id="{{item.nxDepartmentId}}" data-index="{{index}}" hover-class="hover">
+		<!-- content -->
+		<view class="flex-row-default">
+			<!-- <view>
+				<text class="margin-right index {{item.isSelected ? 'hide' : ''}}">{{index + 1}}</text>
+				<view class="margin-right circle {{item.isSelected ? 'show' : ''}}">v
+				</view>
+			</view> -->
+			<view>
+				<image class="depImg" src="{{item.nxDepartmentFilePath}}"></image>
+			</view>
+			<text class=''>{{item.nxDepartmentName}}</text>
+		</view>
+		<view class="flex-row-between">
+			<!-- <text class="explain-words margin-right">商品:{{item.nxOrdersSubAmount}}个</text> -->
+			<!-- <text class="explain-words">已称重:{{item.nxOrdersSubFinished}}个</text> -->
+		</view>
+	</view>
+
+
+
+
+
+
+<!-- 
+ <view class="bottom_btn  {{pickOrderAmount > 0 ? 'show' : ''}}" bindtap="toOrderDetail">
+          称重客户{{pickOrderAmount}}个
+        </view> -->
+
+
+
+</view>

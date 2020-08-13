@@ -1,0 +1,86 @@
+<!--pages/storeApplys/storeApplys.wxml-->
+<view class="with-padding">
+
+
+<!-- 客户界面 -->
+	<view class="table ">
+
+<!-- 1，标题 -->
+		<view class="flex-column-center with-padding">
+			<image class="icon" src="../../../images/order_icon.png"></image>
+			<view class="flex-row">
+				<text>07月1日订货</text>
+				<image class="icon" src="../../../images/logo.jpg"></image>
+			</view>
+		</view>
+    <!-- 。/标题 -->
+
+<!-- 2， 表格 -->
+		<view class="box flex-column with-padding">
+			<view class="flex-row box_title" style="text-align:center;">
+				<view class="goods">商品</view>
+				<view class="orderAmount">订货</view>
+				<view class="replyPrice">单价</view>
+				<view class="replyAmount">数量</view>
+				<view class="replySubtotal">小计</view>
+			</view>
+
+
+			<view class="">
+				<view class="flex-column box_body" style="height: {{windowHeight - 580}}rpx;">
+					<view class="flex-row with-padding with-border-bottom {{applyArr.length == 1 || applyArr.length == index+1 ? 'is-last': ''}}" wx:for="{{goodsArr.nxDPGEntities}}">
+						<view class="goodsSend">{{item.nxGoodsEntity.nxGoodsName}}</view>
+						<!-- {{item.nxDpgStandard}} -->
+						<view class="orderAmountSend">{{item.nxDpgQuantity}}</view>
+						<view class="replyPriceSend ">
+							<input class=" replyPriceInput"></input>
+						</view>
+						<view class="replyAmountSend">
+							<input class="replyAmountInput"></input>
+						</view>
+						<view class="replySubtotalSend"></view>
+
+
+					</view>
+
+						<view class="tishi with-padding" style="top:{{windowHeight - 420}}rpx; width:{{windowWidth - 140}}rpx;">
+							<view class="explain">您填写完单价和数量，可以把结账单发送给我。</view>
+						</view>
+
+				</view>
+				<view class="flex-row total">
+					<!-- <view></view> -->
+					<text class="margin-right" style="margin-left:{{windowWidth - 380}}rpx;">总计:</text>
+          <text class="">{{}}</text>
+
+				</view>
+
+
+				<!--  -->
+
+			</view>
+
+
+
+		</view>
+    <!-- 。/表格 -->
+
+<!-- 3.按钮 -->
+		<view class="flex-row-around with-tb-padding">
+			<text class="style_btn" style="width:{{(windowWidth - 80)/2}}rpx;">现金</text>
+			<text class="style_btn"  style="width:{{(windowWidth -80)/2}}rpx;">记账</text>
+		</view>
+    <!-- 。/按钮 -->
+
+
+	</view>
+  <!-- 。/客户界面 -->
+
+
+
+	<view class="shareBtn">
+		<button open-type="share">发送给微信好友</button>
+	</view>
+
+
+</view>

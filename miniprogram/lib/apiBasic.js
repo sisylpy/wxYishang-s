@@ -6,6 +6,23 @@ import apiUrl from '../config.js'
 
 //
 
+export const disLogin = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributer/disLogin',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+
 export const disAndUserSave = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({

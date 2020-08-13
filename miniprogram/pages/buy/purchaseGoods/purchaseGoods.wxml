@@ -1,48 +1,33 @@
-<view class="purBack" style="height:{{windowHeight}}rpx; ">
 
-  <view class="content">
+<view class="flex-column with-padding">
 
-<!-- {{windowHeight - 140}}rpx; -->
-    <scroll-view scroll-y="true" style="height: {{windowHeight-100}}rpx;">
+    <view class='flex-row-between index with-border-bottom {{index == applyArr.length -1 ? "is-last" : ""}} with-tb-padding' wx:for="{{applyArr}}" wx:for-item="item"
+  wx:for-index="index"  hover-class="hover">
+	
+	  	
 
-      <view class="" wx:for="{{applyArr}}" wx:for-item="item">
-        <view class="flex-row-between with-lr-padding goods ">
-          <view class="flex-row index" bindtap="show" data-index="{{index}}">
-            <view class="index-number" wx:if='{{item.dgBuyStatus == "2"}}'>{{index + 1}}</view>
-            <view class="index-number done" wx:else>
-              <image class="done-img" src="../../../images/duihao.png"></image>
-            </view>
-            <text>{{item.nxGoodsEntity.nxGoodsName}}</text>
-          
-          </view>
-        </view>
+			<view class="flex-row">
+				<view class="index-number" wx:if='{{item.nxDpgStatus == "1"}}'>{{index + 1}}</view>
+			<view class="index-number done" wx:else>
+				<image class="done-img" src="../../../images/duihao.png"></image>
+			</view>
 
-
-
-        <view bindtap="finished" hover-class="finish" data-index="{{index}}" class='fold {{item.status === 2 ? "none": ""}}'>
-          <view class='orders-part plan-purchase {{item.dgBuyStatus >=3 ? "finished" :""}}' wx:if='{{item.planPurchase !== "0"}}'>计划进货:{{item.dgPurchaseQuantity}}{{item.nxGoodsEntity.nxGoodsStandardname}}</view>
-
-          <view class='orders-title'>订货:</view>
-          <view class='items flex-row-wrap orders-part'>
-            <view class='item-content   {{item.dgBuyStatus >=3 ? "finished" :""}}' wx:for="{{item.nxOrdersSubEntities}}" wx:for-item="applys">
-              <view>
-                {{applys.nxOsQuantity}}{{applys.nxOsStandard}}
-              </view>
-            </view>
-          </view>
-
-        </view>
+			<view class="flex-row" style="font-size:44rpx;">
+				<text class="margin-right" >{{item.nxGoodsEntity.nxGoodsName}}</text>
+				<text>{{item.nxDpgQuantity}}{{item.nxDpgStandard}}</text>
+			</view>
+			</view>
+			<view>
+				<text wx:if='{{item.nxDpgStatus == "1"}}' bindtap='{{item.nxDpgStatus == "1" ? "finished" : ""}}'  data-id="{{item.nxDistributerPurchaseGoodsId}}" >完成输入单价</text>
+				<text wx:else>{{item.nxDpgBuyPrice}}元/{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+			</view>
 
 
-
-
-      </view>
-    </scroll-view>
-
-  </view>
-
-
-
-
+		</view>
 
 </view>
+
+
+	
+<purchaseQuantity show="{{showBuyPrice}}" purGoodsId="{{purGoodsId}}" bindconfirm="savePrice"  />
+

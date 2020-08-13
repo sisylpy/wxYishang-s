@@ -255,6 +255,12 @@ swiper{
   align-items: center;
 }
 
+
+.flex-row-default {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .flex-row-wrap {
   display: flex;
   flex-flow: row wrap;

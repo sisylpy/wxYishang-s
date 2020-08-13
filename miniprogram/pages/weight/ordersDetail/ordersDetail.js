@@ -5,7 +5,7 @@ const globalData = getApp().globalData;
 //getOrderDetail
 
 import apiUrl from '../../../config.js'
-import { getOrderDetail, saveSubOrderWeight } from '../../../lib/apiOrders.js'
+import { getToFillDepOrders, saveDepartmentOrderFillContent } from '../../../lib/apiDepOrder.js'
 Page({
 
   /**
@@ -23,24 +23,19 @@ Page({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
       distributerId: globalData.distributerId,
-      nxOrdersId: options.nxOrdersId
+      nxDepId: options.nxDepId
     })
 
-    console.log(this.data.nxOrdersId)
 
-
-    getOrderDetail(this.data.nxOrdersId)
+    getToFillDepOrders(this.data.nxDepId)
       .then(res => {
         if (res) {
           console.log(res.result.data);
           this.setData({
-            applyArr: res.result.data.nxOrdersSubEntities,
-            order: res.result.data
+            applyArr: res.result.data,
           })
         }
-        wx.setNavigationBarTitle({
-          title: this.data.order.nxOrdersCommunityRoom,
-        }) 
+       
       })
         
   },
@@ -52,14 +47,14 @@ Page({
   
     if(e.detail.value > 0 ){
       var index = e.currentTarget.dataset.index;
-      var nxOsPrice = this.data.applyArr[index].nxOsPrice;
-      var subtotal = Number(e.detail.value) * Number(nxOsPrice) ;
+      var nxDoPrice = this.data.applyArr[index].nxDoPrice;
+      var subtotal = Number(e.detail.value) * Number(nxDoPrice) ;
      
-      var oxWeigh = "applyArr[" + index + "].nxOsWeight";
-      var nxOsSubtotal = "applyArr[" + index + "].nxOsSubtotal";
+      var nxDoWeight = "applyArr[" + index + "].nxDoWeight";
+      var nxDoSubtotal = "applyArr[" + index + "].nxDoSubtotal";
       this.setData({
-        [oxWeigh]: e.detail.value,
-        [nxOsSubtotal]: subtotal.toFixed(1),
+        [nxDoWeight]: e.detail.value,
+        [nxDoSubtotal]: subtotal.toFixed(1),
       })
     }
 
@@ -67,43 +62,25 @@ Page({
 
   saveWeight: function(e){
 
-    var data = this.data.order;
     var arr = this.data.applyArr;
     var resArr = [];
-    var amount = 0;
 
     for(var i = 0; i < arr.length; i++){
-      var weight = arr[i].nxOsWeight;
-      console.log("huututututu")
-      console.log(weight);
-      console.log("clear?????")
-      var temp = Number(arr[i].nxOsSubtotal);
-      amount = amount +  temp;  
+      var weight = arr[i].nxDoWeight;
+      
       if (weight > 0) {
         var apply = {
-          nxOrdersSubId: arr[i].nxOrdersSubId,
-          nxOsWeight: arr[i].nxOsWeight,
-          nxOsSubtotal: arr[i].nxOsSubtotal,
+          nxDepartmentOrdersId: arr[i].nxDepartmentOrdersId,
+          nxDoWeight: arr[i].nxDoWeight,
         }
         resArr.push(apply);
       }
     }
-    
-    
-    if (resArr.length == data.nxOrdersSubEntities.length) {
-      data.nxOrdersStatus = 2;
-      data.nxOrdersAmount = amount;
-    }
+      console.log(resArr)
 
-    data.nxOrdersSubEntities = resArr;
-    data.nxOrdersSubFinished = resArr.length;
-    console.log(resArr.length)
-    console.log(data.nxOrdersSubEntities.length)
-    
-
-    saveSubOrderWeight(data)
+    saveDepartmentOrderFillContent(resArr)
       .then(res => {
-        if(res) {
+        if(res.result.code == 0) {
           console.log(res);
           wx.navigateBack({
             delta: 1

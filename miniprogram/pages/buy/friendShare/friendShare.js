@@ -1,9 +1,8 @@
 // pages/storeApplys/storeApplys.js
 
-const app = getApp()
 const globalData = getApp().globalData;
 import {
-  getPurchaseGoodsByUUID,
+  getPurchaseGoodsBatch,
 } from '../../../lib/apiDepOrder'
 
 Page({
@@ -24,10 +23,12 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      uuid: options.uuid
+      batchId: 13,
+      windowWidth: globalData.windowWidth * globalData.rpxR,
+      windowHeight: globalData.windowHeight * globalData.rpxR,
     })
     
-    getPurchaseGoodsByUUID(this.data.uuid)
+    getPurchaseGoodsBatch(13)
       .then(res => {
         if (res) {
           console.log(res);
@@ -37,24 +38,23 @@ Page({
           })
         }
       })
-
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#49174a',
+        animation: {
+          duration: 200,
+          timingFunc: 'easeIn'
+        }
+      })
 
   },
 
-
-  /**
-   * 用户点击右上角分享
-   */
-  
-  onShareAppMessage: function (res) {
-    return {
-      title: '李沛谊订货',    
-      path: '/pages/buy/sharePage/sharePage?uuid=' + this.data.uuid,     // 当前页面 path ，必须是以 / 开头的完整路径
-      imageUrl: '../../../images/logo.jpg',
-       success: function (res) {
-         console.log(res)
-
-       },
-    }
+  toFill(){
+     wx.navigateTo({
+       url: '../friendFill/friendFill?id=' + this.data.batchId,
+     })
   },
+
+
+
 })

@@ -29,7 +29,7 @@
 
 
 
-    <view class='fix-main-btn {{pickUserId > 0 ? "active" : "" }}' bindtap='distributeWeigh'>分配称重完成</view>
+    <view class='fix-main-btn {{pickUserId > 0 ? "active" : "" }}' bindtap='distributeWeigh'>确定分配并打印拣货单</view>
 
   </view>
 

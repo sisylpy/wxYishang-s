@@ -4,7 +4,7 @@
 		<view class='log'>
 			<image class='log_img' src='../../images/logo.jpg'></image>
 		</view>
-		<view class='word'>叮叮 订货小程序</view>
+		<view class='word'>叮叮 生鲜配送</view>
 
 		<view class='what'>
 			<input class='input' type='text' placeholder='商铺名称' name='name' value='{{name}}' bindinput='getName'></input>
@@ -13,7 +13,9 @@
 	<!-- 登录按钮 -->
 	<view class='log_btn' style="width: {{windowWidth - 40}}rpx;">
 
-		<button class='wx_btn' open-type='getUserInfo' hover-class='teacherLogin' bindgetuserinfo='getUserInfo' plain='true' >注册</button>
+		<button class='wx_btn' open-type='getUserInfo' hover-class='teacherLogin' bindgetuserinfo='getUserInfo' plain='true' data-type="register" >注册</button>
+
+			<button class='wx_btn' open-type='getUserInfo' hover-class='teacherLogin' bindgetuserinfo='getUserInfo' plain='true' data-type="login">微信登陆</button>
 	</view>
 	</view>
 

@@ -20,7 +20,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxbc686226ccc443f1",
@@ -81,9 +81,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/pick/weightOrder/weightOrder",
-					"pathName": "pages/pick/weightOrder/weightOrder",
+					"id": 4,
+					"name": "pages/pick/pickerOrder/pickerOrder",
+					"pathName": "pages/pick/pickerOrder/pickerOrder",
 					"query": "",
 					"scene": null
 				},
@@ -336,7 +336,55 @@
 					"id": 40,
 					"name": "pages/buy/sharePage/sharePage",
 					"pathName": "pages/buy/sharePage/sharePage",
-					"query": "batchId=10",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/buy/friendShare/friendShare",
+					"pathName": "pages/buy/friendShare/friendShare",
+					"query": "batchId=13",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/buy/timeLine/timeLine",
+					"pathName": "pages/buy/timeLine/timeLine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/weight/ordersDetail/ordersDetail",
+					"pathName": "pages/weight/ordersDetail/ordersDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/payAndDelivery/orderDepartment/orderDepartment",
+					"pathName": "pages/payAndDelivery/orderDepartment/orderDepartment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/payAndDelivery/issuePage/issuePage",
+					"pathName": "pages/payAndDelivery/issuePage/issuePage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pick/picker/picker",
+					"pathName": "pages/pick/picker/picker",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/buy/purchaseGoods/purchaseGoods",
+					"pathName": "pages/buy/purchaseGoods/purchaseGoods",
 					"scene": null
 				}
 			]

@@ -37,29 +37,29 @@
 						<view class='with-tb-padding with-border-bottom {{parentIndex == list.length  - 1 ? "is-last":""}}' wx:for='{{planArr}}' wx:key='this' wx:for-item='parentItem'>
 							<view class='flex-column '>
 								<view class="cata flex-column-center">
-                   <view class="x-line"></view>
+									<view class="x-line"></view>
 									<text class='cata_content'>{{parentItem.fatherGoodsName}}</text>
 								</view>
 								<view class='flex-column with-padding with-border-bottom {{index == parentItem.goodsList.length - 1 ? "is-last":"" }}' wx:for='{{parentItem.goodsList}}' wx:for-item="item" wx:for-index='index' wx:key='this' hover-class="hover">
 									<view class="flex-row" style="font-size: 40rpx;">
-                  <text class="margin-right">#</text>
+										<text class="margin-right">#</text>
 										<text class="buy-goods normal">{{item.goodsName}}</text>
 										<text class="buy-words small" ></text>
 
 									</view>
-									<view class="flex-row-wrap">
-										<view class="with-tb-padding flex-row" wx:for="{{item.orders}}" wx:for-item="order" wx:for-index="orderIndex" style="color:gray; font-size: 34rpx;">
+									<view class="flex-column">
+										<view class="flex-row" wx:for="{{item.orders}}" wx:for-item="order" wx:for-index="orderIndex" style="color:gray; font-size: 34rpx;">
 											<text class="point"></text>
-											<text class='apply margin-l-right with-tb-padding'>{{order.nxDepartmentEntity.fatherDepartmentEntity.nxDepartmentName}}.{{order.nxDepartmentEntity.nxDepartmentName}} {{order.nxDoQuantity}}{{order.nxDoStandard}}{{order.nxDoRemard}}</text>
+											<text class='apply margin-l-right '>{{order.nxDepartmentEntity.fatherDepartmentEntity.nxDepartmentName}}.{{order.nxDepartmentEntity.nxDepartmentName}} {{order.nxDoQuantity}}{{order.nxDoStandard}}{{order.nxDoRemard}}</text>
 
 										</view>
 									</view>
 
 
 
-									<view class="flex-row-wrap" style="padding-left: 50rpx;">
-										<view class="purGoods" wx:for="{{item.purchase}}" wx:for-item="purGoods" style="width: {{windowWidth / 8}}rpx;">{{purGoods.nxDpgQuantity}}</view>
-										<view class="purGoodsAdd" bindtap="planPurchase" data-item="{{item}}" data-fatherid="{{parentItem.fatherGoodsId}}">+</view>
+									<view class="flex-row-wrap with-padding" style="padding-left: 50rpx;">
+										<view class="purGoods" wx:for="{{item.purchase}}" wx:for-item="purGoods" style="width: {{windowWidth / 8}}rpx;">{{purGoods.nxDpgQuantity}}{{purGoods.nxDpgStandard}}</view>
+										<view class="purGoodsAdd" bindtap="planPurchase" data-item="{{item}}" data-fatherid="{{parentItem.fatherGoodsId}}" data-id="{{item.goodsId}}" data-standard="{{item.standardName}}">+</view>
 									</view>
 
 
@@ -78,58 +78,130 @@
 
 			<view class="btn_group flex-row-around with-padding">
 				<view class="btn_item flex-column-center" hover-class="hover" bindtap="printList">
-          <image class="icon" src="../../../images/duihao.png"></image>
-          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 5 }}rpx">打印</button>
-        </view>
+					<image class="icon" src="../../../images/duihao.png"></image>
+					<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">打印</button>
+
+				</view>
 
 				<view class="btn_item flex-column-center " hover-class="hover" bindtap="copyList">
-          <image class="icon" src="../../../images/del.png"></image>
-          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 5 }}rpx">
-            复制
-          </button>
-        </view>
+					<image class="icon" src="../../../images/del.png"></image>
+					<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">
+						复制
+					</button>
+				</view>
 				<view class="btn_item flex-column-center" hover-class="hover" bindtap="toPurchaseBoy">
-          <image class="icon" src="../../../images/location.png"></image>
-          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 5 }}rpx">市场采购</button>
-        </view>
-        <view class="btn_item flex-column-center" hover-class="hover" bindtap="wxOrder" >
-          <image class="icon" src="../../../images/location.png"></image>
-          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 5 }}rpx"  >微信订货</button>
-        </view>
-         <view class="btn_item flex-column-center" hover-class="hover"
-         bindtap="finishPurchase" >
-          <image class="icon" src="../../../images/duihao.png"></image>
-          <button class="shareBtn with-tb-padding" style="width:{{windowWidth/ 5 }}rpx"  >完成进货</button>
-        </view>
+					<image class="icon" src="../../../images/location.png"></image>
+					<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">市场采购</button>
+				</view>
+				<view class="btn_item flex-column-center" hover-class="hover" bindtap="wxOrder">
+					<image class="icon" src="../../../images/location.png"></image>
+					<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">微信订货</button>
+				</view>
+				<view class="btn_item flex-column-center" hover-class="hover" bindtap="finishPurchase">
+					<image class="icon" src="../../../images/duihao.png"></image>
+					<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">完成进货</button>
+				</view>
 			</view>
 
 
 			<view class="content-wrapper with-padding">
-				<scroll-view scroll-y="true" style="height: {{windowHeight - 80}}rpx;">
+				<scroll-view scroll-y="true" style="height: {{windowHeight - 280}}rpx; ">
 
-					<view class='flex-column list'>
-						<view class='aaa' wx:for='{{purArr}}' wx:for-item="item" wx:for-index='index' wx:key='this' hover-class="hover" bindtap="selectPurchaseGoods" data-index="{{index}}">
-							<view class="flex-row">
-								<view class="gray_back {{index == 0 ? 'gray_first' : ''}} {{index == purArr.length - 1? 'gray_last' :'' }} margin-right">
+					<view class='flex-column apply_column'>
+						<view class="aaa with-border-bottom" wx:for='{{purArr}}' wx:for-item="item" wx:for-index='index' wx:key='this' hover-class="hover" bindtap="selectPurchaseGoods" data-index="{{index}}"
+						data-standard="{{item.standardName}}"
+						>
+							<view class="flex-row" >
+								<view class="gray_back {{index == 0 ? 'gray_first' : ''}} {{index == purArr.length - 1? 'gray_last' :'' }}  margin-right">
 									<text class="margin-right index {{item.isSelected ? 'hide' : ''}} with-tb-padding " style="text-align: right;">{{index + 1}}</text>
 									<view class="margin-right circle {{item.isSelected ? 'show' : ''}}">v
 									</view>
 								</view>
-									<view class="with-tb-padding">
-										<text class="margin-right">{{item.nxGoodsEntity.nxGoodsName}}</text>
-										<text class="margin-l-right">{{item.nxDpgQuantity}}</text>
-									</view>
-
-
+								<view class="with-tb-padding">
+									<text class="margin-right">{{item.nxGoodsEntity.nxGoodsName}}</text>
+									<text class="margin-l-right">{{item.nxDpgQuantity}}{{item.nxDpgStandard}}</text>
+								</view>
 							</view>
 						</view>
 					</view>
+
+					<!-- /// -->
+
+					<view class="time">
+
+
+						<view class="">
+
+							<!-- hourPart -->
+							<view class="flex-column time_part" wx:for="{{batchArr}}" wx:for-item="batch">
+
+								<!-- hour -->
+								<view class="time_title">
+									<text class="hour" wx:if="{{batch.nxDpbDate == today}}">{{batch.nxDpbHour}}:{{batch.nxDpbMinute}}</text>
+
+									<text wx:else class="hour">昨天{{batch.nxDpbHour}}:{{batch.nxDpbMinute}}</text>
+																
+
+								</view>
+
+								<view class="time_body">
+
+									<view class="">
+										<view class="type">
+											<image src="../../../images/location.png" class="type_icon"></image>
+										</view>
+									</view>
+
+									<view class="type_content_wrapper felx-column  ">
+										<view class="type_content_top with-padding">
+											<view class="type_words" wx:if="{{batch.nxDpbType == 1}}">{{}}打印</view>
+											<view class="type_words" wx:elif="{{batch.nxDpbType == 2}}">{{}}复制</view>
+											<view class="type_words" wx:elif="{{batch.nxDpbType == 3}}">{{}}采购</view>
+											<view class="type_words" wx:elif="{{batch.nxDpbType == 4}}">{{}}微信转发</view>
+											<view class="type_words" wx:else>完成</view>
+											<view></view>
+											<view class="type_time flex-row">
+												<image src="../../../images/del.png" class="time_icon"></image>
+												<!-- <text>05:12</text> -->
+											</view>
+										</view>
+										<view class="type_content with-padding " style="width: {{windowWidth - 200}}rpx;">
+											<view wx:for="{{batch.nxDPGEntities}}" wx:for-item="purGoods" wx:for-index="purIndex">
+											<text class="margin-right">{{purIndex + 1}}</text>
+												<text>{{purGoods.nxGoodsEntity.nxGoodsName}}  {{purGoods.nxDpgQuantity}}{{purGoods.nxDpgStandard}}</text>
+											</view>
+										</view>
+										<view class="flex-row-end type_btn_gourp with-padding">
+											<view class="type_btn">修改</view>
+											<view class="type_btn">完成</view>
+										</view>
+
+									</view>
+
+								</view>
+
+
+								<!-- ./hour -->
+							</view>
+							<!-- ./hourPart -->
+
+
+
+						</view>
+
+
+
+					</view>
+
+					<!-- .// -->
 				</scroll-view>
 
 			</view>
-			<!-- <view class="bottom_btn  {{purchaseGoodsAmount > 0 ?'show' : ''}}" bindtap="assignUnDeliveryOrder">
-          已选择进货商品{{purchaseGoodsAmount}}个
-        </view> -->
+
+
+
+
+
 		</swiper-item>
 
 
@@ -150,4 +222,4 @@
 </view>
 
 
-<planPurchase show="{{showPlan}}" item="{{item}}" bindconfirm="savePlan" />
+<planPurchase show="{{showPlan}}" item="{{item}}" bindconfirm="savePlan" applyStandardName="{{applyStandardName}}" bindchangeStandard="changeStandard" />

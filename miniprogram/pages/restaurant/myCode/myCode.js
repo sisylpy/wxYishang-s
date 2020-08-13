@@ -11,9 +11,9 @@ const globalData = getApp().globalData;
 
 
 // const io = require('../../utils/weapp.socket.io.js')
-const io = require("../../../utils/weapp.socket.io.js")
+// const io = require("../../../utils/weapp.socket.io.js")
 // // socket 连接地址
-var socketUrl = 'http://localhost:3000'
+// var socketUrl = 'http://localhost:3000'
 // var socketUrl = 'https://grainservice.club'
 var socketMessage = ''
 
@@ -25,6 +25,22 @@ Page({
   data: {
 
   },
+    onReady() {
+      // const query = wx.createSelectorQuery()
+      // query.select('#myCanvas')
+      //   .fields({ node: true, size: true })
+      //   .exec((res) => {
+      //     const canvas = res[0].node
+      //     const ctx = canvas.getContext('2d')
+  
+      //     const dpr = wx.getSystemInfoSync().pixelRatio
+      //     canvas.width = res[0].width * dpr
+      //     canvas.height = res[0].height * dpr
+      //     ctx.scale(dpr, dpr)
+  
+      //     ctx.fillRect(0, 0, 100, 100)
+      //   })
+    } ,
 
   /**
    * 生命周期函数--监听页面加载
@@ -41,7 +57,18 @@ Page({
    
 
   // var that = this
-  this.socketStart();
+  // this.socketStart();
+
+  qrcode = new QRCode('myQrcode', {
+    // usingIn: this,
+    text: "http://localhost:8080/nxl_war_exploded/addRestraunt?disId=" + this.data.disId ,
+    // image: '/images/1.jpg',
+    width: qrcodeWidth,
+    height: qrcodeHeight,
+    colorDark: "black",
+    colorLight: "white",
+    correctLevel: QRCode.CorrectLevel.H,
+});
 
 
   },
@@ -64,17 +91,7 @@ Page({
       var sendMessage = '{"token":"v3jsoc8476shNFhxgqPAkkjt678","client":}'
       this.socketSendMessage(this.socket.id);
 
-      qrcode = new QRCode('myQrcode', {
-        // usingIn: this,
-        text: "http://localhost:8080/nxl_war_exploded/addRestraunt?socketId="
-         + this.socket.id + '&disId=' + this.data.disId ,
-        // image: '/images/1.jpg',
-        width: qrcodeWidth,
-        height: qrcodeHeight,
-        colorDark: "black",
-        colorLight: "white",
-        correctLevel: QRCode.CorrectLevel.H,
-    });
+     
 
     socket.on('beginBusiness', function(d) {
       console.log(d)
