@@ -6,6 +6,7 @@
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
@@ -24,8 +25,8 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"appid": "wxbc686226ccc443f1",
-	"projectname": "YiShang-s",
-	"libVersion": "2.11.2",
+	"projectname": "dingding",
+	"libVersion": "2.11.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"compileType": "miniprogram",
@@ -53,73 +54,10 @@
 			"current": -1,
 			"list": [
 				{
-					"id": 0,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/index/index",
-					"pathName": "pagesCustomer/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/payAndDelivery/ordersList/ordersList",
-					"pathName": "pages/payAndDelivery/ordersList/ordersList",
+					"id": 1,
+					"name": "pages/payAndDelivery/receipt/receipt",
+					"pathName": "pages/payAndDelivery/receipt/receipt",
 					"query": "disId=1",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "pages/payAndDelivery/paymentPage/paymentPage",
-					"pathName": "pages/payAndDelivery/paymentPage/paymentPage",
-					"query": "nxOrdersId=1",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "pages/pick/pickerOrder/pickerOrder",
-					"pathName": "pages/pick/pickerOrder/pickerOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/sign/sign",
-					"pathName": "pagesCustomer/sign/sign",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/member/member",
-					"pathName": "pagesCustomer/member/member",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/register/register",
-					"pathName": "pagesCustomer/register/register",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/oftenOrder/oftenOrder",
-					"pathName": "pagesCustomer/oftenOrder/oftenOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/allOrders/allOrders",
-					"pathName": "pagesCustomer/allOrders/allOrders",
-					"query": "",
 					"scene": null
 				},
 				{
@@ -158,66 +96,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pagesCustomer/goodsPage/goodsPage",
-					"pathName": "pagesCustomer/goodsPage/goodsPage",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 16,
-					"name": "pagesCustomer/goodsPageDetail/goodsPageDetail",
-					"pathName": "pagesCustomer/goodsPageDetail/goodsPageDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/goodsMenu/goodsMenu",
-					"pathName": "pagesCustomer/goodsMenu/goodsMenu",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/signTejia/signTejia",
-					"pathName": "pagesCustomer/signTejia/signTejia",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/addTemplateItem/addTemplateItem",
-					"pathName": "pagesCustomer/addTemplateItem/addTemplateItem",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 21,
-					"name": "pagesCustomer/ordersDetailPage/ordersDetailPage",
-					"pathName": "pagesCustomer/ordersDetailPage/ordersDetailPage",
-					"query": "nxOrdersId=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/caidiPage/caidiPage",
-					"pathName": "pagesCustomer/caidiPage/caidiPage",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesCustomer/userPage/userPage",
-					"pathName": "pagesCustomer/userPage/userPage",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
+					"id": 7,
 					"name": "pages/business/ibookCatalogue/ibookCatalogue",
 					"pathName": "pages/business/ibookCatalogue/ibookCatalogue",
-					"query": "",
+					"query": "fatherId=11",
 					"scene": null
 				},
 				{
@@ -228,107 +110,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pagesCustomer/customerInfo/customerInfo",
-					"pathName": "pagesCustomer/customerInfo/customerInfo",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/addCustomer2/addCustomer2",
-					"pathName": "pages/customer/addCustomer2/addCustomer2",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/addCustomer3/addCustomer3",
-					"pathName": "pages/customer/addCustomer3/addCustomer3",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/addCustomer4/addCustomer4",
-					"pathName": "pages/customer/addCustomer4/addCustomer4",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/addCustomer5/addCustomer5",
-					"pathName": "pages/customer/addCustomer5/addCustomer5",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 30,
-					"name": "pages/customer/addCustomer6/addCustomer6",
-					"pathName": "pages/customer/addCustomer6/addCustomer6",
-					"query": "",
-					"scene": null
-				},
-				{
 					"id": 31,
 					"name": "pages/login/login",
 					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/signe/dingSigne",
-					"pathName": "pages/signe/dingSigne",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/signe1/enterprisetype",
-					"pathName": "pages/signe1/enterprisetype",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/restaurant/myCode/myCode",
-					"pathName": "pages/restaurant/myCode/myCode",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 36,
-					"name": "pages/restaurant/stepOne/stepOne",
-					"pathName": "pages/restaurant/stepOne/stepOne",
-					"query": "id=24",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/restaurant/restaurantList/restaurantList",
-					"pathName": "pages/restaurant/restaurantList/restaurantList",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesPicker/pIndex/pIndex",
-					"pathName": "pagesPicker/pIndex/pIndex",
-					"query": "id=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pagesPicker/pSearchPrinter/pSearchPrinter",
-					"pathName": "pagesPicker/pSearchPrinter/pSearchPrinter",
 					"query": "",
 					"scene": null
 				},
@@ -385,6 +169,140 @@
 					"id": -1,
 					"name": "pages/buy/purchaseGoods/purchaseGoods",
 					"pathName": "pages/buy/purchaseGoods/purchaseGoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "disId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pagesRes/stepOne/stepOne",
+					"pathName": "pages/pagesRes/stepOne/stepOne",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customerOrder/searchGoods/searchGoods",
+					"pathName": "pages/customerOrder/searchGoods/searchGoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pagesRes/stepTwo/stepTwo",
+					"pathName": "pages/pagesRes/stepTwo/stepTwo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/order",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/weight/ordersDetail/ordersDetail",
+					"pathName": "pages/weight/ordersDetail/ordersDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/customer",
+					"pathName": "pages/customer/customer",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 28,
+					"name": "pages/customerPage/customerPage",
+					"pathName": "pages/customerPage/customerPage",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/purchase/purchase",
+					"pathName": "pages/purchase/purchase",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/applyGoods/applyGoods",
+					"pathName": "pages/applyGoods/applyGoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goodsList/goodsList",
+					"pathName": "pages/goodsList/goodsList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goodsDetail/goodsDetail",
+					"pathName": "pages/goodsDetail/goodsDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/payAndDelivery/writePrice/writePrice",
+					"pathName": "pages/payAndDelivery/writePrice/writePrice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/payAndDelivery/writeWeight/writeWeight",
+					"pathName": "pages/payAndDelivery/writeWeight/writeWeight",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/buy/friendShare/friendShare",
+					"pathName": "pages/buy/friendShare/friendShare",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/business/ibookmain/ibookmain",
+					"pathName": "pages/business/ibookmain/ibookmain",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/business/ibookCover/ibookCover",
+					"pathName": "pages/business/ibookCover/ibookCover",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 35,
+					"name": "pages/business/ibookGoods/ibookGoods",
+					"pathName": "pages/business/ibookGoods/ibookGoods",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/goods/goods",
+					"pathName": "pages/goods/goods",
+					"query": "",
 					"scene": null
 				}
 			]

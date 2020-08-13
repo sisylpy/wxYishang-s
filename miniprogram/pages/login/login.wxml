@@ -4,26 +4,30 @@
 		<view class='log'>
 			<image class='log_img' src='../../images/logo.jpg'></image>
 		</view>
-		<view class='word'>叮叮 生鲜配送</view>
+		<view class='word'>特鲜送</view>
 
 		<view class='what'>
-			<input class='input' type='text' placeholder='商铺名称' name='name' value='{{name}}' bindinput='getName'></input>
+			<input class='input' type='text' placeholder='注册配送名称' name='name' value='{{name}}' bindinput='getName'></input>
 		</view>
 
-	<!-- 登录按钮 -->
-	<view class='log_btn' style="width: {{windowWidth - 40}}rpx;">
+		<view class="with-s-padding">
+			<checkbox-group bindchange="kaiqi">
+				<label>
+					<checkbox value="1" checked="{{accept}}">同意接收客户的订单通知</checkbox>
+				</label>
+			</checkbox-group>
 
-		<button class='wx_btn' open-type='getUserInfo' hover-class='teacherLogin' bindgetuserinfo='getUserInfo' plain='true' data-type="register" >注册</button>
+		</view>
 
-			<button class='wx_btn' open-type='getUserInfo' hover-class='teacherLogin' bindgetuserinfo='getUserInfo' plain='true' data-type="login">微信登陆</button>
+
+		<!-- 登录按钮 -->
+		<view class=' reg_btn ' style="width: {{windowWidth - 40}}rpx;">
+			<button class=' {{canLogin && name.length > 0 ? "is-active" : ""}}' open-type='getUserInfo' bindgetuserinfo='{{canLogin && name.length > 0 ? "getUserInfo" : ""}}' plain='true' data-type="register" style="width: {{windowWidth - 40}}rpx;">注册</button>
+		</view>
+		<view class='log_btn' style="width: {{windowWidth - 40}}rpx;">
+			<button class='' open-type='getUserInfo' bindgetuserinfo='getUserInfo' plain='true' data-type="login" style="width: {{windowWidth - 40}}rpx;">已注册，微信登陆</button>
+		</view>
 	</view>
-	</view>
-
-
-
-
-
-
 
 
 

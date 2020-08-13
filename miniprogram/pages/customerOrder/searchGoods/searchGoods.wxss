@@ -1,0 +1,109 @@
+.search {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: #fff;
+}
+
+.search_content {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 60rpx;
+  
+}
+
+.cate_name {
+  font-size: 42rpx;
+}
+
+/*  */
+
+.father {
+  margin-top: 120rpx;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.one_goods {
+  /* background: green; */
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+
+
+}
+
+/*  */
+.fix-row{
+  /* width: 100%; */
+  /* background: red; */
+
+}
+.ibook_goods_left{
+  width: 80%;
+  /* background: pink; */
+}
+.ibook_goods_right{
+  /* width: 10%; */
+  /* background: yellow; */
+  padding-right: 50rpx;
+
+}
+
+.goods_name{
+  font-size: 44rpx;
+}
+.ibook_apply_standard{
+   display: flex;
+   flex-flow: row nowrap;
+}
+.fifty-percent{
+  width: 50%;
+}
+.gray{
+  font-size: 36rpx;
+  /* color: gray; */
+
+}
+
+.ibook_apply_explain{
+  width: 22%;
+  /* background: gray; */
+}
+.apply_standard_list{
+  width: 62%;
+  /* background: blue; */
+  
+
+}
+
+.ibook_standard_content{
+  width: 100%;
+  /* background: gold; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  
+}
+
+
+.applyStandard{
+  margin-right: 20rpx;
+  border: 1px solid lightblue;
+  border-radius: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+  /* margin-bottom: 20rpx; */
+
+}
+
+.goods_detail{
+  font-size: 34rpx;
+  
+}

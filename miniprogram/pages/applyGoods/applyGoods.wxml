@@ -1,0 +1,51 @@
+
+
+
+
+<view class="customerPage">
+	<view class='with-tb-padding with-border-bottom {{parentIndex == list.length  - 1 ? "is-last":""}}  whiteBack with-margin-bottom' wx:for='{{planArr}}' wx:key='this' wx:for-item='parentItem' wx:for-index="parentIndex">
+						<view class='flex-column '>
+							<view class="cata flex-column">
+								<text class='normal with-padding with-border-bottom'>{{parentItem.fatherGoodsName}}</text>
+							</view>
+							<view class='flex-column with-padding with-border-bottom {{index == parentItem.goodsList.length - 1 ? "is-last":"" }}' wx:for='{{parentItem.goodsList}}' wx:for-item="item" wx:for-index='index' wx:key='this'>
+								<view class="flex-row-between" data-index="{{index}}" data-parentindex="{{parentIndex}}"  data-standard="{{item.standardName}}" bindtap="addPlanPurchse" 
+                    data-index="{{index}}"  data-parentindex="{{parentIndex}}"> 
+									<!-- <text class="margin-right">#</text> -->
+									<!-- <text class='squre {{item.selectAmount > 0  ? "is-active" : ""}}'></text> -->
+
+									<text class="buy-goods normal">{{item.goodsName}}({{item.standardName}})</text>
+									<text
+                    class='buy-amount {{item.selectAmount > 0 ? "is-active" : ""}}'
+                  >进货</text>
+
+								</view>
+								<view class="flex-column">
+									<view class="flex-row with-tb-padding" wx:for="{{item.orders}}" wx:for-item="order" wx:for-index="orderIndex" style="color:gray; font-size: 34rpx;" hover-class="hover" bindtap="unChoiceOrder" data-index="{{index}}" data-orderindex="{{orderIndex}}" data-parentindex="{{parentIndex}}">
+										<text class='point {{order.hasChoice ? "is-active" : ""}}'></text>
+										<!-- type ==0 -->
+										<text class=' margin-l-right ' wx:if="{{order.nxDepartmentEntity.fatherDepartmentEntity.nxDoDepartmentFatherId == 0}}">{{order.nxDepartmentEntity.nxDepartmentName}} {{order.nxDoQuantity}}{{order.nxDoStandard}}{{order.nxDoRemard}}</text>
+										<!-- ./type ==0 -->
+
+										<!-- type == 1 -->
+										<text class=' margin-l-right ' wx:else hover-class="hover">{{order.nxDepartmentEntity.fatherDepartmentEntity.nxDepartmentName}}.{{order.nxDepartmentEntity.nxDepartmentName}} {{order.nxDoQuantity}}{{order.nxDoStandard}}{{order.nxDoRemard}}</text>
+
+										<!-- ./type == 1 -->
+
+									</view>
+								</view>
+
+								<view class="flex-row-wrap with-padding" style="padding-left: 50rpx;">
+									<view class="purGoods" wx:for="{{item.purchase}}" wx:for-item="purGoods" style="width: {{windowWidth / 8}}rpx;">{{purGoods.nxDpgQuantity}}{{purGoods.nxDpgStandard}}</view>
+									<!-- <view class="purGoodsAdd" bindtap="planPurchase" data-item="{{item}}" data-fatherid="{{parentItem.fatherGoodsId}}" data-id="{{item.goodsId}}" data-standard="{{item.standardName}}">+</view> -->
+								</view>
+
+
+							</view>
+						</view>
+					</view>
+
+
+</view>
+
+<disPlanPurchase show="{{showPlanPurchase}}" bindconfirm="confirm" standard="{{standard}}" item="{{item}}"  />

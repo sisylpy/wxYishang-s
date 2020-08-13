@@ -1,0 +1,191 @@
+<view class="liziBack">
+
+	<view class="whiteBack top_bar flex-row with-lr-padding" style="height:120rpx;">
+		<image src="../../images/logof.png" class="top_img"></image>
+		<text class="top_bar_title">上货</text>
+	</view>
+
+	<view class='navbar whiteBack with-ltb-padding with-border-bottom-main'>
+		<block wx:for="{{tabs}}" wx:key="*this">
+			<view id="{{index}}" class="navbar-item {{tab1Index==index?'bar-item-on':''}}" data-index='{{index}}' bindtap='onTab1Click'>
+				<view class='navbar-title'>{{item}}</view>
+			</view>
+		</block>
+		<view class="navbar-slider" style="left: {{sliderLeft}}px; width:{{windowWidth /2}}rpx; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+	</view>
+
+
+
+
+	<view class="">
+
+		<swiper style="height: {{windowHeight - 80}}rpx;" bindtransition="swiperTran" bindanimationfinish="animationfinish" current="{{itemIndex}}" bindchange='swiperChange' data-index='{{itemIndex}}'>
+
+			<!-- Part-one -->
+			<swiper-item>
+				<scroll-view scroll-y style="height:{{windowHeight - 80}}rpx" >
+
+					<!-- 进货商品 -->
+				
+
+				<!-- <view class="btn_group flex-row-around with-padding ">
+					<view class="btn_item flex-column-center" hover-class="hover" bindtap="printList">
+						<image class="icon" src="../../images/duihao.png"></image>
+						<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">打印</button>
+
+					</view>
+
+					<view class="btn_item flex-column-center " hover-class="hover" bindtap="copyList">
+						<image class="icon" src="../../images/del.png"></image>
+						<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">
+							复制
+						</button>
+					</view>
+					<view class="btn_item flex-column-center" hover-class="hover" bindtap="toPurchaseBoy">
+						<image class="icon" src="../../images/location.png"></image>
+						<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">市场采购</button>
+					</view>
+					<view class="btn_item flex-column-center" hover-class="hover" bindtap="wxOrder">
+						<image class="icon" src="../../images/location.png"></image>
+						<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">微信订货</button>
+					</view>
+					<view class="btn_item flex-column-center" hover-class="hover" bindtap="finishPurchase">
+						<image class="icon" src="../../images/duihao.png"></image>
+						<button class="shareBtn with-tb-padding" style="width:{{(windowWidth - 40) / 5 }}rpx">完成进货</button>
+					</view>
+				</view> -->
+
+
+				<view class="content-wrapper with-padding whiteBack">
+					<scroll-view scroll-y="true" style="height: {{windowHeight - 280}}rpx; ">
+
+						<view class='flex-column apply_column'>
+							<view class="what with-border-bottom" wx:for='{{purArr}}' wx:for-item="item" wx:for-index='index' wx:key='this' hover-class="hover" bindtap="selectPurchaseGoods" data-index="{{index}}" data-standard="{{item.standardName}}">
+								<view class="flex-row">
+									<view class="gray_back {{index == 0 ? 'gray_first' : ''}} {{index == purArr.length - 1? 'gray_last' :'' }}  margin-right">
+										<text class="margin-right index {{item.isSelected ? 'hide' : ''}} with-tb-padding " style="text-align: right;">{{index + 1}}</text>
+										<view class="margin-right circle {{item.isSelected ? 'show' : ''}}">v
+										</view>
+									</view>
+									<view class="with-tb-padding">
+										<text class="margin-right">{{item.nxGoodsEntity.nxGoodsName}}</text>
+										<text class="margin-l-right">{{item.nxDpgQuantity}}{{item.nxDpgStandard}}</text>
+									</view>
+								</view>
+							</view>
+						</view>
+
+						<!-- /// -->
+
+						<view class="time">
+
+
+							<view class="">
+
+								<!-- hourPart -->
+								<view class="flex-column time_part" wx:for="{{}}" wx:for-item="batch">
+
+									<!-- hour -->
+									<view class="time_title">
+										<text class="hour" wx:if="{{batch.nxDpbDate == today}}">{{batch.nxDpbHour}}:{{batch.nxDpbMinute}}</text>
+
+										<text wx:else class="hour">昨天{{batch.nxDpbHour}}:{{batch.nxDpbMinute}}</text>
+
+
+									</view>
+
+									<view class="time_body">
+
+										<view class="">
+											<view class="type">
+												<image src="../../images/location.png" class="type_icon"></image>
+											</view>
+										</view>
+
+										<view class="type_content_wrapper felx-column  ">
+											<view class="type_content_top with-padding">
+												<view class="type_words" wx:if="{{batch.nxDpbType == 1}}">{{}}打印</view>
+												<view class="type_words" wx:elif="{{batch.nxDpbType == 2}}">{{}}复制</view>
+												<view class="type_words" wx:elif="{{batch.nxDpbType == 3}}">{{}}采购</view>
+												<view class="type_words" wx:elif="{{batch.nxDpbType == 4}}">{{}}微信转发</view>
+												<view class="type_words" wx:else>完成</view>
+												<view></view>
+												<view class="type_time flex-row">
+													<image src="../../images/del.png" class="time_icon"></image>
+													<!-- <text>05:12</text> -->
+												</view>
+											</view>
+											<view class="type_content with-padding " style="width: {{windowWidth - 200}}rpx;">
+												<view wx:for="{{batch.nxDPGEntities}}" wx:for-item="purGoods" wx:for-index="purIndex">
+													<text class="margin-right">{{purIndex + 1}}</text>
+													<text>{{purGoods.nxGoodsEntity.nxGoodsName}} {{purGoods.nxDpgQuantity}}{{purGoods.nxDpgStandard}}</text>
+												</view>
+											</view>
+											<view class="flex-row-end type_btn_gourp with-padding">
+												<view class="type_btn">修改</view>
+												<view class="type_btn">完成</view>
+											</view>
+
+										</view>
+
+									</view>
+
+
+									<!-- ./hour -->
+								</view>
+								<!-- ./hourPart -->
+
+
+
+							</view>
+
+
+
+						</view>
+
+						<!-- .// -->
+					</scroll-view>
+
+				</view>
+
+					<!-- 订单商品 -->
+				
+				</scroll-view>
+
+
+			</swiper-item>
+
+			<!-- ../Part-one  -->
+
+			<swiper-item>
+
+
+
+
+			</swiper-item>
+
+
+
+
+		</swiper>
+	</view>
+
+
+
+
+
+
+
+</view>
+
+
+<view class="flex-column-center plusBtn" style="left:{{windowWidth - 180}}rpx">
+ 
+ <view class="aaa" bindtap="toQuickOrder">
+		<image class="icon_search" src="../../../images/gouwuche.png"></image>
+	</view>
+	<view class="def" bindtap="toDepGoods">
+		<text class="plus_text">+</text>
+	</view>
+
+</view>

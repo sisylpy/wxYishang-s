@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "商品",
+  "navigationBarBackgroundColor": "#234b50",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "addIndependent": "/components/addStandard/addStandard",
+    "disPlanPurchase": "/components/disPlanPurchase/disPlanPurchase"
+ 
+
+  }
+}

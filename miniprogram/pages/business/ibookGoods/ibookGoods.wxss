@@ -45,9 +45,12 @@
   /* background: pink; */
 }
 .ibook_goods_right{
-  /* width: 10%; */
   /* background: yellow; */
-  padding-right: 50rpx;
+  border-radius: 50%;
+  padding: 20rpx;
+
+
+  /* padding-right: 50rpx; */
 
 }
 

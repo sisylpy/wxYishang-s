@@ -1,0 +1,54 @@
+<view class="liziBack with_bottom_padding">
+
+	<!-- bar -->
+	<view class="whiteBack top_bar flex-row with-lr-padding" style="height:120rpx;">
+		<image src="{{userInfo.nxDiuWxAvartraUrl}}" class="top_img"></image>
+		<text class="top_bar_title">客户</text>
+	</view>
+
+	<!--  top -->
+
+	<view class="big_padding mainBack flex-column-center ">
+		<view class='flex-row'>
+			<!-- <canvas class="canvas-code" canvas-id="myQrcode" style="width: {{cavasWidth}}rpx; height: {{cavasHeight}}rpx;" /> -->
+			<canvas class="canvas-code" canvas-id="myQrcode" style="background:#fff; width: 70px;height: 70px;"/>
+			
+
+		</view>
+		<view class="with-tb-padding white">
+			<text>让客户扫描二维码或添加客户</text>
+		</view>
+
+		<view class='flex-row-around'>
+			<view class="mainBack_new_btn" bindtap="toAddMyCustomer" hover-class="hover">添加客户</view>
+		</view>
+	</view>
+
+
+
+	<!-- bb -->
+	<view class="whiteBack margin_bottom">
+
+
+		<view class="flex-column with-padding ">
+			<view class="with-padding with-border-bottom flex-row with-padding " wx:for="{{myCustomerArr}}" bindtap="toCustomerPage" data-id="{{item.nxDepartmentEntity.nxDepartmentId}}" data-type="{{item.nxDepartmentEntity.nxDepartmentType}}">
+				<!-- <image class='customerUrl margin-right' src="../../images/logo.jpg"></image> -->
+
+				<text class='with-padding  middle'>{{item.nxDepartmentEntity.nxDepartmentName}}</text>
+
+			</view>
+		</view>
+
+	</view>
+
+
+
+
+
+
+
+
+
+
+
+</view>

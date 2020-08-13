@@ -6,11 +6,24 @@ const _ANIMATION_TIME = 300; // 动画播放一次的时长ms
 const globalData = getApp().globalData;
 var app = getApp()
 
+let windowWidth = 0;
+let itemWidth = 0;
+
 import apiUrl from '../../config.js'
 import {
   disGetTodayOrderCustomer,
-  indexData
+  indexData,
+  disGetToPlanPurchaseGoods,
+  savePlanPurchase,
+  disGetPurchaseGoods,
+  getPurchaseGoodsAndPurchaseBatch,
+  disGetAllCustomer
 } from '../../lib/apiDepOrder.js'
+
+
+import {
+  getDisInfoByUserId,
+} from '../../lib/apiBasic'
 
 Page({
 
@@ -39,6 +52,20 @@ Page({
     page: 1,
     showIndex: -1,
 
+    oneName: "添加客户",
+    oneUrl: "../../images/logo.jpg",
+    twoName: "微信进货",
+    twoUrl: "../../images/logo.jpg",
+    threeName: "客户下单",
+    threeUrl: "../../images/add.jpg",
+
+    // 
+    sliderOffset: 0,
+    sliderOffsets: [],
+    sliderLeft: 0,
+    tabs:["订单","上货","客户","我"],
+    tab1Index:0,
+
 
 
   },
@@ -53,13 +80,17 @@ Page({
       transformOrigin: '50% 50% 0'
     })
 
-    //todo
-    if (this.data.distributerId) {
-      // this._getIndexPageData();
+    
+    if (this.data.itemIndex == 0) {
+      this._getTodayCustomer();
     }
-    // this._getIndexPageData();
-
-
+    if (this.data.itemIndex == 1) {
+      this._getPlanPurchaseGoods();
+    }
+    if (this.data.itemIndex == 2) {
+      this._getMyCustomer();
+    }
+   
 
 
 
@@ -72,14 +103,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var value = wx.getStorageSync('disInfo');
-    if (value) {
-      this.setData({
-        disInfo: value,
-        disId: value.nxDistributerEntity.nxDistributerId,
-        disName: value.nxDistributerEntity.nxDistributerName,
-      })
-    }
+
+    // var value = wx.getStorageSync('disInfo');
+    // if (value) {
+    //   this.setData({
+    //     disInfo: value,
+    //     // disId: value.nxDistributerEntity.nxDistributerId,
+    //     disName: value.nxDistributerEntity.nxDistributerName,
+    //   })
+    // }
+    getDisInfoByUserId(1).then(res => {
+      if (res) {
+        console.log(res);
+        wx.setStorageSync('disInfo', res.result.data)
+        globalData.disId = res.result.data.nxDistributerEntity.nxDistributerId
+
+      }
+    })
+    this.setData({
+      disUserId: options.userId,
+
+      disId: 1,
+      disName: "经贸配送1",
+    })
 
     this.setData({
       windowWidth: globalData.windowWidth * globalData.rpxR,
@@ -87,27 +133,202 @@ Page({
       url: apiUrl.server,
 
     })
+    var now = new Date();
+    var day = now.getDay();
+    var weeks = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    var week = weeks[day];
+    var date = now.getDate();
+    this.setData({
+      week: week,
+      date: date,
+    })
     // this._getIndexPageData();
     this._getTodayCustomer();
+    // this._getPlanPurchaseGoods();
+   
+    this.clueOffset();
+
+  },
+// //////////
+
+  /**
+   * 计算偏移量
+   */
+  clueOffset(){
+    var that = this;
+
+
+
+    wx.getSystemInfo({
+      success: function (res) {
+        itemWidth = Math.ceil(res.windowWidth / that.data.tabs.length);
+        let tempArr = [];
+        for (let i in that.data.tabs){
+          console.log(i)
+          tempArr.push(itemWidth*i);
+        }
+        // tab 样式初始化
+        windowWidth = res.windowWidth;
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - 50) / 2,
+          sliderOffsets: tempArr,
+          sliderOffset: 0,
+          sliderLeft: 0,
+        });
+      }
+    });
+  },
+
+  /**
+   * tabItme点击
+   */
+  onTab1Click(event){
+    let index = event.currentTarget.dataset.index;
+    this.setData({
+      sliderOffset: this.data.sliderOffsets[index],
+      tab1Index: index,
+    })
+  },
+
+  /**
+   * swiper-item 的位置发生改变
+   */
+  swiperTran(event){
+    
+    let dx = event.detail.dx;
+    let index = event.currentTarget.dataset.index;
+    if(dx>0){ //----->
+       if(index<this.data.tabs.length-1){   //最后一页不能---->
+          let ratio = dx/windowWidth;   /*滑动比例*/
+          let newOffset = ratio*itemWidth+this.data.sliderOffsets[index];
+          // console.log(newOffset,",index:",index);
+         this.setData({
+           sliderOffset: newOffset,
+         })
+       } 
+    }else{  //<-----------
+      if (index > 0) {    //最后一页不能<----
+        let ratio = dx / windowWidth;   /*滑动比例*/
+        let newOffset = ratio * itemWidth + this.data.sliderOffsets[index];
+        console.log(newOffset, ",index:", index);
+        this.setData({
+          sliderOffset: newOffset,
+        })
+      }
+    }
+
+  },
+
+  /**
+   * current 改变时会触发 change 事件
+   */
+  swiperChange(event){
+    // this.setData({
+    //   sliderOffset: this.data.sliderOffsets[event.detail.current],
+    //   tab1Index: event.detail.current,
+    // })
+  },
+  /**
+   * 动画结束时会触发 animationfinish 事件
+   */
+  animationfinish(event){
+    this.setData({
+      sliderOffset: this.data.sliderOffsets[event.detail.current],
+      tab1Index: event.detail.current,
+    })
+
+
+    this.setData({
+      tab1Index: event.detail.current
+    });
+    if (this.data.tab1Index == 1) {
+      this._getPlanPurchaseGoods();
+    }
+    if (this.data.tab1Index == 2) {
+      this._getMyCustomer();
+    }
+    if (this.data.tab1Index == 0) {
+      this._getTodayCustomer();
+    }
+  },
+
+
+  // /////
+
+  _getMyCustomer() {
+    load.showLoading("获取客户中")
+    disGetAllCustomer(this.data.disId).then(res => {
+      if (res) {
+        load.hideLoading();
+
+        console.log(res.result.data)
+        this.setData({
+          myCustomerArr: res.result.data
+        })
+      }
+      load.hideLoading();
+
+    })
 
   },
 
 
-  _getTodayCustomer(){
+  _getTodayCustomer() {
+    load.showLoading("获取今天订单中")
     disGetTodayOrderCustomer(this.data.disId).then(res => {
-      if(res) {
+      if (res) {
+        load.hideLoading();
+
         console.log(res.result.data);
         this.setData({
           customerArr: res.result.data,
         })
-        if(res.result.data.length > 0){
+        if (res.result.data.length > 0) {
           this.setData({
             showCustomer: true,
           })
         }
       }
+      load.hideLoading();
+
     })
 
+  },
+
+  _getPlanPurchaseGoods() {
+    load.showLoading("获取进货商中")
+    disGetToPlanPurchaseGoods(this.data.disId)
+      .then(res => {
+        console.log(res)
+        if (res) {
+          load.hideLoading();
+          this.setData({
+            planArr: res.result.data
+          })
+        }
+        load.hideLoading();
+
+      })
+  },
+
+  // 1, 进货单-获取进货单商品
+  _getPurchaseGoods() {
+    load.showLoading("获取数据中")
+    getPurchaseGoodsAndPurchaseBatch(this.data.disId)
+      .then(res => {
+        console.log(res)
+        if (res) {
+          load.hideLoading();
+
+          load.hideLoading();
+          this.setData({
+            purArr: res.result.data.goods,
+            batchArr: res.result.data.batchs,
+          })
+        }
+        load.hideLoading();
+
+      })
   },
   _getIndexPageData: function () {
 
@@ -193,17 +414,14 @@ Page({
       itemIndex: e.detail.current
     });
     console.log(this.data.itemIndex);
-    if (this.data.itemIndex == 0) {
-
-    }
     if (this.data.itemIndex == 1) {
-      // this._getDgCataData();
-
+      this._getPlanPurchaseGoods();
     }
-    if (this.data.itemIndex == 4) {
-      // wx.navigateTo({
-      //   url: '../business/ibookCover/ibookCover',
-      // })
+    if (this.data.itemIndex == 2) {
+      this._getMyCustomer();
+    }
+    if (this.data.itemIndex == 0) {
+      this._getTodayCustomer();
     }
 
   },
@@ -238,17 +456,17 @@ Page({
   /**
    * 打开店铺页面
    */
-  toPickerOrder: function (e) {
+  toMyCustomer: function (e) {
     wx.navigateTo({
-      url: '../pick/pickerOrder/pickerOrder',
+      url: '../restaurant/restaurantList/restaurantList',
     })
   },
   /**
    * 打开备货页面
    */
-  toPurchase: function (e) {
+  toMyCode: function (e) {
     wx.navigateTo({
-      url: '../buy/buyPage/buyPage',
+      url: '../restaurant/myCode/myCode',
     })
   },
 
@@ -270,21 +488,19 @@ Page({
     })
   },
 
-  toBuyerPage: function (e) {
-    console.log(e);
-    wx.navigateTo({
-      url: '../buy/purchaseGoods/purchaseGoods?purchaseUserId=' + e.currentTarget.dataset.id
-    })
-  },
+  // toBuyerPage: function (e) {
+  //   console.log(e);
+  //   wx.navigateTo({
+  //     url: '../buy/purchaseGoods/purchaseGoods?purchaseUserId=' + e.currentTarget.dataset.id
+  //   })
+  // },
 
-  /**
-   * 打开出货单
-   */
-  toOutStockBill: function (e) {
-    console.log(e);
+
+  getCustomerOrder(e) {
     wx.navigateTo({
-      url: '../order/outBill/outBill?storeId=' + e.currentTarget.dataset.storeid
+      url: '../payAndDelivery/issuePage/issuePage?depId=' + e.currentTarget.dataset.id,
     })
+
   },
   /**
    * 拣货单-图片旋转
@@ -331,9 +547,22 @@ Page({
     wx.navigateTo({
       url: '../pSearchPrinter/pSearchPrinter',
     })
-  }
+  },
+  addMyCustomer() {
+    wx.navigateTo({
+      url: '../pagesRes/stepOne/stepOne',
+    })
+
+  },
+
+  toOpenMyCustomer() {
+    wx.navigateTo({
+      url: '../customerList/customerList?disId=' + this.data.disId,
+    })
+  },
 
 
+  
 
 
 

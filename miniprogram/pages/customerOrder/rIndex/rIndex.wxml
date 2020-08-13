@@ -1,0 +1,63 @@
+<view class="flex-column">
+	<view class="flex-column-center" style="width: {{windowWidth}}rpx;">
+		<image src="../../../images/order_icon.png" class="icon"></image>
+		<text style="font-size: 34rpx;">今日订单</text>
+	</view>
+	<view class="with-padding ">
+		<view class="form" style="height: {{windowHeight - 140}}rpx;">
+			<view class="flex-row with-padding form_title" style="font-size: 34rpx;">
+				<text class="goods_name_title">商品</text>
+				<text class="goods_quantity">数量</text>
+				<text class="goods_user">出货</text>
+				<text class="goods_weight">单价</text>
+				<text class="goods_status">小计</text>
+			</view>
+			<view class="flex-column with-padding" style="font-size: 34rpx;">
+				<scroll-view scroll-y style="height: {{windowHeight - 300}}rpx;">
+					<view class="apply_row  flex-column with-tb-padding" wx:for="{{applyArr}}" wx:for-item="item" wx:for-index="index">
+						<!-- <view class="flex-row" style="font-size:32rpx;" wx:if="{{item.nxDoApplyOnlyDate == today}}">
+				{{item.nxDoApplyOnlyTime}}
+				</view> -->
+
+
+						<view class="flex-row ">
+							<!-- <text class="goods_index">{{index+ 1}}</text> -->
+							<text class="goods_name"> {{item.nxGoodsEntity.nxGoodsName}}</text>
+							<text class="goods_quantity">{{item.nxDoQuantity}}{{item.nxDoStandard}}</text>
+							<view class="goods_user" wx:if="{{item.nxDoWeight !== null}}">{{item.nxDoWeight}}{{item.nxGoodsEntity.nxGoodsStandardname}}</view>
+							<view class="goods_user" wx:else>-</view>
+							<view class="goods_weight" wx:if="{{item.nxDoPrice !== null}}">{{item.nxDoPrice}}</view>
+							<view class="goods_weight" wx:else>-</view>
+
+
+							<text class="goods_status "  wx:if="{{item.nxDoSubtotal !== null}}">{{item.nxDoSubtotal}}</text>
+							<text class="goods_status" wx:else>-</text>
+						</view>
+
+
+					</view>
+
+					<view style="height:240rpx;"></view>
+				</scroll-view>
+
+			</view>
+		</view>
+
+
+	</view>
+
+
+</view>
+
+
+
+
+
+<view class="plusBtn" style="left:{{windowWidth - 180}}rpx">
+
+
+	<view class="def flex-column-center " bindtap="toQuickOrder">
+		<text class="plus_text">+</text>
+	</view>
+
+</view>

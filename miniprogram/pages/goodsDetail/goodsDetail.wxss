@@ -1,0 +1,28 @@
+
+.plus_standard{
+  /* border: 1px solid lightgray; */
+  border-radius: 10rpx;
+  /* padding: 4rpx 15rpx; */
+  width: 80rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background: #187e6e;
+  color: #fff;
+
+}
+
+.standard_dis{
+ padding: 0 20rpx;
+ border: 1px solid gray;
+ line-height: 60rpx;
+border-radius: 10rpx;
+ margin-right: 30rpx;
+
+}
+.dis_line{
+  line-height: 60rpx;
+  /* background: yellow; */
+  /* height: 90rpx; */
+
+}

@@ -1,0 +1,77 @@
+<view class="liziBack with_bottom_padding">
+
+	<!-- bar -->
+	<view class="whiteBack top_bar flex-row with-lr-padding" style="height:120rpx;">
+		<image src="{{userInfo.nxDiuWxAvartraUrl}}" class="top_img"></image>
+		<text class="top_bar_title">商品</text>
+	</view>
+
+	<!--  top -->
+
+	<view class="emptyView {{goodsList.length > 0  ? 'hidden' : ''}}" style="height: {{windowHeight - 240}}rpx; text-align:center;">
+		<view class="shamao normal with-padding" style="margin-top:{{(windowHeight - 240)/2 - 120}}rpx;">
+			在
+			<image class="icon_order_sentence" src="../../images/goodshei.png"></image>
+			商品手册下载到你将配送的商品！
+		</view>
+
+
+	</view>
+
+	<view class="felx-column   whiteBack margin_bottom normal" wx:for="{{goodsList}}" wx:for-item="greatGrand" wx:for-index="greatGrandIndex">
+		<view class="with-border-bottom with-padding ">
+		 <text class="great_grand_name1 samll">{{greatGrand.nxGoodsName}}</text>
+		</view>
+
+		<view class="felx-column" wx:for="{{greatGrand.nxGoodsEntityList}}"
+		 wx:for-item="grand" wx:for-index="grandIndex">
+			<view class=" with-padding with-border-bottom flex-row-between" bindtap="showOrHide" 
+				data-greatindex="{{greatGrandIndex}}" data-grandindex="{{grandIndex}}"
+			>
+				<text class="middle ">{{grand.nxGoodsName}}</text>
+				<image src="../../images/jian.png" class="icon with-lr-padding" wx:if="{{grand.isShow}}"></image>
+				<image src="../../images/jia.png" class="icon with-lr-padding" wx:else></image>
+			</view>
+			<!-- father hide -->
+			<view class="with-padding with-border-bottom hideView {{grand.isShow ? 'is-active' : ''}}"  wx:for="{{grand.nxGoodsEntityList}}" wx:for-item="father" wx:for-index="fatherIndex" bindtap="toGoodsList" data-id="{{father.nxGoodsId}}" hover-class="hover">
+			  <view class="with-lr-padding flex-row-between ">
+				<!-- {{greatGrandIndex + 1}}.{{grandIndex + 1}}.{{fatherIndex + 1}}   -->
+					<text class=" normal">{{father.nxGoodsName}}
+				</text>
+				<image src="../../images/jiantou.png" class="iconsmall with-lr-padding"></image>
+				</view>
+			
+
+			</view>
+
+			<view>
+				<!-- <text class="explain-words ">{{grand.subAmount}}个 商品</text> -->
+			</view>
+		</view>
+
+	</view>
+
+
+
+
+
+
+
+
+
+</view>
+
+
+<view class='plusBtn {{ selectedArr.length > 0  ? "hidden" : ""}}' style="left:{{windowWidth - 180}}rpx">
+	<!-- <view class="add_btn" bindtap="toQuickOrder">
+		<text class="big white">+</text>
+	</view> -->
+
+	<view class="order_btn" bindtap="toIbooks">
+		<image class="icon_order" src="../../images/goods.png"></image>
+
+	</view>
+
+
+
+</view>

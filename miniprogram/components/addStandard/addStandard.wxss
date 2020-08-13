@@ -103,7 +103,7 @@
   font-size: 38rpx;
   /* color: gray; */
   /* background: red; */
-  flex-basis: 35%;
+  flex-basis: 45%;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
@@ -118,7 +118,7 @@
   padding-top: 20rpx;
   padding-bottom: 20rpx;
   /* background: blue; */
-  flex-basis: 65%;
+  flex-basis: 55%;
 }
 
 .int {

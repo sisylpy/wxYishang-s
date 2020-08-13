@@ -1,0 +1,138 @@
+/* pages/storeApplys/storeApplys.wxss */
+
+.section{
+  background: #fff;
+  /* border-radius: 4rpx; */
+}
+
+.section_body{
+  width: 100%;
+  height: calc(100% - 196rpx);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  }
+
+  .tui-city-scroll-y{
+    padding: 0 20rpx;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .index{
+    width: 10%;
+    /* background: red; */
+  }
+.goods_name {
+  width: 50%;
+   /* background: yellow; */
+}
+.goods_name_title{
+  margin-left: 10%;
+  width: 50%;
+}
+
+.today_order {
+  width: 15%;
+  /* background: green; */
+}
+
+.quantity {
+  width: 30%;
+  text-align: center;
+  /* background: black; */
+}
+
+
+
+
+
+/*  */
+
+.customize_key_board{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  /* height: 300rpx; */
+  width: 100%;
+
+  background: #fff;
+  z-index: 9999;
+  /* border: 1px solid #fff; */
+
+}
+.customize_key_board.hidden{
+  display: none;
+}
+
+.input_number_part{
+  display: flex;
+  flex-flow: row wrap;
+
+}
+.num{
+  text-align: center;
+  font-size: 50rpx;
+  box-sizing:border-box;
+  
+
+  
+}
+.input_operation_part{
+  /* background: rgba(0, 0, 255, 0.377); */
+}
+.double_num{
+  text-align: center;
+  font-size: 50rpx;
+  box-sizing:border-box;
+
+}
+
+.weightInput{
+  width: 80%;
+  border: 1px solid rgba(223, 223, 223, 0.575);
+  border-radius: 20rpx;
+  line-height: 60rpx;
+  height: 60rpx;
+  text-align: center;
+  font-size: 50rpx;
+  padding: 0 10rpx;
+
+}
+.input_number{
+  margin-right: 6rpx;
+
+}
+.analog_cursor{
+  height: 50rpx;
+  width: 2rpx;
+  background: blue;
+  display: none;
+}
+.analog_cursor.is-active{
+  display: block;
+}
+
+/*  */
+.maodian{
+  /* position: absolute; */
+  top: 100rpx;
+  background: red;
+  width: 100%;
+  display: none;
+}
+.maodianSubs{
+  top: 100rpx;
+  /* background: blue; */
+  width: 100%;
+  color: blue;
+    display: none;
+
+
+}
+
+.bottom_place{
+  width: 100%;
+  height: 580rpx;
+  /* background: red; */
+}

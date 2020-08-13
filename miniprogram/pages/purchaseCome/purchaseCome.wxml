@@ -1,0 +1,102 @@
+<view class="liziBack">
+
+
+	<view class='navbar whiteBack  with-tb-padding with-border-bottom-main'>
+		<block wx:for="{{tabs}}" wx:key="*this">
+			<view id="{{index}}" class="navbar-item {{tab1Index==index?'bar-item-on':''}}" data-index='{{index}}' bindtap='onTab1Click'>
+				<view class='navbar-title'>{{item}}</view>
+			</view>
+		</block>
+		<view class="navbar-slider" style="left: {{sliderLeft}}px; width:{{windowWidth /2}}rpx; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+	</view>
+
+
+		<swiper style="height: {{windowHeight - 120}}rpx;" bindtransition="swiperTran" bindanimationfinish="animationfinish" current="{{itemIndex}}" bindchange='swiperChange' data-index='{{itemIndex}}'>
+
+			<!-- Part-one -->
+			<swiper-item>
+				<scroll-view scroll-y style="height:{{windowHeight - 120}}rpx">
+
+
+					<view class="customerPage">
+						<view class='with-tb-padding with-border-bottom {{parentIndex == list.length  - 1 ? "is-last":""}}  whiteBack with-margin-bottom' wx:for='{{planArr}}' wx:key='this' wx:for-item='parentItem' wx:for-index="parentIndex">
+							<view class='flex-column '>
+								<view class="cata flex-column">
+									<text class='normal with-padding with-border-bottom'>{{parentItem.fatherGoodsName}}</text>
+								</view>
+								<view class='flex-column with-padding with-border-bottom {{index == parentItem.goodsList.length - 1 ? "is-last":"" }}' wx:for='{{parentItem.goodsList}}' wx:for-item="item" wx:for-index='index' wx:key='this'>
+									<view class="flex-row-between" data-index="{{index}}" data-parentindex="{{parentIndex}}" data-standard="{{item.standardName}}" bindtap="addPlanPurchse" data-index="{{index}}" data-parentindex="{{parentIndex}}">
+										<!-- <text class="margin-right">#</text> -->
+										<!-- <text class='squre {{item.selectAmount > 0  ? "is-active" : ""}}'></text> -->
+
+										<text class="buy-goods normal">{{item.goodsName}}({{item.standardName}})</text>
+										<text
+                    class='buy-amount'>进货</text>
+
+									</view>
+									<view class="flex-column">
+										<view class="flex-row with-tb-padding" wx:for="{{item.orders}}" wx:for-item="order" wx:for-index="orderIndex" style="color:gray; font-size: 34rpx;" hover-class="hover" bindtap="unChoiceOrder" data-index="{{index}}" data-orderindex="{{orderIndex}}" data-parentindex="{{parentIndex}}">
+											<text class='point {{order.hasChoice ? "is-active" : ""}}'></text>
+											<!-- type ==0 -->
+											<text class=' margin-l-right ' wx:if="{{order.nxDepartmentEntity.nxDepartmentFatherId == 0}}">{{order.nxDepartmentEntity.nxDepartmentName}} {{order.nxDoQuantity}}{{order.nxDoStandard}}{{order.nxDoRemard}}</text>
+											<!-- ./type ==0 -->
+
+											<!-- type == 1 -->
+											<text class=' margin-l-right ' wx:else hover-class="hover">{{order.nxDepartmentEntity.fatherDepartmentEntity.nxDepartmentName}}.{{order.nxDepartmentEntity.nxDepartmentName}} {{order.nxDoQuantity}}{{order.nxDoStandard}}{{order.nxDoRemard}}</text>
+
+											<!-- ./type == 1 -->
+
+										</view>
+									</view>
+
+								</view>
+							</view>
+						</view>
+
+
+					</view>
+
+				</scroll-view>
+
+
+
+			</swiper-item>
+
+
+			<swiper-item>
+				<scroll-view scroll-y style="height:{{windowHeight - 120}}rpx">
+
+					<view class="felx-column  whiteBack margin_bottom normal" wx:for="{{goodsList}}" wx:for-item="greatGrand">
+						<view class="with-border-bottom with-padding five-weight">{{greatGrand.nxGoodsName}}</view>
+
+						<view class="felx-column   whiteBack  with-border-bottom with-padding " wx:for="{{greatGrand.nxGoodsEntityList}}" wx:for-item="grand" bindtap="toGoodsList" data-id="{{grand.nxGoodsId}}">
+							<view class="flex-row-between ">
+								<text class="small five-weight">{{grand.nxGoodsName}}</text>
+								<image src="../../images/logo.jpg" class="icon with-lr-padding"></image>
+							</view>
+							<view>
+								<text class="explain-words ">{{grand.subAmount}}个 商品</text>
+							</view>
+						</view>
+
+					</view>
+
+
+				</scroll-view>
+
+
+			</swiper-item>
+
+
+
+
+		</swiper>
+
+
+</view>
+
+
+<addIndependent show="{{showIndependent}}" bindconfirm="confirmAdd" item="{{item}}" standardName="{{standardName}}" />
+
+
+<disPlanPurchase show="{{showPlanPurchase}}" bindconfirm="confirm" standard="{{standard}}" item="{{item}}" />

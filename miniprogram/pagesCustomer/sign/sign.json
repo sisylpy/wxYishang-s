@@ -1,7 +1,0 @@
-{
-      
-  "usingComponents": {
-    "addModal" : "/components/mymodal/mymodal",
-     "carPage": "/components/carPage/carPage"
-  }
-}

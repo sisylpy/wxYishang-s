@@ -1,0 +1,40 @@
+ 
+ 
+<view class="customerPage">
+
+<view class='whiteBack top_bar flex-row with-lr-padding with-l-margin-bottom' style="height: 120rpx;">
+		<image src="../../../images/logof.png" class="top_img"></image>
+		<text class="top_bar_title">商品</text>
+	</view>
+
+
+
+ <view class="whole">
+ <view class="one" bindtap="toDepGoods" data-id="{{one.nxGoodsId}}" data-index="{{oneIndex}}"  wx:for="{{goodsList}}" wx:for-item="one" >
+      <image class="one-img" src="{{url + one.nxGoodsFile}}" wx:if="one.nxGoodsFile.length > 0"></image> 
+        <view class="goods_name with-padding"> 
+        <view class="cate_name">
+          <!-- <text class="cate_explain">种类:</text> -->
+          <text class="cate_content">{{one.nxGoodsName}}</text>
+        </view>
+         <!-- <view class="cate_name">
+          <text class="cate_explain">数量:</text>
+          <text class="cate_content">{{one.nxCfgGoodsAmount}}个</text>
+        </view> -->
+        
+         <!-- <view class="cate_name">
+          <text>称重商品:</text>
+          <text class="margin-right"></text>
+        </view> -->
+
+        
+        </view>
+        
+
+     </view>
+
+</view>
+
+
+</view>
+

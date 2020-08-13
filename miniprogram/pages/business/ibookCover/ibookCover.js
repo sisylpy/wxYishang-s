@@ -10,10 +10,7 @@ Page({
    */
   data: {
    
-    indicatorDots: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 400,
+
   },
 
   /**
@@ -21,11 +18,22 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      windowWidth: globalData.windowWidth,
-      windowHeight: globalData.windowHeight,
-      second_height: globalData.windowHeight - (globalData.windowWidth / 750) * 64
+      windowWidth: globalData.windowWidth * globalData.rpxR,
+        windowHeight: globalData.windowHeight * globalData.rpxR,
     })
 
+    var value = wx.getStorageSync('userInfo');
+      if(value){
+
+        
+
+        wx.setNavigationBarTitle({
+          // "title": value.nxDistributerEntity.nxDistributerName,
+          "title": "商品手册",
+
+        })
+
+      }
     this.initPageData();
 
   
@@ -51,7 +59,15 @@ Page({
     var fatherName = e.currentTarget.dataset.fathername;
     var index = e.currentTarget.dataset.index;
     var color = e.currentTarget.dataset.color;
+    var grandid = e.currentTarget.dataset.grandid;
+    var grandname = e.currentTarget.dataset.grandname;
     console.log(e);
+    var grand = {
+      greatGrandId: grandid,
+      greatGrandName: grandname,
+      greatGrandColor: color
+    }
+    wx.setStorageSync('greatGrandFather', grand)
     wx.navigateTo({
       url: '../ibookCatalogue/ibookCatalogue?fatherId=' +fatherId + '&fatherName=' +  fatherName +'&index=' + index +'&color='+ color,
     })

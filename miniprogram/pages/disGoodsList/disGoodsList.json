@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "disPlanPurchaseGoods": "/components/disPlanPurchaseGoods/disPlanPurchaseGoods"
+
+  }
+}

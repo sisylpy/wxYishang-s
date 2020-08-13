@@ -41,7 +41,8 @@ Component({
     applyDecimal: {
       type: String,
       value: "0"
-    }
+    },
+    
 
    
   
@@ -83,14 +84,10 @@ Component({
         
         this.triggerEvent('confirm', {
           applyNumber: this.data.applyNumber,
-          applyDecimal: this.data.applyDecimal,
           applyStandardName: this.data.applyStandardName,
-          applyGoodsName: this.data.item.nxGoodsEntity.nxGoodsName,
-          applyGoodsId: this.data.item.nxGoodsEntity.nxGoodsId,
+          applyGoodsId: this.data.item.nxGoodsId,
           applyRemark: this.data.remarkContent,
-          applyPrice: price,
-          goodsStandard: this.data.item.nxGoodsEntity.nxGoodsStandardname,
-          nxGoodsFatherId: this.data.item.nxGoodsEntity.nxGoodsFatherId
+          nxGoodsFatherId: this.data.item.nxGoodsFatherId
 
         })
 
@@ -112,7 +109,12 @@ Component({
     },
 
     standardchange: function(){
-      this.triggerEvent('standardchange')
+      var name = e.currentTarget.dataset.name;
+      console.log(e)
+      this.triggerEvent('changeStandard', {
+        applyStandardName: name
+
+      })
     },
 
     remark1: function(){

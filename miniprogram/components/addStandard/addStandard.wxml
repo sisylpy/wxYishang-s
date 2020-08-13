@@ -4,8 +4,8 @@
 
     <view class="top">
       <view class='goodsTitle'>
-        <text>{{item.nxGoodsName}}</text>
-        <text class='smallclose' bindtap='cancel'>X</text>
+        <text>{{nxGoodsName}}</text>
+        <!-- <text class='smallclose' bindtap='cancel'>X</text> -->
       </view>
     </view>
 
@@ -17,7 +17,7 @@
           <text class="explain">新增订货单位:</text>
           <view class="number">
             <view class="int">
-              <input class='inputint' focus='true' type='text' value="{{standardName}}" bindinput="getStandard" ></input>
+              <input class='inputint' focus='true' type='text'  bindinput="getStandard" ></input>
             </view>
             <!-- <view class="price_standard with-lr-padding"></view> -->
           </view>

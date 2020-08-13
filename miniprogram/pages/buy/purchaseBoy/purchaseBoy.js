@@ -58,18 +58,15 @@ Page({
     this.setData({
       purchaseUserId: e.detail.value,
     })
-
   },
 
 
  saveBuyTypePurchaseBatch:function(){
   var value = wx.getStorageSync('purGoods');
-  console.l
+  
   if(value){
-
     
     value.nxDpbPurUserId = this.data.purchaseUserId;
-
     savePurchaseBatchType(value).then(res => {
       if(res) {
         console.log(res);

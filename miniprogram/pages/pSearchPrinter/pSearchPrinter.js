@@ -1,5 +1,7 @@
 // pages/blueconn/blueconn.js
 var app = getApp()
+const globalData = getApp().globalData;
+
 Page({
 
   /**
@@ -12,8 +14,9 @@ Page({
     writeCharacter: false,
     readCharacter: false,
     notifyCharacter: false,
-    isScanning:false
+    isScanning: false
   },
+
   //搜索设备
   startSearch: function () {
     var that = this
@@ -29,11 +32,11 @@ Page({
                     console.log(res)
                   }
                 })
-              }else{
+              } else {
                 // that.startBluetoothDevicesDiscovery()
                 that.getBluetoothDevices()
               }
-              // that.checkPemission()
+              that.checkPemission()
             } else {
               wx.showModal({
                 title: '提示',
@@ -43,16 +46,18 @@ Page({
             }
           },
         })
-      }, fail: function () {
+      },
+      fail: function (e) {
+        console.log(e);
 
-        // if (res.errCode === 10001) {
-        //   wx.onBluetoothAdapterStateChange(function (res) {
-        //     console.log('onBluetoothAdapterStateChange', res)
-        //     if (res.available) {
-        //       this.startBluetoothDevicesDiscovery()
-        //     }
-        //   })
-        // }
+        if (res.errCode === 10001) {
+          wx.onBluetoothAdapterStateChange(function (res) {
+            console.log('onBluetoothAdapterStateChange', res)
+            if (res.available) {
+              this.startBluetoothDevicesDiscovery()
+            }
+          })
+        }
 
         wx.showModal({
           title: '提示',
@@ -62,7 +67,7 @@ Page({
       }
     })
   },
-  checkPemission: function () {  //android 6.0以上需授权地理位置权限
+  checkPemission: function () { //android 6.0以上需授权地理位置权限
     var that = this
     var platform = app.BLEInformation.platform
     if (platform == "ios") {
@@ -90,7 +95,7 @@ Page({
       }
     }
   },
-  getBluetoothDevices: function () {  //获取蓝牙设备信息
+  getBluetoothDevices: function () { //获取蓝牙设备信息
     var that = this
     console.log("start search")
     wx.showLoading({
@@ -98,7 +103,7 @@ Page({
       icon: 'loading',
     })
     that.setData({
-      isScanning:true
+      isScanning: true
     })
     wx.startBluetoothDevicesDiscovery({
       success: function (res) {
@@ -116,7 +121,7 @@ Page({
               }
               that.setData({
                 list: devices,
-                isScanning:false
+                isScanning: false
               })
               wx.hideLoading()
               wx.stopPullDownRefresh()
@@ -134,7 +139,9 @@ Page({
   bindViewTap: function (e) {
     var that = this
     wx.stopBluetoothDevicesDiscovery({
-      success: function (res) { console.log(res) },
+      success: function (res) {
+        console.log(res)
+      },
     })
     that.setData({
       serviceId: 0,
@@ -145,23 +152,31 @@ Page({
     console.log(e.currentTarget.dataset.title)
     wx.showLoading({
       title: '正在连接',
-      
+
     })
     wx.createBLEConnection({
       deviceId: e.currentTarget.dataset.title,
       success: function (res) {
         console.log(res)
         app.BLEInformation.deviceId = e.currentTarget.dataset.title
+        console.log(app.BLEInformation);
+        console.log("kankan app BLLEEE00000")
         that.getSeviceId()
-      }, fail: function (e) {
+      },
+      fail: function (e) {
         wx.showModal({
           title: '提示',
           content: '连接失败',
           showCancel: false
         })
         console.log(e)
+        console.log(app.BLEInformation);
+        console.log("kankan app BLLEEE1111111")
         wx.hideLoading()
-      }, complete: function (e) {
+      },
+      complete: function (e) {
+        console.log(app.BLEInformation);
+        console.log("kankan app BLLEEE222222222")
         console.log(e)
       }
     })
@@ -197,9 +212,11 @@ Page({
           services: res.services
         })
         that.getCharacteristics()
-      }, fail: function (e) {
+      },
+      fail: function (e) {
         console.log(e)
-      }, complete: function (e) {
+      },
+      complete: function (e) {
         console.log(e)
       }
     })
@@ -264,27 +281,52 @@ Page({
           })
           that.openControl()
         }
-      }, fail: function (e) {
+      },
+      fail: function (e) {
         console.log(e)
-      }, complete: function (e) {
+      },
+      complete: function (e) {
         console.log("write:" + app.BLEInformation.writeCharaterId)
         console.log("read:" + app.BLEInformation.readCharaterId)
         console.log("notify:" + app.BLEInformation.notifyCharaterId)
       }
     })
   },
-   openControl: function () {//连接成功返回主页
-   wx.navigateBack({
-     delta: 2,
-    
-   })
+  openControl: function () { //连接成功返回主页
+    wx.navigateBack({
+      delta: 2,
+
+    })
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.BLEInformation.platform = app.getPlatform()
+    app.BLEInformation.platform = app.getPlatform();
+    // data中layerModel默认为false
+
+    wx.chooseLocation({
+      success: function (e) {
+        //允许打开定位
+      },
+      fail: () => {
+        //不允许打开定位
+        wx.getSetting({
+          success: (res) => {
+            if (!res.authSetting['scope.userLocation']) {
+              //打开提示框，提示前往设置页面
+              this.setData({
+                layerModel: true
+              })
+            }
+          }
+        })
+      }
+    })
+
+
+
   },
 
   /**
@@ -298,6 +340,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("onShowowowowoowow=======")
+    console.log(globalData)
 
   },
 
@@ -312,9 +356,9 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-wx.closeBLEConnection({
+    wx.closeBLEConnection({
       deviceId: app.BLEInformation.deviceId,
-      success: function(res) {
+      success: function (res) {
         console.log("关闭蓝牙成功")
       },
     })

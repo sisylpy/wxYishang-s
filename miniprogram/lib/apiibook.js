@@ -4,9 +4,104 @@ import apiUrl from '../config.js'
 
 
 
-//nxstandard
-
 //
+
+export const disUpdateStandard = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerstandard/disUpdateStandard' ,
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+export const disSaveStandard = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerstandard/disSaveStandard' ,
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+export const disGetGoodsDetail = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributergoods/disGetGoodsDetail/' + data ,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+
+
+export const disGetGoodsList = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributergoods/disGetGoodsList' ,
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+export const disGetFatherGoods = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributergoods/disGetFatherGoods/' + data ,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+export const queryGoodsByQuickSearch = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxgoods/queryGoodsByQuickSearch/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+
 export const getStandardList = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
@@ -40,10 +135,10 @@ export const saveStandard = (data) => {
 
 
 
-export const downGoods = (data) => {
+export const downDisGoods = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxcommunitygoods/postDgGoods',
+      url: apiUrl.apiUrl + 'nxdistributergoods/postDgnGoods',
       method: 'POST',
       data: data,
       success: (res) => {
@@ -82,10 +177,10 @@ export const getSubNameByFatherId = (data) => {
 
 
 //获取申请列表
-export const getIbookGoodsByFatherId = (data) => {
+export const disGetIbookGoods = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxgoods/getIbookGoodsByFatherId',
+      url: apiUrl.apiUrl + 'nxdistributergoods/disGetIbookGoods',
       method: 'POST',
       data: {
         "fatherId": data.fatherId,

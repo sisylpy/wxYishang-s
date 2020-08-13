@@ -1,4 +1,5 @@
 //app.js
+
 App({
 
   globalData: {
@@ -8,14 +9,20 @@ App({
     windowWidth: null,
     widowHeight: null,
     platform: "",
+    model: "",
+    version: "",
+    system: "",
+    SDKVersion: "",
+    disId: null,
+    tab1Index: null
   },
-  
+
   onLaunch: function (ops) {
-    console.log("opts")
+
     // 获取用户信息
     // wx.getSetting({
+    //   withSubscriptions: true,
     //   success: res => {
-    //     console.log("000---330490390493 res" + res)
     //     console.log(res)
     //     if (res.authSetting['scope.userInfo']) {
     //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
@@ -44,7 +51,11 @@ App({
           screenHeight = res.screenHeight,
           statusBarHeight = res.statusBarHeight,
           pixelRatio = res.pixelRatio,
-          platform = res.platform
+          platform = res.platform,
+          model = res.model,
+          version = res.version,
+          system = res.system,
+          SDKVersion = res.SDKVersion
         this.globalData = {
           windowWidth: width,
           windowHeight: height,
@@ -53,8 +64,11 @@ App({
           scale: width / 375,
           pixelRatio: pixelRatio,
           rpxR: rpxR,
-          purDepId: 4,
           platform: platform,
+          model: model,
+          version: version,
+          system: system,
+          SDKVersion: SDKVersion,
         }
       }
     })
@@ -76,21 +90,38 @@ App({
       })
     }
 
+   
+
 
 
   },
 
+  getModel: function () { //获取手机型号
+    return this.globalData["model"]
+  },
+  getVersion: function () { //获取微信版本号
+    return this.globalData["version"]
+  },
+  getSystem: function () { //获取操作系统版本
+    return this.globalData["system"]
+  },
   getPlatform: function () { //获取客户端平台
-    console.log(this.globalData)
-    console.log("thithitithtiitisissss")
+    return this.globalData["platform"]
+  },
+  getSDKVersion: function () { //获取客户端基础库版本
+    return this.globalData["SDKVersion"]
+  },
+
+  getPlatform: function () { //获取客户端平台
+
     return this.globalData["platform"]
   },
 
 
-  BLEInformation:{
+  BLEInformation: {
     platform: "",
     deviceId: null,
-    writeCharaterId: "",    
+    writeCharaterId: "",
     writeServiceId: "",
     notifyCharaterId: "",
     notifyServiceId: "",
@@ -101,4 +132,3 @@ App({
 
 
 })
-

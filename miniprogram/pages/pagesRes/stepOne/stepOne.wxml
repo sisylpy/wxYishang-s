@@ -1,0 +1,35 @@
+<!--pages/dingSigne/dingSigne.wxml-->
+<view class='container'>
+
+	<!-- 顶部 -->
+	<view class='top flex-column-center'>
+		<image src="../../../images/logo.jpg" class='url'></image>
+	</view>
+
+	<view class='with-padding with-margin-top' style='height: {{windowHeight - 340}}rpx; background:white;'>
+		<!-- 文字 -->
+		<view class='sub-title'>企业类型</view>
+		<view class='intro'>特鲜配是生鲜配送商为客户下单的微信小程序。</view>
+		<view class='type'>
+			<radio-group class="radio-group" bindchange="radioChange">
+				<label class="radio" wx:for="{{items}}" wx:key="name">
+					<radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+				</label>
+			</radio-group>
+		</view>
+
+
+
+	</view>
+
+
+
+		<!-- 按钮 -->
+    <view class="flex-column-center ">
+    			<view class="btn_main {{selected ? 'next' : ''}} "    bindtap='toNext'> 下一步</view>
+    </view>
+
+
+
+
+</view>

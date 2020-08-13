@@ -1,93 +1,99 @@
 <!--components/shareButton/mymodal.wxml-->
-<view class='mask' wx:if='{{show}}' catchtouchmove='ture' >
-  <view class='modal-content'>
+<view class='mask' wx:if='{{show}}' catchtouchmove='ture'>
+	<view class='modal-content'>
 
-    <view class="top">
-      <view class='goodsTitle'>
-        <text>{{item.nxGoodsEntity.nxGoodsName}}</text>
-        <text class='smallclose' bindtap='cancle'>X</text>
-      </view>
-    </view>
-    <view class="body">
+		<view class="top">
+			<view class='goodsTitle'>
+				<text>{{item.nxGoodsName}}</text>
+				<!-- <text class='smallclose' bindtap='cancle' style="color: white" >X</text> -->
+			</view>
+		</view>
+		<view class="body">
 
- <view class="remark_content with-padding">
-          <text class="explain">商品详细</text>
-          <view  class="remark1" >
-             <text class="remarkText"> {{item.nxGoodsEntity.nxGoodsDetail}}</text>
-          </view>
-        </view>
-
-
-      <view class='goods_contents'>
-
-        <view class="price_content with-padding">
-          <text class="explain">今日单价</text>
-          <text>¥ {{item.dgGoodsPrice}}.{{item.dgGoodsPriceDecimal}}/{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
-        </view>
-
-        <view class="number_content with-padding">
-          <text class="explain">订货数量</text>
-          <view class="number">
-            <view class="int">
-              <input class='inputint' focus='true' type='digit' value="{{applyNumber}}" bindinput="getApplyNumber" hold-keyboard='true'></input>
-            </view>
-            <text>{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+			<!-- <view class="remark_content with-padding">
+				<text class="explain">商品详细</text>
+				<view class="remark1">
+					<text class="remarkText"> {{item.nxGoodsEntity.nxGoodsDetail}}</text>
+				</view>
+			</view> -->
 
 
-           
+			<view class='goods_contents'>
 
-          </view>
-        </view>
+				<!-- <view class="price_content with-padding">
+					<text class="explain">今日单价</text>
+					<text>¥ {{item.dgGoodsPrice}}.{{item.dgGoodsPriceDecimal}}/{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+				</view> -->
 
-        <view class="standards_content with-padding">
-          <text class="explain">最小起订量</text>
-           <view class="select_content">
-           <text class="standardName is-active">{{item.dgGoodsMinWeight}}{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
+				<view class="number_content with-padding">
+					<text class="explain">订货数量</text>
+					<view class="number">
+						<view class="int">
+							<input class='inputint' focus='true' type='digit' value="{{applyNumber}}" bindinput="getApplyNumber" hold-keyboard='true'></input>
+						</view>
+						<text>{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
 
-          <!-- <text class="standardName {{applyStandardName == item.nxGoodsEntity.nxGoodsStandardname ? 'is-active' : ''}}" bindtap="changeStandard" data-name="斤">{{item.nxGoodsEntity.nxGoodsStandardname}}</text>
-          <text class="standardName {{applyStandardName == standard.nxStandardName ? 'is-active' : ''}}" bindtap="changeStandard" data-name="{{standard.nxStandardName}}" wx:for="{{item.dgStandardList}}"
+					</view>
+				</view>
+
+				<view class="standards_content with-padding">
+					<text class="explain">订货规格</text>
+					<view class="select_content">
+
+						<text class="standardName {{applyStandardName == item.nxGoodsStandardname ? 'is-active' : ''}}" bindtap="changeStandard" data-name="{{item.nxGoodsStandardname}}" >{{item.nxGoodsStandardname}}</text>
+						<text class="standardName {{applyStandardName == standard.nxStandardName ? 'is-active' : ''}}" bindtap="changeStandard" data-name="{{standard.nxStandardName}}" wx:for="{{item.nxGoodsStandardEntities}}" data-name="{{standard.nxStandardName}}"
             wx:for-item="standard">{{standard.nxStandardName}}</text>
-             -->
-        </view>
 
-        </view>
+					</view>
 
-        <!-- <view class="remark_content with-padding">
+				</view>
+
+				<view class="remark_content with-padding">
           <text class="explain">备注:</text>
           <view  class="remark  {{showInput ? 'is-active' : ''}}" catchtap="remark">
              <text class="remarkText"> {{remarkContent}}</text>
           </view>
-        </view> -->
-
-
-      </view>
-
-      <view class='btn-wrapper'>
-        <view class="btn_row">
-          <text class='cancel-btn' bindtap="cancle">取消</text>
-          <text class='confirm-btn' catchtap='confirm'>确定</text>
         </view>
-      </view>
-    </view>
 
-  </view>
+
+			</view>
+
+			<view class='btn-wrapper'>
+			<view class="btn_left flex-row" wx:if="{{item.nxDepartmentGoodsId !== -1 }}">
+			<image src="../../images/download.png" class="sel_icon"></image>
+			<text>已加入订货模版</text>
+			</view>
+	<view class="btn_left flex-row" wx:else>
+			<image src="../../images/itemSel.png" class="sel_icon"></image>
+			<text>加入订货模版</text>
+			</view>
+
+				<view class="btn_row">
+					<text class='cancel-btn' bindtap="cancle">取消</text>
+					<text class='confirm-btn' catchtap='confirm'>确定</text>
+				</view>
+			</view>
+		</view>
+
+	</view>
 </view>
 
 
 <view class="inputBox {{showInput ? 'is-active' : ''}}" style="bottom:{{bottom}}px">
-  <view class="flex-row">
-    <view class="input_content">
-      <input class="input" focus="{{showInput}}" bindfocus="onbindfocus" bindinput="addRemark" value="{{remarkContent}}" placeholder="添加备注说明..." placeholder-style='color:#9a9a9a;'></input>
-    </view>
+	<view class="flex-row">
+		<view class="input_content">
+			<input class="input" focus="{{showInput}}" bindfocus="onbindfocus" bindinput="addRemark" value="{{remarkContent}}" placeholder="添加备注说明..." placeholder-style='color:#9a9a9a;'></input>
+		</view>
 
-    <view class="getRemark " bindtap="getRemark">确定</view>
-  </view>
+		<view class="getRemark " bindtap="getRemark">确定</view>
+	</view>
 
 
-  <!-- <input class="input" 
+	<input class="input" 
         adjust-position="{{false}}" 
         cursor-spacing="90" type='text'
         bindfocus='onbindfocus' 
         placeholder="发表评论..." 
-        placeholder-style='color:#9a9a9a;'/> -->
+        placeholder-style='color:#9a9a9a;'/>
+
 </view>

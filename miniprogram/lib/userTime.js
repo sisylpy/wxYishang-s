@@ -4,7 +4,6 @@ function getPickData(message) {
 
   var time = _getTime();
   console.log(time);
-  console.log("yishangshi time")
   if (time < 14) {
     var customerTime = [
       {

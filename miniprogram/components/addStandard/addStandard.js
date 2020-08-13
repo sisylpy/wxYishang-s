@@ -11,8 +11,8 @@ Component({
       value: true
     },
    
-    item: {
-      type: Object,
+    nxGoodsName: {
+      type: String,
       value: ""
     },
     standardName: {
@@ -44,9 +44,9 @@ Component({
       this.setData({show: false})
     },
 
-    cancel() {
+    cancle() {
       this.setData({ show: false })
-      this.triggerEvent('cancel')
+      // this.triggerEvent('cancle')
     },
 
     confirm(e) {
@@ -64,8 +64,7 @@ Component({
 
     getStandard: function (e) {
       console.log(e)
-      this.setData({
-       
+      this.setData({   
         standardName: e.detail.value
       })
     },

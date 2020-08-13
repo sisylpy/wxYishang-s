@@ -3,6 +3,7 @@
 const globalData = getApp().globalData;
 import {
   getPurchaseGoodsBatch,
+  updatePurchaseGoods
 } from '../../../lib/apiDepOrder'
 
 Page({
@@ -23,17 +24,17 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      batchId: 13,
+      batchId: 90,
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
     })
     
-    getPurchaseGoodsBatch(13)
+    getPurchaseGoodsBatch(90)
       .then(res => {
         if (res) {
           console.log(res);
           this.setData({
-            goodsArr: res.result.data
+            batch: res.result.data
 
           })
         }
@@ -49,12 +50,41 @@ Page({
 
   },
 
-  toFill(){
-     wx.navigateTo({
-       url: '../friendFill/friendFill?id=' + this.data.batchId,
-     })
+  getQuantity(e){
+    var index = e.currentTarget.dataset.index;
+
+    var amount = "batch.nxDPGEntities["+ index + "].nxDpgBuyQuantity";
+    this.setData({
+
+     [amount]: e.detail.value
+
+    })
+    this._updatePurchaseGoods(index);
+
   },
 
+  getPrice(e){
+    console.log(e);
+    var index = e.currentTarget.dataset.index;
+
+    var price = "batch.nxDPGEntities["+ index + "].nxDpgBuyPrice";
+    this.setData({
+
+     [price]: e.detail.value
+
+    })
+    this._updatePurchaseGoods(index);
+  },
+
+  _updatePurchaseGoods(i){
+    var item  = this.data.batch.nxDPGEntities[i];
+    updatePurchaseGoods(item).then(res => {
+      if(res){
+        console.log(res)
+      }
+    })
+    
+  }
 
 
 })

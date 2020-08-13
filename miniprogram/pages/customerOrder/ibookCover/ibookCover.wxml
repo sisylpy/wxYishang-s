@@ -1,0 +1,30 @@
+<!--pages/ibook/ibook.wxml-->
+
+  <swiper class='backgroud' style='height: {{second_height}}px'
+  indicator-dots="{{indicatorDots}}" 
+  autoplay="{{autoplay}}" 
+  interval="{{interval}}" 
+  duration="{{duration}}">
+
+    <block wx:for="{{ibooklist}}" wx:for-index="index">
+      <swiper-item class='pageBack'>
+        <!-- main_begin -->
+        <view class='pageColor' style="background-color:{{item.color}}">
+          <view class='firCate_num'>第{{index + 1}}类</view>
+          <view class='firCate_name'>{{item.nxGoodsName}}</view>
+          <view class='line'></view>
+          <view class='tenline'></view>
+          <view class='secPart' >
+            <block wx:for='{{item.nxGoodsEntityList}}' wx:for-item="nxGoods" wx:key="" wx:for-index="itemIndex">
+              <view class='secCate_name' 
+              bindtap='todetail' data-fatherid="{{nxGoods.nxGoodsId}}" data-fathername="{{nxGoods.nxGoodsName}}" data-index="{{index+1}}.{{itemIndex + 1}}" 
+              data-color="{{item.color}}"
+              >{{index + 1}}.{{itemIndex+1}} {{nxGoods.nxGoodsName}}</view>
+              <!-- <view class='secCate_pageNo'>{{nxGoodsId}}</view> -->
+            </block>
+          </view>
+        </view>
+        <!--  main_over -->
+      </swiper-item>
+    </block>
+  </swiper>

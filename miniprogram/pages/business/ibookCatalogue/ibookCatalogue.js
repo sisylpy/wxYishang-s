@@ -69,6 +69,15 @@ Page({
     var img = e.currentTarget.dataset.img;
     var color = e.currentTarget.dataset.color;
     var sort = e.currentTarget.dataset.sort;
+    var grandid = e.currentTarget.dataset.grandid;
+    var grandname = e.currentTarget.dataset.grandname;
+    var data = {
+      grandId: grandid,
+      grandName: grandname,
+      grandImg : img,
+      grandColor : color 
+    }
+    wx.setStorageSync('grandFather', data)
     wx.navigateTo({
       url: '/pages/business/ibookGoods/ibookGoods?fatherId=' + id +'&fatherName=' + fatherName + '&img=' + img + '&color=' + color + '&sort=' + sort,
     })

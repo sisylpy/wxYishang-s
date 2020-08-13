@@ -1,20 +1,37 @@
 /* pages/storeApplys/storeApplys.wxss */
-page{
-  /* background: rgb(88, 36, 88); */
-  background: rgb(240, 239, 239);
+
+.top_bar{
+  height: 120rpx;
+  line-height: 120rpx;
+  /* box-shadow: 0 2rpx 2rpx 1rpx rgba(153, 152, 152, 0.945); */
+  /* margin-bottom: 2rpx; */
+  border-bottom: 1px solid rgba(197, 197, 197, 0.822);
+  border-top: 1px solid rgba(197, 197, 197, 0.822);
+
+  
 }
-.box_title{
-  margin-top: 20rpx;
+.top_img{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  border: 1px solid #ecebeb;
+  margin-right: 30rpx;
 }
-.table{
+.top_bar_title{
+  font-size: 44rpx;
+}
+
+/*  */
+
+.table1{
   border: 1px solid lightgray;
   background: rgba(248, 248, 248);
   border-radius: 4rpx;
   margin-bottom: 30rpx;
-  padding: 0 20rpx;
+  padding: 10 20rpx;
 
 }
-.box{
+.table{
   margin-top: 10rpx;
   background: #fff;
 
@@ -79,7 +96,7 @@ page{
 
 
 /*  */
-.box_body{
+.table_body{
   /* border: 1px solid lightgray; */
   /* border-radius: 5rpx; */
   background: #fff;

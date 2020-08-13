@@ -1,0 +1,41 @@
+
+.mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 40rpx;
+  color: #fff;
+  font-size: 44rpx;
+  text-align: center;
+  z-index: 999;
+
+}
+
+
+.backImg{
+  width: 100%;
+
+}
+
+.logoImg{
+  border-radius: 50%;
+
+
+}
+
+.btn {
+  height: 90rpx;
+  border-radius: 20rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border: 1px solid lightgray;
+  width: 90%;
+  margin-left: 5%;
+
+}

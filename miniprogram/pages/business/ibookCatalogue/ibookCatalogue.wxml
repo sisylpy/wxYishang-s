@@ -1,9 +1,9 @@
-<view class="with-padding">
+<view class="">
 
   <view class="flex-column cata-fixed">
     <text class="cata-index">{{index}}</text>
     <view class="line"></view>
-    <view class="cata_fatherName" style="color: {{color}}">{{fatherName}}</view>
+    <view class="cata_fatherName with-padding" style="color: {{color}}">{{fatherName}}</view>
   </view>
 
   <view>
@@ -14,7 +14,8 @@
 
 
         <view class="whole flex-column">
-          <view class="one" bindtap="clickFather" wx:for="{{goodsList}}" wx:for-item="one" data-id="{{one.nxGoodsId}}" data-fathername="{{one.nxGoodsName}}" data-img="{{one.nxGoodsFile}}"
+          <view class="one" bindtap="clickFather" wx:for="{{goodsList}}" wx:for-item="one" data-id="{{one.nxGoodsId}}" data-fathername="{{one.nxGoodsName}}" data-img="{{one.nxGoodsFile}}"  data-grandid="{{fatherId}}"
+          data-grandname="{{fatherName}}"
           data-color="{{color}}" data-sort="{{one.nxGoodsSort}}"
           >
 

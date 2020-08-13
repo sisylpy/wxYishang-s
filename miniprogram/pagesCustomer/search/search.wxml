@@ -1,6 +1,0 @@
- <view class="search with-padding">
-      <view class="search_content flex-row ">
-        <icon class="wx_icon" type="search" size="20"></icon>
-        <view class="search_words">搜索</view>
-      </view>
-    </view>
