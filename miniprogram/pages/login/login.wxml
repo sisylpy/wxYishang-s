@@ -10,14 +10,14 @@
 			<input class='input' type='text' placeholder='注册配送名称' name='name' value='{{name}}' bindinput='getName'></input>
 		</view>
 
-		<view class="with-s-padding">
+		<!-- <view class="with-s-padding">
 			<checkbox-group bindchange="kaiqi">
 				<label>
 					<checkbox value="1" checked="{{accept}}">同意接收客户的订单通知</checkbox>
 				</label>
 			</checkbox-group>
 
-		</view>
+		</view> -->
 
 
 		<!-- 登录按钮 -->

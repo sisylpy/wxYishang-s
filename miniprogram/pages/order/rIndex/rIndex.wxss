@@ -1,0 +1,100 @@
+/* pagesOrder/rIndex/rIndex.wxss */
+
+page{
+  background: #f2f6f7;
+}
+
+.plusBtn{
+  position: fixed;
+  bottom: 90rpx;
+}
+
+.def{
+  background: #1e82b4;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.plus_text{
+  line-height: 120rpx;
+  height: 120rpx;
+  font-size: 60rpx;
+  color: #fff;
+  text-align: center;
+
+}
+
+
+/*  */
+.goods_name_title{
+  display: block;
+  width: 25%;
+  /* margin-left: 5%; */
+  /* background: red; */
+}
+
+.goods_index{
+  display: block;
+  width: 5%;
+  /* background: saddlebrown; */
+}
+
+.goods_name{
+  display: block;
+  width: 25%;
+  /* background: lightcyan; */
+}
+.goods_quantity {
+  display: block;
+  width: 20%;
+  /* background: blue; */
+}
+.goods_weight{
+  display: block;
+  width: 18%; 
+  /* background: pink; */
+  text-align: center;
+}
+.goods_status {
+  display: block;
+  width: 20%;
+  /* background: burlywood; */
+  text-align: center;
+}
+.goods_user{
+  width: 17%;
+  /* background: yellow; */
+  text-align: center;
+}
+
+
+.goods_status_operation.two{
+  background: rgb(25, 165, 90);
+  /* background: #1e82b4; */
+
+}
+
+.apply_row{
+  border-bottom: 1px dashed lightgray;
+}
+
+.faceImg{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.form{
+  background: #fff;
+  border-radius: 4rpx;
+}
+.form_title{
+  border-bottom: 1px dashed lightgray;
+}
+
+.applyFaceImg{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}

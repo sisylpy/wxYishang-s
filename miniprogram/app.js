@@ -13,34 +13,10 @@ App({
     version: "",
     system: "",
     SDKVersion: "",
-    disId: null,
-    tab1Index: null
+    tab1Index: null,
   },
 
   onLaunch: function (ops) {
-
-    // 获取用户信息
-    // wx.getSetting({
-    //   withSubscriptions: true,
-    //   success: res => {
-    //     console.log(res)
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           console.log("000-------00000000")
-    //           console.log(res);
-    //           this.globalData = {
-    //             avatarUrl: res.userInfo.avatarUrl,
-    //             nickName: res.userInfo.nickName
-    //           }
-    //           // console.log(this.globalData);
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
-
 
     wx.getSystemInfo({
       success: (res) => {
@@ -75,20 +51,39 @@ App({
 
 
 
-    if (ops.scene == 1044) {
-      console.log(ops.shareTicket);
-      wx.getShareInfo({
-        shareTicket: opt.shareTicket,
-        success: function (res) {
-          var encryptedData = res.encryptedData;
-          var iv = res.iv;
-          console.log(iv);
-          console.log("ivivvivi");
-
-
+     //update
+     if (wx.canIUse('getUpdateManager')) {
+      const updateManager = wx.getUpdateManager()
+      updateManager.onCheckForUpdate(function (res) {
+        // console.log('onCheckForUpdate====', res)
+        // 请求完新版本信息的回调
+        if (res.hasUpdate) {
+          // console.log('res.hasUpdate====')
+          updateManager.onUpdateReady(function () {
+            wx.showModal({
+              title: '更新提示',
+              content: '新版本已经准备好，是否重启应用？',
+              success: function (res) {
+                console.log('success====', res)
+                // res: {errMsg: "showModal: ok", cancel: false, confirm: true}
+                if (res.confirm) {
+                  // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                  updateManager.applyUpdate()
+                }
+              }
+            })
+          })
+          updateManager.onUpdateFailed(function () {
+            // 新的版本下载失败
+            wx.showModal({
+              title: '已经有新版本了哟~',
+              content: '新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~'
+            })
+          })
         }
       })
     }
+    //.update
 
    
 
@@ -128,6 +123,8 @@ App({
     readCharaterId: "",
     readServiceId: "",
   }
+
+   
 
 
 

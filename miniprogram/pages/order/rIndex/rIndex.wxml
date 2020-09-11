@@ -1,0 +1,48 @@
+<view class="flex-column">
+	<view class="flex-column-center" style="width: {{windowWidth}}rpx;">
+		<image src="../../../images/order_icon.png" class="icon"></image>
+		<text style="font-size: 34rpx;">今日订单</text>
+	</view>
+	<view class="with-padding ">
+		<view class="form" style="height: {{windowHeight - 140}}rpx;">
+			<view class="flex-row with-padding form_title" style="font-size: 34rpx;">
+				<text class="goods_name_title">商品</text>
+				<text class="goods_quantity">数量</text>
+				<text class="goods_user">出货</text>
+				<text class="goods_weight">单价</text>
+				<text class="goods_status">小计</text>
+			</view>
+
+			<view class="flex-column with-padding" style="font-size: 34rpx;">
+				<scroll-view scroll-y style="height: {{windowHeight - 150}}rpx;">
+					<view class="apply_row  flex-column with-tb-padding margin_bottom" wx:for="{{applyArr}}" wx:key="date" wx:for-item="item" wx:for-index="index">
+						<view class="flex-row">
+
+							<text class="margin-right">{{index + 1}}. {{item.nxDistributerGoodsEntity.nxDgGoodsName}}</text>
+							<text>{{item.nxDoQuantity}}{{item.nxDoStandard}}</text>
+						</view>
+
+					</view>
+				</scroll-view>
+
+			</view>
+		</view>
+
+
+	</view>
+
+
+</view>
+
+
+
+
+
+<view class="plusBtn" style="left:{{windowWidth - 180}}rpx">
+
+
+	<view class="def flex-column-center " bindtap="toQuickOrder">
+		<text class="plus_text">+</text>
+	</view>
+
+</view>

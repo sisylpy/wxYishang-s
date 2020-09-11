@@ -1,0 +1,197 @@
+<view class="customerPage with_bottom_padding" id='mjltest'>
+
+	<view class="whiteBack top_bar flex-row with-lr-padding with-l-margin-bottom" style="height:120rpx;">
+		<image src="{{userInfo.nxDiuWxAvartraUrl}}" class="top_img"></image>
+		<text class="top_bar_title">订单</text>
+	</view>
+
+	<!--  -->
+
+
+
+	<view class="big_padding whiteBack with-l-margin-bottom flex-column-center">
+		<view class='dateGroup'>
+			<view id='week' class="">{{week}}</view>
+			<view id='date'>{{date}}</view>
+		</view>
+		<view class="with-tb-padding gray">
+			<text>今日订货客户{{customerArr.length}}家,收到图片订单后可替客户下单。</text>
+		</view>
+
+		<view class='flex-column'>
+			<view class="new_btn" bindtap="toOpenMyCustomer" hover-class="hover">下单</view>
+		</view>
+
+	</view>
+
+	<!-- customer_applys -->
+	<view class=" whiteBack with-padding flex-column with-margin-bottom" wx:for="{{customerArr}}" wx:for-item="item" wx:for-index="parentIndex" wx:key="depId">
+		<view class="flex-row-between">
+			<view class="flex-row-default">
+				<view class="dep_padding dep_name">{{item.depName}}</view>
+				<!-- <view class="redDot">{{item.newOrders}}</view> -->
+			</view>
+
+			<image src="../../../images/jiantouxia.png" class="icon_jiantou icon_operation" bindtap="openOperation" data-index="{{parentIndex}}" data-has="{{item.depHasSubs}}" data-name="{{item.depName}}" data-id="{{item.depId}}"></image>
+		</view>
+
+
+		<!-- type == 0 -->
+		<view class='flex-column with-margin-top box' wx:if="{{item.depHasSubs == 0}}">
+			<view class="with-border-bottom" wx:for='{{item.depOrders}}' wx:for-item="order"
+			wx:key="nxDepartmentOrdersId">
+
+				<view class="flex-column with-s-padding ">
+					<!-- <view class="order_time_one gray small">{{order.nxDoApplyOnlyTime}}</view> -->
+
+					<view class="flex-row normal">
+
+						<!-- <view class="index" wx:if="{{order.nxDoStatus == -1}}">
+							<image src="../../../images/duihao.png" class="icon" wx:if="{{order.hasChoice}}"></image>
+							<image src="../../../images/logof.png" class="icon" wx:else></image>
+						</view> -->
+
+						<view>
+							<text  >{{index + 1}}.</text>
+						</view>
+
+						<view class="goods_name">
+
+							<!-- <text class="margin-right"  wx:if="{{order.nxDoIsAgent == 0}}">{{order.nxDepartmentDisGoodsEntity.nxDdgNxGoodsName}}</text> -->
+							<text class="margin-right">{{order.nxDistributerGoodsEntity.nxDgGoodsName}}</text>
+							<text class="margin-l-right">{{order.nxDoQuantity}}{{order.nxDoStandard}}</text>
+							<image wx:if="{{order.nxDoIsAgent == 1}}" src="../../../images/download.png" class="icon"></image>
+						</view>
+
+						<view class="icon_item purchase_iii" wx:if="{{order.nxDoBuyStatus == 1}}">
+							<image class="mark_img" src="../../../images/duihao.png"></image>
+						</view>
+
+
+						<view class="icon_item print" wx:if="{{order.nxDoStatus == 1}}">
+							<!-- <text class="margin-right" wx:if="{{order.nxDoWeight !== null}}">{{order.nxDoWeight}}{{order.nxGoodsEntity.nxGoodsStandardname}}</text> -->
+							<image class="mark_img" src="../../../images/icon_print.jpg"></image>
+						</view>
+
+						<view class="icon_item weight" wx:if="{{order.nxDoWeight !== null}}">
+							<!-- <text class="margin-right" wx:if="{{order.nxDoWeight !== null}}">{{order.nxDoWeight}}{{order.nxGoodsEntity.nxGoodsStandardname}}</text> -->
+							<image class="mark_img" src="../../../images/icon1.png"></image>
+
+						</view>
+
+						<view class="icon_item price" wx:if="{{order.nxDoPrice !== null || order.nxDoPrice == 0}}">
+							<!-- <text class="margin-right"  wx:if="{{order.nxDoPrice !== null}}">{{order.nxDoPrice}}/{{order.nxGoodsEntity.nxGoodsStandardname}}</text> -->
+							<image class="mark_img" src="../../../images/next.png"></image>
+
+						</view>
+
+						<view class="icon_item subtotal" wx:if="{{order.nxDoSubtotal !== null}}">
+							<!-- <text class="margin-right"  wx:if="{{order.nxDoSubtotal !== null}}">{{order.nxDoSubtotal}}</text> -->
+							<image class="mark_img" src="../../../images/icon2.png"></image>
+						</view>
+
+					</view>
+
+				</view>
+
+
+			</view>
+		</view>
+		<!-- ./type == 0 -->
+
+		<!-- type == 1 -->
+		<view class='flex-column with-margin-top box' wx:if="{{item.depHasSubs == 1}}" wx:for="{{item.subDeps}}" wx:for-item="subDep" wx:key="nxDepartmentId">
+			<view class="with-border-bottom-gray with-padding ">
+				<text class="middle">#{{subDep.nxDepartmentName}}</text>
+			</view>
+			<view class="flex-column ">
+				<view class=" with-s-padding with-border-bottom" wx:for='{{subDep.nxDepartmentOrdersEntities}}' wx:for-item="order" wx:for-index='index' data-index="{{index}}" wx:key="nxDepartmentOrdersId">
+
+					<!-- <view class="order_time gray small">{{order.nxDoApplyOnlyTime}}</view> -->
+
+					<view class="flex-row  small">
+						<view class="index">
+							<text  >{{index + 1}}.</text>
+						</view>
+
+						<view class="goods_name">
+						
+								<!-- <text class="margin-right"  wx:if="{{order.nxDoIsAgent == 0}}">{{order.nxDepartmentDisGoodsEntity.nxDdgNxGoodsName}}</text> -->
+							<text class="margin-right">{{order.nxDistributerGoodsEntity.nxDgGoodsName}}</text>
+							<text class="margin-l-right ">{{order.nxDoQuantity}}{{order.nxDoStandard}}</text>
+						<image wx:if="{{order.nxDoIsAgent == 1}}" src="../../../images/download.png" class="icon"></image>
+						</view>
+
+						<view class=" ">
+							<view class="icon_mark1 flex-row" wx:if="{{order.nxDoWeight !== null}}">
+								<image class="mark_img" src="../../../images/icon1.png"></image>
+							</view>
+						</view>
+						<view class="">
+							<view class="icon_mark1 flex-row" wx:if="{{order.nxDoPrice !== null}}">
+								<image class="mark_img" src="../../../images/next.png"></image>
+							</view>
+						</view>
+
+						<view class="">
+							<view class="icon_mark1 flex-row" wx:if="{{order.nxDoSubtotal !== null}}">
+								<image class="mark_img" src="../../../images/icon3.png"></image>
+							</view>
+						</view>
+						
+						<view class=" ">
+							<view class="icon_mark1 flex-row" wx:if="{{order.nxDoSubtotal !== null}}">
+								<image class="mark_img" src="../../../images/icon2.png"></image>
+							</view>
+						</view>
+					</view>
+				</view>
+
+
+			</view>
+
+
+
+		</view>
+		<!-- ./type == 1 -->
+
+		<!-- <view class="prepareBtn">开始备货</view> -->
+
+	</view>
+
+
+
+	<!-- ./ -->
+
+</view>
+
+<view class='mask {{showOperation ? "is-active" : ""}}' catchtouchmove='ture' catchtap="hideMask" style="height:{{maskHeight}}px;">
+	<view class="flex-column nnn whiteBack">
+
+		<view class="with-padding  flex-row" bindtap="printBLEData" wx:if="{{setSuccess}}">
+			<image src="../../../images/logo.jpg" class="icon icon_operation"></image>
+			<text class="text_operation">打印拣货单</text>
+		</view>
+		<view class="with-padding  flex-row" bindtap="toSetPrint" wx:else>
+			<image src="../../../images/del.png" class="icon icon_operation"></image>
+			<text class="text_operation">打印拣货单 先设置打印机</text>
+		</view>
+
+		<view class="with-padding flex-row " bindtap="toInputWeight">
+			<image src="../../../images/logo.jpg" class="icon icon_operation"></image>
+			<text class="text_operation">录入数量</text>
+		</view>
+
+		<view class="with-padding flex-row" bindtap="toInputPrice">
+			<image src="../../../images/logo.jpg" class="icon icon_operation"></image>
+			<text class="text_operation">录入单价</text>
+		</view>
+
+
+		<view class="with-padding  flex-row" bindtap="toIssuePage">
+			<image src="../../../images/logo.jpg" class="icon icon_operation"></image>
+			<text class="text_operation">打印送货单</text>
+		</view>
+
+	</view>
+</view>

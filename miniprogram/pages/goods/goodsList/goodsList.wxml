@@ -1,0 +1,75 @@
+<view class="liziBack ">
+
+	<!-- bar -->
+	<view class="whiteBack flex-row with-lr-padding " style="height:120rpx;">
+		<input class="inputGoods" placeholder="   搜索 商品名称,简拼或全拼" style="width: {{windowWidth - 40}}rpx" />
+
+		<view class="addBtn" bindtap="addDisGoods">+</view>
+
+	</view>
+
+	<!--  top -->
+	<view class="">
+
+
+
+		<view class="flex-column ">
+			<view class="flex-row-between with-border-bottom whiteBack with-padding " wx:for="{{goodsList}}" wx:for-item="goods" wx:for-index="goodsIndex" bindtap="toDetail" data-id="{{goods.nxDistributerGoodsId}}" hover-class="hover">
+
+				<view class="">
+					<view class="normal flex-row">
+						<text class="small" wx:if="{{goods.nxDgGoodsBrand !== null}}">[{{goods.nxDgGoodsBrand}}]</text>
+						<text  class="normal gray" wx:if="{{goods.nxDgPullOff == 1}}">{{goods.nxDgGoodsName}}(停止订货)</text>
+						<text class="normal" wx:else> {{goods.nxDgGoodsName}}</text>
+
+						<!-- <text class="small" wx:if="{{goods.nxGoodsDetail.length > 0 && goods.nxGoodsDetail !==  'null'}}">({{goods.nxGoodsDetail}})</text> -->
+					</view>
+
+					<view class="flex-row with-tbl-padding middle gray" style="width:{{windowWidth - 80}}rpx;">
+						<!-- <view class="goods_index">{{index + 1}}</view> -->
+						<view class="flex-row half-row">
+							<text class="margin-l-right shrink_fix">规格:</text>
+							<text class="shrink_change"> {{goods.nxDgGoodsStandardname}}</text>
+						</view>
+						<view class="flex-row half-row">
+							<text class="margin-l-right shrink_fix">产地:</text>
+							<text wx:if="{{goods.nxGoodsPlace !== null}}" class="shrink_change"> {{goods.nxGoodsPlace}}</text>
+						</view>
+					</view>
+
+					<view class="flex-row-default small gray">
+						<text class="margin-l-right shrink_fix" >订货单位:</text>
+						<view class="flex-row-wrap shrink_change">
+							<text class="standard margin_bottom">{{goods.nxDgGoodsStandardname}}</text>
+							<text class="standard margin_bottom" wx:for="{{goods.distributerStandardEntities}}" wx:for-item="standard">{{standard.nxDsStandardName}}</text>
+						</view>
+					</view>
+				</view>
+
+				<view>
+					<image src="../../../images/jiantou.png" class="iconsmall"></image>
+				</view>
+
+			</view>
+
+		</view>
+		<!-- 
+		<swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+			<swiper-item wx:for="{{goodsList}}" wx:for-item="father" wx:for-index="parentIndex">
+				<scroll-view scroll-y="true" class="scoll-h ">
+
+					
+				</scroll-view>
+
+			</swiper-item>
+
+		</swiper> -->
+
+	</view>
+
+
+
+
+
+
+</view>

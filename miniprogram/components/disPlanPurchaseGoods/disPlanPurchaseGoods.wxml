@@ -4,8 +4,8 @@
 
     <view class="top">
       <view class='goodsTitle'>
-        <text>{{item.nxGoodsName}}</text>
-        <text class='smallclose' bindtap='cancel'>X</text>
+        <text>{{item.nxDgGoodsName}}</text>
+        <!-- <text class='smallclose' bindtap='cancel'>X</text> -->
       </view>
     </view>
 
@@ -27,8 +27,8 @@
       <view class="standards_content with-lr-padding">
           <text class="explain">订货单位:</text>
            <view class="select_content">
-          <text class="standardName {{applyStandardName == item.standardName ? 'is-active' : ''}}" bindtap="changeStandard" >{{item.nxGoodsStandardname}}</text>
-          <text class="standardName {{applyStandardName == standard.nxStandardName ? 'is-active' : ''}}" bindtap="changeStandard" data-name="{{standard.nxStandardName}}" wx:for="{{item.nxDistributerGoodsEntity.distributerStandardEntities}}" wx:for-item="standard">{{standard.nxStandardName}}</text>
+          <text class="standardName {{applyStandardName == item.nxDgGoodsStandardname ? 'is-active' : ''}}" bindtap="changeStandard" >{{item.nxDgGoodsStandardname}}</text>
+          <text class="standardName {{applyStandardName == standard.nxDsStandardName ? 'is-active' : ''}}" bindtap="changeStandard" data-name="{{standard.nxDsStandardName}}" wx:for="{{item.distributerStandardEntities}}" wx:for-item="standard">{{standard.nxDsStandardName}}</text>
           
         </view>
         </view>

@@ -1,0 +1,7 @@
+
+.hideView{
+  display: none;
+}
+.hideView.is-active{
+  display: block;
+}

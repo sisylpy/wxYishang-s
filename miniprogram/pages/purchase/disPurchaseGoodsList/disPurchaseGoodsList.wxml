@@ -1,0 +1,21 @@
+
+<view class="flex-column with-border-bottom whiteBack with-padding " wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" >
+	<view class="flex-row-between" bindtap="addPlanPurchse" data-id="{{item.nxDistributerGoodsId}}" data-standard="{{item.nxDgGoodsStandardname}}" data-index="{{index}}" data-item="{{item}}" >
+		<view class="flex-row with-lr-padding normal" >
+
+			<view class="small" wx:if="{{item.nxDgGoodsBrand.length > 0 && item.nxDgGoodsBrand !==  'null'}}">[{{item.nxDgGoodsBrand}}]</view>
+
+			<view class="normal"> {{item.nxDgGoodsName}} ({{item.nxDgGoodsStandardname}})</view>
+
+		</view>
+		<view>
+		</view>
+	</view>
+	<view wx:if="{{item.isDownload}}">
+		<image src="../../images/duihao.png" class="icon"></image>
+	</view>
+</view>
+
+
+
+<disPlanPurchaseGoods show="{{disPlanPurchaseGoods}}" bindconfirm="confirm" applyStandardName="{{applyStandardName}}" item="{{item}}" bindchangeStandard="changeStandard" />

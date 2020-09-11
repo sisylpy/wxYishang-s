@@ -5,22 +5,22 @@ Component({
     color: "#7A7E83",
     selectedColor: "#147062",
     list: [{
-      pagePath: "/pages/order/order",
+      pagePath: "/pages/order/index/index",
       iconPath: "/images/back.png",
       selectedIconPath: "/images/goods.jpg",
       text: "订单"
     }, {
-      pagePath: "/pages/purchase/purchase",
+      pagePath: "/pages/purchase/index/index",
       iconPath: "/images/biao.png",
       selectedIconPath: "/images/add.jpg",
       text: "上货"
     }, {
-      pagePath: "/pages/goods/goods",
+      pagePath: "/pages/goods/index/index",
       iconPath: "/images/logo.jpg",
       selectedIconPath: "/images/addGroup.jpg",
       text: "商品"
     }, {
-      pagePath: "/pages/customer/customer",
+      pagePath: "/pages/customer/index/index",
       iconPath: "/images/logo.jpg",
       selectedIconPath: "/images/addGroup.jpg",
       text: "客户"

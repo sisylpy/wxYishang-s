@@ -1,0 +1,155 @@
+<!--pages/storeApplys/storeApplys.wxml-->
+<view class="customerApply">
+
+	<view class="section">
+
+		<!-- top -->
+		<view class="felx-row with-padding with-border-bottom ">
+			<image src="../../../images/logo.jpg" class="icon"></image>
+			<text class="normal">录入数量</text>
+		</view>
+
+		<!-- table_title -->
+		<view class="flex-row with-s-padding with-border-bottom small ">
+			<text class="goods_name">商品</text>
+			<text class="today_price">今日(元)</text>
+			<text class="history_price">历史</text>
+			<text class="operation">选择</text>
+		</view>
+
+		<!-- 单部门 -->
+
+		<view wx:if="{{depHasSubs  == 0}}">
+			<view class="maodian" style="height:{{windowHeight - 580}}rpx;">
+				<view id="NAV{{index}}" wx:for="{{applyArr.length}}">NAV{{index}}</view>
+			</view>
+
+			<view class="section_body">
+				<scroll-view class="tui-city-scroll-y" scroll-y="true" scroll-into-view="NAV{{focusIndex}}" scroll-with-animation="true">
+
+					<!-- single bumen -->
+					<view class="flex-column with-border-bottom  with-s-padding normal" wx:for="{{applyArr}}" wx:for-index="index" data-id="{{item.nxDepartmentOrdersId}}">
+						<view class="flex-row" id="NAV{{index}}">
+
+							<text class="goods_name">{{item.nxDistributerGoodsEntity.nxDgGoodsName}}({{item.nxDistributerGoodsEntity.nxDgGoodsStandardname}})</text>
+							<!-- <text class="order_number">{{item.nxDoQuantity}}{{item.nxDoStandard}}</text> -->
+							<view class="today_price flex-row">
+
+								<view class="weightInput margin-l-right flex-row" bindtap="changeFocusIndex" data-index="{{index}}">
+									<text class="input_number" wx:if="{{item.nxDoPrice !== null}}">{{item.nxDoPrice}}</text>
+									<view class='analog_cursor {{index == focusIndex ? "is-active" : "" }}'></view>
+								</view>
+
+								<!-- <text class="weightStandard">{{item.nxGoodsEntity.nxGoodsStandardname}}/元 </text> -->
+							</view>
+							<view class="history_price">{{item.nxDoDepartmentGoodsPrice}}</view>
+							<view class="operation">
+								<view class="operation_btn">同价</view>
+							</view>
+
+						</view>
+
+					</view>
+					<!-- ./single bumen -->
+					<view class="bottom_place"></view>
+				</scroll-view>
+			</view>
+
+		</view>
+
+		<!-- 多部门 -->
+
+		<view wx:if="{{depHasSubs  == 1}}">
+			<view class="maodian" style="height:{{windowHeight - 580}}rpx;">
+				<view wx:for="{{depArr}}" wx:for-index="parentIndex" wx:for-item="dep">
+					<view id="NAV_{{parentIndex}}_{{index}}" wx:for="{{dep.depOrders.length}}">NAV_{{parentIndex}}_{{index}}</view>
+				</view>
+			</view>
+
+			<view class="section_body">
+				<scroll-view class="tui-city-scroll-y" scroll-y="true" scroll-into-view="NAV_{{focusParentIndex}}_{{focusIndex}}" scroll-with-animation="true">
+
+					<view class="flex-column  normal" wx:for="{{depArr}}" wx:for-index="parentIndex" wx:for-item="dep">
+						<text class="with-border-bottom with-lr-padding ">#{{dep.depName}}</text>
+						<view class="flex-row with-padding with-border-bottom" wx:for="{{dep.depOrders}}" wx:for-item="order" id="NAV_{{parentIndex}}_{{index}}" data-id="{{order.nxDepartmentOrdersId}}">
+							<view class="index ">{{index + 1}}.</view>
+							<view class="flex-row goods_name">
+							
+								<text class="">{{order.nxDistributerGoodsEntity.nxDgGoodsName}} </text>
+
+								<text class="small gray">({{order.nxDistributerGoodsEntity.nxDgGoodsStandardname}})</text>
+							</view>
+
+						
+							<!-- <text class="order_number">{{item.nxDoQuantity}}{{item.nxDoStandard}}</text> -->
+							<view class="today_price flex-row">
+
+								<view class="weightInput margin-l-right flex-row" bindtap="changeFocusIndex" data-index="{{index}}" data-parentindex="{{parentIndex}}">
+									<text class="input_number" wx:if="{{order.nxDoPrice !== null}}">{{order.nxDoPrice}}</text>
+									<view class='analog_cursor {{index == focusIndex && parentIndex == focusParentIndex ? "is-active" : "" }}'></view>
+								</view>
+
+								<!-- <text class="weightStandard">{{item.nxGoodsEntity.nxGoodsStandardname}}/元 </text> -->
+							</view>
+							<view class="history_price">{{order.nxDoDepartmentGoodsPrice}}</view>
+							<view class="operation">
+								<view class="operation_btn">同价</view>
+							</view>
+						</view>
+					</view>
+
+					<view class="bottom_place"></view>
+				</scroll-view>
+			</view>
+
+		</view>
+
+	</view>
+
+	<!-- {{lastInput ? 'show' : '' }} -->
+	<view class="bottom_btn show " bindtap="saveWeight">
+		保存
+	</view>
+
+
+</view>
+
+
+<view class='customize_key_board  flex-row {{lastInput ? "hidden" : ""}}'>
+
+	<view class="input_number_part" style="width: {{windowWidth/4 * 3 }}rpx;">
+		<view class="num with-border-bottom with-border-right with-border-top" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="1"> 1</view>
+		<view class="num with-border-bottom with-border-right with-border-top" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="2"> 2</view>
+		<view class="num with-border-bottom  with-border-top" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="3"> 3</view>
+		<view class="num with-border-bottom with-border-right" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="4"> 4</view>
+		<view class="num with-border-bottom with-border-right" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="5"> 5</view>
+		<view class="num with-border-bottom " style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="6"> 6</view>
+		<view class="num with-border-bottom with-border-right" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="7"> 7</view>
+		<view class="num with-border-bottom with-border-right" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="8"> 8</view>
+		<view class="num with-border-bottom" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="9"> 9</view>
+		<view class="num with-border-right" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="del"> X</view>
+		<view class="num with-border-right" style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value="0"> 0</view>
+		<view class="num " style="width:{{windowWidth/4}}rpx; height:120rpx; line-height:120rpx;" bindtap="inputValue" data-value=".">.</view>
+	</view>
+
+	<view class="input_operation_part flex-column" style="width: {{windowWidth - (windowWidth / 4 * 3)}}rpx;">
+		<view class="double_num with-border-bottom with-border-top with-border-left" style="width:100%; height:240rpx;line-height:240rpx;" bindtap="inputValue" data-value="close">关闭</view>
+		<!-- 0 -->
+		<view wx:if="{{depHasSubs == 0}}">
+			<view class="double_num with-border-left" style="height:240rpx;line-height:240rpx;" bindtap="inputValue" data-value="close" wx:if='{{focusIndex == applyArr.length - 1}}'> 完成</view>
+			<view class="double_num with-border-left" style=" height:240rpx;line-height:240rpx;" bindtap="inputValue" data-value="next" wx:else> 下一个</view>
+		</view>
+		<!-- 1 -->
+		<view wx:if="{{depHasSubs == 1}}">
+			<view class="double_num with-border-left" style="height:240rpx;line-height:240rpx;" bindtap="inputValue" data-value="close" wx:if='{{focusParentIndex == depArr.length -1 && focusIndex == depArr[focusParentIndex].depOrders.length - 1}}'> 完成</view>
+			<view class="double_num with-border-left" style="height:240rpx;line-height:240rpx;" bindtap="inputValue" data-value="next" wx:else> 下一个</view>
+		</view>
+
+
+
+
+
+	</view>
+
+
+</view>

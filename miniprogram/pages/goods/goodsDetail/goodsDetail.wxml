@@ -1,0 +1,104 @@
+<view class="liziBack middle">
+
+
+	<view class="flex-column margin_bottom ">
+		<text class="with-padding ">商品信息</text>
+		<view class="whiteBack with-padding ">
+			<view class=" flex-row">
+				<text class="gray shrink_fix margin-l-right">类别:</text>
+				<text class="with-tb-padding shrink_change" >{{fatherName}}</text>
+			</view>
+			<view class=" flex-row">
+				<text class="gray shrink_fix margin-l-right">品牌:</text>
+				<text class="with-tb-padding shrink_change" wx:if="{{goods.nxGoodsEntity.nxGoodsBrand !==  null}}">{{goods.nxGoodsEntity.nxGoodsBrand}}</text>
+			</view>
+			<view class=" flex-row">
+				<text class="gray shrink_fix margin-l-right">商品名称:</text>
+				<text class="with-tb-padding shrink_change">{{goods.nxDgGoodsName}}</text>
+			</view>
+
+			<!-- <view class="flex-row">
+				<text class="gray shrink_fix margin-l-right">订货规格:</text>
+        <text class="standard_dis margin_bottom">{{goods.nxGoodsEntity.nxGoodsStandardname}}</text>	
+			<text class="standard_dis margin_bottom" wx:for="{{goods.nxGoodsEntity.nxGoodsStandardEntities}}" wx:for-item="standard" bindtap="editStandard" data-name="{{standard.nxStandardName}}" data-item="{{standard}}">{{standard.nxStandardName}}</text>			
+				</view> -->
+
+			<view class="flex-row">
+				<text class="gray shrink_fix margin-l-right">别名:</text>
+				<text class="with-tb-padding"></text>
+			</view>
+<view class=" flex-row">
+				<text class="gray shrink_fix margin-l-right">产地:</text>
+				<text class="with-tb-padding shrink_change" wx:if="{{goods.nxGoodsEntity.nxGoodsPlace !==  null}}">{{goods.nxGoodsEntity.nxGoodsPlace}}</text>
+			</view>
+			<view class="flex-row">
+				<text class="gray shrink_fix margin-l-right">规格:</text>
+				<text class="with-tb-padding">{{goods.nxDgGoodsStandardname}}</text>
+			</view>
+			<!-- <view class="flex-row">
+				<text class="gray shrink_fix margin-l-right">全拼:</text>
+				<text class="with-tb-padding">{{goods.nxGoodsEntity.nxGoodsPinyin}}</text>
+			</view>
+			<view class="flex-row">
+				<text class="gray shrink_fix margin-l-right">简拼:</text>
+				<text class="with-tb-padding">{{goods.nxGoodsEntity.nxGoodsPy}}</text>
+			</view> -->
+
+		</view>
+
+	</view>
+
+	<view class=" flex-column margin_bottom">
+		<text class="with-padding">订货信息</text>
+
+		<view class="whiteBack with-padding  with-border-bottom flex-column">
+			<text class="gray small">季节商品</text>
+			<view class="flex-row-between with-tb-padding">
+						<text class="gray shrink_fix margin-l-right">暂时停订</text>
+				<switch checked="{{goods.nxDgPullOff == 1 ? 'checked' : ''}}" bindchange="switchChange" />
+			</view>
+		</view>
+
+		<view class="whiteBack with-padding  flex-column with-border-bottom" >
+			<text class="gray small">订货单位</text>
+			<view class="flex-row-wrap with-tb-padding">
+				<text class="standard_dis">{{goods.nxDgGoodsStandardname}}</text>
+				<text class="standard_dis " wx:for="{{goods.distributerStandardEntities}}" wx:for-item="standard" bindtap="editStandard" data-name="{{goods.nxGoodsEntity.nxGoodsName}}" data-item="{{standard}}">{{standard.nxDsStandardName}}</text>
+				<text class="plus_standard" bindtap="addStandard" data-name="{{goods.nxGoodsEntity.nxGoodsName}}">+</text>
+			</view>
+		</view>
+
+
+<view class="whiteBack  with-padding flex-column">
+   <view class="flex-row-between">
+	 		<text class="gray small">订货客户</text>
+		<text class="addBtn excreamSmall" bindtap="showAddGoodsDepartments">添加客户</text>
+
+	 </view>
+
+		<view class="flex-row with-border-bottom with-tb-padding " wx:for="{{departmentArr}}" wx:for-item="dep" wx:key="">
+			<text class="">{{dep.nxDepartmentName}}</text>
+		</view>
+
+	</view>
+
+
+
+	</view>
+
+	
+</view>
+
+
+
+
+
+
+
+
+
+
+<addStandard show="{{showAdd}}" bindconfirm="confirmAdd" nxGoodsName="{{nxGoodsName}}" standardName="{{standardName}}" />
+
+
+<editStandard show="{{showEdit}}" bindconfirm="confirmEdit" nxGoodsName="{{nxGoodsName}}" standardName="{{standardName}}" item="{{item}}" />

@@ -11,14 +11,20 @@ Component({
       value: true
     },
    
-    nxGoodsName: {
+    depGoodsName: {
       type: String,
       value: ""
     },
     standardName: {
       type: String,
       value: ""
+    },
+   
+    myHeight: {
+      type: Number,
+      value: ""
     }
+   
    
 
    
@@ -32,7 +38,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    showInput: false,
     
   },
 
@@ -45,20 +50,23 @@ Component({
     },
 
     cancle() {
-      this.setData({ show: false })
-      // this.triggerEvent('cancle')
+      this.setData({ show: false, standardName: "",depGoodsName: "" })
+      this.triggerEvent('cancle')
     },
 
     confirm(e) {
-      
-      this.triggerEvent('confirm', {
-        standardName: this.data.standardName,
-       
-      })
+      if(this.data.standardName.length > 0){
+        this.triggerEvent('confirm', {
+          standardName: this.data.standardName,
+        })
+      }
+     
 
       this.setData({
         show: false,
         standardName: "",
+        depGoodsName: ""
+
       })
     },
 
@@ -69,6 +77,14 @@ Component({
       })
     },
 
+
+    getFocus: function(e){
+      
+      this.triggerEvent('getFocus', {
+        myHeight: e.detail.height,
+       
+      })
+    }
     
 
 

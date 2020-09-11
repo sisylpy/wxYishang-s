@@ -1,0 +1,108 @@
+<view class="liziBack">
+
+
+	<view class='navbar whiteBack  with-tb-padding with-border-bottom-main'>
+		<block wx:for="{{tabs}}" >
+			<view id="{{index}}" class="navbar-item {{tab1Index==index?'bar-item-on':''}}" data-index='{{index}}' bindtap='onTab1Click'>
+				<view class='navbar-title'>{{item}}</view>
+			</view>
+		</block>
+		<view class="navbar-slider" style="left: {{sliderLeft}}px; width:{{windowWidth /2}}rpx; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+	</view>
+
+
+	<swiper style="height: {{windowHeight - 120}}rpx;" bindtransition="swiperTran" bindanimationfinish="animationfinish" current="{{itemIndex}}" bindchange='swiperChange' data-index='{{itemIndex}}'>
+
+		<!-- Part-one -->
+		<swiper-item>
+			<scroll-view scroll-y style="height:{{windowHeight - 120}}rpx">
+
+
+				<view class="customerPage">
+					<view class='with-tb-padding with-border-bottom {{parentIndex == list.length  - 1 ? "is-last":""}}  whiteBack with-margin-bottom' wx:for='{{planArr}}' wx:key='' wx:for-item='parentItem' wx:for-index="parentIndex">
+						<view class='flex-column '>
+							<view class="cata flex-column">
+								<text class='normal with-padding with-border-bottom'>{{parentItem.nxDfgFatherGoodsName}}</text>
+							</view>
+							<view class='flex-column with-padding with-border-bottom {{index == parentItem.goodsList.length - 1 ? "is-last":"" }}' wx:for='{{parentItem.nxDistributerGoodsEntities}}' wx:for-item="item" wx:for-index='index' wx:key='this'>
+								<view class="flex-row-between" data-index="{{index}}" data-parentindex="{{parentIndex}}" data-standard="{{item.standardName}}" bindtap="addPlanPurchse" data-index="{{index}}" data-parentindex="{{parentIndex}}">
+									<!-- <text class="margin-right">#</text> -->
+									<!-- <text class='squre {{item.selectAmount > 0  ? "is-active" : ""}}'></text> -->
+
+									<text class="buy-goods normal">{{item.nxDgGoodsName}}({{item.nxDgGoodsStandardname}})</text>
+									<text
+                    class='buy-amount'>进货</text>
+
+								</view>
+								<view class="flex-column">
+								<!-- bindtap="unChoiceOrder" -->
+									<view class="flex-row with-tb-padding" wx:for="{{item.nxDepartmentOrdersEntities}}" wx:for-item="order" wx:for-index="orderIndex" style="color:gray; font-size: 34rpx;"  data-index="{{index}}" data-orderindex="{{orderIndex}}" data-parentindex="{{parentIndex}}">
+										<text class='point {{order.hasChoice ? "is-active" : ""}}'></text>
+										<text class=' margin-l-right'>{{order.nxDepartmentEntity.nxDepartmentName}} {{order.nxDoQuantity}}{{order.nxDoStandard}}{{order.nxDoRemard}}</text>
+
+									</view>
+								</view>
+
+							</view>
+						</view>
+					</view>
+
+
+				</view>
+
+			</scroll-view>
+
+
+
+		</swiper-item>
+
+
+		<swiper-item>
+			<scroll-view scroll-y style="height:{{windowHeight - 120}}rpx">
+
+
+				<view class="felx-column   whiteBack margin_bottom normal" wx:for="{{goodsList}}" wx:for-item="greatGrand" wx:for-index="greatGrandIndex" wx:key="nxDistributerFatherGoodsId">
+					<view class="with-border-bottom with-padding ">
+						<text class="great_grand_name1 samll">{{greatGrand.nxDfgFatherGoodsName}}</text>
+					</view>
+
+					<view class="felx-column" wx:for="{{greatGrand.fatherGoodsEntities}}" wx:for-item="grand" wx:for-index="grandIndex" wx:key="nxDistributerFatherGoodsId">
+						<view class=" with-padding with-border-bottom flex-row-between" bindtap="showOrHide" data-greatindex="{{greatGrandIndex}}" data-grandindex="{{grandIndex}}">
+							<text class="middle ">{{grand.nxDfgFatherGoodsName}}</text>
+							<image src="../../../images/jian.png" class="icon with-lr-padding" wx:if="{{grand.isShow}}"></image>
+							<image src="../../../images/jia.png" class="icon with-lr-padding" wx:else></image>
+						</view>
+						<!-- father hide -->
+						<view class="with-padding with-border-bottom hideView {{grand.isShow ? 'is-active' : ''}}" wx:for="{{grand.fatherGoodsEntities}}" wx:for-item="father" wx:for-index="fatherIndex" bindtap="toGoodsList" data-id="{{father.nxDistributerFatherGoodsId}}" hover-class="hover" wx:key="nxDistributerFatherGoodsId">
+							<view class="with-lr-padding flex-row-between ">
+								<!-- {{greatGrandIndex + 1}}.{{grandIndex + 1}}.{{fatherIndex + 1}}   -->
+								<text class=" normal">{{father.nxDfgFatherGoodsName}}
+								</text>
+								<image src="../../../images/jiantou.png" class="iconsmall with-lr-padding"></image>
+							</view>
+
+
+						</view>
+
+						<view>
+							<!-- <text class="explain-words ">{{grand.subAmount}}个 商品</text> -->
+						</view>
+					</view>
+
+				</view>
+
+			</scroll-view>
+
+
+		</swiper-item>
+
+
+
+
+	</swiper>
+
+
+</view>
+
+
+<disPlanPurchase show="{{showPlanPurchase}}" bindconfirm="confirm" standard="{{standard}}" item="{{item}}" />

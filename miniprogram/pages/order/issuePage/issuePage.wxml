@@ -1,0 +1,110 @@
+<!--pages/storeApplys/storeApplys.wxml-->
+<view class="customerApply ">
+
+	<view class="whiteBack flex-column with-tb-padding">
+		<view class=" ">
+			<view class="flex-column with-padding">
+				<text class="print_title">销售单</text>
+				<view class="flex-row with-tb-padding">
+					<text>日期:</text>
+					<text>{{todayDate}}</text>
+				</view>
+
+				<view class="flex-row with-tb-padding">
+					<text>客户:</text>
+					<text >{{depName}}</text>
+				</view>
+			</view>
+
+			<view class="flex-row with-padding with-border-bottom small">
+				<text class="index">序号</text>
+				<text class="goods_name">商品</text>
+				<text class="weight">数量</text>
+				<text class="order_price">单价</text>
+				<text class="subtotalTitle">小计</text>
+			</view>
+		</view>
+
+
+		<!-- hasSubs == 0 -->
+
+		<view class="section_body small with-padding" wx:if="{{depHasSubs == 0}}">
+			<!-- <scroll-view scroll-y> -->
+			<view class="flex-column with-border-bottom  with-padding" wx:for="{{applyArr}}" wx:key="nxDepartmentOrdersId">
+				<view class="flex-row">
+					<text class="index">{{index + 1}}</text>
+					<text class="goods_name">{{item.nxDistributerGoodsEntity.nxDgGoodsName}}({{item.nxDistributerGoodsEntity.nxDgGoodsStandardname}})</text>
+					<view class="weight" wx:if="{{item.nxDoWeight !== null}}">{{item.nxDoWeight}}{{item.nxGoodsEntity.nxGoodsStandardname}}</view>
+					<view class="order_price" wx:if="{{item.nxDoPrice !== null}}">
+						{{item.nxDoPrice}}
+					</view>
+					<text class="subtotal" wx:if="{{item.nxDoSubtotal !== null}}">{{item.nxDoSubtotal}}</text>
+				</view>
+			</view>
+
+       	<view class="with-padding flex-column">
+					<view class="with-padding normal fifty_weight" style="text-align:right;">{{total}}元</view>
+				</view>
+				
+		</view>
+		<!--  ./ hasSubs == 0 -->
+
+
+		<!-- hasSubs == 1 -->
+
+		<view class="section_body small with-padding" wx:if="{{depHasSubs == 1}}">
+			<view class="flex-column" wx:for="{{depArr}}" wx:for-item="dep">
+				<text class="with-border-bottom with-padding">#{{dep.depName}}</text>
+
+				<view class="flex-cloumn  with-border-bottom  with-padding" wx:for="{{dep.depOrders}}" wx:for-item="item">
+					<view class="flex-row">
+						<text class="index">{{index + 1}}</text>
+						<text class="goods_name">{{item.nxDistributerGoodsEntity.nxDgGoodsName}}({{item.nxDistributerGoodsEntity.nxDgGoodsStandardname}})</text>
+						<!-- <input class="weight input weightInput" wx:if="{{item.nxDoWeight !== null}}" value="{{item.nxDoWeight}}{{item.nxGoodsEntity.nxGoodsStandardname}}"></input>
+						<view class="order_price flex-row">
+							<input class="input priceInput " value='{{item.nxDoPrice !== null ? item.nxDoPrice : ""}}'></input>
+						</view> -->
+
+							<view class="weight" wx:if="{{item.nxDoWeight !== null}}">{{item.nxDoWeight}}{{item.nxGoodsEntity.nxGoodsStandardname}}</view>
+					<view class="order_price" wx:if="{{item.nxDoPrice !== null}}">
+						{{item.nxDoPrice}}
+					</view>
+
+						<text class="subtotal" wx:if="{{item.nxDoSubtotal !== null}}">{{item.nxDoSubtotal}}</text>
+					</view>
+
+				</view>
+			</view>
+
+				<view class="with-padding flex-column">
+					<view class="with-padding normal fifty_weight" style="text-align:right;">{{total}}元</view>
+				</view>
+		</view>
+		<!--  ./ hasSubs == 1 -->
+
+
+	</view>
+
+
+</view>
+
+
+
+
+
+<view class="fixed_bottom flex-column-center with-padding">
+
+	<view class="flex-column with-padding">
+		<!--  printBLEData -->
+		<view class="main_btn" bindtap="printBLEData" wx:if="{{setSuccess}}">
+			打印送货单
+		</view>
+		<!--  toSetPrint -->
+		<view class="main_btn" bindtap="toSetPrint" wx:else>
+			打印送货单 设置打印机
+		</view>
+
+
+	</view>
+
+</view>

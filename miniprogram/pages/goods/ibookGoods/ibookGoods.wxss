@@ -1,0 +1,54 @@
+
+/*  */
+
+.search_bar{
+  /* background: yellow; */
+}
+.search_icon{
+  margin-left: -90rpx;
+}
+.searchInput{
+  line-height: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 40rpx;
+  width: 100%;
+  padding-left: 30rpx;
+
+}
+
+
+.applyStandard{
+  margin-right: 20rpx;
+  border: 1px solid lightblue;
+  border-radius: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+
+}
+
+
+
+.nnn{
+  position: fixed;
+  bottom: 0;
+  z-index: 99997;
+  width: 100%;
+}
+
+/*  */
+
+.searchList{
+  display: none;
+}
+.searchList.is-active{
+  display: block;
+  position: fixed;
+  top: 90rpx;
+  left: 0;
+
+  background: rgb(250, 249, 249);
+}

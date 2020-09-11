@@ -409,6 +409,10 @@ swiper{
   width: 20rpx;
   height: 20rpx;
 }
+.icon_jiantou{
+  width: 30rpx;
+  height: 20rpx;
+}
 
 .bottom_btn{
   height: 100rpx;
@@ -457,6 +461,9 @@ swiper{
 .small{
   font-size: 32rpx;
 
+}
+.excreamSmall{
+  font-size: 28rpx;
 }
 
 .middle{
@@ -589,6 +596,7 @@ swiper{
   font-size: 34rpx;
   color: rgb(39, 39, 39);
 }
+/* 
 .squre{
   width: 20rpx;
   height: 20rpx;
@@ -597,8 +605,12 @@ swiper{
 }
 .squre.is-active{
   background: #187e6e;
-}
+} */
 
+
+.half-row{
+  width: 50%;
+}
 .shrink_fix{
   flex-shrink: 0;
 }
@@ -606,6 +618,7 @@ swiper{
 .shrink_change{
   flex-shrink: 1;
 }
+
 
 .standard{
   margin-right: 20rpx;
@@ -618,6 +631,7 @@ swiper{
   font-weight: 500;
 
 }
+
 /*  */
 .emptyView{
   display: block;

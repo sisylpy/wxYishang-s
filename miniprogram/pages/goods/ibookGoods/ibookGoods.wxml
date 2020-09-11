@@ -1,0 +1,110 @@
+<view id="mjltest">
+
+	<view class="fragement flex-row-between" style="background: {{color}}">
+		<view class="search_bar  with-lr-padding with-l-margin-bottom flex-row" style="width: {{windowWidth - 140}}rpx;">
+			<input placeholder="  查找商品名称或拼音或简拼" class="searchInput" bindinput="getSearchString"></input>
+			<icon class="search_icon wx_icon" type="search" size="30" color="white"></icon>
+		</view>
+
+		<view class="tabBtn flex-column-center" bindtap="toAdd" hover-class="hover">
+			<image src="../../../images/add.jpg" class="icon"></image>
+		</view>
+	</view>
+
+	<view class="searchList {{isSearching || searchArr.length > 0? 'is-active' :''}} flex-column with-padding"  catchtouchmove='ture' style="height:{{windowHeight - 140}}rpx;">
+	 <scroll-view scroll-y style="height:{{windowHeight - 140}}rpx;">
+	 	<view class="flex-row with-border-bottom with-padding small" wx:for="{{searchArr}}" wx:for-item="item" style="width:{{windowWidth}}rpx;">
+		{{item.nxGoodsName}}
+		</view>
+	 </scroll-view>
+	
+	</view>
+
+
+	<view class="flex-column "  style="margin-top: 100rpx" >
+
+		<view class="flex-row-between with-padding with-border-bottom {{index + 1 == goodsList.length ?'is-last' : ''}}" wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="goodsIndex">
+			<view class="flex-column" >
+				<view class="flex-row with-tbl-padding" style="width:{{windowWidth - 100}}rpx;">
+					<text wx:if="{{item.nxGoodsBrand !== null && item.nxGoodsBrand.length > 0}}">[{{item.nxGoodsBrand}}]</text>
+					<text class="normal ">{{item.nxGoodsName}}</text>
+					<text class="" wx:if="{{item.nxGoodsDetail !== null && item.nxGoodsDetail.length > 0}}">({{item.nxGoodsDetail}})</text>
+				</view>
+				<view class="flex-row with-tbl-padding gray">
+					<view class="half-row">
+						<text class="margin-l-right">计价单位:</text>
+						<text class="">{{item.nxGoodsStandardname}}</text>
+					</view>
+					<view class="half-row " wx:if="{{item.nxGoodsPlace !== null && item.nxGoodsPlace.length > 0}}">
+						<text class="margin-l-right ">产地:</text>
+						<text class="">{{item.nxGoodsPlace}}</text>
+					</view>
+				</view>
+
+				<view class="with-tbl-padding gray flex-row ">
+					<view class="shrink_fix">订货单位:</view>
+					<view class="shrink_change flex-row-wrap">
+						<text class="standard ">{{item.nxGoodsStandardname}}</text>
+						<view class=" ">
+							<text class="standard"  wx:for="{{item.nxGoodsStandardEntities}}" wx:for-item="standard" data-name="{{item.nxGoodsName}}"
+						data-standard="{{standard}}"  data-index="{{goodsIndex}}" data-standardname="{{standard.nxStandardName}}" data-item="{{item}}" data-standard="{{standard}}"
+						catchtap="clickStandard">{{standard.nxStandardName}}</text>
+
+							<text class="standard" bindtap="addStandard" data-item="{{item}}" data-index="{{goodsIndex}}" >+</text>
+						</view>
+
+					</view>
+				</view>
+
+			</view>
+
+
+		<view class="">
+			<view class=" felx-column-center" bindtap="downloadGoods" data-item="{{item}}" data-index="{{index}}" wx:if="{{item.isDownload == 1}}" hover-class="hover">
+				<image class="icon " src="/images/duihao.png"></image>
+			</view>
+			<view class=" felx-column-center" bindtap="downloadGoods" data-standards="{{item.nxGoodsStandardEntities}}" data-item="{{item}}" data-index="{{index}}" data-sort="{{item.nxGoodsSort}}" wx:else hover-class="hover">
+				<image class="icon" src="/images/download.png"></image>
+			</view>
+			<view bindtap="editGoods" data-id="{{item.nxGoodsId}}">
+				<image src="../../../images/add.jpg" class="icon "></image>
+			</view>
+		</view>
+		</view>
+	</view>
+</view>
+
+
+<!--  -->
+
+
+
+<view class='mask {{showOperation ? "is-active" : ""}}' catchtouchmove='ture' catchtap="hideMask" style="height:{{maskHeight > windowHeight ? maskHeight : windowHeight}}rpx;" catchtouchmove='ture'>
+
+
+	<view class="  whiteBack" wx:if="{{showStandard}}" style="margin-top:{{(windowHeight - 240)/2 }}rpx;margin-left: 50rpx; width:{{windowWidth - 100}}rpx;">
+		<view class="with-padding margin_bottom with-border-bottom" bindtap="edit">
+			编辑
+		</view>
+		<view class="with-padding" bindtap="delete">删除</view>
+	</view>
+</view>
+
+
+
+
+
+
+
+
+
+<!-- ./ -->
+
+
+<!-- 
+<savegoods show="{{show}}" applyGoodsName="{{applyGoodsName}}" bindconfirm="confirm" applyGoodsId="{{applyGoodsId}}" item="{{item}}" price="{{price}}" /> -->
+<!-- 
+<addStandard show="{{showAdd}}" bindconfirm="confirmAdd" item="{{item}}" standardName="{{standardName}}" />
+ -->
+
+<addStandard show="{{showAdd}}" bindgetFocus="getFocus" bindconfirm="confirmStandard" bindcancle="cancle" depGoodsName="{{depGoodsName}}" standardName="{{standardName}}" edit="{{editStandard}}" standardName="{{standardName}}" myHeight="{{myHeight}}" />

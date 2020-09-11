@@ -1,7 +1,7 @@
 import {
   disAndUserSave,
   disLogin,
-} from '../../lib/apiBasic'
+} from '../../lib/apiDistributer'
 
 const globalData = getApp().globalData;
 var load = require('../../lib/load.js');
@@ -26,7 +26,10 @@ Page({
 
 
 
-
+/**
+ * 通知，因为只能收到一条信息，所以暂时不用！！！
+ * @param {*} e 
+ */
   kaiqi(e) {
     console.log(e);
     var that = this;
@@ -36,17 +39,16 @@ Page({
         tmplIds: ['-iBBaNT5xYhTafwt6WHjlYuKCcU9-PkpfPAvEv5g91Y'],
         success(res) {
           console.log(res)
-          if(res['-iBBaNT5xYhTafwt6WHjlYuKCcU9-PkpfPAvEv5g91Y'] == "accept"){
+          if (res['-iBBaNT5xYhTafwt6WHjlYuKCcU9-PkpfPAvEv5g91Y'] == "accept") {
             that.setData({
               canLogin: true
             })
-          }
-          else{
+          } else {
             that.setData({
               accept: false
             })
           }
-        
+
         },
         fail(res) {
 
@@ -55,22 +57,23 @@ Page({
           console.log(res)
         },
       })
-    }else{
+    } else {
       that.setData({
         canLogin: false
       })
     }
-
-
-
   },
 
 
   getName: function (e) {
     console.log(e)
-    this.setData({
-      name: e.detail.value
-    })
+    if (e.detail.value.length > 0) {
+      this.setData({
+        name: e.detail.value,
+        canLogin: true
+      })
+    }
+
 
   },
 
@@ -80,7 +83,6 @@ Page({
   getUserInfo: function (e) {
 
     if (e.currentTarget.dataset.type == "register") {
-      
       this._register(e);
     }
     if (e.currentTarget.dataset.type == "login") {
@@ -93,32 +95,25 @@ Page({
 
     wx.getUserInfo({
       success: res => {
-        load.showLoading("用户登录中")
+        load.showLoading("用户登陆中")
         wx.login({
           success: (res) => {
             var disUser = {
               nxDiuCode: res.code,
             }
-
-
             disLogin(disUser)
               .then((res) => {
                 wx.hideLoading()
-                console.log(res.result)
-                if (typeof cb === 'function') {
-                  cb()
-                }
-                if (res.result.code !== -1) {
-                  wx.setStorageSync("userInfo", res.result.data);
+                if (res.result.code !== -1) { //登陆成功
+                  wx.setStorageSync('userInfo', res.result.data)
                   wx.switchTab({
-                    url: '../order/order',
+                    url: '../order/index/index',
                   })
-
-                } else {
+                } else { //登陆失败
                   load.hideLoading();
                   wx.showToast({
                     title: res.result.msg,
-
+                    icon: 'none'
                   })
                 }
               })
@@ -127,23 +122,18 @@ Page({
             load.hideLoading();
             wx.showToast({
               title: res,
-
+              icon: 'none'
             })
-
-            console.log(res)
           })
         })
       },
       fail: res => {
-        console.log("quxiaole userinfo......")
-        // 获取失败的去引导用户授权 
-
+        wx.showToast({
+          title: "请检查网络",
+          icon: 'none'
+        })
       }
     })
-
-
-
-
 
   },
 
@@ -155,14 +145,19 @@ Page({
       success: res => {
         wx.login({
           success: (res) => {
-            load.showLoading("用户登录中")
+            load.showLoading("注册新用户")
 
             var dep = {
               nxDistributerName: this.data.name,
+              nxDistributerPhone: "13910825707",
+              nxDistributerManager: "李树国",
+              nxDistributerAddress: "京贸物联批发市场D-102",
+              nxDistributerImg: "uploadImage/r.jpg",
               nxDistributerUserEntity: {
                 nxDiuWxNickName: e.detail.userInfo.nickName,
                 nxDiuWxAvartraUrl: e.detail.userInfo.avatarUrl,
                 nxDiuCode: res.code,
+                nxDiuAdmin: 1,
                 roleEntities: [{
                   nxDurRoleId: 0
                 }]
@@ -171,20 +166,15 @@ Page({
             disAndUserSave(dep)
               .then((res) => {
                 wx.hideLoading()
-                if (typeof cb === 'function') {
-                  cb()
-                }
-                if (res.result.code !== -1) {
-
-                  wx.setStorageSync("userInfo", res.result.data);
+                if (res.result.code !== -1) { //注册成功
+                  wx.setStorageSync('userInfo', res.result.data)
                   wx.switchTab({
-                    url: '../order/order',
+                    url: '../order/index/index',
                   })
-
-
-                } else {
+                } else { //注册失败
                   wx.showToast({
                     title: res.result.msg,
+                    icon: 'none'
                   })
                   load.hideLoading();
                 }
@@ -192,18 +182,22 @@ Page({
           },
           fail: (res => {
             load.hideLoading();
-
-            console.log(res)
+            wx.showToast({
+              title: res,
+              icon: 'none'
+            })
           })
         })
       },
       fail: res => {
-        console.log("quxiaole userinfo......")
-        // 获取失败的去引导用户授权 
+        wx.showToast({
+          title: "请检查网络",
+          icon: 'none'
+        })
 
       }
     })
-   
+
   },
 
 

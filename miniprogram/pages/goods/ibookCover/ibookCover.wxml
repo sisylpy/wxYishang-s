@@ -1,0 +1,42 @@
+<!--pages/ibook/ibook.wxml-->
+<view class="" id='mjltest'>
+
+	<view class=" search_bar  flex-row with-lr-padding with-l-margin-bottom with-border-bottom-gray" style="height:120rpx; width: {{windowWidth - 40}}rpx;">
+  <!-- <view class="search_name">
+  	<image src="../../../images/location.png" class="icon"></image>
+		<text class="top_bar_title">商品手册</text>
+  </view> -->
+  <!-- <view class="search_input1 with-padding" > -->
+    <input placeholder="  查找商品名称或拼音或简拼" class="searchInput"></input>
+  <!-- </view> -->
+	
+	</view>
+
+  <swiper class='' style='height: {{windowHeight - 200}}rpx;margin-top:160rpx;'
+  indicator-dots="true">
+
+    <block wx:for="{{ibooklist}}" wx:for-index="index">
+      <swiper-item class='pageBack'>
+        <!-- main_begin -->
+        <view class='pageColor' style="background-color:{{item.color}}">
+          <view class='firCate_num'>第{{index + 1}}类</view>
+          <view class='firCate_name'>{{item.nxGoodsName}}</view>
+          <view class='line'></view>
+          <view class='tenline'></view>
+          <scroll-view class='secPart' scroll-y	 style='height: {{windowHeight - 620}}rpx;'>
+            <block wx:for='{{item.nxGoodsEntityList}}' wx:for-item="nxGoods" wx:key="" wx:for-index="itemIndex">
+              <view class='secCate_name' 
+              bindtap='todetail' data-fatherid="{{nxGoods.nxGoodsId}}" data-fathername="{{nxGoods.nxGoodsName}}" data-index="{{index+1}}.{{itemIndex + 1}}"  data-grandid="{{item.nxGoodsId}}" data-grandname="{{item.nxGoodsName}}"
+              data-color="{{item.color}}" hover-class="hoverGoods"
+              >{{index + 1}}.{{itemIndex+1}} {{nxGoods.nxGoodsName}}</view>
+              <!-- <view class='secCate_pageNo'>{{nxGoodsId}}</view> -->
+            </block>
+</scroll-view>          
+        </view>
+        <!--  main_over -->
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+</view>

@@ -1,0 +1,47 @@
+/* miniprogram/pages/signe1/enterprisetype.wxss */
+
+page {
+  background: #f6f6f6;
+  /* display: block; */
+  
+}
+
+.top {
+  height: 120rpx;
+  font-size: 30rpx;
+  background: #fff;
+  /* display: block; */
+  padding-top: 20rpx;
+}
+
+.url {
+  height: 110rpx;
+  width: 110rpx;
+  /* background: yellow; */
+  float: left;
+  /* margin-left: 280rpx; */
+}
+
+.nickName {
+  line-height: 110rpx;
+  font-size: 40rpx;
+  float: left;
+}
+
+.sub-title {
+ 
+  font-size: 46rpx;
+} 
+
+
+.radio-group {
+  padding: 20rpx;
+}
+
+.radio {
+  width: 100%;
+  /* border:1px solid red; */
+  float: left;
+  line-height: 120rpx;
+}
+

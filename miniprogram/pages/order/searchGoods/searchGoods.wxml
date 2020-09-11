@@ -1,0 +1,66 @@
+<view>
+
+  <view class="search_content with-padding with-border-bottom ">
+    <input bindinput="getGoodsName" focus='{{input ? "true" : "" }}' value="{{searchStr}}"></input>
+    <icon class="wx_icon" type="search" size="30" color="white"></icon>
+
+  </view>
+
+  
+
+
+
+<view>
+
+
+  <view class="father">
+    <view class="one_goods   with-border-bottom {{index + 1 == goodsList.length ?'is-last' : ''}}" wx:for="{{goodsArr}}"  wx:for-index="index" wx:for-item="item"  bindtap="purchaseGoods"    data-id="{{item.nxDistributerGoodsId}}" data-item="{{item}}"
+    hover-class="hover" data-standard="{{item.nxDgGoodsStandardname}}" data-index="{{index}}">
+      <view class="fix-row flex-row" style="width:{{windowWidth}}rpx;">
+        <view class="ibook_goods_left flex-column with-l-padding">
+          <view class="ibook_goods_row flex-row with-tbl-padding">
+            
+            <text class="goods_name">{{item.nxDgGoodsName}}({{item.nxDgGoodsStandardname}})</text>
+            <text class="goods_detail" wx:if="{{item.nxGoodsDetail.length > 0}}">[{{item.nxGoodsDetail}}]</text>
+            <!-- <text class="goods_detail">({{item.nxGoodsStandardname}})</text> -->
+          </view>
+
+          <!-- <view class="ibook_goods_standard flex-row with-tbl-padding gray">
+            <view class="fifty-percent">
+              <text class="margin-l-right">计价单位:</text>
+              <text>{{item.nxGoodsStandardname}}</text>
+            </view>
+            <view class="fifty-percent">
+              <text class="margin-l-right">产地:</text>
+              <text>{{item.nxGoodsPlace}}</text>
+            </view>
+
+          </view> -->
+        </view>
+
+        <view class="ibook_goods_right">
+          <image class="icon " src="/images/duihao.png" bindtap="downloadGoods" data-item="{{item}}" data-index="{{index}}"  wx:if="{{item.isDownload == 1}}"></image>
+         
+        </view>
+
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+
+
+
+
+
+<mymodal show="{{show}}" applyGoodsName="{{applyGoodsName}}" bindconfirm="confirm" applyGoodsId="{{applyGoodsId}}" item="{{item}}"  bindchangeStandard="changeStandard" 
+applyStandardName="{{applyStandardName}}" />
+<!-- 
+<addStandard show="{{showAdd}}" bindconfirm="confirmAdd" item="{{item}}" standardName="{{standardName}}" /> -->
+
+
+
+</view>
+

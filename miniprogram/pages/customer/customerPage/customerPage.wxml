@@ -1,0 +1,151 @@
+<import src='../../../template/billPay/billPay.wxml' />
+<import src='../../../template/resGoods/resGoods.wxml' />
+<import src='../../../template/resGroup/resGroup.wxml' />
+
+<view class="whithBack">
+
+	<view class='navbar with-border-bottom with-tbl-padding'>
+		<block wx:for="{{tabs}}" wx:key="*this">
+			<view id="{{index}}" class="navbar-item {{tab1Index==index?'bar-item-on':''}}" data-index='{{index}}' bindtap='onTab1Click'>
+				<view class='navbar-title'>{{item}}</view>
+			</view>
+		</block>
+		<view class="navbar-slider" style="left: {{sliderLeft}}px; width:{{windowWidth /4}}rpx; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+	</view>
+
+
+	<view class="">
+
+		<swiper bindchange="switchTab" style="height: {{windowHeight - 80}}rpx;" bindtransition="swiperTran" bindanimationfinish="animationfinish" current="{{itemIndex}}" bindchange='swiperChange' data-index='{{itemIndex}}'>
+
+			<!-- Part-one -->
+			<swiper-item>
+				<scroll-view scroll-y style="height:{{windowHeight - 80}}rpx">
+
+
+					<!-- customer_applys -->
+					<view class="whiteBack with-padding flex-column with-margin-bottom" wx:for="{{billArr}}" wx:for-item="item" wx:for-index="index">
+						<view class="flex-row">
+
+							<view class="body-view margin-right">
+								<switch type="checkbox" checked="{{item.isSelect}}" bindchange="selectBill" data-index="{{index}}" />
+							</view>
+
+							<view class="flex-column">
+								<view class="flex-row">
+									<text class="dep_name " >{{item.nxDbTime}}</text>
+									<!-- <text class="explain-words ">昨天21:23</text> -->
+								</view>
+
+								<view class="flex-row">
+									<view class=" with-margin-right">
+										<text>金额:</text> <text>{{item.nxDbTotal}}元</text>
+									</view>
+									<!-- <view class="explain-words">
+								<text>:</text> <text>8</text> 
+								</view>-->
+
+								</view>
+
+
+							</view>
+						</view>
+						<!--  -->
+
+
+						<!--  -->
+						<view class="flex-column with-margin-top">
+
+
+							<!-- type == 0 -->
+							<view class=' apply_column' wx:if="{{item.depType == 0}}">
+								<view class="aaa with-border-bottom" wx:for='{{item.depOrders}}' wx:for-item="order" wx:for-index='index' wx:key='this' hover-class="hover" data-index="{{index}}">
+									<view class="flex-row">
+										<view class="gray_back {{index == 0 ? 'gray_first' : ''}} {{index == purArr.length - 1? 'gray_last' :'' }}  margin-right">
+											<text class="margin-right index {{item.isSelected ? 'hide' : ''}} with-tb-padding " style="text-align: right;">{{index + 1}}</text>
+											<view class="margin-right circle {{item.isSelected ? 'show' : ''}}">
+												v</view>
+										</view>
+
+										<view class="with-tb-padding">
+											<text class="margin-right">{{order.nxGoodsEntity.nxGoodsName}}</text>
+											<text class="margin-l-right">{{order.nxDoQuantity}}{{order.nxDoStandard}}</text>
+										</view>
+									</view>
+								</view>
+							</view>
+							<!-- ./type == 0 -->
+
+							<!-- type == 1 -->
+							<view class='apply_column ' wx:if="{{item.depType == 1}}" wx:for="{{item.subDeps}}" wx:for-item="subDep">
+								<view class="aaa with-border-bottom" wx:for='{{subDep.nxDepartmentOrdersEntities}}' wx:for-item="order" wx:for-index='index' wx:key='this' hover-class="hover" data-index="{{index}}">
+									<view class="flex-row">
+										<view class="gray_back {{index == 0 ? 'gray_first' : ''}} {{index == purArr.length - 1? 'gray_last' :'' }}  margin-right">
+											<text class="margin-right index {{item.isSelected ? 'hide' : ''}} with-tb-padding " style="text-align: right;">{{index + 1}}</text>
+											<view class="margin-right circle {{item.isSelected ? 'show' : ''}}">
+												v</view>
+										</view>
+
+										<view class="with-tb-padding">
+											<text class="margin-right">{{order.nxGoodsEntity.nxGoodsName}}</text>
+											<text class="margin-l-right">{{order.nxDoQuantity}}{{order.nxDoStandard}}</text>
+										</view>
+									</view>
+								</view>
+							</view>
+							<!-- ./type == 1 -->
+						</view>
+
+
+
+					</view>
+					<!-- ./customer_applys -->
+				</scroll-view>
+
+
+			</swiper-item>
+
+			<!-- ../Part-one  -->
+
+			<swiper-item>
+
+				<scroll-view scroll-y style="height:{{windowHeight - 80}}rpx">
+
+
+				</scroll-view>
+
+
+			</swiper-item>
+
+			<!--  3  -->
+			<swiper-item>
+
+				<scroll-view scroll-y style="height:{{windowHeight - 80}}rpx">
+
+					<view class="flex-column">
+						<template is="resGoods" data="{{depGoodsArr:depGoodsArr}}"></template>
+
+					</view>
+				</scroll-view>
+			</swiper-item>
+			<!-- ./3 -->
+
+			<swiper-item>
+				<scroll-view scroll-y style="height:{{windowHeight - 80}}rpx">
+
+					<template is="resGroup" data="{{userArr:userArr }}"></template>
+
+				</scroll-view>
+
+			</swiper-item>
+
+
+		</swiper>
+	</view>
+
+
+</view>
+
+
+
+<template is="billPay" data='{{selAmount:selAmount, total: total}}'></template>

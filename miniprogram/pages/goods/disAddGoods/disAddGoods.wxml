@@ -1,0 +1,99 @@
+<view class="liziBack middle">
+
+  <view class="flex-row-between with-padding">
+	 <text>{{fatherNeme}}</text>
+	  <text bindtap="saveDisGoods">tianjia</text>
+	</view>
+	<view class="flex-column margin_bottom ">
+		<text class="with-padding ">基本信息</text>
+		<view class="whiteBack with-padding ">
+
+			<view class=" flex-column with-margin-bottom ">
+				<text class="gray shrink_fix margin-l-right">类别:</text>
+				<text class="inputAddGoods with-tbl-padding">{{fatherName}}</text>
+			</view>
+
+
+			<view class=" flex-column with-margin-bottom">
+				<text class="gray shrink_fix margin-l-right">品牌:</text>
+				<input class="inputAddGoods with-tbl-padding"></input>
+			</view>
+
+			<view class=" flex-column with-l-margin-bottom">
+				<view class="flex-row">
+					<image src="../../../images/location.png" class="icon margin-right"></image>
+					<text class="gray shrink_fix margin-l-right">商品名称:</text>
+				</view>
+				<input class="inputAddGoods with-tbl-padding" bindblur="getGoodsName"></input>
+
+				<!-- <view class="flex-row">
+					<image src="../../../images/location.png" class="icon margin-right"></image>
+				</view> -->
+
+			</view>
+
+			<view class=" flex-column with-l-margin-bottom">
+				<view class="flex-row">
+					<image src="../../../images/location.png" class="icon margin-right"></image>
+					<text class="gray shrink_fix margin-l-right">规格:</text>
+				</view>
+				<input class="inputAddGoods with-tbl-padding" bindblur="getStanardName"></input>
+
+			</view>
+
+			<view class=" flex-column with-l-margin-bottom">
+				<text class="gray shrink_fix margin-l-right">别名:</text>
+				<input class="inputAddGoods with-tbl-padding"></input>
+			</view>
+
+
+
+		</view>
+
+	</view>
+
+	<view class=" flex-column margin_bottom">
+		<text class="with-padding">商家信息</text>
+
+		<view class="whiteBack with-padding  flex-column with-border-bottom">
+			<text class="gray small">订货单位</text>
+			<view class="flex-row-wrap with-tb-padding">
+				<text class="standard_dis " wx:for="{{standardArr}}" bindtap="editStandard">{{item.nxDsStandardName}}</text>
+				<text class="plus_standard" bindtap="addStandard" data-name="{{goods.nxGoodsEntity.nxGoodsName}}">+</text>
+			</view>
+		</view>
+
+
+		<view class="whiteBack  with-padding flex-column">
+			<view class="flex-row-between">
+				<text class="gray small">订货客户</text>
+				<text class="addBtn excreamSmall" bindtap="showAddGoodsDepartments">添加客户</text>
+
+			</view>
+
+			<view class="flex-row with-border-bottom with-tb-padding " wx:for="{{departmentArr}}" wx:for-item="dep" wx:key="">
+				<text class="">{{dep.nxDepartmentName}}</text>
+			</view>
+
+		</view>
+
+
+
+	</view>
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+<addStandard show="{{showAdd}}" bindconfirm="confirmAdd" nxGoodsName="{{nxGoodsName}}" standardName="{{standardName}}" />
+
+
+<editStandard show="{{showEdit}}" bindconfirm="confirmEdit" nxGoodsName="{{nxGoodsName}}" standardName="{{standardName}}" item="{{item}}" />

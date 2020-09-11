@@ -410,6 +410,10 @@ var jpPrinter = {　　　　
      * • 当n 位为112 时，8（倍高）
      * 若需要倍宽倍高，请在同等倍数下相加 如17为倍宽倍高
      */
+    // 29 33
+
+   
+
     jpPrinter.setCharacterSize=function(n){
       data.push(29)
       data.push(33)

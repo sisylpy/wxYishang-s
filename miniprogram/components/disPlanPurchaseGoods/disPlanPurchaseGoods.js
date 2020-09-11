@@ -15,11 +15,8 @@ Component({
       type: Object,
       value: ""
     },
-    price: {
-      type: String,
-      value: ""
-    },
-    standard: {
+   
+    applyStandardName: {
      type: String,
      value: ""
    }
@@ -48,9 +45,9 @@ Component({
       this.setData({show: false})
     },
 
-    cancel() {
+    cancle() {
       this.setData({ show: false })
-      this.triggerEvent('cancel')
+      this.triggerEvent('cancle')
     },
 
     confirm(e) {
@@ -60,7 +57,7 @@ Component({
       console.log("modail-confirm ")
       this.triggerEvent('confirm', {
         plan: this.data.plan,
-        standard: this.data.standard,
+        applyStandardName: this.data.applyStandardName,
        
       })
 

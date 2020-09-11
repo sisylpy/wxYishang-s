@@ -1,0 +1,120 @@
+<view class="with_bottom_padding customerPage">
+
+	<view class='whiteBack top_bar flex-row with-lr-padding with-l-margin-bottom' style="height: 120rpx;">
+		<image src="{{userInfo.nxDiuWxAvartraUrl}}" class="top_img"></image>
+		<text class="top_bar_title">上货</text>
+	</view>
+
+	<view class='plusBtnOperation whiteBack {{selectedArr.length > 0 ? "is-active1" : ""}} with-padding with-border-bottom'>
+
+		<view class='fixView  {{scrollTop > 120 * scale ? "fixed" : ""}} '>
+
+			<view class='with-tb-padding gray flex-row-wrap '>
+				<view class="sel_item" wx:for="{{selectedArr}}" wx:for-item="sel">
+					<text>{{sel.nxGoodsEntity.nxGoodsName}}</text>
+					<text>{{sel.nxDpgQuantity}}{{sel.nxDpgStandard}}
+					</text>
+				</view>
+			</view>
+		</view>
+
+	</view>
+
+	<view class="emptyView {{purArr.length > 0  ? 'hidden' : ''}}" style="height: {{windowHeight - 240}}rpx; text-align:center;">
+
+		<view class="with-padding flex-column" style="margin-top:{{(windowHeight - 240)/2 - 120}}rpx;">
+			<view class="normal">
+				这里暂时还没有上货商品!
+			</view>
+			<view class="small">
+				你可以打开
+				<image class="icon_order_sentence" src="../../../images/goodshei.png"></image>
+				查询订单添加或者在自己的商品中添加！
+			</view>
+
+		</view>
+
+
+	</view>
+
+
+
+	<view class=' flex-column  whiteBack'>
+
+		<view class=' with-border-bottom ' wx:for='{{purArr}}' wx:for-item="item" wx:for-index='index' wx:key='this'>
+			<view class="flex-row-between with-padding">
+				<view class=" flex-row with-stb-padding normal">
+					<text class="margin-right ">{{item.nxDistributerGoodsEntity.nxDgGoodsName}}</text>
+					<text class="margin-l-right">{{item.nxDpgQuantity}}{{item.nxDpgStandard}}</text>
+					<view class="flex-row" wx:if="{{item.nxDpgTime !== null && item.nxDpgPurchaseType !== -1}}">
+						<text class="opeartion_time">您于{{item.nxDpgTime}}</text>
+
+						<view class="opertaion_name flex-row" wx:if="{{item.nxDpgPurchaseType == 1}}">
+							<image src="../../../images/add.jpg" class="icon"></image>
+							<text>复制</text>
+						</view>
+						<view class="opertaion_name flex-row" wx:elif="{{item.nxDpgPurchaseType == 2}}">
+							<image src="../../../../images/duihao.png" class="icon"></image>
+							<text>微信转发</text>
+						</view>
+
+						<view class="opertaion_name flex-row" wx:elif="{{item.nxDpgPurchaseType == 3}}">
+							<image src="../../../../images/download.png" class="icon"></image>
+							<text>完成</text>
+						</view>
+
+						<view wx:else>
+						</view>
+					</view>
+				</view>
+
+				<view class="btn_sel" hover-class="hover" bindtap="selectPurchaseGoods" data-index="{{index}}" data-id="{{item.nxDistributerPurchaseGoodsId}}">
+					<image src='{{item.isSelected ? "../../../images/sel2.png" : "../../../images/nosel.png"}}' class="icon"></image>
+				</view>
+			</view>
+
+
+			<view>
+			</view>
+		</view>
+	</view>
+
+
+
+</view>
+
+<!--  showSucess -->
+<view class='plusBtn {{ selectedArr.length > 0  ? "hidden" : ""}}' style="left:{{windowWidth - 160}}rpx">
+
+	<view class="order_btn" bindtap="toApplyGoods">
+		<image class="icon_order" src="../../../images/goods.png"></image>
+	</view>
+</view>
+
+
+
+<view class='plusBtn plusBtnOperation {{ selectedArr.length > 0 ? "is-active" : ""}}' style="left:{{windowWidth - 160}}rpx">
+	<view class="flex-column-center btn_item">
+		<view class="add_btn" bindtap="copyText">
+			<image class="icon_order" src="../../../images/goods.png"></image>
+		</view>
+		<text class="btn_text">复制</text>
+	</view>
+
+	<!-- <view class="flex-column-center btn_item">
+
+		<button class="add_btn" open-type="share" bindtap="toShare">
+			<image class="icon_order" src="../../../images/goods.png"></image>
+		</button>
+		<text class="btn_text">微信预定</text>
+
+	</view> -->
+
+	<view class="flex-column-center btn_item margin-bottom-none">
+		<view class="add_btn" bindtap="finishIndependent">
+			<image class="icon_order" src="../../../images/goods.png"></image>
+		</view>
+		<text class="btn_text ">完成</text>
+
+	</view>
+</view>

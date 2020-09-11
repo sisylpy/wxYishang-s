@@ -1,15 +1,60 @@
 import Promise from './bluebird'
 import apiUrl from '../config.js'
 
+var load = require('./load.js');
 
 //
+
+
+
+export const disSaveDisGoods = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributergoods/disSaveDisGoods',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+
+
+
+export const saveOrder = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdepartmentorders/save' ,
+      method: 'POST',
+      data: data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
 
 
 export const queryDisGoodsByQuickSearch = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/queryDisGoodsByQuickSearch/' +data ,
-      method: 'GET',
+      url: apiUrl.apiUrl + 'nxdistributergoods/queryDisGoodsByQuickSearch' ,
+      method: 'POST',
+      data:{
+        str: data.str,
+        disId: data.disId
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+      },
       success: (res) => {
         resolve({ result: res.data })
       },
@@ -37,35 +82,24 @@ export const getDisGoodsList = (data) => {
   })
 }
 
-export const getDisGoodsCata = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdistributergoods/getDisGoodsCata/' +data ,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
 
-export const getFatherDep = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartment/getFatherDep/' +data ,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
+// export const getFatherDep = (data) => {
+//   return new Promise((resolve, reject) => {
+//     wx.request({
+//       url: apiUrl.apiUrl + 'nxdepartment/getFatherDep/' +data ,
+//       method: 'GET',
+//       success: (res) => {
+//         resolve({ result: res.data })
+//       },
+//       fail: (e) => {
+//         reject(e)
+//       }
+//     })
+//   })
+// }
+
+
+
 
 
 export const saveOrderArr = (data) => {
@@ -88,158 +122,22 @@ export const saveOrderArr = (data) => {
 }
 
 
-export const getDepGoodsByOrderTime = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartmentgoods/getDepGoodsByOrderTime/' +data ,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
 
-
-export const getDepGoodsInfo = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartmentgoods/getDepGoodsInfo' ,
-      method: 'POST',
-      data: {
-        nxGoodsId: data.nxGoodsId,
-        nxDepId: data.nxDepId
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
-      },
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-
-export const detGetDepGoods = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartmentgoods/depGetDepGoods'  ,
-      method: 'POST',
-      data,
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-export const userGetApplys = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartmentorders/userGetApplys/' +data ,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-
-export const groupInfo = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartment/groupInfo/' +data ,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-
-export const depGetFatherGoods = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartmentgoods/depGetFatherGoods/' + data ,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-
-export const saveOrder = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartmentorders/save' ,
-      method: 'POST',
-      data: data,
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-
-
-export const defInfo = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartment/info/' +data ,
-      method: 'GET',
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-
-export const saveDepartment = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartment/saveSubDepartment' ,
-      method: 'POST',
-      data: data,
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
+// export const saveDepartment = (data) => {
+//   return new Promise((resolve, reject) => {
+//     wx.request({
+//       url: apiUrl.apiUrl + 'nxdepartment/saveSubDepartment' ,
+//       method: 'POST',
+//       data: data,
+//       success: (res) => {
+//         resolve({ result: res.data })
+//       },
+//       fail: (e) => {
+//         reject(e)
+//       }
+//     })
+//   })
+// }
 
 
 export const saveUser = (data) => {
@@ -276,6 +174,352 @@ export const userInfo = (data) => {
 
 //
 
+
+// /////////////////////////////
+
+
+
+/**
+ * 修改批发商商品暂时停订
+ * @param {*} data 
+ */
+export const disGoodsUpdate = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributergoods/disGoodsUpdate',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+/**
+ * 获取批发商客户列表
+ * @param {*} data 
+ */
+export const disGetAllCustomer = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerdepartment/disGetAllCustomer/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+/**
+ * 添加批发商商品的客户
+ * @param {*} data 
+ */
+export const disSaveDepartDisGoods = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdepartmentdisgoods/disSaveDepartDisGoods',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e)
+      }
+    })
+  })
+}
+
+/**
+ * 获取不是批发商商品的客户列表
+ * @param {*} data 
+ */
+export const getUnDisGoodsDepartments = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdepartmentdisgoods/getUnDisGoodsDepartments',
+      method: 'POST',
+      data: {
+        disGoodsId: data.disGoodsId,
+        disId: data.disId
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+      },
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+
+/**
+ * 修改批发商订货规格
+ * @param {*} data 
+ */
+export const disUpdateStandard = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerstandard/disUpdateStandard' ,
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 添加批发商订货规格
+ * @param {*} data 
+ */
+export const disSaveStandard = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerstandard/disSaveStandard' ,
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 批发商商品详细
+ * @param {*} data 
+ */
+export const disGetGoodsDetail = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributergoods/disGetGoodsDetail/' + data ,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 批发商商品类别列表
+ * @param {*} data 
+ */
+export const getDisGoodsCata = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerfathergoods/getDisGoodsCata/' +data ,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+/**
+ * 批发商商品列表
+ * @param {*} data 
+ */
+export const disGetDisGoodsListByFatherId = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributergoods/disGetDisGoodsListByFatherId/' + data ,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+
+/**
+ * 获取上货商品列表
+ * @param {*} data 
+ */
+export const getPurchaseGoods= (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerpurchasegoods/getPurchaseGoods/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+          icon: 'none'
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 复制进货商品
+ * @param {*} data 
+ */
+export const copyPruchaseGoodsStatus = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerpurchasegoods/copyPruchaseGoodsStatus' ,
+      method: 'POST',
+      data,
+      header: {
+        "content-type": 'application/json'
+      },
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+          icon: 'none'
+        })
+      }
+    })
+  })
+}
+
+
+/**
+ * 完成进货商品
+ * @param {*} data 
+ */
+export const finishPruchaseGoodsStatus = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerpurchasegoods/finishPruchaseGoodsStatus' ,
+      method: 'POST',
+      data,
+      header: {
+        "content-type": 'application/json'
+      },
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+
+/**
+ * 添加进货商品，修改订单状态
+ * @param {*} data 
+ */
+export const savePlanPurchase = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerpurchasegoods/savePlanPurchase',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+          icon: 'none'
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 获取需要进货的商品列表
+ * @param {*} data 
+ */
+export const disGetToPlanPurchaseGoods = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdepartmentorders/disGetToPlanPurchaseGoods/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+          icon: 'none'
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 批发商添加客户
+ * @param {*} data 
+ */
 export const saveOneCustomer = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
@@ -286,26 +530,103 @@ export const saveOneCustomer = (data) => {
         resolve({ result: res.data })
       },
       fail: (e) => {
-        reject(e)
+        reject(e);
+        load.hideLoading();
       }
     })
   })
 }
 
-export const restrauntRegist = (data) => {
+/**
+ * 批发商登陆
+ * @param {*} data 
+ */
+export const disLogin = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdepartment/restrauntRegist' ,
+      url: apiUrl.apiUrl + 'nxdistributer/disLogin',
       method: 'POST',
-      data: data,
+      data,
       success: (res) => {
         resolve({ result: res.data })
       },
       fail: (e) => {
-        reject(e)
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 批发商注册
+ * @param {*} data 批发商entity
+ */
+export const disAndUserSave = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributer/disAndUserSave',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
       }
     })
   })
 }
 
 
+/**
+ * 下一个版本在解决
+ * @param {*} data 
+ */
+export const savePurchaseBatchType = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerpurchasebatch/save',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+/**
+ * 下一个版本再解决
+ * @param {*} data 
+ */
+export const delatePurchaseBatch = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerpurchasebatch/delatePurchaseBatch/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}

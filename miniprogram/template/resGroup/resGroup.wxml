@@ -1,0 +1,32 @@
+
+
+<template name="resGroup">
+
+		<view class="flex-column with-border-bottom whiteBack with-padding" wx:for="{{userArr}}">
+
+			<view class="flex-row-between with-padding " bindtap="openOperation" data-id="{{item.nxDepartmentUserId}}">
+				<view class="flex-row dep_icon">
+					<image src="{{item.nxDuAdmin == 1 ? '../../../images/cg.png' : '../../../images/dh.png'}}" class=" dep_img"></image>
+					<image src='{{item.nxDuUrlChange == 1 ?  url + item.nxDuWxAvartraUrl : item.nxDuWxAvartraUrl}}' class="member_url margin-right"></image>
+				</view>
+				
+			</view>
+
+			<view class="flex-column dep">
+				<view class="flex-row">
+					<text class="middle">{{item.nxDuWxNickName}}</text>
+				</view>
+				<view class="flex-row">
+					<text>2020年12月10日 </text>
+					<text>加入</text>
+				</view>
+			</view>
+
+
+
+
+		</view>
+
+
+
+</template>
