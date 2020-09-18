@@ -68,17 +68,52 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "pages/goods/ibookGoods/ibookGoods",
 					"pathName": "pages/goods/ibookGoods/ibookGoods",
-					"query": "fatherId=111&fatherName=根茎类&color=#20afb8",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": 3,
 					"name": "pages/goods/addNxGoods/addNxGoods",
 					"pathName": "pages/goods/addNxGoods/addNxGoods",
-					"query": "fatherId=111&fatherName=根茎类",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "disId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/homeEdit/homeEdit",
+					"pathName": "pages/homeEdit/homeEdit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/inviteAdmin/inviteAdmin",
+					"pathName": "pages/inviteAdmin/inviteAdmin",
+					"query": "disId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/purchase/purchaseCome/purchaseCome",
+					"pathName": "pages/purchase/purchaseCome/purchaseCome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "pages/order/rIndex/rIndex",
+					"pathName": "pages/order/rIndex/rIndex",
+					"query": "depFatherId=1",
 					"scene": null
 				}
 			]

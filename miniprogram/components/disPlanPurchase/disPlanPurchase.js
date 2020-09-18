@@ -10,34 +10,24 @@ Component({
       type: Boolean,
       value: true
     },
-   
+
     item: {
       type: Object,
       value: ""
     },
-    price: {
-      type: String,
-      value: ""
-    },
-    standard: {
-     type: String,
-     value: ""
-   }
-   
 
-   
-  
-   
-    
-   
+
+
+
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    showInput: false,
-    
+
+    plan: ""
+
   },
 
   /**
@@ -45,74 +35,52 @@ Component({
    */
   methods: {
     clickMask() {
-      this.setData({show: false})
+      this.setData({
+        show: false
+      })
     },
 
-    cancel() {
-      this.setData({ show: false })
-      this.triggerEvent('cancel')
+    cancle() {
+      this.setData({
+        show: false
+      })
+      this.triggerEvent('cancle')
     },
 
     confirm(e) {
-      
-      // console.log(e)
-      console.log(this.data)
-      console.log("modail-confirm ")
-      this.triggerEvent('confirm', {
-        plan: this.data.plan,
-        standard: this.data.standard,
-       
-      })
 
-      this.setData({
-        show: false,
-        price: "",
-        standList: [],
-      })
-     
+      if (this.data.plan.length > 0) {
+        this.triggerEvent('confirm', {
+          plan: this.data.plan,
+        })
+
+        this.setData({
+          show: false,
+          plan: "",
+        })
+      }
     },
 
     getPlan: function (e) {
-      console.log(e)
-      this.setData({
-       
-        plan: e.detail.value
-      })
-    },
-
-
-    standardchange: function(){
-      var name = e.currentTarget.dataset.name;
-      console.log(e)
-      this.triggerEvent('changeStandard', {
-        applyStandardName: name
-
-      })
-    },
-    
-    changeStandard: function (e) {
-      var name = e.currentTarget.dataset.name;
-      console.log(e)
-      this.triggerEvent('changeStandard', {
-        applyStandardName: name
-
-      })
-      // this.setData({
-      //   applyStandardName: name
-      // })
-
-
-    },
+      if (e.detail.value.length > 0) {
+        this.setData({
+          plan: e.detail.value
+        })
+      }
 
     },
 
 
 
+  },
 
 
 
-  
 
-  
-  
+
+
+
+
+
+
 })

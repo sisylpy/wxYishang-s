@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "savegoods": "/components/disSaveGoods/saveGoods",
-    "addStandard": "/components/addStandard/addStandard" 
-  }
-}

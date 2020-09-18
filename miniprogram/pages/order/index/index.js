@@ -3,11 +3,7 @@
 const globalData = getApp().globalData;
 var app = getApp()
 var load = require('../../../lib/load.js');
-
 var esc = require("../../../utils/GPutils/esc.js");
-
-// var tsc = require("../../utils/GPutils/encoding-indexes");
-// var encode = require("../../utils/GPutils/encoding.js");
 
 import apiUrl from '../../../config.js'
 
@@ -78,13 +74,9 @@ Component({
         looptime: 0,
         currentTime: 1,
         lastData: 0,
-        // oneTimeData: 0,
         returnResult: "",
-        // buffSize: [],
         buffIndex: 0,
-        // printNum: [],
         printNumIndex: 0,
-        // printerNum: 1,
         currentPrint: 1,
         isReceiptSend: false,
         isLabelSend: false,
@@ -207,7 +199,7 @@ Component({
     toIssuePage() {
       wx.navigateTo({
 
-        url: '../issuePage/issuePage?depFatherId=' + this.data.depFatherId + '&depHasSubs=' + this.data.depHasSubs + '&depName=' + this.data.depName,
+        url: '../issuePage/issuePage?depFatherId=' + this.data.depFatherId + '&depHasSubs=' + this.data.depHasSubs + '&depName=' + this.data.depName + '&disId=' + this.data.userInfo.nxDistributerEntity.nxDistributerId + '&userId=' + this.data.userInfo.nxDiuDistributerId,
       })
 
     },
@@ -259,8 +251,8 @@ Component({
 
     getSeviceId: function () {
       var that = this
-      console.log("app.BLEInformation.deviceId")
-      console.log(app.BLEInformation.deviceId)
+      // console.log("app.BLEInformation.deviceId")
+      // console.log(app.BLEInformation.deviceId)
       wx.getBLEDeviceServices({
         deviceId: app.BLEInformation.deviceId,
         success: function (res) {
@@ -270,13 +262,14 @@ Component({
           that.getCharacteristics()
         },
         fail: function (e) {
-          console.log(e)
+          // console.log(e)
         },
         complete: function (e) {
-          console.log(e)
+          // console.log(e)
         }
       })
     },
+
     getCharacteristics: function () {
       var that = this
       var list = that.data.services
@@ -288,7 +281,7 @@ Component({
         deviceId: app.BLEInformation.deviceId,
         serviceId: list[num].uuid,
         success: function (res) {
-          console.log(res)
+          // console.log(res)
           for (var i = 0; i < res.characteristics.length; ++i) {
             var properties = res.characteristics[i].properties
             var item = res.characteristics[i].uuid
@@ -337,7 +330,6 @@ Component({
             })
 
             that.receiptTest();
-            // that.openControl()
           }
         },
         fail: function (e) {
@@ -350,11 +342,6 @@ Component({
         }
       })
     },
-    //  openControl: function () {//连接成功返回主页
-    //   wx.navigateTo({
-    //     url: '../home/home',
-    //   })
-    // },
 
     receiptTest: function () { //票据测试
 
@@ -362,18 +349,18 @@ Component({
 
       var command = esc.jpPrinter.createNew();
       command.init()
-    
+
       command.setSelectJustification(1) //居中
       command.setCharacterSize(17); //设置倍高倍宽
       command.setText("拣货单");
       command.setPrint(); //打印并换行
       command.setSelectJustification(0) //设置居左 
-      command.setCharacterSize(0);  
-      command.setText("日期: " + that.data.date);
+      command.setCharacterSize(0);
+      command.setText("日期: " + that.data.date + "日  " + that.data.week );
       command.setPrint(); //打印并换行
 
       var customer = that.data.customerArr[that.data.customerIndex];
-      var depName = customer.depName; 
+      var depName = customer.depName;
       command.setText("客户: " + depName);
       command.setPrint();
       command.setSelectJustification(0) //设置居左
@@ -384,7 +371,7 @@ Component({
       command.setText("数量")
       command.setAbsolutePrintPosition(310)
       command.setPrint();
-      command.setText("--------------------------")
+      command.setText("-------------------------------")
       command.setPrint();
       if (that.data.depHasSubs == 0) {
         var ordersArr = that.data.customerArr[that.data.customerIndex].depOrders;
@@ -394,41 +381,61 @@ Component({
           var standard = ordersArr[i].nxDoStandard;
           command.setCharacterSize(1);
           command.setText(goodsName + "  ");
-          // command.setAbsolutePrintPosition(168)
-          command.setText(quantity + " " + standard);
-          // command.setAbsolutePrintPosition(242);
-          // command.setText(quantity );
-          // command.setAbsolutePrintPosition(310) // 318
-          // command.setText(subTotal);
+          command.setText(quantity  + standard);          
           command.setPrint();
-          command.setText("--------------------------")
-          command.setPrint();
+          var orderRemark = ordersArr[i].nxDoRemark;
+          if(orderRemark !== "null" && orderRemark.length > 0){
+            command.setCharacterSize(0);
+            command.setText("备注:" + orderRemark + "");
+            command.setPrint();
+          }
         }
-        
+        that.setData({
+          pickOrderArr: that.data.customerArr[that.data.customerIndex].depOrders
+        })
+
       }
       if (that.data.depHasSubs == 1) {
+
         var arr = that.data.customerArr[that.data.customerIndex].subDeps;
+        var temp = [];
         for (var i = 0; i < arr.length; i++) {
-          var subName = arr[i].depName;
-          command.setText(subName);
+
+          //部门名称
+          var subDepName = arr[i].nxDepartmentName;
+          command.setCharacterSize(0);
+          command.setText("部门: " + subDepName);
+          command.setPrint();
+          command.setText("*******************************");
           command.setPrint();
           var ordersArr = arr[i].nxDepartmentOrdersEntities;
           for (var j = 0; j < ordersArr.length; j++) {
+            //获取pickOrderArr
+            temp.push(ordersArr[j]);
+            //获取打印
             var goodsName = ordersArr[j].nxDistributerGoodsEntity.nxDgGoodsName;
-            var quantity = ordersArr[i].nxDoQuantity;
-            var standard = ordersArr[i].nxDoStandard;
-            command.setText(goodsName + "  ");
+            var quantity = ordersArr[j].nxDoQuantity;
+            var standard = ordersArr[j].nxDoStandard;
             command.setCharacterSize(1);
-            // command.setAbsolutePrintPosition(168)
+            command.setText(goodsName + "  ");
             command.setText(quantity + "" + standard);
             command.setPrint();
-            command.setText("--------------------------")
-            command.setPrint();
-           
-          } 
+            var orderRemark = ordersArr[i].nxDoRemark;
+            if(orderRemark !== "null" && orderRemark.length > 0){
+              command.setCharacterSize(0);
+              command.setText("备注:" + orderRemark + "");
+              command.setPrint();
+            }
+          }
+          command.setPrint();
+          command.setPrint();
+
         }
+        that.setData({
+          pickOrderArr: temp
+        })
       }
-  
+
       command.setPrint();
       command.setPrint();
       command.setPrint();
@@ -436,7 +443,6 @@ Component({
       command.setPrint();
       command.setPrint();
 
-    
 
       that.prepareSend(command.getData()) //准备发送数据
 
@@ -577,31 +583,25 @@ Component({
         characteristicId: app.BLEInformation.writeCharaterId,
         value: buf,
         success: function (res) {
-          if (currentTime <= loopTime) {
-            // wx.showLoading({
-            //   title: '传输中...',
-            // })
-          } else {
-            wx.showToast({
-              title: '已打印第' + currentPrint + '张成功',
-            })
-          }
-          console.log(res)
 
+          
           var times = that.data.printTimes;
           that.setData({
             showOperation: false,
             printTimes: times + 1,
           })
 
-          // that._savePickerOrders();
+          if(currentTime == loopTime){
+            that._savePickerOrders();
+          }
+        
+
         },
         fail: function (e) {
           wx.showToast({
             title: '打印第' + currentPrint + '张失败',
             icon: 'none',
           })
-          // console.log(e)
         },
         complete: function () {
           currentTime++
@@ -629,43 +629,57 @@ Component({
               that.Send(buff)
             }
           }
-          // wx.navigateBack({
-          //   complete: (res) => {
-          //     delta: 2
-          //   },
-          // })
-
         }
-
       })
 
+      // 修改订单状态
+      // that._savePickerOrders();
     },
-
-    // ============================================
-
 
     _savePickerOrders() {
 
-      load.showLoading("保存订单中")
+      // load.showLoading("保存订单中")
+      console.log("save orders.........")
 
-      distributionWeighing(this.data.orderArr)
-        .then(res => {
-          load.hideLoading();
-          console.log(res)
-          if (res.result.code == 0) {
-            wx.showToast({
-              title: 'chenggong',
-            })
-            this._getTodayCustomer();
-            // wx.navigateBack({
-            //   delta: 2
-            // })
+      // distributionWeighing(this.data.pickOrderArr)
+      //   .then(res => {
+      //     load.hideLoading();
+      //     console.log(res)
+      //     if (res.result.code == 0) {
+      //       wx.showToast({
+      //         title: 'chenggong',
+      //       })
+      //       this._getTodayCustomer();
 
-          }
-        })
+      //     }
+      //   })
     },
 
-  }
+
+
+  toOpenPrint(){
+    wx.navigateToMiniProgram({
+      appId: 'wx1c1fa5f0e3c6affd',
+      path: 'pages/customerList/customerList?disId=' + this.data.userInfo.nxDistributerEntity.nxDistributerId + '&userId=' + this.data.userInfo.nxDiuDistributerId,
+      envVersion: 'develop',  //release
+      success(res) {
+       
+      }
+    })
+
+  },
+
+  toEditHome(){
+    wx.navigateTo({
+      url: '../../homeEdit/homeEdit',
+    })
+  },
+
+
+// methods
+  },
+
+
 
 
 

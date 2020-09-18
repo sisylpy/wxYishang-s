@@ -73,21 +73,7 @@ page{
 .dep_name{
   font-size: 50rpx;
 }
-.redDot{
-  background: red;
-  color: #fff;
-  font-size: 32rpx;
-  text-align: center;
-  border-radius: 50%;
-  width: 40rpx;
-  height: 40rpx;
-  line-height: 40rpx;
-}
-.applys_operation{
-  border-bottom: 1px solid lightgray;
-  border-top: 1px solid lightgray;
 
-}
 .box {
   position: relative;
   border-radius: 3px;
@@ -102,48 +88,39 @@ page{
 
 
 }
-.box_content{
-  /* border: 1px solid rgba(231, 230, 230, 0.548); */
-  /* padding: 0 10rpx; */
-}
 
+.icon_item1{
+  position: absolute;
+}
 /*  */
+.apply_row{
+
+  position: absolute;
+  background: pink;
+  
+
+  
+}
 .index{
   width: 5%;
   /* background: red; */
 }
 .goods_name {
-  /* width: 40%; */
-  /* background: yellow; */
-}
-.icon_item{
-  position: absolute;
-}
-.purchase_iii{
-  width: 10%;
-  left: 47%;
-  /* background: blue; */
-}
-.print{
-  width: 10%;
-
-  left: 57%;
-  /* background: red; */
-
+  width: 40%;
+    /* background: yellow; */
 }
 
-.weight {
-  width: 10%;
-  text-align: left;
-  left: 67%;
+.weight { 
+   width: 15%;
 
   /* background: gold; */
 }
 .price {
   width: 10%;
+
   /* background: green; */
-  text-align: left;
-  left: 77%;
+
+
 
 }
 
@@ -151,10 +128,9 @@ page{
 
 .subtotal {
   width: 10%;
-  left: 87%;
 
   /* background: yellow; */
-  text-align: left;
+  /* text-align: left; */
 }
 
 .nnn{
@@ -220,4 +196,8 @@ page{
   margin-top: 20rpx;
   text-align: center;
 
+}
+
+.white{
+  color: #fff;
 }

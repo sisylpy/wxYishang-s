@@ -1,10 +1,12 @@
+
+
+const globalData = getApp().globalData;
+var load = require('../../lib/load.js');
+
 import {
   disAndUserSave,
   disLogin,
 } from '../../lib/apiDistributer'
-
-const globalData = getApp().globalData;
-var load = require('../../lib/load.js');
 
 Page({
 

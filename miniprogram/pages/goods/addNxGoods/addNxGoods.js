@@ -6,6 +6,7 @@ import {
   saveNxGoods,
   editNxGoods,
   getNxGoodsInfo,
+  deleteGoods
 } from '../../../lib/apiibook'
 
 const globalData = getApp().globalData;
@@ -32,10 +33,8 @@ Page({
   onLoad: function (options) {
     
     this.setData({
-      // disId: globalData.userInfo.nxDistributerEntity.nxDistributerId,
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
-      // disId: 2,
       url: apiUrl.server,
       fatherId: options.fatherId,
       fatherName: options.fatherName,
@@ -99,6 +98,30 @@ Page({
           [stand]: e.detail.value
         })
       } 
+    }else{
+
+      if(e.currentTarget.dataset.type == 0){
+        this.setData({
+          brand: e.detail.value
+        })
+      } if(e.currentTarget.dataset.type == 1){
+        this.setData({
+          place: e.detail.value
+        })
+      } if(e.currentTarget.dataset.type == 2){
+        this.setData({
+          detail: e.detail.value
+        })
+      } if(e.currentTarget.dataset.type == 3){
+        this.setData({
+          name: e.detail.value
+        })
+      } if(e.currentTarget.dataset.type == 4){
+        this.setData({
+          standard: e.detail.value
+        })
+      } 
+
     }
 
 
@@ -125,15 +148,13 @@ Page({
     */
   saveNxGoods(){
   
-    var standardArr = this.data.standardArr;
-    standardArr.splice(0,1);   
+    
    var data = {
     nxGoodsFatherId: this.data.fatherId,
-    nxGoodsName: this.data.goodsName,
-    nxGoodsStandardname: this.data.standardName,
-    nxGoodsStandardEntities: standardArr,
-    nxGoodsBrand: "",
-    nxGoodsPlace: "",    
+    nxGoodsName: this.data.name,
+    nxGoodsStandardname: this.data.standard,
+    nxGoodsBrand: this.data.brand,
+    nxGoodsPlace: this.data.place,    
    }
 
    saveNxGoods(data).then(res =>{
@@ -142,6 +163,11 @@ Page({
        wx.navigateBack({
          delta: 1,
        })
+      }else{
+        wx.showToast({
+          title: res.result.msg,
+          icon: 'none'
+        })
       }
     })
   },
@@ -159,6 +185,26 @@ Page({
     })
     
   },
+
+  deleteGoods(){
+    deleteGoods(this.data.goods.nxGoodsId).then(res =>{
+      if(res.result.code == 0){
+        wx.showToast({
+          title: '删除成功',
+          icon: 'none',
+          
+        })
+        wx.navigateBack({
+          delta: 1,
+        })
+      }else{
+        wx.showToast({
+          title: '删除失败',
+          icon: 'none'
+        })
+      }
+    })
+  }
 
 
   

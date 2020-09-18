@@ -189,11 +189,9 @@ Page({
 
   //保存进货商品
   addPlanPurchse(e) {
-    console.log(e);
     var index= e.currentTarget.dataset.index;
     var parentIndex = e.currentTarget.dataset.parentindex;
   
-    console.log(this.data.planArr)
     var item  = this.data.planArr[parentIndex].nxDistributerGoodsEntities[index];
 
     this.setData({
@@ -201,7 +199,6 @@ Page({
       index:  e.currentTarget.dataset.index,
       showPlanPurchase: true,
       item: item,
-      standard: e.currentTarget.dataset.standard,
 
     })
 
@@ -219,19 +216,12 @@ Page({
 
     console.log( this.data.planArr[this.data.parentIndex])
     var goodsId = this.data.planArr[parentIndex].nxDistributerGoodsEntities[index].nxDistributerGoodsId;
-    var fatherGoodsId = this.data.planArr[parentIndex].fatherGoodsId;
+    var fatherGoodsId = this.data.planArr[parentIndex].nxDistributerFatherGoodsId;
 
     var ordersArr = this.data.planArr[parentIndex].nxDistributerGoodsEntities[index].nxDepartmentOrdersEntities;
     var plan = e.detail.plan;
-    var standard = e.detail.standard;
-    // var temp = [];
-    // for (var i = 0; i < ordersArr.length; i++) {
-    //   var onFocus = ordersArr[i].onFocus;
-    //   if (onFocus) {
-    //     temp.push(ordersArr[i]);
-    //   }
-    // }
-
+    var standard = this.data.item.nxDgGoodsStandardname;
+    
     var purGoods = {
       nxDpgDisGoodsId: goodsId,
       nxDpgDisGoodsFatherId: fatherGoodsId,
@@ -248,6 +238,7 @@ Page({
     })
 
   },
+
 
   /**
    * 计算偏移量

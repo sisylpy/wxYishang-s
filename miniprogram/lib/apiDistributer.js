@@ -102,25 +102,6 @@ export const getDisGoodsList = (data) => {
 
 
 
-export const saveOrderArr = (data) => {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: apiUrl.apiUrl + 'nxdepartmentorders/saveOrderArr' ,
-      method: 'POST',
-      data,
-      header: {
-        "content-type": 'application/json'
-      },
-      success: (res) => {
-        resolve({ result: res.data })
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
 
 
 // export const saveDepartment = (data) => {
@@ -411,6 +392,34 @@ export const getPurchaseGoods= (data) => {
 }
 
 /**
+ * 打印进货商品
+ * @param {*} data 
+ */
+export const printPurchaseGoodsStatus = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributerpurchasegoods/printPurchaseGoodsStatus' ,
+      method: 'POST',
+      data,
+      header: {
+        "content-type": 'application/json'
+      },
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+          icon: 'none'
+        })
+      }
+    })
+  })
+}
+
+/**
  * 复制进货商品
  * @param {*} data 
  */
@@ -537,6 +546,81 @@ export const saveOneCustomer = (data) => {
   })
 }
 
+
+
+/**
+ * 删除管理员
+ * @param {} data 
+ */
+export const deleteDisUser = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributeruser/deleteDisUser',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
+
+/**
+ * 获取管理员
+ * @param {} data 
+ */
+export const getDisUsers = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributeruser/getDisUsers/' + data,
+      method: 'GET',
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+/////
+
+/**
+ * 批发商管理员注册
+ * @param {} data 
+ */
+export const disUserSave = (data) => {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: apiUrl.apiUrl + 'nxdistributeruser/disUserSave',
+      method: 'POST',
+      data,
+      success: (res) => {
+        resolve({ result: res.data })
+      },
+      fail: (e) => {
+        reject(e);
+        load.hideLoading();
+        wx.showToast({
+          title: '请检查网络',
+        })
+      }
+    })
+  })
+}
+
 /**
  * 批发商登陆
  * @param {*} data 
@@ -544,7 +628,7 @@ export const saveOneCustomer = (data) => {
 export const disLogin = (data) => {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: apiUrl.apiUrl + 'nxdistributer/disLogin',
+      url: apiUrl.apiUrl + 'nxdistributeruser/disLogin',
       method: 'POST',
       data,
       success: (res) => {

@@ -184,6 +184,10 @@ Page({
       })
   },
 
+  /**
+   * 保存批发商商品
+   * @param {*} e 
+   */
   downloadGoods: function (e) {
 
     this.setData({
@@ -460,13 +464,14 @@ Page({
    */
   toAdd() {
     wx.navigateTo({
-      url: '../addNxGoods/addNxGoods?fatherId=' + this.data.fatherId,
+      url: '../addNxGoods/addNxGoods?fatherId=' + this.data.fatherId +
+       '&fatherName=' + this.data.fatherName,
     })
 
   },
   editGoods(e){
     wx.navigateTo({
-      url: '../addNxGoods/addNxGoods?nxGooodsId=' +  e.currentTarget.dataset.id + '&editGoods=true',
+      url: '../addNxGoods/addNxGoods?nxGooodsId=' +  e.currentTarget.dataset.id + '&editGoods=true' + '&fatherName=' + this.data.fatherName,
     })
   },
 

@@ -13,6 +13,7 @@
     "pages/purchase/index/index",
     "pages/purchase/purchaseCome/purchaseCome",
     "pages/purchase/disPurchaseGoodsList/disPurchaseGoodsList",
+    "pages/purchase/pSearchPrinter/pSearchPrinter",
 
     "pages/goods/index/index",
     "pages/goods/ibookCover/ibookCover",
@@ -32,7 +33,9 @@
     "pages/customer/resGoodsList/resGoodsList",
 
    "pages/login/login",
-   "pages/loginAdmin/loginAdmin"
+   "pages/loginAdmin/loginAdmin",
+   "pages/homeEdit/homeEdit",
+   "pages/inviteAdmin/inviteAdmin"
    
   ],
   

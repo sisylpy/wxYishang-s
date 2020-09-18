@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "addStandard": "/components/addStandard/addStandard" ,
-    "editStandard": "/components/editStandard/editStandard" 
-
-
-  }
-}

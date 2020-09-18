@@ -45,10 +45,9 @@ Component({
 
       new QRCode('myQrcode', {
         // usingIn: this,
-        text: "https://grainservice.club/nongxinle/api/nxdepartment/depRegist?disId=2",
-        // text: "https://grainservice.club/nongxinle/api/nxcommunity/customerRegist?nxCommunityId=2",
-
-        // image: '/images/1.jpg',
+        text: "https://grainservice.club/nongxinle/api/nxdepartment/depRegist?disId=" + this.data.userInfo.nxDistributerEntity.nxDistributerId,
+  
+        // // image: '/images/1.jpg',
         width: 70,
         height: 70,
         padding: 12,

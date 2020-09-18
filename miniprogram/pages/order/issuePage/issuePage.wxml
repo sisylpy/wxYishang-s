@@ -92,18 +92,17 @@
 
 
 
-<view class="fixed_bottom flex-column-center with-padding">
+<view class="fixed_bottom flex-column ">
 
 	<view class="flex-column with-padding">
 		<!--  printBLEData -->
-		<view class="main_btn" bindtap="printBLEData" wx:if="{{setSuccess}}">
-			打印送货单
+		<view class="main_btn is-active" bindtap="printBLEData" wx:if="{{setSuccess}}">
+			打印销售单
 		</view>
 		<!--  toSetPrint -->
-		<view class="main_btn" bindtap="toSetPrint" wx:else>
-			打印送货单 设置打印机
+		<view class="main_btn " bindtap="toSetPrint" wx:else>
+		 先设置打印机
 		</view>
-
 
 	</view>
 

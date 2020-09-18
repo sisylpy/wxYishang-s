@@ -1,24 +1,26 @@
 <view id="mjltest">
 
-	<view class="fragement flex-row-between" style="background: {{color}}">
-		<view class="search_bar  with-lr-padding with-l-margin-bottom flex-row" style="width: {{windowWidth - 140}}rpx;">
-			<input placeholder="  查找商品名称或拼音或简拼" class="searchInput" bindinput="getSearchString"></input>
+	<view class="fragement flex-row-between  with-padding " style="background: {{color}}">
+		<view class="search_bar  flex-row" style="width: {{windowWidth - 150}}rpx;">
+			<input placeholder="  查找商品名称或拼音或简拼" class="searchInput" bindinput="getSearchString" ></input>
 			<icon class="search_icon wx_icon" type="search" size="30" color="white"></icon>
 		</view>
 
-		<view class="tabBtn flex-column-center" bindtap="toAdd" hover-class="hover">
-			<image src="../../../images/add.jpg" class="icon"></image>
+		<view class="btnView flex-column-center " style="width:110rpx;">
+			<image src="../../../images/add.png" class="iconBig"  bindtap="toAdd" ></image>
 		</view>
 	</view>
 
+<!-- searchGoodsPage -->
 	<view class="searchList {{isSearching || searchArr.length > 0? 'is-active' :''}} flex-column with-padding"  catchtouchmove='ture' style="height:{{windowHeight - 140}}rpx;">
 	 <scroll-view scroll-y style="height:{{windowHeight - 140}}rpx;">
 	 	<view class="flex-row with-border-bottom with-padding small" wx:for="{{searchArr}}" wx:for-item="item" style="width:{{windowWidth}}rpx;">
-		{{item.nxGoodsName}}
+
+		{{item.nxGoodsName}} ({{item.nxGoodsStandardname}})  类别:{{item.fatherGoods.nxGoodsName}}
 		</view>
 	 </scroll-view>
-	
 	</view>
+	<!-- ./searchGoodsPage -->
 
 
 	<view class="flex-column "  style="margin-top: 100rpx" >
@@ -60,14 +62,14 @@
 
 
 		<view class="">
-			<view class=" felx-column-center" bindtap="downloadGoods" data-item="{{item}}" data-index="{{index}}" wx:if="{{item.isDownload == 1}}" hover-class="hover">
+			<view class=" felx-column-center" wx:if="{{item.isDownload == 1}}" >
 				<image class="icon " src="/images/duihao.png"></image>
 			</view>
-			<view class=" felx-column-center" bindtap="downloadGoods" data-standards="{{item.nxGoodsStandardEntities}}" data-item="{{item}}" data-index="{{index}}" data-sort="{{item.nxGoodsSort}}" wx:else hover-class="hover">
+			<view class=" felx-column-center" bindtap="downloadGoods"  data-item="{{item}}" data-index="{{goodsIndex}}" wx:else hover-class="hover">
 				<image class="icon" src="/images/download.png"></image>
 			</view>
-			<view bindtap="editGoods" data-id="{{item.nxGoodsId}}">
-				<image src="../../../images/add.jpg" class="icon "></image>
+			<view bindtap="editGoods" data-id="{{item.nxGoodsId}}" style="margin-top:20rpx;background:lightgray;">
+				<image src="../../../images/bi.png" class="icon "></image>
 			</view>
 		</view>
 		</view>
@@ -100,11 +102,5 @@
 
 <!-- ./ -->
 
-
-<!-- 
-<savegoods show="{{show}}" applyGoodsName="{{applyGoodsName}}" bindconfirm="confirm" applyGoodsId="{{applyGoodsId}}" item="{{item}}" price="{{price}}" /> -->
-<!-- 
-<addStandard show="{{showAdd}}" bindconfirm="confirmAdd" item="{{item}}" standardName="{{standardName}}" />
- -->
 
 <addStandard show="{{showAdd}}" bindgetFocus="getFocus" bindconfirm="confirmStandard" bindcancle="cancle" depGoodsName="{{depGoodsName}}" standardName="{{standardName}}" edit="{{editStandard}}" standardName="{{standardName}}" myHeight="{{myHeight}}" />

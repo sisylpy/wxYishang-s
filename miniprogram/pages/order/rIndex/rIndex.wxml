@@ -1,4 +1,4 @@
-<view class="flex-column">
+<view class="flex-column"   id='mjltest'>
 	<view class="flex-column-center" style="width: {{windowWidth}}rpx;">
 		<image src="../../../images/order_icon.png" class="icon"></image>
 		<text style="font-size: 34rpx;">今日订单</text>
@@ -16,12 +16,20 @@
 			<view class="flex-column with-padding" style="font-size: 34rpx;">
 				<scroll-view scroll-y style="height: {{windowHeight - 150}}rpx;">
 					<view class="apply_row  flex-column with-tb-padding margin_bottom" wx:for="{{applyArr}}" wx:key="date" wx:for-item="item" wx:for-index="index">
-						<view class="flex-row">
-
-							<text class="margin-right">{{index + 1}}. {{item.nxDistributerGoodsEntity.nxDgGoodsName}}</text>
+						<view class="flex-row-between">
+						  <view class="flex-row">
+								<text class="margin-right">{{index + 1}}. {{item.nxDistributerGoodsEntity.nxDgGoodsName}}</text>
 							<text>{{item.nxDoQuantity}}{{item.nxDoStandard}}</text>
-						</view>
+							</view>
 
+<!-- xiajiangout -->
+							<!-- <view class="flex-row order_user">
+								<view class="btnClick fixed" bindtap="{{item.nxDoIsAgent == 1 ? 'openOperation' : ''}}" data-item="{{item}}" hover-class="hover">
+										<image src="{{item.nxDoIsAgent == 1 ? '../../../images/jiantouxia.png' : '../../../images/logo.jpg'}}" class="icon_jiantou"></image>
+									</view>
+							</view> -->
+						
+						</view>
 					</view>
 				</scroll-view>
 
@@ -39,10 +47,62 @@
 
 
 <view class="plusBtn" style="left:{{windowWidth - 180}}rpx">
-
-
 	<view class="def flex-column-center " bindtap="toQuickOrder">
 		<text class="plus_text">+</text>
 	</view>
-
 </view>
+
+
+<!--  -->
+
+
+<!--  操作  -->
+<view class='mask {{showOperation ? "is-active" : ""}}' catchtap="hideMask" style="height:{{maskHeight < windowHeight ? windowHeight : maskHeight}}rpx;" catchtouchmove='ture'>
+
+	<view class=" mmm whiteBack" wx:if="{{deleteShow}}" style="margin-top:{{(windowHeight - 240)/2 }}rpx;margin-left: 50rpx; width:{{windowWidth - 100}}rpx;">
+		<view class="flex-cloumn">
+			<view class="weight_five small with-padding" style="text-align: center;">删除申请</view>
+
+			<view class="flex-row with-padding normal">
+				<view class="with-padding " wx:if="{{applyItem.nxDoGoodsType == 0}}">{{applyItem.nxDistributerGoodsEntity.nxDgGoodsName}}</view>
+				<view class="weight_five normal with-padding with-border-bottom" wx:if="{{applyItem.nxDoGoodsType == 1}}">{{applyItem.nxDepIndependentGoodsEntity.nxDigGoodsName}}</view>
+				<view>{{applyItem.nxDoQuantity}}{{applyItem.nxDoStandard}}</view>
+			</view>
+		</view>
+
+		<view class="flex-row-around">
+			<view class="with-padding" bindtap="deleteNo">取消</view>
+			<view class="with-padding margin_bottom " bindtap="deleteYes">
+				确定
+			</view>
+		</view>
+
+	</view>
+
+	<!-- 。/ -->
+
+	<view class="flex-column nnn whiteBack" wx:else>
+		<view class="with-padding flex-column-center with-border-bottom" bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
+			<view class="close_line " style="width:{{windowWidth / 8}}rpx; "></view>
+			<view class="weight_five normal" wx:if="{{applyItem.nxDoGoodsType == 0}}">{{applyItem.nxDistributerGoodsEntity.nxDgGoodsName}}</view>
+			<view class="weight_five normal" wx:if="{{applyItem.nxDoGoodsType == 1}}">{{applyItem.nxDepIndependentGoodsEntity.nxDigGoodsName}}</view>
+		</view>
+
+		<view class="operation_row   flex-row " bindtap="{{applyItem.nxDoGoodsType == 0 ? 'editApply' : 'editIndependentApply'}}" wx:if="{{applyItem.nxDoStatus < 1}}">
+			<image src="../../../images/edit.png" class="operation_icon" wx:if="{{applyItem.nxDoStatus < 1}}"></image>
+			<text class=" margin-right">修改订货</text>
+
+		</view>
+
+		<view class="operation_row  flex-row" catchtap="deleteApply" wx:if="{{applyItem.nxDoStatus < 1}}">
+			<image src="../../../images/ashbin.png" class="operation_icon"></image>
+			<text class="margin-right">删除订货</text>
+
+		</view>
+
+
+	</view>
+</view>
+
+
+<mymodal show="{{show}}" bindconfirm="confirm" depStandardArr="{{depStandardArr}}" item="{{item}}" bindchangeStandard="changeStandard" bindcancle="cancle" applyStandardName="{{applyStandardName}}" applyNumber="{{applyNumber}}" applyRemark="{{applyRemark}}" editApply="{{editApply}}" />

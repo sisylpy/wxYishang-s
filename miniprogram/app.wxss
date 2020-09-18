@@ -10,6 +10,7 @@
 
 .mainColor{
   color: #187e6e;
+
 }
 .mainBack{
   background: #187e6e;
@@ -78,9 +79,23 @@
 }
 
 .fixed_bottom{
+  background: #dce6e7;
   position: fixed;
   bottom: 0;
-  
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.main_btn{
+  line-height: 80rpx;
+  background: #626363;
+  color: #fff;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.main_btn.is-active{
+  background: #2d5a5f;
+  color: #fff;
 }
 
 swiper{
@@ -401,6 +416,29 @@ swiper{
   background: #e9e9e9;
 }
 
+.operation_icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 40rpx;
+}
+
+.iconWrap{
+  padding: 20rpx;
+  border-radius: 50%;
+}
+
+.iconSelect{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+.iconBig{
+  width: 60rpx;
+  height: 60rpx;
+  
+}
+
+
 .icon{
   width: 40rpx;
   height: 40rpx;
@@ -642,3 +680,28 @@ swiper{
 }
 
 
+
+.applyBtn{
+  border: 1px solid #187e6e;
+  border-radius: 20rpx;
+  padding: 2rpx 30rpx;
+
+}
+
+
+.operation_row{
+  /* border: 1px solid red; */
+  padding: 40rpx 40rpx;
+  font-size: 34rpx;
+  color: #1d2124;
+}
+
+.btnView{
+  padding: 10rpx;
+  border-radius: 50%;
+}
+
+.remark{
+  color: #2d6bbb;
+
+}

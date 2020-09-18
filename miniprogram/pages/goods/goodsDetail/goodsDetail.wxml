@@ -10,11 +10,22 @@
 			</view>
 			<view class=" flex-row">
 				<text class="gray shrink_fix margin-l-right">品牌:</text>
-				<text class="with-tb-padding shrink_change" wx:if="{{goods.nxGoodsEntity.nxGoodsBrand !==  null}}">{{goods.nxGoodsEntity.nxGoodsBrand}}</text>
+				<text class="with-tb-padding shrink_change" wx:if="{{goods.nxDgGoodsBrand !==  null && goods.nxDgGoodsBrand.length > 0}}">{{goods.nxDgGoodsBrand}}</text>
 			</view>
+
+			<view class=" flex-row">
+				<text class="gray shrink_fix margin-l-right">产地:</text>
+				<text class="with-tb-padding shrink_change" wx:if="{{goods.nxDgGoodsPlace !==  null && goods.nxDgGoodsPlace.length > 0}}">{{goods.nxDgGoodsPlace}}</text>
+			</view>
+			
 			<view class=" flex-row">
 				<text class="gray shrink_fix margin-l-right">商品名称:</text>
 				<text class="with-tb-padding shrink_change">{{goods.nxDgGoodsName}}</text>
+			</view>
+
+				<view class=" flex-row">
+				<text class="gray shrink_fix margin-l-right">详细:</text>
+				<text class="with-tb-padding shrink_change" wx:if="{{goods.nxDgGoodsDetail !==  null && goods.nxDgGoodsDetail.length > 0}}">{{goods.nxDgGoodsDetail}}</text>
 			</view>
 
 			<!-- <view class="flex-row">
@@ -27,10 +38,7 @@
 				<text class="gray shrink_fix margin-l-right">别名:</text>
 				<text class="with-tb-padding"></text>
 			</view>
-<view class=" flex-row">
-				<text class="gray shrink_fix margin-l-right">产地:</text>
-				<text class="with-tb-padding shrink_change" wx:if="{{goods.nxGoodsEntity.nxGoodsPlace !==  null}}">{{goods.nxGoodsEntity.nxGoodsPlace}}</text>
-			</view>
+
 			<view class="flex-row">
 				<text class="gray shrink_fix margin-l-right">规格:</text>
 				<text class="with-tb-padding">{{goods.nxDgGoodsStandardname}}</text>

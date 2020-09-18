@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "mymodal": "/components/mymodal/mymodal",
-    "addStandard": "/components/addStandard/addStandard" 
-  }
-}

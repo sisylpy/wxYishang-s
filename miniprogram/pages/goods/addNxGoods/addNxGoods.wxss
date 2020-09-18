@@ -1,5 +1,9 @@
 
 
+page{
+  background: #f5f5f5;
+}
+
 
 
 
@@ -28,4 +32,19 @@
   background: #187e6e;
   color: #fff;
 
+}
+
+.barBtn{
+  font-size: 30rpx;
+
+}
+
+.delBtn{
+  width: 60%;
+  line-height: 80rpx;
+  background: lightslategray;
+  color: #fff;
+  margin-left: 20%;
+  border-radius: 30rpx;
+  text-align: center;
 }

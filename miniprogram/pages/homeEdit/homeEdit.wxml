@@ -1,0 +1,130 @@
+<view class="whiteBack " id="mjltest">
+
+	<view class="with-border-bottom ">
+
+
+		<view class="top flex-row-center whiteBack margin_bottom">
+
+			<view class="img_view">
+				<image class="top_img" wx:if="{{userInfo.nxDistributerEntity.nxDistributerImg.length > 0}}" src="{{ url + userInfo.nxDistributerEntity.nxDistributerImg}}" style="width:{{windowWidth - 40}}rpx; height:300rpx;"></image>
+			</view>
+
+
+			<!-- aaa -->
+			<view class=" flex-row-between with-lr-padding" style="margin-top:-{{windowWidth/8}}rpx;">
+				<view class="flex-column-center with-lr-padding">
+					<image src=" {{userInfo.nxDiuWxAvartraUrl}}" wx:if="{{userInfo.nxDiuWxAvartraUrl.length > 0}}" class="face_img" style="width:{{windowWidth/5}}rpx; height:{{windowWidth/5}}rpx; ">
+					</image>
+					<text class="normal">{{userInfo.nxDistributerEntity.nxDistributerName}}</text>
+				</view>
+
+
+				<view class="flex-row applyBtn">
+					<!-- <image src="../../images/cg.png" class="iconsmall margin-right"></image> -->
+					<button class="group_btn" open-type="share" data-type="1" bindtap="toShareAdmin"> 邀请管理员</button>
+				</view>
+
+			</view>
+
+			<!-- bbb -->
+			<view class="flex-cloumn with-lr-padding gray">
+
+				<view class="flex-row with-padding">
+					<image src="../../images/lianxiren.png" class="icon margin-right"></image>
+					<text> {{userInfo.nxDistributerEntity.nxDistributerManager}} {{userInfo.nxDistributerEntity.nxDistributerPhone}}</text>
+				</view>
+
+
+				<view class="with-lr-padding">
+					<image src="../../images/ditu.png" class="icon margin-right"></image>
+					<text>{{userInfo.nxDistributerEntity.nxDistributerAddress}}</text>
+				</view>
+
+
+
+			</view>
+
+		</view>
+
+		<!-- <view class="flex-row-around with-padding">
+			<view class="flex-row applyBtn">
+				<image src="../../images/cg.png" class="iconsmall margin-right"></image>
+				<button class="group_btn" open-type="share" data-type="1" > 邀请管理员</button>
+			</view>
+			<view class="flex-row applyBtn" bindtap="toOpenOrder">
+				<image src="../../images/dh.png" class="iconsmall margin-right"></image>
+				<button class="group_btn"> 邀请采购员</button>
+			</view>
+		</view> -->
+	</view>
+
+	<view class="flex-column">
+
+		<view class="flex-row-between with-border-bottom whiteBack with-padding" wx:for="{{userArr}}" wx:key="nxDistributerUserId">
+
+			<view class="flex-row">
+				<image src='{{item.nxDuUrlChange == 1 ?  url + item.nxDiuWxAvartraUrl : item.nxDiuWxAvartraUrl}}' class="member_url margin-right"></image>
+				<view class="flex-row">
+					<text class="middle">{{item.nxDiuWxNickName}}</text>
+					<text wx:if="{{item.nxDistributerUserId == userInfo.nxDistributerUserId}}">(你自己)</text>
+				</view>
+			</view>
+
+
+			<view class="btnClick with-lr-padding" bindtap="openOperation" data-id="{{item.nxDistributerUserId}}" hover-class="hover">
+				<image src="../../images/jiantouxia.png" class="icon_jiantou"></image>
+			</view>
+
+		</view>
+
+	</view>
+
+</view>
+
+
+
+
+<view class='mask {{showOperation ? "is-active" : ""}}' catchtouchmove='ture' catchtap="hideMask" style="height:{{maskHeight < windowHeight ? windowHeight : maskHeight}}rpx;" catchtouchmove='ture'>
+	<view class="flex-column nnn whiteBack ">
+		<!--    -->
+
+		<view wx:if="{{selectUserId == userInfo.nxDiuDistributerId}}" class="flex-row  operation_row " bindtap="editUser">
+			<image src="../../images/ashbin_48.png" class="operation_icon"></image>
+			<text class=" margin-right">修改用户信息</text>
+		</view>
+
+		<view wx:else class="flex-row  operation_row " bindtap="delUser">
+			<image src="../../images/ashbin_48.png" class="operation_icon"></image>
+			<text class=" margin-right">删除用户</text>
+		</view>
+
+	</view>
+</view>
+
+
+<!--  -->
+
+
+
+<view class="mask {{isTishi ? 'is-active' : ''}}">
+
+	<view class=" mmm whiteBack" style="margin-top:{{(windowHeight - 440)/2 }}rpx;margin-left: 50rpx; width:{{windowWidth - 100}}rpx;">
+		<view class="margin_bottom  flex-column-center">
+
+			<view class="tishiView" style="width:{{windowWidth/5}}rpx; height:{{windowWidth/5}}rpx; margin-top:-{{windowWidth/10 + 10}}rpx; z-index: 9999;border-radius: 50%;">
+				<image src="../../images/aixin.png" class="tishi_icon" style="width:{{windowWidth/5 -80}}rpx; height:{{windowWidth/5 - 80}}rpx;  border-radius: 50%; margin-top:40rpx; margin-left: 40rpx;"></image>
+			</view>
+
+			<view class="flex-row sentence">
+				注册成功的用户，将显示在“管理员列表”
+			</view>
+			<view class="with-padding flex-row">
+				<view class="with-padding" bindtap="closeMask" style="width:{{windowWidth - 200}}rpx; text-align: center;" hover-class="hover">
+					我知道了
+				</view>
+
+			</view>
+		</view>
+
+	</view>
+</view>

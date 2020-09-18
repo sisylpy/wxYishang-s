@@ -25,14 +25,12 @@
 								<text class='normal with-padding with-border-bottom'>{{parentItem.nxDfgFatherGoodsName}}</text>
 							</view>
 							<view class='flex-column with-padding with-border-bottom {{index == parentItem.goodsList.length - 1 ? "is-last":"" }}' wx:for='{{parentItem.nxDistributerGoodsEntities}}' wx:for-item="item" wx:for-index='index' wx:key='this'>
-								<view class="flex-row-between" data-index="{{index}}" data-parentindex="{{parentIndex}}" data-standard="{{item.standardName}}" bindtap="addPlanPurchse" data-index="{{index}}" data-parentindex="{{parentIndex}}">
+								<view class="flex-row-between">
 									<!-- <text class="margin-right">#</text> -->
 									<!-- <text class='squre {{item.selectAmount > 0  ? "is-active" : ""}}'></text> -->
 
 									<text class="buy-goods normal">{{item.nxDgGoodsName}}({{item.nxDgGoodsStandardname}})</text>
-									<text
-                    class='buy-amount'>进货</text>
-
+									<text  class='buy-amount'  data-index="{{index}}" data-parentindex="{{parentIndex}}" bindtap="addPlanPurchse" data-index="{{index}}" data-parentindex="{{parentIndex}}">进货</text>
 								</view>
 								<view class="flex-column">
 								<!-- bindtap="unChoiceOrder" -->
@@ -105,4 +103,4 @@
 </view>
 
 
-<disPlanPurchase show="{{showPlanPurchase}}" bindconfirm="confirm" standard="{{standard}}" item="{{item}}" />
+<disPlanPurchase show="{{showPlanPurchase}}" bindconfirm="confirm" item="{{item}}"/>

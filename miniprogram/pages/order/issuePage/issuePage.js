@@ -106,19 +106,13 @@ Page({
     this.setData({
       windowWidth: globalData.windowWidth * globalData.rpxR,
       windowHeight: globalData.windowHeight * globalData.rpxR,
-      disId: 1,
-      userId: 1,
-
       todayDate: todayDate,
-
-      
-    })
-
-    this.setData({
+      disId: options.disId,
+      userId: options.userId,
       depFatherId: options.depFatherId,
       depHasSubs: options.depHasSubs,
       depName: options.depName
-
+      
     })
 
    
@@ -185,51 +179,6 @@ Page({
 
 
 
-  _savePrintOrders() {
-
-    console.log("save.......................")
-   var orderArr =  [];
-    if(this.data.depHasSubs == 1){
-      var depArr = this.data.depArr;
-      for(var i = 0; i < depArr.length; i++){
-        var arr = depArr[i].depOrders;
-
-        for(var j = 0; j < arr.length; j++){
-          var item  = arr[j];
-          orderArr.push(item);
-        }
-      }
-    }else{
-      orderArr = this.data.applyArr;
-    }
-
-
-    load.showLoading("保存订单中")
-    var bill = {
-      nxDbDisId: this.data.disId,
-      nxDbDepId: this.data.depFatherId,
-      nxDbTotal: this.data.total,
-      nxDbIssueUserId: 1,
-      nxDepartmentOrdersEntities: orderArr,
-
-    }
-
-    printDepartmentOrders(bill)
-      .then(res => {
-        load.hideLoading();
-        console.log(res)
-        if (res.result.code == 0) {
-          wx.showToast({
-            title: 'chenggong',
-          })
-          // this._getTodayCustomer();
-          // wx.navigateBack({
-          //   delta: 2
-          // })
-
-        }
-      })
-  },
 
   toSetPrint() {
     wx.navigateTo({
@@ -372,11 +321,6 @@ Page({
       }
     })
   },
-  //  openControl: function () {//连接成功返回主页
-  //   wx.navigateTo({
-  //     url: '../home/home',
-  //   })
-  // },
 
   receiptTest: function () { //票据测试
 
@@ -437,17 +381,21 @@ Page({
         command.setAbsolutePrintPosition(310) // 318
         command.setText(subTotal);
         command.setPrint();
-      }
-      
+      } 
     }
+
     if (that.data.depHasSubs == 1) {
       var arr = that.data.depArr;
+      var temp = [];
       for (var i = 0; i < arr.length; i++) {
         var subName = arr[i].depName;
-        command.setText(subName);
+        command.setText("部门:#" + subName);
         command.setPrint();
         var ordersArr = arr[i].depOrders;
         for (var j = 0; j < ordersArr.length; j++) {
+          //获取接口订单
+          temp.push(ordersArr[j])
+          //获取打印数据
           var goodsName = ordersArr[j].nxDistributerGoodsEntity.nxDgGoodsName;
           var weight = "";
         if(ordersArr[j].nxDoWeight !== null){
@@ -475,13 +423,13 @@ Page({
           command.setAbsolutePrintPosition(310)
           command.setText(subTotal);
           command.setPrint();
-        }
-        
+        } 
       }
-
+      //接口数据
+      that.setData({
+        printOrderArr: temp,
+      })
     }
-
-
 
     // command.setText(this.data.sendContent);
     command.setPrint() //打印并换行     
@@ -638,22 +586,9 @@ Page({
       characteristicId: app.BLEInformation.writeCharaterId,
       value: buf,
       success: function (res) {
-        if (currentTime <= loopTime) {
-          // wx.showLoading({
-          //   title: '传输中...',
-          // })
-        } else {
-          wx.showToast({
-            title: '已打印第' + currentPrint + '张成功',
-          })
-        }
-        console.log(res)
-
-        that.setData({
-          showOperation: false
-        })
-
-        that._savePrintOrders();
+        if (currentTime == loopTime) {
+          that._savePrintOrders();
+        } 
       },
       fail: function (e) {
         wx.showToast({
@@ -678,7 +613,6 @@ Page({
               isReceiptSend: false,
               currentPrint: 1
             })
-
           } else {
             currentPrint++
             that.setData({
@@ -688,16 +622,57 @@ Page({
             that.Send(buff)
           }
         }
-        // wx.navigateBack({
-        //   complete: (res) => {
-        //     delta: 2
-        //   },
-        // })
-
       }
-
     })
 
+  },
+
+
+  _savePrintOrders() {
+
+    console.log("save.......................")
+   var orderArr =  [];
+    if(this.data.depHasSubs == 1){
+      orderArr = this.data.printOrderArr;
+      // var depArr = this.data.depArr;
+      // for(var i = 0; i < depArr.length; i++){
+      //   var arr = depArr[i].depOrders;
+
+      //   for(var j = 0; j < arr.length; j++){
+      //     var item  = arr[j];
+      //     orderArr.push(item);
+      //   }
+      // }
+    }else{
+      orderArr = this.data.applyArr;
+    }
+
+
+    load.showLoading("保存订单中")
+    var bill = {
+      nxDbDisId: this.data.disId,
+      nxDbDepId: this.data.depFatherId,
+      nxDbTotal: this.data.total,
+      nxDbIssueUserId: this.data.userId,
+      nxDepartmentOrdersEntities: orderArr,
+
+    }
+
+    printDepartmentOrders(bill)
+      .then(res => {
+        load.hideLoading();
+        console.log(res)
+        if (res.result.code == 0) {
+          wx.showToast({
+            title: '打印成功',
+          })
+          // this._getTodayCustomer();
+          // wx.navigateBack({
+          //   delta: 2
+          // })
+
+        }
+      })
   },
 
   // ============================================

@@ -47,7 +47,7 @@
 .searchList.is-active{
   display: block;
   position: fixed;
-  top: 90rpx;
+  top: 120rpx;
   left: 0;
 
   background: rgb(250, 249, 249);
